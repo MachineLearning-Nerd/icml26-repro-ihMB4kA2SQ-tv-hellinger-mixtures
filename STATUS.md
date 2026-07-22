@@ -6,4 +6,5 @@
 - Completed: all five claims pass the fail-closed local gate; two tests and three negative controls pass; Trackio evidence is complete with clean relative commands and required metadata.
 - Completed: secret scan and public GitHub handoff at commit `b134c39`.
 - FULL_GATE_READY: ihMB4kA2SQ
-- Next: canonical queue handoff through the shared publisher backlog.
+- Completed: canonical queue handoff through `scripts/enqueue_backlog.py`.
+- Queue state: `publication_queued`; the shared drain exclusively owns Hugging Face Space publication and public readback.
