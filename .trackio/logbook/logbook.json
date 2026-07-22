@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "title": "Repro - Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures",
+  "emoji": "🎯",
+  "space_id": null,
+  "paper": null,
+  "tags": [],
+  "updated_at": "2026-07-22T12:46:36+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Repro - Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "overview",
+        "title": "Overview",
+        "file": "pages/overview/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-c1-chi-square-and-total-variation",
+        "title": "Claim C1 — chi-square and total variation",
+        "file": "pages/claim-c1-chi-square-and-total-variation/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-c2-hellinger-relation",
+        "title": "Claim C2 — Hellinger relation",
+        "file": "pages/claim-c2-hellinger-relation/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-c3-chebyshev-sharpness-construction",
+        "title": "Claim C3 — Chebyshev sharpness construction",
+        "file": "pages/claim-c3-chebyshev-sharpness-construction/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-c4-tv-learning-characterization",
+        "title": "Claim C4 — TV learning characterization",
+        "file": "pages/claim-c4-tv-learning-characterization/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-c5-robust-hellinger-rate",
+        "title": "Claim C5 — robust Hellinger rate",
+        "file": "pages/claim-c5-robust-hellinger-rate/page.md",
+        "children": []
+      },
+      {
+        "slug": "methods",
+        "title": "Methods",
+        "file": "pages/methods/page.md",
+        "children": []
+      },
+      {
+        "slug": "negative-controls",
+        "title": "Negative controls",
+        "file": "pages/negative-controls/page.md",
+        "children": []
+      },
+      {
+        "slug": "tests-and-gate",
+        "title": "Tests and gate",
+        "file": "pages/tests-and-gate/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "agent_view_tokens": 1768,
+  "revision": "1784724396001499855"
+}

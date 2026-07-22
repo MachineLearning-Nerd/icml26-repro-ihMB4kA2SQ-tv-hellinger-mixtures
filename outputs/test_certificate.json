@@ -1,0 +1,52 @@
+{
+  "paper": "ihMB4kA2SQ",
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+  "scope": "Source-pinned theorem contract plus independent finite Gaussian-mixture, Chebyshev-root, and rate-formula certificates; not a new proof of the theorems.",
+  "claims": {
+    "C1": {
+      "status": "verified",
+      "divergence_cells": 5,
+      "max_chi": 0.30867715904440113
+    },
+    "C2": {
+      "status": "verified",
+      "hellinger_cells": 5
+    },
+    "C3": {
+      "status": "verified",
+      "chebyshev_orders": [
+        11,
+        13,
+        15,
+        17,
+        19,
+        21,
+        23,
+        25,
+        27,
+        29,
+        31,
+        33,
+        35,
+        37,
+        39,
+        41
+      ]
+    },
+    "C4": {
+      "status": "verified",
+      "rate_cells": 4
+    },
+    "C5": {
+      "status": "verified",
+      "robust_rate_cells": 4
+    }
+  },
+  "negative_controls": {
+    "wrong_hellinger_normalization_rejected": true,
+    "wrong_chebyshev_nodes_rejected": true,
+    "wrong_log_denominator_rejected": true
+  },
+  "verified_claims": 5,
+  "falsified_claims": 0
+}

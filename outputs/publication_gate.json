@@ -1,0 +1,9 @@
+{
+  "paper": "ihMB4kA2SQ",
+  "gate": "passed",
+  "verified_claims": 5,
+  "falsified_claims": 0,
+  "verification": "outputs/verification.json",
+  "tests": "repro/tests",
+  "scope": "Source-pinned theorem contract plus independent finite Gaussian-mixture, Chebyshev-root, and rate-formula certificates; not a new proof of the theorems."
+}
