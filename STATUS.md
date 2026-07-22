@@ -4,4 +4,6 @@
 - Corrected a stale short-list arXiv mapping before claim; this is the title/source matching all five anchors.
 - Completed: finite Gaussian-mixture divergence, Chebyshev-node, rate-form, and three negative-control certificates.
 - Completed: all five claims pass the fail-closed local gate; two tests and three negative controls pass; Trackio evidence is complete with clean relative commands and required metadata.
-- Next: secret scan, public GitHub handoff, then canonical queue handoff.
+- Completed: secret scan and public GitHub handoff at commit `b134c39`.
+- FULL_GATE_READY: ihMB4kA2SQ
+- Next: canonical queue handoff through the shared publisher backlog.

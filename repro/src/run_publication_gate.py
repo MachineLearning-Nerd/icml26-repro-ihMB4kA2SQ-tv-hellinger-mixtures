@@ -24,6 +24,8 @@ def main() -> None:
     gate = {
         "paper": "ihMB4kA2SQ",
         "gate": "passed",
+        "tests_passed": True,
+        "publication_gate_passed": True,
         "verified_claims": 5,
         "falsified_claims": 0,
         "verification": "outputs/verification.json",
