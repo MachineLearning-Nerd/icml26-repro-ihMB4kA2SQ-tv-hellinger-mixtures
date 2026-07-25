@@ -78,7 +78,10 @@ def main() -> None:
     # C5 lower bound: constructive contamination indistinguishability.
     eps, tv = sp.symbols("eps tv", positive=True)
     common_mass = sp.expand((1 - eps) * (1 + tv))
-    require(sp.solve_univariate_inequality(common_mass <= 1, tv) == (tv <= eps / (1 - eps)), "C5 contamination condition")
+    contamination_gap = sp.factor(
+        common_mass - 1 - (1 - eps) * (tv - eps / (1 - eps))
+    )
+    require(contamination_gap == 0, "C5 contamination condition")
     q_mass = sp.simplify((1 - (1 - eps)) / eps)
     require(q_mass == 1, "C5 contaminating measures normalize")
 
