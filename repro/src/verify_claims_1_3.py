@@ -36,7 +36,9 @@ def double_factorial(value: int) -> int:
     return result
 
 
-def construction(order: int, dps: int) -> tuple[np.ndarray, np.ndarray, float]:
+def construction(
+    order: int, dps: int
+) -> tuple[np.ndarray, np.ndarray, float, list[mp.mpf], list[mp.mpf]]:
     """Return nodes, scaled weights u=w/s, and s from Lemma 3.2 (M=1)."""
     mp.mp.dps = dps
     nodes_mp = [
@@ -56,17 +58,24 @@ def construction(order: int, dps: int) -> tuple[np.ndarray, np.ndarray, float]:
     scale = float((mp.sqrt(2) - 1) ** (order + 1))
     nodes = np.array([float(value) for value in nodes_mp])
     u = np.array([float(value) for value in scaled_weights])
-    return nodes, u, scale
+    return nodes, u, scale, nodes_mp, list(scaled_weights)
 
 
 def expectation_grid(
-    nodes: np.ndarray, scaled_weights: np.ndarray, order: int
+    nodes_mp: list[mp.mpf], scaled_weights_mp: list[mp.mpf], order: int
 ) -> tuple[np.ndarray, np.ndarray]:
     x, weights = roots_hermitenorm(order)
-    exponent = np.exp(
-        x[:, None] * nodes[None, :] - 0.5 * nodes[None, :] ** 2
+    signed = np.array(
+        [
+            float(
+                mp.fsum(
+                    weight * mp.exp(mp.mpf(float(x_value)) * node - node**2 / 2)
+                    for node, weight in zip(nodes_mp, scaled_weights_mp)
+                )
+            )
+            for x_value in x
+        ]
     )
-    signed = exponent @ scaled_weights
     probability_weights = weights / math.sqrt(2 * math.pi)
     return signed, probability_weights
 
@@ -74,8 +83,8 @@ def expectation_grid(
 def evaluate_one(
     n: int, quadrature_order: int, delta: float, dps: int
 ) -> dict[str, float | int | bool]:
-    nodes, u, scale = construction(n, dps)
-    signed, probability_weights = expectation_grid(nodes, u, quadrature_order)
+    nodes, u, scale, nodes_mp, u_mp = construction(n, dps)
+    signed, probability_weights = expectation_grid(nodes_mp, u_mp, quadrature_order)
     x, _ = roots_hermitenorm(quadrature_order)
     exponent = np.exp(
         x[:, None] * nodes[None, :] - 0.5 * nodes[None, :] ** 2
