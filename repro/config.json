@@ -1,0 +1,9 @@
+{
+  "primary_engine": "adaptive_gauss_kronrod",
+  "gauss_hermite_order": 768,
+  "independent_order": 1536,
+  "odd_orders": [11, 15, 19, 23, 27, 31],
+  "delta": 0.2,
+  "mp_dps": 100,
+  "seed": 260203202
+}
