@@ -1,0 +1,29 @@
+{
+  "claims": {
+    "C4": {
+      "statement": "For every delta>0 and every Hellinger-compact P contained in P_{M,d}, the total-variation minimax squared risk lies between epsilon_n^{2(1+(2+delta)/log(log(1/epsilon_n) vee e))} and epsilon_n^2, up to constants, where epsilon_n is the Jia local-Hellinger-entropy rate.",
+      "quantifiers": [
+        "delta>0",
+        "fixed M and d",
+        "every Hellinger-compact P subset of P_{M,d}",
+        "as n tends to infinity"
+      ],
+      "pass_condition": "Reconstruct the upper and lower minimax implications, including estimator projection, the imported Jia Fano event, monotonic inversion of J, and the exact target exponent."
+    },
+    "C5": {
+      "statement": "Under epsilon-Huber contamination of P_{M,d}, the proper Yatracos estimator has squared-Hellinger risk bounded by epsilon^{2(1-(2+delta)/log(log(1/epsilon) vee e))}+n^{-1+o_d(1)}, and every estimator has the stated 0.33 lower rate in epsilon.",
+      "quantifiers": [
+        "delta>0 for the upper bound",
+        "fixed M and d",
+        "all mixing laws supported in [-M,M]^d",
+        "all contamination distributions Q",
+        "all sufficiently small epsilon and sufficiently large n"
+      ],
+      "pass_condition": "Reconstruct the proper-estimator upper bound and a uniform-in-epsilon Chen two-point lower bound, not merely a finite estimator experiment or a discrete sharpness subsequence."
+    }
+  },
+  "verdicts_before_this_route": {
+    "C4": "BLOCKED",
+    "C5": "BLOCKED"
+  }
+}

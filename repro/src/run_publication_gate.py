@@ -22,6 +22,7 @@ def main() -> None:
     subprocess.run([sys.executable, "repro/src/verify_proof_obligations.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/verify_primary_dependencies.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/verify_analytic_certificate.py"], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, "repro/src/verify_application_certificate.py"], cwd=ROOT, check=True)
     certificate = json.loads(verification.read_text())
     assert certificate["verified_claims"] == 5
     assert certificate["falsified_claims"] == 0
@@ -31,7 +32,7 @@ def main() -> None:
         "gate": "research_checkpoint_passed",
         "tests_passed": True,
         "publication_gate_passed": False,
-        "publication_blocker": "external proof dependencies and evaluator-visible release audit remain",
+        "publication_blocker": "final claim verdict curation and evaluator-visible release audit remain",
         "current_claim_verdicts": {
             "C1": "BLOCKED",
             "C2": "BLOCKED",
@@ -49,6 +50,7 @@ def main() -> None:
         "proof_obligations": ".openresearch/artifacts/proof_obligations/result.json",
         "primary_dependencies": ".openresearch/artifacts/primary_dependencies/result.json",
         "analytic_certificate": ".openresearch/artifacts/analytic_certificate/result.json",
+        "application_certificate": ".openresearch/artifacts/application_certificate/result.json",
     }
     (ROOT / "outputs" / "publication_gate.json").write_text(json.dumps(gate, indent=2) + "\n")
     print(json.dumps(gate, indent=2))
