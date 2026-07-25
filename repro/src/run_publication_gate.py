@@ -21,6 +21,7 @@ def main() -> None:
     subprocess.run([sys.executable, "repro/src/verify_claims_1_3.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/verify_proof_obligations.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/verify_primary_dependencies.py"], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, "repro/src/verify_analytic_certificate.py"], cwd=ROOT, check=True)
     certificate = json.loads(verification.read_text())
     assert certificate["verified_claims"] == 5
     assert certificate["falsified_claims"] == 0
@@ -47,6 +48,7 @@ def main() -> None:
         "current_claim_suite": ".openresearch/artifacts/claim_1_3/result.json",
         "proof_obligations": ".openresearch/artifacts/proof_obligations/result.json",
         "primary_dependencies": ".openresearch/artifacts/primary_dependencies/result.json",
+        "analytic_certificate": ".openresearch/artifacts/analytic_certificate/result.json",
     }
     (ROOT / "outputs" / "publication_gate.json").write_text(json.dumps(gate, indent=2) + "\n")
     print(json.dumps(gate, indent=2))
