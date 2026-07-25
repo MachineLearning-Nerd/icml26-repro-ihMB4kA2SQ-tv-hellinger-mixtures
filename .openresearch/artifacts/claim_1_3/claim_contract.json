@@ -1,0 +1,24 @@
+{
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+  "source_retrieved_utc": "2026-07-25T04:48:56Z",
+  "source_url": "https://export.arxiv.org/e-print/2602.03202",
+  "claims": {
+    "C1": {
+      "anchor": "Theorem 2.1 / theorem:uniformTV",
+      "quantifiers": "all d,M,delta>0 and all probability measures pi,eta supported on [-M,M]^d; exists C0(delta,M,d), independent of pi,eta",
+      "tested_expression": "sqrt(chi2(f_pi||f_eta)) <= TV^(1-alpha(TV)) (a stronger finite-instance check than the theorem's max(C0,TV^-alpha)*TV)",
+      "alpha": "(2+delta)/log(max(log(1/t),e))"
+    },
+    "C2": {
+      "anchor": "Corollary 2.4 / corollary:uniformTV",
+      "quantifiers": "same support and delta quantifiers as C1",
+      "tested_expression": "H(f_pi,f_eta) <= TV^(1-alpha(TV))"
+    },
+    "C3": {
+      "anchor": "Theorem 3.1 and Lemma 3.2",
+      "quantifiers": "there exist sequences supported on [-M,M], relabelled after an unspecified universal N0",
+      "tested_expression": "H_n >= TV_n^(1-0.33/log(log(1/TV_n))) on directly constructed finite orders"
+    }
+  },
+  "scope": "Direct finite construction; not by itself a proof of universal or asymptotic quantifiers."
+}
