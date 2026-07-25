@@ -220,8 +220,33 @@ def main() -> None:
             "tv_pi2_eta2",
             "hellinger_pi2_eta2",
         ):
-            if not close_enough(float(primary[key]), float(independent[key])):
-                raise AssertionError(f"independent checker disagrees for n={primary['n']} {key}")
+            primary_value = float(primary[key])
+            independent_value = float(independent[key])
+            relative_disagreement = abs(primary_value - independent_value) / max(
+                abs(primary_value), abs(independent_value), 1e-300
+            )
+            print(
+                "CONVERGENCE",
+                json.dumps(
+                    {
+                        "n": primary["n"],
+                        "quantity": key,
+                        "primary": primary_value,
+                        "doubled_order": independent_value,
+                        "relative_disagreement": relative_disagreement,
+                    },
+                    sort_keys=True,
+                ),
+                flush=True,
+            )
+            if not close_enough(primary_value, independent_value):
+                raise AssertionError(
+                    "resolution checker disagrees: "
+                    f"n={primary['n']} quantity={key} "
+                    f"primary={primary_value:.17g} "
+                    f"doubled_order={independent_value:.17g} "
+                    f"relative_disagreement={relative_disagreement:.6g}"
+                )
         if primary["chebyshev_residual"] >= 2e-13:
             raise AssertionError("Chebyshev node identity failed")
         if primary["moment_residual"] >= 2e-12:
