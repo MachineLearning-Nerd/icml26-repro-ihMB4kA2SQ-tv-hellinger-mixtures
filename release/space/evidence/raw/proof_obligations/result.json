@@ -1,0 +1,107 @@
+{
+  "status": "PROOF_OBLIGATIONS_CHECKED_WITH_EXPLICIT_EXTERNAL_DEPENDENCIES",
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+  "git_sha": "de2c3a8fba29e433c552ce82c194196fefaaa4d8",
+  "cpu_estimate": "1 effective core",
+  "actual_logical_cpus_visible": 8,
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "runtime_seconds": 1.1654343330001211,
+  "anchors": {
+    "C1": "\\label{theorem:uniformTV}",
+    "C2": "\\label{corollary:uniformTV}",
+    "C3": "\\label{theorem:sharp}",
+    "C4": "\\label{theorem:learninginTV}",
+    "C5_upper": "\\label{theorem:robust}",
+    "C5_lower": "\\label{theorem:robustlower}"
+  },
+  "obligations": {
+    "C1": {
+      "checked": [
+        "source anchor",
+        "finite-mixture Jensen identity",
+        "translation/support bookkeeping in source audit"
+      ],
+      "external_dependency": "Theorem 2.3 L1(phi_d)-L2(phi_d) inequality and its weighted-polynomial lemmas"
+    },
+    "C2": {
+      "checked": [
+        "source anchor",
+        "pointwise H^2 <= chi^2 implication"
+      ],
+      "external_dependency": "C1"
+    },
+    "C3": {
+      "checked": [
+        "source anchor",
+        "exact Hermite identity at n=11,15,19",
+        "two independent numerical construction routes"
+      ],
+      "external_dependency": "uniform tail bounds and eventual relabeling argument in Lemma 3.2/Theorem 3.1"
+    },
+    "C4": {
+      "checked": [
+        "source anchor",
+        "proper-projection factor two",
+        "rate exponent grid"
+      ],
+      "external_dependency": "Jia et al. Corollary 11/Fano local-entropy characterization"
+    },
+    "C5": {
+      "checked": [
+        "both source anchors",
+        "contamination indistinguishability condition",
+        "upper/lower exponent grid"
+      ],
+      "external_dependency": "Yatracos entropy bound and the expectation/Jensen tail argument"
+    }
+  },
+  "negative_controls": {
+    "C1_reverse_jensen_rejected": true,
+    "C2_missing_square_rejected": true,
+    "C5_tv_le_eps_wrong_rejected": true
+  },
+  "rate_rows": [
+    {
+      "log_t": -7.38905609893065,
+      "log_upper_H2_term": 1.4778112197861315,
+      "log_lower_H2_term": -12.339723685214185,
+      "alpha_upper": 1.1,
+      "alpha_lower": 0.165
+    },
+    {
+      "log_t": -20.085536923187668,
+      "log_upper_H2_term": -10.71228635903342,
+      "log_lower_H2_term": -35.75225572327405,
+      "alpha_upper": 0.7333333333333334,
+      "alpha_lower": 0.11
+    },
+    {
+      "log_t": -54.598150033144236,
+      "log_upper_H2_term": -49.13833502982981,
+      "log_lower_H2_term": -100.18760531081968,
+      "alpha_upper": 0.55,
+      "alpha_lower": 0.0825
+    },
+    {
+      "log_t": -403.4287934927351,
+      "log_upper_H2_term": -511.0098050907978,
+      "log_lower_H2_term": -762.4804197012693,
+      "alpha_upper": 0.3666666666666667,
+      "alpha_lower": 0.055
+    },
+    {
+      "log_t": -2980.9579870417283,
+      "log_upper_H2_term": -4322.3890812105055,
+      "log_lower_H2_term": -5715.986940152514,
+      "alpha_upper": 0.275,
+      "alpha_lower": 0.04125
+    },
+    {
+      "log_t": -162754.79141900392,
+      "log_upper_H2_term": -265832.82598437305,
+      "log_lower_H2_term": -316558.0693099626,
+      "alpha_upper": 0.18333333333333335,
+      "alpha_lower": 0.0275
+    }
+  ]
+}

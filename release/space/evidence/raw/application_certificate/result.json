@@ -1,0 +1,143 @@
+{
+  "status": "APPLICATION_PROOF_CHAIN_RECONSTRUCTED",
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+  "claim_4": {
+    "status": "DERIVATION_RECONSTRUCTED",
+    "upper": "TV^2<=2H^2 plus Jia Corollary 11",
+    "lower": "J inverse plus Jia Fano event and tail-to-risk",
+    "repair": "invoke C2 with delta/2 to prove the theorem's target delta; the same-delta derivation is rejected",
+    "same_delta_second_order_limit": "-delta**2 - 4*delta - 4",
+    "delta_slack_first_order_limit": "delta/2"
+  },
+  "claim_5": {
+    "status": "DERIVATION_RECONSTRUCTED",
+    "upper": "proper Yatracos estimator, integrated Hoeffding/union bound, subadditive J, and explicit expectation transfer",
+    "lower": "continuous-amplitude sharp construction plus Chen equal-contamination two-point argument",
+    "repair": "continuous amplitude replaces the unjustified jump from a discrete sequence to every epsilon",
+    "sharp_constant_available": 0.331483527757052,
+    "rho": 0.002,
+    "margin_over_0_33": 0.0008205607015378535
+  },
+  "anchors": {
+    "C4_statement": "\\label{theorem:learninginTV}",
+    "C4_jia_dependency": "\\label{proposition:jia11}",
+    "C4_inverse_map": "\\mathcal J(t) &:= C_0t \\vee t^{1-\\alpha(t)}",
+    "C4_fano_probability": "\\geq \\frac{1}{2}, \\label{proof:jia11}",
+    "C5_yatracos_definition": "\\label{definition:yatracos}",
+    "C5_yatracos_tail": "\\mathbb P\\left(\\mathrm{dist}\\left(P, \\widehat P_n\\right) \\geq s\\right)",
+    "C5_upper_statement": "\\label{theorem:robust}",
+    "C5_lower_statement": "\\label{theorem:robustlower}",
+    "C5_equal_law_lemma": "\\label{lemma:density}",
+    "C5_sharp_base_tv": "\\mathrm{TV}\\left(f_{\\pi_n^{(2)}}, f_{\\eta_n^{(2)}}\\right)"
+  },
+  "projection_rows": [
+    {
+      "loss_to_truth": 0.2,
+      "projection_error": 0.2,
+      "projected_loss_upper": 0.4
+    },
+    {
+      "loss_to_truth": 0.7,
+      "projection_error": 0.6,
+      "projected_loss_upper": 1.2999999999999998
+    },
+    {
+      "loss_to_truth": 1.0,
+      "projection_error": 0.8,
+      "projected_loss_upper": 1.8
+    }
+  ],
+  "yatracos_rows": [
+    {
+      "n": 100,
+      "yatracos_class_size": 2,
+      "tail_split": 0.16651092223153954,
+      "second_moment_bound": 0.04772588722239782
+    },
+    {
+      "n": 100,
+      "yatracos_class_size": 50,
+      "tail_split": 0.30348542587702926,
+      "second_moment_bound": 0.11210340371976184
+    },
+    {
+      "n": 100,
+      "yatracos_class_size": 10000,
+      "tail_split": 0.44505027923901197,
+      "second_moment_bound": 0.21806975105072254
+    },
+    {
+      "n": 1000,
+      "yatracos_class_size": 2,
+      "tail_split": 0.05265537695468319,
+      "second_moment_bound": 0.004772588722239781
+    },
+    {
+      "n": 1000,
+      "yatracos_class_size": 50,
+      "tail_split": 0.09597051824376163,
+      "second_moment_bound": 0.011210340371976183
+    },
+    {
+      "n": 1000,
+      "yatracos_class_size": 10000,
+      "tail_split": 0.14073725556892266,
+      "second_moment_bound": 0.021806975105072256
+    },
+    {
+      "n": 10000,
+      "yatracos_class_size": 2,
+      "tail_split": 0.016651092223153956,
+      "second_moment_bound": 0.00047725887222397815
+    },
+    {
+      "n": 10000,
+      "yatracos_class_size": 50,
+      "tail_split": 0.03034854258770293,
+      "second_moment_bound": 0.0011210340371976184
+    },
+    {
+      "n": 10000,
+      "yatracos_class_size": 10000,
+      "tail_split": 0.0445050279239012,
+      "second_moment_bound": 0.0021806975105072256
+    }
+  ],
+  "product_rows": [
+    {
+      "epsilon": 1e-06,
+      "constructed_tv": 1e-06,
+      "chen_boundary": 1.000001000001e-06,
+      "common_product_factor_integral": 1.0
+    },
+    {
+      "epsilon": 0.001,
+      "constructed_tv": 0.001,
+      "chen_boundary": 0.001001001001001001,
+      "common_product_factor_integral": 1.0
+    },
+    {
+      "epsilon": 0.05,
+      "constructed_tv": 0.05,
+      "chen_boundary": 0.052631578947368425,
+      "common_product_factor_integral": 1.0
+    },
+    {
+      "epsilon": 0.2,
+      "constructed_tv": 0.2,
+      "chen_boundary": 0.25,
+      "common_product_factor_integral": 1.0
+    }
+  ],
+  "negative_controls": {
+    "C4_same_delta_inverse_rejected": true,
+    "C5_discrete_sequence_alone_rejected": true,
+    "C5_wrong_sharp_constant_0_34_rejected": true,
+    "C5_omit_yatracos_union_factor_rejected": true
+  },
+  "git_sha": "de2c3a8fba29e433c552ce82c194196fefaaa4d8",
+  "cpu_estimate": "1 effective core",
+  "actual_logical_cpus_visible": 8,
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "runtime_seconds": 2.1162139999996725
+}
