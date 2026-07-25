@@ -1,0 +1,16 @@
+[project]
+name = "tv-hellinger-mixtures-reproduction"
+version = "0.1.0"
+description = "CPU-only reproduction evidence for arXiv:2602.03202"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "marimo>=0.16,<1",
+    "matplotlib>=3.10,<4",
+    "mpmath>=1.3,<2",
+    "numpy>=2.3,<3",
+    "scipy>=1.16,<2",
+    "sympy>=1.14,<2",
+]
+
+[tool.uv]
+package = false
