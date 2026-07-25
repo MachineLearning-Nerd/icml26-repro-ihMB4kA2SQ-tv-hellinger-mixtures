@@ -182,6 +182,7 @@ def evaluate_adaptive(
     nodes, u, scale, nodes_mp, u_mp = construction(n, dps)
     lambda_n = math.exp(-math.sqrt(8 * n + 4))
     roots = find_sign_changes(nodes_mp, u_mp)
+    integration_extent = 40.0
 
     def components(x_value: float) -> tuple[float, float, float]:
         signed = signed_value(x_value, nodes_mp, u_mp)
@@ -196,7 +197,7 @@ def evaluate_adaptive(
         normal = math.exp(-0.5 * x_value**2) / math.sqrt(2 * math.pi)
         return signed, base, normal
 
-    intervals = [-math.inf, *roots, math.inf]
+    intervals = [-integration_extent, *roots, integration_extent]
     abs_total = 0.0
     abs_error = 0.0
 
@@ -222,8 +223,8 @@ def evaluate_adaptive(
 
     chi_total, chi_error = quad(
         chi_integrand,
-        -math.inf,
-        math.inf,
+        -integration_extent,
+        integration_extent,
         epsabs=1e-70,
         epsrel=2e-10,
         limit=300,
@@ -238,11 +239,18 @@ def evaluate_adaptive(
 
     hellinger_total, hellinger_error = quad(
         hellinger_integrand,
-        -math.inf,
-        math.inf,
+        -integration_extent,
+        integration_extent,
         epsabs=1e-70,
         epsrel=2e-10,
         limit=300,
+    )
+    tail_bound_abs = float(
+        2
+        * mp.fsum(abs(weight) for weight in u_mp)
+        * mp.exp(mp.mpf("0.5"))
+        * mp.mpf("0.5")
+        * mp.erfc((integration_extent - 1) / mp.sqrt(2))
     )
     return finish_row(
         n,
@@ -255,7 +263,7 @@ def evaluate_adaptive(
         chi_total,
         hellinger_total,
         len(roots),
-        abs_error + chi_error + hellinger_error,
+        abs_error + chi_error + hellinger_error + tail_bound_abs,
     )
 
 
