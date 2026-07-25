@@ -87,18 +87,18 @@ def main() -> None:
 
     # Rate exponents and monotonicity are checked independently on a calibrated
     # grid, not selected from expected pass/fail thresholds.
-    grid = [math.exp(-math.exp(v)) for v in (2, 3, 4, 6, 8, 12)]
+    loglog_grid = (2, 3, 4, 6, 8, 12)
     rate_rows = []
-    for t in grid:
-        loglog = math.log(math.log(1 / t))
+    for loglog in loglog_grid:
+        log_t = -math.exp(loglog)
         alpha_upper = 2.2 / loglog
         alpha_lower = 0.33 / loglog
         require(loglog > 0 and alpha_upper > 0 and alpha_lower > 0, "rate domain")
         rate_rows.append(
             {
-                "t": t,
-                "upper_H2_term": t ** (2 * (1 - alpha_upper)),
-                "lower_H2_term": t ** (2 * (1 - alpha_lower)),
+                "log_t": log_t,
+                "log_upper_H2_term": 2 * (1 - alpha_upper) * log_t,
+                "log_lower_H2_term": 2 * (1 - alpha_lower) * log_t,
                 "alpha_upper": alpha_upper,
                 "alpha_lower": alpha_lower,
             }
