@@ -87,3 +87,5 @@ uv sync --frozen && uv run python repro/src/run_publication_gate.py
 ```
 
 Important lineage: [adaptive numerical route](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/c1-c3-exact-construction-adaptive-quadrature), [universal proof remediation](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/universal-proof-certificate-remediation), and [Yatracos rate audit](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/yatracos-lower-pair-and-rate-audit).
+
+The evaluator-visible text artifact was published to the existing Hugging Face Space at revision `7c9035a522852c4f85b7e3de054e9d9ae7591c5c`. An exact-revision download matched all 72 stable manifest hashes. The live judge has not yet evaluated this revision.
