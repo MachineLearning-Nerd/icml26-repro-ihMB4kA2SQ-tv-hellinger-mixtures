@@ -29,5 +29,7 @@
   "primary_dependencies": ".openresearch/artifacts/primary_dependencies/result.json",
   "analytic_certificate": ".openresearch/artifacts/analytic_certificate/result.json",
   "application_certificate": ".openresearch/artifacts/application_certificate/result.json",
+  "universal_reductions": ".openresearch/artifacts/universal_reductions/result.json",
+  "yatracos_experiment": ".openresearch/artifacts/yatracos_experiment/result.json",
   "release_candidate": "release/space/evidence/release/release_check.json"
 }

@@ -83,6 +83,34 @@
     },
     {
       "from": "README.md",
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
+    },
+    {
+      "from": "README.md",
+      "to": "evidence/raw/universal_reductions/result.json"
+    },
+    {
+      "from": "README.md",
+      "to": "evidence/src/repro/src/run_yatracos_experiment.py"
+    },
+    {
+      "from": "README.md",
+      "to": "evidence/raw/yatracos_experiment/aggregate_results.csv"
+    },
+    {
+      "from": "README.md",
+      "to": "evidence/raw/yatracos_experiment/raw_replicates.csv"
+    },
+    {
+      "from": "README.md",
+      "to": "evidence/raw/yatracos_experiment/independent_checker.json"
+    },
+    {
+      "from": "README.md",
+      "to": "evidence/raw/yatracos_experiment/negative_control.json"
+    },
+    {
+      "from": "README.md",
       "to": "evidence/src/pyproject.toml"
     },
     {
@@ -103,27 +131,59 @@
     },
     {
       "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/universal_reductions/result.json"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/yatracos_experiment/result.json"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/universal_reductions/result.json"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/src/repro/src/run_yatracos_experiment.py"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/yatracos_experiment/aggregate_results.csv"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/yatracos_experiment/raw_replicates.csv"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/yatracos_experiment/independent_checker.json"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/yatracos_experiment/negative_control.json"
+    },
+    {
+      "from": "pages/current-overview/page.md",
       "to": "evidence/raw/claim_1_3/raw_results.csv"
     },
     {
       "from": "pages/current-overview/page.md",
-      "to": "evidence/raw/claim_1_3/independent_checker.json"
-    },
-    {
-      "from": "pages/current-overview/page.md",
-      "to": "evidence/raw/analytic_certificate/result.json"
-    },
-    {
-      "from": "pages/current-overview/page.md",
-      "to": "evidence/raw/application_certificate/result.json"
-    },
-    {
-      "from": "pages/current-overview/page.md",
-      "to": "evidence/raw/primary_dependencies/result.json"
-    },
-    {
-      "from": "pages/current-overview/page.md",
       "to": "evidence/src/repro/src/run_publication_gate.py"
+    },
+    {
+      "from": "pages/current-claim-c1/page.md",
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
+    },
+    {
+      "from": "pages/current-claim-c1/page.md",
+      "to": "evidence/raw/universal_reductions/result.json"
+    },
+    {
+      "from": "pages/current-claim-c1/page.md",
+      "to": "evidence/raw/universal_reductions/claim_contract.json"
     },
     {
       "from": "pages/current-claim-c1/page.md",
@@ -147,7 +207,15 @@
     },
     {
       "from": "pages/current-claim-c1/page.md",
-      "to": "evidence/raw/analytic_certificate/limitations.md"
+      "to": "evidence/raw/universal_reductions/limitations.md"
+    },
+    {
+      "from": "pages/current-claim-c2/page.md",
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
+    },
+    {
+      "from": "pages/current-claim-c2/page.md",
+      "to": "evidence/raw/universal_reductions/result.json"
     },
     {
       "from": "pages/current-claim-c2/page.md",
@@ -167,7 +235,19 @@
     },
     {
       "from": "pages/current-claim-c2/page.md",
-      "to": "evidence/raw/analytic_certificate/method.md"
+      "to": "evidence/raw/universal_reductions/method.md"
+    },
+    {
+      "from": "pages/current-claim-c2/page.md",
+      "to": "evidence/raw/universal_reductions/limitations.md"
+    },
+    {
+      "from": "pages/current-claim-c3/page.md",
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
+    },
+    {
+      "from": "pages/current-claim-c3/page.md",
+      "to": "evidence/raw/universal_reductions/result.json"
     },
     {
       "from": "pages/current-claim-c3/page.md",
@@ -191,7 +271,35 @@
     },
     {
       "from": "pages/current-claim-c3/page.md",
-      "to": "evidence/raw/analytic_certificate/limitations.md"
+      "to": "evidence/raw/universal_reductions/limitations.md"
+    },
+    {
+      "from": "pages/current-claim-c4/page.md",
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
+    },
+    {
+      "from": "pages/current-claim-c4/page.md",
+      "to": "evidence/raw/universal_reductions/result.json"
+    },
+    {
+      "from": "pages/current-claim-c4/page.md",
+      "to": "evidence/src/repro/src/run_yatracos_experiment.py"
+    },
+    {
+      "from": "pages/current-claim-c4/page.md",
+      "to": "evidence/raw/yatracos_experiment/aggregate_results.csv"
+    },
+    {
+      "from": "pages/current-claim-c4/page.md",
+      "to": "evidence/raw/yatracos_experiment/raw_replicates.csv"
+    },
+    {
+      "from": "pages/current-claim-c4/page.md",
+      "to": "evidence/raw/yatracos_experiment/independent_checker.json"
+    },
+    {
+      "from": "pages/current-claim-c4/page.md",
+      "to": "evidence/raw/yatracos_experiment/negative_control.json"
     },
     {
       "from": "pages/current-claim-c4/page.md",
@@ -215,7 +323,39 @@
     },
     {
       "from": "pages/current-claim-c4/page.md",
-      "to": "evidence/raw/application_certificate/limitations.md"
+      "to": "evidence/raw/yatracos_experiment/limitations.md"
+    },
+    {
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
+    },
+    {
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/raw/universal_reductions/result.json"
+    },
+    {
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/src/repro/src/run_yatracos_experiment.py"
+    },
+    {
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/raw/yatracos_experiment/aggregate_results.csv"
+    },
+    {
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/raw/yatracos_experiment/raw_replicates.csv"
+    },
+    {
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/raw/yatracos_experiment/result.json"
+    },
+    {
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/raw/yatracos_experiment/independent_checker.json"
+    },
+    {
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/raw/yatracos_experiment/negative_control.json"
     },
     {
       "from": "pages/current-claim-c5/page.md",
@@ -235,11 +375,11 @@
     },
     {
       "from": "pages/current-claim-c5/page.md",
-      "to": "evidence/raw/application_certificate/method.md"
+      "to": "evidence/raw/yatracos_experiment/method.md"
     },
     {
       "from": "pages/current-claim-c5/page.md",
-      "to": "evidence/raw/application_certificate/limitations.md"
+      "to": "evidence/raw/yatracos_experiment/limitations.md"
     },
     {
       "from": "pages/current-methods/page.md",
@@ -259,7 +399,23 @@
     },
     {
       "from": "pages/current-methods/page.md",
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
+    },
+    {
+      "from": "pages/current-methods/page.md",
+      "to": "evidence/src/repro/src/run_yatracos_experiment.py"
+    },
+    {
+      "from": "pages/current-methods/page.md",
       "to": "evidence/src/repro/tests/test_certificate.py"
+    },
+    {
+      "from": "pages/current-methods/page.md",
+      "to": "evidence/raw/universal_reductions/result.json"
+    },
+    {
+      "from": "pages/current-methods/page.md",
+      "to": "evidence/raw/yatracos_experiment/result.json"
     },
     {
       "from": "pages/current-methods/page.md",
@@ -267,11 +423,15 @@
     },
     {
       "from": "pages/current-visibility/page.md",
+      "to": "evidence/raw/universal_reductions/result.json"
+    },
+    {
+      "from": "pages/current-visibility/page.md",
       "to": "evidence/raw/claim_1_3/raw_results.csv"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/src/repro/src/verify_analytic_certificate.py"
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
     },
     {
       "from": "pages/current-visibility/page.md",
@@ -279,15 +439,23 @@
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/claim_1_3/result.json"
+      "to": "evidence/raw/universal_reductions/result.json"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/src/repro/src/verify_analytic_certificate.py"
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
+    },
+    {
+      "from": "pages/current-visibility/page.md",
+      "to": "evidence/raw/universal_reductions/result.json"
     },
     {
       "from": "pages/current-visibility/page.md",
       "to": "evidence/raw/claim_1_3/raw_results.csv"
+    },
+    {
+      "from": "pages/current-visibility/page.md",
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
     },
     {
       "from": "pages/current-visibility/page.md",
@@ -295,23 +463,35 @@
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/claim_1_3/independent_checker.json"
+      "to": "evidence/raw/yatracos_experiment/result.json"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/application_certificate/result.json"
+      "to": "evidence/raw/yatracos_experiment/aggregate_results.csv"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/src/repro/src/verify_application_certificate.py"
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/application_certificate/result.json"
+      "to": "evidence/raw/yatracos_experiment/independent_checker.json"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/src/repro/src/verify_application_certificate.py"
+      "to": "evidence/raw/yatracos_experiment/raw_replicates.csv"
+    },
+    {
+      "from": "pages/current-visibility/page.md",
+      "to": "evidence/raw/yatracos_experiment/result.json"
+    },
+    {
+      "from": "pages/current-visibility/page.md",
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
+    },
+    {
+      "from": "pages/current-visibility/page.md",
+      "to": "evidence/src/repro/src/run_yatracos_experiment.py"
     },
     {
       "from": "pages/current-release-audit/page.md",
@@ -336,11 +516,63 @@
     {
       "from": "pages/current-release-audit/page.md",
       "to": "evidence/release/secret_scan.json"
+    },
+    {
+      "from": "pages/historical-rejected-baseline/page.md",
+      "to": "pages/overview/page.md"
+    },
+    {
+      "from": "pages/historical-rejected-baseline/page.md",
+      "to": "pages/claim-c1-chi-square-and-total-variation/page.md"
+    },
+    {
+      "from": "pages/historical-rejected-baseline/page.md",
+      "to": "pages/claim-c2-hellinger-relation/page.md"
+    },
+    {
+      "from": "pages/historical-rejected-baseline/page.md",
+      "to": "pages/claim-c3-chebyshev-sharpness-construction/page.md"
+    },
+    {
+      "from": "pages/historical-rejected-baseline/page.md",
+      "to": "pages/claim-c4-tv-learning-characterization/page.md"
+    },
+    {
+      "from": "pages/historical-rejected-baseline/page.md",
+      "to": "pages/claim-c5-robust-hellinger-rate/page.md"
+    },
+    {
+      "from": "pages/historical-rejected-baseline/page.md",
+      "to": "pages/methods/page.md"
+    },
+    {
+      "from": "pages/historical-rejected-baseline/page.md",
+      "to": "pages/negative-controls/page.md"
+    },
+    {
+      "from": "pages/historical-rejected-baseline/page.md",
+      "to": "pages/tests-and-gate/page.md"
+    },
+    {
+      "from": "pages/historical-rejected-baseline/page.md",
+      "to": "pages/conclusion/page.md"
     }
   ],
-  "upload_allowlist_count": 59,
-  "manifest_covered_count": 56,
+  "upload_allowlist_count": 75,
+  "manifest_covered_count": 72,
   "secret_scan": "PASS",
   "red_team_passes": 2,
-  "evidence_git_sha": "de2c3a8fba29e433c552ce82c194196fefaaa4d8"
+  "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
+  "estimator_evidence_git_sha": "094d92efc40475f482b28432bb7edd32ccca0d95",
+  "new_live_verdict_profile": {
+    "evaluated_revision": "7c0bf4dc84363ff022c388d366397e3b295010a6",
+    "claims": [
+      "toy",
+      "toy",
+      "toy",
+      "inconclusive",
+      "inconclusive"
+    ],
+    "numeric_total_present": false
+  }
 }
