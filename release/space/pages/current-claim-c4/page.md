@@ -50,7 +50,7 @@ The new empirical route implements the proper finite-cover Yatracos estimator it
 | 800 | `0.000439316` | `0.0000266347` |
 | 1600 | `0.000175726` | `0.0000127160` |
 
-The lower column exhausts every pair in the finite cover using a product-affinity/Le Cam certificate. It is a complete finite-domain check, not a proof of the infinite-class minimax theorem. The independent identity `Q_i(A_ij)-Q_j(A_ij)=TV(Q_i,Q_j)` has maximum absolute error `7.216e-16`.
+The lower column exhausts every pair in the finite cover using a product-affinity/Le Cam certificate. It is a complete finite-domain check, not a proof of the infinite-class minimax theorem. The independent identity `Q_i(A_ij)-Q_j(A_ij)=TV(Q_i,Q_j)` has maximum absolute error `4.219e-15`.
 
 ## Reproduce and download
 
@@ -58,7 +58,7 @@ The lower column exhausts every pair in the finite cover using a product-affinit
 uv sync --frozen && uv run python repro/src/run_publication_gate.py
 ```
 
-Universal-certificate SHA `be9b1613eb321a1eb7c2f467883e4d27e8540cb2`. Estimator evidence SHA `094d92e`; seed `260203607`; run `7bc34e8e-37bb-4602-838b-7087fbed677a`; local CPU capped to one thread; `1m35s` cumulative runtime and `2.96s` estimator-kernel reference on HF `cpu-upgrade`.
+Universal-certificate SHA `be9b1613eb321a1eb7c2f467883e4d27e8540cb2`. Estimator evidence SHA `959e052077f7edb0609e1d81b3e4b5f59c400a55`; seed `260203607`; run `05a4e1bb-3d3b-4a80-a27d-6f886c81968e`; local CPU capped to one thread; `1m30s` cumulative runtime. The HF `cpu-upgrade` precursor used `2.9587s` in the estimator kernel.
 
 - [Exact universal verifier](../../evidence/src/repro/src/verify_universal_reductions.py)
 - [Exact universal output](../../evidence/raw/universal_reductions/result.json)

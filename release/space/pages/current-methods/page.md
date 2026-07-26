@@ -23,7 +23,7 @@ The paper archive was retrieved with User-Agent `OpenResearch-Reproduction/1.0 (
 | Proper Yatracos precursor | HF `cpu-upgrade` | uncertain, so remote | 64 logical CPUs visible | `58s` cumulative; `2.9587s` estimator | 19-cover estimator, lower bounds, controls passed |
 | One-thread artifact run | local | 1 effective core, <5m | thread cap committed; 8 logical visible | `1m35s` cumulative | Same estimator data regenerated and release regressions passed |
 
-HF billing cost was not exposed in `orx` logs; no cost is invented. No GPU was used. Construction seed: `260203202`; estimator seed: `260203607`. Universal-certificate Git SHA: `be9b1613eb321a1eb7c2f467883e4d27e8540cb2`; estimator artifact Git SHA: `094d92e`.
+HF billing cost was not exposed in `orx` logs; no cost is invented. No GPU was used. Construction seed: `260203202`; estimator seed: `260203607`. Universal-certificate Git SHA: `be9b1613eb321a1eb7c2f467883e4d27e8540cb2`; immutable cumulative evidence Git SHA: `959e052077f7edb0609e1d81b3e4b5f59c400a55`.
 
 ## Non-circular design
 

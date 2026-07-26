@@ -59,7 +59,7 @@ The practical epsilon grid was committed independently of the claimed formula. W
 
 ## Independent checker and controls
 
-The analytic checker rejects the discrete-sequence-only inference, coefficient `0.34`, omission of the Yatracos union factor, and the incorrect stronger Chen threshold `TV<=epsilon` as an equivalence. The experiment checker independently verifies all `171` Yatracos set/TV identities to `7.216e-16`, rejects wrong set orientation, shows an empty comparison class is worse, and confirms no formula-derived horizon was used.
+The analytic checker rejects the discrete-sequence-only inference, coefficient `0.34`, omission of the Yatracos union factor, and the incorrect stronger Chen threshold `TV<=epsilon` as an equivalence. The experiment checker independently verifies all `171` Yatracos set/TV identities to `4.219e-15`, rejects wrong set orientation, shows an empty comparison class is worse, and confirms no formula-derived horizon was used.
 
 ## Reproduce and download
 
@@ -67,7 +67,7 @@ The analytic checker rejects the discrete-sequence-only inference, coefficient `
 uv sync --frozen && uv run python repro/src/run_publication_gate.py
 ```
 
-Universal-certificate SHA `be9b1613eb321a1eb7c2f467883e4d27e8540cb2`. Estimator evidence SHA `094d92e`; seed `260203607`; run `7bc34e8e-37bb-4602-838b-7087fbed677a`; local CPU capped to one thread; `1m35s` cumulative runtime. The independent HF `cpu-upgrade` precursor exposed 64 logical CPUs and used `2.9587s` in the estimator kernel.
+Universal-certificate SHA `be9b1613eb321a1eb7c2f467883e4d27e8540cb2`. Estimator evidence SHA `959e052077f7edb0609e1d81b3e4b5f59c400a55`; seed `260203607`; run `05a4e1bb-3d3b-4a80-a27d-6f886c81968e`; local CPU capped to one thread; `1m30s` cumulative runtime. The independent HF `cpu-upgrade` precursor exposed 64 logical CPUs and used `2.9587s` in the estimator kernel.
 
 - [Exact universal verifier](../../evidence/src/repro/src/verify_universal_reductions.py)
 - [Exact universal output](../../evidence/raw/universal_reductions/result.json)

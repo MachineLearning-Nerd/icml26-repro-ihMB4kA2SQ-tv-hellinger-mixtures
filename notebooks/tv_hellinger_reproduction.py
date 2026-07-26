@@ -158,7 +158,7 @@ def _(mo):
     mo.md(r"""
     The estimator uses a committed 19-member Gaussian-mixture cover and all
     171 pairwise Yatracos sets. The independent identity
-    `Q_i(A_ij)-Q_j(A_ij)=TV(Q_i,Q_j)` holds to `7.216e-16`. Under actual
+    `Q_i(A_ij)-Q_j(A_ij)=TV(Q_i,Q_j)` holds to `4.219e-15`. Under actual
     point-mass Huber contamination, the worst mean H² at `n=1600` is
     `0.000443, 0.001836, 0.004545, 0.005958` for epsilon
     `.02, .05, .10, .20`.
@@ -183,7 +183,8 @@ def _(mo):
     Python 3.12 and all dependencies are pinned in `uv.lock`. The formal
     universal-certificate SHA is
     `be9b1613eb321a1eb7c2f467883e4d27e8540cb2`; estimator artifact SHA
-    `094d92e`; numerical seeds `260203202` and `260203607`. No GPU was used.
+    `959e052077f7edb0609e1d81b3e4b5f59c400a55`; numerical seeds
+    `260203202` and `260203607`. No GPU was used.
     """)
     return
 

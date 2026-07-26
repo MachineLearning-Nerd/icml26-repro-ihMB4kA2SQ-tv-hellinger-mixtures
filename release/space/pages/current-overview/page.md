@@ -25,7 +25,7 @@ All five contracts remain **VERIFIED at MEDIUM confidence**. “VERIFIED” is t
 
 The proper estimator uses a committed 19-member Gaussian-mixture cover, all `171` pairwise Yatracos sets, four truths, five sample sizes, five contamination levels, and `40` deterministic replicates per cell.
 
-- The independent identity `Q_i(A_ij)-Q_j(A_ij)=TV(Q_i,Q_j)` holds for every pair with maximum error `7.216e-16`.
+- The independent identity `Q_i(A_ij)-Q_j(A_ij)=TV(Q_i,Q_j)` holds for every pair with maximum error `4.219e-15`.
 - Clean worst mean squared-Hellinger loss falls from `0.004204` at `n=100` to `0.0001757` at `n=1600`.
 - The exhaustive clean finite-cover pair lower bound falls from `0.0001843` to `0.00001272`.
 - At contamination `epsilon=0.02`, a distinct Chen-admissible pair has TV `0.0170672`, squared-Hellinger separation `0.000172102`, and equal-law minimax lower bound `0.0000430255`.

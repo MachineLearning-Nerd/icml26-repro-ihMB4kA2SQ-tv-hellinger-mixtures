@@ -17,7 +17,7 @@ tags:
 
 Current candidate result: **five VERIFIED claims, each at MEDIUM confidence**. This is a reproduction verdict, not a live-judge score. The original judged revision `1c98799a89d8c1d3c45136c8b912e74371e975b3` scored **0/10**. A later evaluator assessed published revision `7c0bf4dc84363ff022c388d366397e3b295010a6` as `toy, toy, toy, inconclusive, inconclusive`; its dataset exposes no numeric total, so none is invented here.
 
-The remediation adds an exact symbolic certificate for the universal/asymptotic reductions and an actual proper finite-cover Yatracos estimator under Huber contamination. The estimator covers all `171` pairwise comparison sets; its independent set/TV identity error is at most `7.216e-16`. Finite results are labeled corroboration, and C5’s practical exponent test is explicitly nonvacuous=false because the displayed asymptotic term exceeds one on the tested epsilon grid.
+The remediation adds an exact symbolic certificate for the universal/asymptotic reductions and an actual proper finite-cover Yatracos estimator under Huber contamination. The estimator covers all `171` pairwise comparison sets; its independent set/TV identity error is at most `4.219e-15`. Finite results are labeled corroboration, and C5’s practical exponent test is explicitly nonvacuous=false because the displayed asymptotic term exceeds one on the tested epsilon grid.
 
 ## Start here
 
