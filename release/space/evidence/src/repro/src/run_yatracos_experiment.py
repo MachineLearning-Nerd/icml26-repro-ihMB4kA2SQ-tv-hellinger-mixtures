@@ -360,11 +360,15 @@ def main() -> None:
 
     OUT.mkdir(parents=True, exist_ok=True)
     with (OUT / "raw_replicates.csv").open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(replicate_rows[0]))
+        writer = csv.DictWriter(
+            handle, fieldnames=list(replicate_rows[0]), lineterminator="\n"
+        )
         writer.writeheader()
         writer.writerows(replicate_rows)
     with (OUT / "aggregate_results.csv").open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(aggregate_rows[0]))
+        writer = csv.DictWriter(
+            handle, fieldnames=list(aggregate_rows[0]), lineterminator="\n"
+        )
         writer.writeheader()
         writer.writerows(aggregate_rows)
 
