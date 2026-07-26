@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "check": "For every cover pair, Q_i(A_ij)-Q_j(A_ij)=TV(Q_i,Q_j)",
+  "pair_count": 171,
+  "max_absolute_error": 4.218847493575595e-15
+}

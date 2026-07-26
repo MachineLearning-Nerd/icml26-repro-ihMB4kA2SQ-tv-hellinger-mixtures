@@ -6,13 +6,13 @@ The historical suite checked source-token presence, five small nearby mixture ce
 
 | Historical rejected baseline page |
 | --- |
-| [Overview](#/overview) |
-| [C1](#/claim-c1-chi-square-and-total-variation) |
-| [C2](#/claim-c2-hellinger-relation) |
-| [C3](#/claim-c3-chebyshev-sharpness-construction) |
-| [C4](#/claim-c4-tv-learning-characterization) |
-| [C5](#/claim-c5-robust-hellinger-rate) |
-| [Methods](#/methods) |
-| [Negative controls](#/negative-controls) |
-| [Tests and gate](#/tests-and-gate) |
-| [Conclusion](#/conclusion) |
+| [Overview](../overview/page.md) |
+| [C1](../claim-c1-chi-square-and-total-variation/page.md) |
+| [C2](../claim-c2-hellinger-relation/page.md) |
+| [C3](../claim-c3-chebyshev-sharpness-construction/page.md) |
+| [C4](../claim-c4-tv-learning-characterization/page.md) |
+| [C5](../claim-c5-robust-hellinger-rate/page.md) |
+| [Methods](../methods/page.md) |
+| [Negative controls](../negative-controls/page.md) |
+| [Tests and gate](../tests-and-gate/page.md) |
+| [Conclusion](../conclusion/page.md) |

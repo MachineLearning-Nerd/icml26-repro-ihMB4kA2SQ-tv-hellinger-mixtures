@@ -37,9 +37,9 @@ def main() -> None:
     for image_name in (
         "headline-sharpness.png",
         "quadrature-agreement.png",
-        "norm-asymptotics.png",
         "c4-inverse-repair.png",
-        "c5-coefficient-budget.png",
+        "yatracos-clean-risk.png",
+        "yatracos-huber-risk.png",
     ):
         image = report.parent / "images" / image_name
         require(image.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"), f"invalid figure: {image_name}")
@@ -73,6 +73,7 @@ def main() -> None:
         children[-1]["title"] == "Historical rejected baseline",
         "historical navigation label",
     )
+    require(children[-1]["children"] == [], "historical verifier remains in navigation")
 
     claim_pages = {
         f"C{index}": SPACE / f"pages/current-claim-c{index}/page.md"
@@ -82,7 +83,6 @@ def main() -> None:
         "**Verdict: VERIFIED. Confidence: MEDIUM.**",
         "## Exact claim contract",
         "uv sync --frozen && uv run python repro/src/run_publication_gate.py",
-        "de2c3a8fba29e433c552ce82c194196fefaaa4d8",
         "../../evidence/",
     )
     for claim, page in claim_pages.items():
@@ -95,6 +95,65 @@ def main() -> None:
             and "limitations" in text.lower(),
             f"{claim} checker/control/limitations not visible",
         )
+    for claim in ("C1", "C2", "C3"):
+        require(
+            "verify_universal_reductions.py" in claim_pages[claim].read_text(),
+            f"{claim} exact universal verifier hidden",
+        )
+    for claim in ("C4", "C5"):
+        text = claim_pages[claim].read_text()
+        require("run_yatracos_experiment.py" in text, f"{claim} estimator hidden")
+        require("raw_replicates.csv" in text, f"{claim} raw replicates hidden")
+    require(
+        "do **not** verify the asymptotic" in claim_pages["C5"].read_text(),
+        "C5 nonvacuity limitation hidden",
+    )
+
+    universal_raw = json.loads(
+        (SPACE / "evidence/raw/universal_reductions/result.json").read_text()
+    )
+    universal_fresh = json.loads(
+        (ROOT / ".openresearch/artifacts/universal_reductions/result.json").read_text()
+    )
+    require(universal_raw["status"] == "EXACT_UNIVERSAL_REDUCTIONS_PASS", "universal status")
+    require(
+        universal_raw["checks"] == universal_fresh["checks"]
+        and universal_raw["negative_controls"] == universal_fresh["negative_controls"],
+        "mirrored universal certificate differs from regenerated evidence",
+    )
+
+    yatracos_raw = json.loads(
+        (SPACE / "evidence/raw/yatracos_experiment/result.json").read_text()
+    )
+    yatracos_fresh = json.loads(
+        (ROOT / ".openresearch/artifacts/yatracos_experiment/result.json").read_text()
+    )
+    require(yatracos_raw["status"] == "PROPER_YATRACOS_EXPERIMENT_PASS", "Yatracos status")
+    deterministic_yatracos_fields = (
+        "candidate_count",
+        "yatracos_set_count",
+        "truth_count",
+        "sample_sizes",
+        "contamination_levels",
+        "replicates",
+        "aggregate_rows",
+        "clean_minimax_rows",
+        "huber_equal_law_rows",
+        "huber_rate_rows",
+        "finite_grid_observed_log_slope",
+        "independent_checker",
+        "negative_controls",
+    )
+    require(
+        all(yatracos_raw[key] == yatracos_fresh[key] for key in deterministic_yatracos_fields),
+        "mirrored Yatracos evidence differs from regenerated evidence",
+    )
+    require(yatracos_raw["candidate_count"] == 19, "wrong candidate count")
+    require(yatracos_raw["yatracos_set_count"] == 171, "wrong Yatracos set count")
+    require(
+        all(not row["nonvacuous_paper_term"] for row in yatracos_raw["huber_rate_rows"]),
+        "practical C5 exponent unexpectedly treated as nonvacuous",
+    )
 
     visibility = (SPACE / "pages/current-visibility/page.md").read_text()
     for claim in claim_pages:
@@ -209,7 +268,13 @@ def main() -> None:
         "manifest_covered_count": len(manifest_paths),
         "secret_scan": "PASS",
         "red_team_passes": 2,
-        "evidence_git_sha": "de2c3a8fba29e433c552ce82c194196fefaaa4d8",
+        "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
+        "estimator_evidence_git_sha": yatracos_raw["git_sha"],
+        "new_live_verdict_profile": {
+            "evaluated_revision": "7c0bf4dc84363ff022c388d366397e3b295010a6",
+            "claims": ["toy", "toy", "toy", "inconclusive", "inconclusive"],
+            "numeric_total_present": False,
+        },
     }
     (RELEASE / "release_check.json").write_text(json.dumps(result, indent=2) + "\n")
     print("=== EVALUATOR-VISIBLE RELEASE CHECK ===")

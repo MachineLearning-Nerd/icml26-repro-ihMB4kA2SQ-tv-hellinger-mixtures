@@ -26,6 +26,7 @@ plt.rcParams.update(
 primary = json.loads((RAW / "claim_1_3" / "result.json").read_text())
 independent = json.loads((RAW / "claim_1_3" / "independent_checker.json").read_text())
 analytic = json.loads((RAW / "analytic_certificate" / "result.json").read_text())
+yatracos = json.loads((RAW / "yatracos_experiment" / "result.json").read_text())
 
 rows = primary["rows"]
 independent_rows = independent["rows"]
@@ -141,4 +142,52 @@ ax.set(xlabel="coefficient multiplying 1/log log(1/epsilon)")
 ax.set_title("The continuous-amplitude repair retains margin above 0.33")
 fig.tight_layout()
 fig.savefig(IMAGES / "c5-coefficient-budget.png")
+plt.close(fig)
+
+# 6. Actual proper-estimator clean risk and exhaustive finite-cover lower bound.
+fig, ax = plt.subplots(figsize=(7.2, 4.0))
+clean = yatracos["clean_minimax_rows"]
+clean_n = np.array([row["n"] for row in clean])
+clean_risk = np.array([row["observed_worst_yatracos_h2"] for row in clean])
+clean_lower = np.array(
+    [row["exhaustive_pair_tv2_lower_bound"] for row in clean]
+)
+ax.loglog(clean_n, clean_risk, "o-", linewidth=2, label="worst observed proper-estimator H²")
+ax.loglog(clean_n, clean_lower, "s--", linewidth=1.8, label="exhaustive finite-cover TV² lower")
+ax.set(
+    xlabel="sample size n",
+    ylabel="risk / certified lower bound",
+    title="Clean proper-estimator risk falls across independent horizons",
+)
+ax.legend(frameon=False)
+fig.tight_layout()
+fig.savefig(IMAGES / "yatracos-clean-risk.png")
+plt.close(fig)
+
+# 7. Huber contamination: actual estimator risk and complete finite-cover lower.
+fig, ax = plt.subplots(figsize=(7.2, 4.0))
+rate_rows = yatracos["huber_rate_rows"]
+lower_rows = yatracos["huber_equal_law_rows"]
+eps = np.array([row["epsilon"] for row in rate_rows])
+observed = np.array([row["observed_worst_mean_h2"] for row in rate_rows])
+lower = np.array([row["equal_law_minimax_h2_lower"] for row in lower_rows])
+ax.loglog(eps, observed, "o-", linewidth=2, label="observed worst mean H² at n=1600")
+ax.loglog(eps, lower, "s--", linewidth=1.8, label="equal-law finite-cover lower")
+for x, y in zip(eps, observed):
+    ax.annotate(f"{y:.2g}", (x, y), xytext=(0, 6), textcoords="offset points", ha="center")
+ax.set(
+    xlabel="Huber contamination epsilon",
+    ylabel="squared-Hellinger loss",
+    title="Actual Huber experiment and all-estimator finite-cover lower",
+)
+ax.legend(frameon=False)
+ax.text(
+    0.02,
+    0.03,
+    "Paper asymptotic term > 1 at every plotted epsilon;\n"
+    "these points do not verify its exponent.",
+    transform=ax.transAxes,
+)
+fig.tight_layout()
+fig.savefig(IMAGES / "yatracos-huber-risk.png")
 plt.close(fig)

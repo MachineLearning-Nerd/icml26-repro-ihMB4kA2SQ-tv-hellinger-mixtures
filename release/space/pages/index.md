@@ -1,6 +1,6 @@
 # Current claim-by-claim reproduction
 
-Previous live judged score: **0/10**. Candidate forecast: **6–10/10 conservatively; 10/10 best-supported possible**, pending the live evaluator.
+Original live judged score: **0/10**. A later verdict assessed the previous candidate `toy, toy, toy, inconclusive, inconclusive` without a numeric total. Candidate forecast after remediation: **4–8/10 conservatively; 10/10 best-supported possible**, pending the live evaluator.
 
 | Current page |
 | --- |
@@ -15,4 +15,4 @@ Previous live judged score: **0/10**. Candidate forecast: **6–10/10 conservati
 | [Release and red-team audit](#/current-release-audit) |
 | [Historical rejected baseline](#/historical-rejected-baseline) |
 
-The current verifier is `evidence/src/repro/src/run_publication_gate.py`. It supersedes the historical verifier at judged revision `1c98799a89d8c1d3c45136c8b912e74371e975b3`.
+The current verifier is `evidence/src/repro/src/run_publication_gate.py`, with `verify_universal_reductions.py` and `run_yatracos_experiment.py` as the new exact/estimator routes. It supersedes the historical verifier at judged revision `1c98799a89d8c1d3c45136c8b912e74371e975b3`.

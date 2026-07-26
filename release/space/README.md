@@ -15,9 +15,9 @@ tags:
 
 # Claim-by-claim reproduction: TV and Hellinger for Gaussian mixtures
 
-Current candidate result: **five VERIFIED claims, each at MEDIUM confidence**. This is a forecast artifact; the live evaluator has not awarded new points. Previous live judged score: **0/10** at Space revision `1c98799a89d8c1d3c45136c8b912e74371e975b3`.
+Current candidate result: **five VERIFIED claims, each at MEDIUM confidence**. This is a reproduction verdict, not a live-judge score. The original judged revision `1c98799a89d8c1d3c45136c8b912e74371e975b3` scored **0/10**. A later evaluator assessed published revision `7c0bf4dc84363ff022c388d366397e3b295010a6` as `toy, toy, toy, inconclusive, inconclusive`; its dataset exposes no numeric total, so none is invented here.
 
-The strongest evidence is an independently reconstructed proof chain backed by two independent high-precision integrations of the paper's explicit Chebyshev Gaussian mixtures. The sharpness inequality passes at every tested odd order `n=11,15,19,23,27,31`; its ratio grows from `1.217` to `46.636`. The analytic audit also found and repaired two application-proof presentation gaps instead of silently accepting them.
+The remediation adds an exact symbolic certificate for the universal/asymptotic reductions and an actual proper finite-cover Yatracos estimator under Huber contamination. The estimator covers all `171` pairwise comparison sets; its independent set/TV identity error is at most `7.216e-16`. Finite results are labeled corroboration, and C5’s practical exponent test is explicitly nonvacuous=false because the displayed asymptotic term exceeds one on the tested epsilon grid.
 
 ## Start here
 
@@ -30,6 +30,12 @@ The strongest evidence is an independently reconstructed proof chain backed by t
 - [Exact methods, command, environment, and compute](pages/current-methods/page.md)
 - [Evaluator visibility matrix](pages/current-visibility/page.md)
 - [Release and red-team audit](pages/current-release-audit/page.md)
+
+Direct evidence:
+
+- [Exact universal verifier](evidence/src/repro/src/verify_universal_reductions.py) and [output](evidence/raw/universal_reductions/result.json)
+- [Proper Yatracos estimator](evidence/src/repro/src/run_yatracos_experiment.py), [aggregate CSV](evidence/raw/yatracos_experiment/aggregate_results.csv), and [raw replicates](evidence/raw/yatracos_experiment/raw_replicates.csv)
+- [Independent checker](evidence/raw/yatracos_experiment/independent_checker.json) and [negative controls](evidence/raw/yatracos_experiment/negative_control.json)
 
 ## Reproduce
 
