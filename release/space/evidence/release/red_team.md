@@ -43,6 +43,28 @@ Fixes:
 
 Pass-1 conclusion: **FAIL until the displayed-data/provenance mismatches are fixed.**
 
-## Pass 2
+## Pass 2 — fixed candidate, visibility complete
 
-Pending a fresh archive of the fixed candidate. Publication remains blocked until this pass locates all evidence and reports no mismatch.
+Candidate Git SHA: `f3baf49`. Fresh empty directory: a new archive of `release/space` at that SHA. Starting point: `README.md` only.
+
+Files opened:
+
+- `README.md`
+- all current overview, C1–C5, methods, visibility, release-audit, and historical-label pages;
+- current cumulative entrypoint, exact universal verifier, and proper Yatracos estimator source;
+- universal and Yatracos result JSON;
+- aggregate and raw-replicate CSV;
+- independent checker, negative controls, and limitations;
+- exact upload allowlist and `logbook.json`.
+
+Conclusions:
+
+- all five exact contracts, assumptions, verdicts, and MEDIUM confidence labels were found;
+- every page exposes the fixed command, raw links, source, checker, control, limitation, provenance, CPU/runtime, and fail-closed behavior;
+- displayed checker error `4.219e-15` and evidence SHA `959e052…` match raw data;
+- the proper estimator, actual Huber contamination, 95% intervals, exhaustive finite-cover lower bounds, and raw replicates are directly reachable;
+- every practical epsilon row is visibly and machine-readably `nonvacuous_paper_term=false`, so no finite slope is misrepresented as asymptotic verification;
+- universal/asymptotic conclusions point to exact symbolic reductions and explicit imported-premise ledgers rather than finite cells;
+- the historical node is last, labeled exactly `Historical rejected baseline`, has no children, and its preserved files remain reachable.
+
+Pass-2 conclusion: **PASS.** No conclusion required a hidden repository path, unpublished branch, dashboard artifact, or agent hint.
