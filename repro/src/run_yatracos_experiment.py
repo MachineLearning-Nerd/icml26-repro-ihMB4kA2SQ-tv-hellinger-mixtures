@@ -52,6 +52,16 @@ def candidate_cover() -> list[Mixture]:
                     (weight, 1 - weight),
                 )
             )
+    # Two committed resolution refinements make the Chen equal-law mechanism
+    # nontrivial even at epsilon=.02 without changing the tested truth set.
+    for weight in (0.475, 0.525):
+        result.append(
+            Mixture(
+                f"mix_-1.0_+1.0_w{weight:.3f}",
+                (-1.0, 1.0),
+                (weight, 1 - weight),
+            )
+        )
     return result
 
 
@@ -261,9 +271,18 @@ def main() -> None:
     for epsilon in epsilons[1:]:
         admissible = tv_matrix <= epsilon / (1 - epsilon)
         np.fill_diagonal(admissible, False)
-        lower = float(np.max(np.where(admissible, h2_matrix / 4, 0.0)))
-        selected_flat = int(np.argmax(np.where(admissible, h2_matrix, 0.0)))
-        left, right = np.unravel_index(selected_flat, h2_matrix.shape)
+        admissible_pairs = np.flatnonzero(admissible[pair_i, pair_j])
+        require(
+            admissible_pairs.size > 0,
+            f"no distinct Chen-admissible cover pair at epsilon={epsilon}",
+        )
+        selected_pair = int(
+            admissible_pairs[
+                np.argmax(h2_matrix[pair_i[admissible_pairs], pair_j[admissible_pairs]])
+            ]
+        )
+        left, right = int(pair_i[selected_pair]), int(pair_j[selected_pair])
+        lower = float(h2_matrix[left, right] / 4)
         huber_lower_rows.append(
             {
                 "epsilon": epsilon,
@@ -274,6 +293,44 @@ def main() -> None:
                 "chen_boundary": epsilon / (1 - epsilon),
             }
         )
+
+    # Directly compare the large-n observed contamination floor with the
+    # paper's exact epsilon term. The practical epsilon grid is independent of
+    # that formula; `nonvacuous` makes the finite-regime limitation explicit.
+    delta = float(config["delta"])
+    huber_rate_rows = []
+    for epsilon in epsilons[1:]:
+        observed = max(
+            float(row["mean_h2"])
+            for row in aggregate_rows
+            if row["epsilon"] == epsilon and row["n"] == sample_sizes[-1]
+        )
+        denominator = math.log(max(math.log(1 / epsilon), math.e))
+        alpha = (2 + delta) / denominator
+        paper_term = epsilon ** (2 * (1 - alpha))
+        huber_rate_rows.append(
+            {
+                "epsilon": epsilon,
+                "n": sample_sizes[-1],
+                "observed_worst_mean_h2": observed,
+                "paper_epsilon_term": paper_term,
+                "observed_over_paper_term": observed / paper_term,
+                "alpha": alpha,
+                "nonvacuous_paper_term": paper_term < 1,
+            }
+        )
+    positive_rate_rows = [
+        row for row in huber_rate_rows if row["observed_worst_mean_h2"] > 0
+    ]
+    observed_log_slope = float(
+        np.polyfit(
+            np.log([row["epsilon"] for row in positive_rate_rows]),
+            np.log(
+                [row["observed_worst_mean_h2"] for row in positive_rate_rows]
+            ),
+            1,
+        )[0]
+    )
 
     estimator_worst = max(
         float(row["mean_h2"])
@@ -345,6 +402,8 @@ def main() -> None:
         "aggregate_rows": aggregate_rows,
         "clean_minimax_rows": clean_minimax_rows,
         "huber_equal_law_rows": huber_lower_rows,
+        "huber_rate_rows": huber_rate_rows,
+        "finite_grid_observed_log_slope": observed_log_slope,
         "clean_first_hit_target_h2": target,
         "clean_first_hits": {
             "successes": sum(value > 0 for value in clean_first_hits),
