@@ -563,7 +563,7 @@
   "secret_scan": "PASS",
   "red_team_passes": 2,
   "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
-  "estimator_evidence_git_sha": "094d92efc40475f482b28432bb7edd32ccca0d95",
+  "estimator_evidence_git_sha": "959e052077f7edb0609e1d81b3e4b5f59c400a55",
   "new_live_verdict_profile": {
     "evaluated_revision": "7c0bf4dc84363ff022c388d366397e3b295010a6",
     "claims": [
