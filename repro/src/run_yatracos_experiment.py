@@ -17,6 +17,17 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 
+# This committed experiment is intentionally single-threaded so that its
+# bounded local reproduction uses at most one effective CPU core.
+for _thread_variable in (
+    "OPENBLAS_NUM_THREADS",
+    "OMP_NUM_THREADS",
+    "MKL_NUM_THREADS",
+    "VECLIB_MAXIMUM_THREADS",
+    "NUMEXPR_NUM_THREADS",
+):
+    os.environ[_thread_variable] = "1"
+
 import numpy as np
 from scipy.stats import t as student_t
 
@@ -379,7 +390,7 @@ def main() -> None:
     contract = {
         "C4": {
             "exact_paper_claim": "infinite-class TV minimax characterization",
-            "experiment_scope": "complete 17-member Gaussian-mixture cover; proper Yatracos upper risk and exhaustive Le Cam pair lower bound",
+            "experiment_scope": "complete 19-member Gaussian-mixture cover; proper Yatracos upper risk and exhaustive Le Cam pair lower bound",
             "verdict_role": "faithful finite-domain corroboration, not the universal proof",
         },
         "C5": {
