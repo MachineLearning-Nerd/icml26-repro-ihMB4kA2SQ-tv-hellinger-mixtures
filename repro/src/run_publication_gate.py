@@ -24,6 +24,7 @@ def main() -> None:
     subprocess.run([sys.executable, "repro/src/verify_analytic_certificate.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/verify_application_certificate.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/verify_universal_reductions.py"], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, "repro/src/run_yatracos_experiment.py"], cwd=ROOT, check=True)
     subprocess.run(
         [sys.executable, "reports/tv-hellinger-reproduction/build_figures.py"],
         cwd=ROOT,
@@ -76,6 +77,7 @@ def main() -> None:
         "analytic_certificate": ".openresearch/artifacts/analytic_certificate/result.json",
         "application_certificate": ".openresearch/artifacts/application_certificate/result.json",
         "universal_reductions": ".openresearch/artifacts/universal_reductions/result.json",
+        "yatracos_experiment": ".openresearch/artifacts/yatracos_experiment/result.json",
         "release_candidate": "release/space/evidence/release/release_check.json",
     }
     serialized_gate = json.dumps(gate, indent=2) + "\n"

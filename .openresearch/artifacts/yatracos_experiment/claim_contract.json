@@ -1,0 +1,13 @@
+{
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+  "C4": {
+    "exact_paper_claim": "Theorem 4.3 characterizes the infinite-class total-variation minimax squared risk through the local-Hellinger-entropy rate.",
+    "experiment_scope": "Complete 17-member Gaussian-mixture cover: proper Yatracos upper risk and exhaustive Le Cam pair lower bound.",
+    "role": "Faithful finite-domain corroboration. The universal implication is handled separately by the exact reduction certificate."
+  },
+  "C5": {
+    "exact_paper_claim": "Theorems 4.5 and 4.6 give the proper-estimator Hellinger upper rate and the all-estimator Huber lower rate.",
+    "experiment_scope": "Actual proper Yatracos estimator under point-mass Huber contaminants and exhaustive finite-domain equal-law lower bound.",
+    "role": "Estimator-level corroboration. It does not replace the universal proof."
+  }
+}
