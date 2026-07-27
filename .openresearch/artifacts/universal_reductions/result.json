@@ -1,0 +1,87 @@
+{
+  "status": "EXACT_UNIVERSAL_REDUCTIONS_PASS",
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+  "checker_scope": "Exact symbolic verification of the universal implication chains. Analytic/statistical premises are explicit in each ledger; finite numerical construction rows are corroboration, not theorem proof.",
+  "anchors": {
+    "C1_statement": "\\label{theorem:uniformTV}",
+    "C1_norm_statement": "\\label{theorem:uniformnorm}",
+    "C1_hermite": "\\label{lemma:expansion}",
+    "C1_restricted_range": "\\label{proposition:restricted}",
+    "C1_nikolskii": "\\label{proposition:nikolskii}",
+    "C1_lambert": "\\label{lemma:lambert}",
+    "C1_main_proof": "\\begin{proof}[Proof of Theorem~\\ref{theorem:uniformnorm}]",
+    "C2_statement": "\\label{corollary:uniformTV}",
+    "C3_statement": "\\label{theorem:sharp}",
+    "C3_construction": "\\label{lemma:construction}",
+    "C3_final_proof": "\\begin{proof}[Proof of Theorem~\\ref{theorem:sharp}]",
+    "C4_statement": "\\label{theorem:learninginTV}",
+    "C4_jia_event": "\\geq \\frac{1}{2}, \\label{proof:jia11}",
+    "C5_upper": "\\label{theorem:robust}",
+    "C5_lower": "\\label{theorem:robustlower}",
+    "C5_yatracos": "\\label{definition:yatracos}",
+    "C5_equal_law": "\\label{lemma:density}"
+  },
+  "checks": {
+    "C1": {
+      "exact_exponent": true,
+      "norm_chain": true,
+      "tail_thresholds": true,
+      "max_min_inversion": true,
+      "mixture_denominator_jensen": true,
+      "quantified_scope": "all d>=1, M>0, delta>0 and all supported mixing laws",
+      "premise_ledger": "Hermite expansion, C-D kernel bound, restricted-range/Nikolskii inequalities, and Lambert lemma are reconstructed in the pinned paper and explicitly anchored here"
+    },
+    "C2": {
+      "pointwise_identity": true,
+      "integration_implication": true,
+      "quantified_scope": "all positive density pairs; C1 supplies the Gaussian-mixture specialization",
+      "premise_ledger": "C1"
+    },
+    "C3": {
+      "gamma_limits_exact": true,
+      "coefficient_margin_exact": true,
+      "asymptotic_exponent_transfer": true,
+      "monotone_subsequence_rule": "if a_n>0 and a_n->0, recursively choose k_(j+1)>k_j with a_k<min(a_kj,1/(j+1)); then a_kj decreases to zero and every eventual inequality is retained",
+      "quantified_scope": "existence of an infinite sequence; not inferred from the six numerical orders",
+      "premise_ledger": "Chebyshev moment construction and its uniform tail bounds from Lemma 3.2"
+    },
+    "C4": {
+      "proper_projection_triangle_rule": "d(P,proj(hatP))<=d(P,hatP)+d(hatP,proj(hatP))<=2d(P,hatP)",
+      "tail_to_risk_rule": "P[X>=a]>=1/2 implies E[X^2]>=a^2/2",
+      "delta_half_inverse_repair": true,
+      "same_delta_negative_control": true,
+      "quantified_scope": "every Hellinger-compact subclass, conditional on the exact Jia local-entropy premise",
+      "premise_ledger": "Jia et al. Corollary 11, separately pinned and source-audited"
+    },
+    "C5_upper": {
+      "eventual_increase_concavity": true,
+      "subadditive_J": true,
+      "arbitrary_random_deviation_split": true,
+      "jensen_moment_transfer": "E[(D^2)^q] <= E[D^2]^q for q=1-2c/loglog(n)",
+      "subpolynomial_envelope": true,
+      "quantified_scope": "all sufficiently large n and every Huber contaminant Q",
+      "premise_ledger": "TV entropy lemma and the proper Yatracos deterministic inequality"
+    },
+    "C5_lower": {
+      "continuous_amplitude_tv": "TV(lambda)=lambda*||g_m||_1/8 exactly",
+      "uniform_hellinger_lower": "H(lambda)>=lambda*||q_m||_2/64 for every 0<lambda<=lambda_m",
+      "coefficient_margin": "0.0008205607015378962",
+      "equal_contaminated_law": "Chen condition TV<=epsilon/(1-epsilon)",
+      "two_point_risk": "identical observation laws and the metric triangle inequality imply max risk>=H(P1,P2)^2/4",
+      "quantified_scope": "every sufficiently small epsilon and every fixed dimension via a common Gaussian product factor",
+      "premise_ledger": "Lemma 3.2 uniform tail bounds and Chen-Gao-Ren equal-law lemma"
+    }
+  },
+  "negative_controls": {
+    "C1_wrong_linear_exponent_rejected": true,
+    "C3_0_34_rejected": true,
+    "C4_same_delta_inverse_rejected": true,
+    "C5_discrete_sequence_only_rejected": true,
+    "C5_missing_union_factor_rejected": true
+  },
+  "git_sha": "959e052077f7edb0609e1d81b3e4b5f59c400a55",
+  "cpu_estimate": "1 effective core, under 5 minutes",
+  "actual_logical_cpus_visible": 8,
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "runtime_seconds": 3.7559383339976193
+}

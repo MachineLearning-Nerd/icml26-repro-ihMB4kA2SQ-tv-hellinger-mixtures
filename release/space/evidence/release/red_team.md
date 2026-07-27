@@ -33,7 +33,9 @@ Pass-1 conclusion: **FAIL — scientifically useful output was hidden from the e
 
 Candidate Git SHA: `94ebab9`. Fresh directory: `/tmp/tvhellinger-blind.RidcWg`, created from `git archive 94ebab9 release/space`. Starting point: `README.md` only.
 
-Files opened:
+Candidate Git SHA: `fe2d52b`. Fresh empty directory: an archive of `release/space` at that SHA. Starting point: `README.md` only.
+
+Files opened by following reachable links:
 
 - `README.md`
 - all current overview, C1–C5, methods, visibility, release-audit, and historical-label pages;

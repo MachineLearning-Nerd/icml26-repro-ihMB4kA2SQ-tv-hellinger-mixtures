@@ -467,6 +467,14 @@
     },
     {
       "from": "pages/current-methods/page.md",
+      "to": "evidence/raw/universal_reductions/result.json"
+    },
+    {
+      "from": "pages/current-methods/page.md",
+      "to": "evidence/raw/yatracos_experiment/result.json"
+    },
+    {
+      "from": "pages/current-methods/page.md",
       "to": "evidence/raw/outputs/publication_gate.json"
     },
     {
@@ -500,6 +508,10 @@
     {
       "from": "pages/current-visibility/page.md",
       "to": "evidence/raw/scaled_direct/negative_control.json"
+    },
+    {
+      "from": "pages/current-visibility/page.md",
+      "to": "evidence/src/repro/src/verify_universal_reductions.py"
     },
     {
       "from": "pages/current-visibility/page.md",
