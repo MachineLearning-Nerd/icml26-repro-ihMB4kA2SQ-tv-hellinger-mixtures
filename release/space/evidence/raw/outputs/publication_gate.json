@@ -12,11 +12,11 @@
     "C5": "VERIFIED"
   },
   "claim_confidence": {
-    "C1": "MEDIUM",
-    "C2": "MEDIUM",
-    "C3": "MEDIUM",
-    "C4": "MEDIUM",
-    "C5": "MEDIUM"
+    "C1": "HIGH",
+    "C2": "HIGH",
+    "C3": "HIGH",
+    "C4": "HIGH",
+    "C5": "HIGH"
   },
   "verified_claims": 5,
   "falsified_claims": 0,
@@ -32,5 +32,6 @@
   "universal_reductions": ".openresearch/artifacts/universal_reductions/result.json",
   "yatracos_experiment": ".openresearch/artifacts/yatracos_experiment/result.json",
   "scaled_direct_evidence": ".openresearch/artifacts/scaled_direct/result.json",
+  "three_route_evidence": ".openresearch/artifacts/three_route/result.json",
   "release_candidate": "release/space/evidence/release/release_check.json"
 }

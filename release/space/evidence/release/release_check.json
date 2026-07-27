@@ -693,11 +693,11 @@
   "upload_allowlist_count": 101,
   "manifest_covered_count": 98,
   "secret_scan": "PASS",
-  "red_team_passes": 5,
+  "red_team_passes": 6,
   "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
-  "estimator_evidence_git_sha": "f8c9cd3a37b8d54f82eecc197734708cd9e97048",
-  "scaled_evidence_git_sha": "f8c9cd3a37b8d54f82eecc197734708cd9e97048",
-  "three_route_evidence_git_sha": "bddd1077e4f6fc1424ff54128318633a2181b902",
+  "estimator_evidence_git_sha": "ad6bf12a336228d33f55498ad8b535ac42d09d3e",
+  "scaled_evidence_git_sha": "ad6bf12a336228d33f55498ad8b535ac42d09d3e",
+  "three_route_evidence_git_sha": "ad6bf12a336228d33f55498ad8b535ac42d09d3e",
   "new_live_verdict_profile": {
     "evaluated_revision": "8454efce45d0b2946efff5f6e05666ec40abb915",
     "claims": [
