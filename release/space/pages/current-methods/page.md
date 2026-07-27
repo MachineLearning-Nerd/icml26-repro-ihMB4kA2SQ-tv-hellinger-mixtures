@@ -22,6 +22,9 @@ The paper archive was retrieved with User-Agent `OpenResearch-Reproduction/1.0 (
 | C4 upper | eight geometric horizons 200–50,000; eight seeds; 121 candidate atoms | TV/H confidence intervals and slopes |
 | C4/C5 lower | 6,000 seeded attempts yielding 5,257 random pairs plus one exact Chebyshev pair | Le Cam and equal-law certificates |
 | C5 upper | fixed `n=200,000`; six epsilons; 17 contaminant locations; four seeds | worst-location H/H² confidence intervals |
+| C1/C2 tensor route | seven fixed amplitudes each in d=2 and d=3; full tensor density integration | 14 multidimensional exact-bound cells |
+| C4 correction route | d=1,2,3 and seven log-n horizons | 21 local-entropy variational cells |
+| C5 asymptotic route | nine fixed `log log(1/epsilon)` horizons | underflow-safe effective-exponent path to 2 |
 
 No target slope, sample horizon, contaminant location, or pair was selected from the formula being tested. The C4 fixed-estimator control and C5 benign-contaminant control must fail.
 
@@ -44,12 +47,18 @@ The cumulative entrypoint reruns:
 4. exact analytic/application/universal certificates;
 5. the proper finite-cover Yatracos experiment;
 6. `run_scaled_direct_evidence.py`;
-7. all figures, the marimo notebook check, and evaluator-visible release checks.
+7. `run_three_route_evidence.py`, requiring three passing routes per claim;
+8. all figures, the marimo notebook check, and evaluator-visible release checks.
 
 Every scientific gate and every intended negative-control rejection is asserted. A mismatch exits nonzero.
 
 - [Cumulative entrypoint](../../evidence/src/repro/src/run_publication_gate.py)
 - [Scaled verifier](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Three-route verifier](../../evidence/src/repro/src/run_three_route_evidence.py)
+- [Three-route result](../../evidence/raw/three_route/result.json)
+- [Route matrix](../../evidence/raw/three_route/route_matrix.json)
+- [Three-route method](../../evidence/raw/three_route/method.md)
+- [Three-route limitations](../../evidence/raw/three_route/limitations.md)
 - [Scaled result](../../evidence/raw/scaled_direct/result.json)
 - [Claim contract](../../evidence/raw/scaled_direct/claim_contract.json)
 - [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)

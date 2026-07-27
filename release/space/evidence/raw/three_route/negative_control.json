@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "controls": {
+    "C1_linear_bound_rejected": true,
+    "C2_linear_bound_rejected": true,
+    "C3_too_large_coefficient_rejected": true,
+    "C4_same_delta_inverse_rejected": true,
+    "C5_discrete_sequence_only_rejected": true
+  }
+}

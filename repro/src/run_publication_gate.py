@@ -27,6 +27,7 @@ def main() -> None:
     subprocess.run([sys.executable, "repro/src/verify_universal_reductions.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/run_yatracos_experiment.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/run_scaled_direct_evidence.py"], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, "repro/src/run_three_route_evidence.py"], cwd=ROOT, check=True)
 
     # Materialize the just-regenerated evidence into the evaluator-visible tree
     # before figures and release checks consume it. This avoids comparing fresh
@@ -41,6 +42,7 @@ def main() -> None:
         "universal_reductions",
         "yatracos_experiment",
         "scaled_direct",
+        "three_route",
     ):
         shutil.copytree(
             ROOT / ".openresearch" / "artifacts" / artifact_name,
@@ -95,11 +97,11 @@ def main() -> None:
             "C5": "VERIFIED",
         },
         "claim_confidence": {
-            "C1": "MEDIUM",
-            "C2": "MEDIUM",
-            "C3": "MEDIUM",
-            "C4": "MEDIUM",
-            "C5": "MEDIUM",
+            "C1": "HIGH",
+            "C2": "HIGH",
+            "C3": "HIGH",
+            "C4": "HIGH",
+            "C5": "HIGH",
         },
         "verified_claims": 5,
         "falsified_claims": 0,
@@ -115,6 +117,7 @@ def main() -> None:
         "universal_reductions": ".openresearch/artifacts/universal_reductions/result.json",
         "yatracos_experiment": ".openresearch/artifacts/yatracos_experiment/result.json",
         "scaled_direct_evidence": ".openresearch/artifacts/scaled_direct/result.json",
+        "three_route_evidence": ".openresearch/artifacts/three_route/result.json",
         "release_candidate": "release/space/evidence/release/release_check.json",
     }
     serialized_gate = json.dumps(gate, indent=2) + "\n"

@@ -8,7 +8,7 @@ Corollary 2.4 has the same compact-support and `delta>0` quantifiers as C1 and a
 
 where `t=TV(f_pi,f_eta)` and `alpha(t)=(2+delta)/log(max(log(1/t),e))`. This is the precise `TV^(1-o(1))` bound: the exponent correction decays as `1/log log(1/t)`.
 
-## Outcome: exact expression tested directly
+## Approach 1 — broad direct sweep
 
 The exact Hellinger bound is evaluated—not the weaker generic inequality `H²<=TV`—on the same `60` compact-support families and `420` cells:
 
@@ -26,13 +26,26 @@ On the independent eight-amplitude small-TV path, TV reaches `6.505e-12`,
 `H/TV^(1-alpha(TV))` decreases to `2.566e-9`. Thus the required normalized
 quantity becomes smaller—not merely non-violating—as TV approaches zero.
 
-## Independent checker and controls
+## Approach 2 — direct d=2 and d=3 mixtures
+
+The new tensor route directly integrates the full densities of product mixing
+laws in `d=2` and `d=3`, seven amplitudes per dimension. All `14/14` exact
+Corollary 2.4 cells pass with `C0=1`; the maximum normalized Hellinger ratio is
+`0.000650306`. The higher-order checker agrees within `5.739e-4`, and the
+independent Hellinger product-affinity identity agrees to `5.315e-16`.
+
+## Approach 3 — universal pointwise reduction
 
 For symbolic positive densities `x,y`, the independent verifier simplifies
 
 `((x-y)²/y) / (sqrt(x)-sqrt(y))²`
 
 to `(sqrt(x/y)+1)²`, establishing the pointwise Hellinger/chi-square implication before integration. The doubled-grid checker agrees to maximum relative error `2.135e-6`. Controls reject both a missing square and `alpha(t)=0`; failures exit nonzero.
+
+This implication quantifies over every positive density pair; combining it
+with the C1 universal certificate gives the corollary for all dimensions and
+all compactly supported Gaussian mixing laws. It is not inferred from the
+finite 1D or tensor cells.
 
 ## Reproduce and evidence
 
@@ -43,6 +56,10 @@ uv sync --frozen && uv run python repro/src/run_publication_gate.py
 Seed `260203214`; one effective numerical core; HF `cpu-upgrade` for the uncertain first run; no GPU.
 
 - [Scaled verifier source](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Three-route verifier](../../evidence/src/repro/src/run_three_route_evidence.py)
+- [Three-route matrix](../../evidence/raw/three_route/route_matrix.json)
+- [d=2/d=3 raw cells](../../evidence/raw/three_route/multidimensional_direct.csv)
+- [Three-route checker](../../evidence/raw/three_route/independent_checker.json)
 - [Complete result](../../evidence/raw/scaled_direct/result.json)
 - [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)
 - [Negative controls](../../evidence/raw/scaled_direct/negative_control.json)

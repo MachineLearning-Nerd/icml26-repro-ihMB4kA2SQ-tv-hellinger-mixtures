@@ -1,16 +1,17 @@
 # Executive summary
 
-Every claim is tested at its displayed formula or construction. The fixed
-command regenerates all raw files, runs independent checkers and negative
-controls, and exits nonzero on any failed gate.
+Every claim now has three materially different routes: direct evidence, an
+independent checker or lower-bound route, and a source-pinned
+symbolic/asymptotic certificate. The fixed command regenerates every raw file
+and exits nonzero on any failed gate.
 
-| Claim | Paper object tested | Observed evidence |
-| --- | --- | --- |
-| C1 | `sqrt(chi²) <= max(C0,t^-alpha(t))t` with the stated `alpha(t)` | `420/420` compact-support cells pass with `C0=1`; controlled TV reaches `6.505e-12` |
-| C2 | `H <= max(C0,t^-alpha(t))t` and its `1/log log` correction | `420/420` pass; small-TV normalized ratio falls to `2.566e-9` |
-| C3 | Explicit Chebyshev Gaussian-mixture sharpness construction | all odd orders `11,...,31` pass; TV reaches `3.747e-38`; margin grows `1.217` to `46.636` |
-| C4 | TV minimax rate, with sample upper and all-estimator lower routes | upper `n^-0.474`; lower `n^-0.497`; `5,258` valid Le Cam pairs |
-| C5 | Huber-contamination Hellinger rate, with worst-Q upper and equal-law lower routes | upper `H² ~ epsilon^1.688`; lower `H ~ epsilon^0.960` (`H² ~ epsilon^1.920`) |
+| Claim | Route 1 | Route 2 | Route 3 |
+| --- | --- | --- | --- |
+| C1 | 420 1D exact-bound cells | 14 direct `d=2,3` cells | all-`d` proof chain |
+| C2 | 420 direct Hellinger cells | 14 direct `d=2,3` cells | pointwise universal reduction |
+| C3 | odd orders `11,...,31` | independent high-precision integration | exact infinite-sequence limits |
+| C4 | sample upper `n^-0.474` | Le Cam lower `n^-0.497` | 21 local-entropy/log-correction cells |
+| C5 | proper estimator/worst-Q upper | equal-law all-estimator lower | exponent→2 plus arbitrary-Q transfer |
 
 ## Why the checks are substantive
 
@@ -27,15 +28,26 @@ C3’s second high-precision integration engine differs by at most `1.759e-4`,
 with moment residual `4.243e-115`. The finite Yatracos checker verifies all
 `171` comparison-set identities to `<5e-15`. All negative controls are rejected.
 
-The exact source statements, compact-support assumptions, arbitrary-contaminant
-quantifier, symbolic reductions, and finite direct experiments are separated
-on each claim page. Direct experiments use explicit one-dimensional submodels;
-dimension extension and universal quantifier handling are recorded in the
-[source-pinned reduction certificate](../../evidence/raw/universal_reductions/result.json).
+The new multidimensional cells have zero C1/C2 violations; the higher-order
+checker disagrees by at most `5.739e-4`, while exact tensor-factorization
+identities agree to `5.315e-16`. C4 displays its slowly decaying logarithmic
+correction directly. C5's log-space route reaches effective H² exponents
+`1.945` (upper) and `1.99175` (lower), showing why the finite fitted `1.688`
+is not the asymptotic limit.
+
+Finite experiments remain scoped corroboration. Universal quantifiers are
+handled only by the [source-pinned reduction certificate](../../evidence/raw/universal_reductions/result.json),
+whose premise ledger is visible rather than silently inferred from a sweep.
 
 ## Evidence
 
 - [Executable scaled verifier](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Executable three-route verifier](../../evidence/src/repro/src/run_three_route_evidence.py)
+- [Three-route result](../../evidence/raw/three_route/result.json)
+- [Three-route matrix](../../evidence/raw/three_route/route_matrix.json)
+- [d=2/d=3 cells](../../evidence/raw/three_route/multidimensional_direct.csv)
+- [C4 logarithmic calibration](../../evidence/raw/three_route/claim_4_local_entropy.csv)
+- [C5 asymptotic calibration](../../evidence/raw/three_route/claim_5_asymptotic.csv)
 - [Complete machine-readable result](../../evidence/raw/scaled_direct/result.json)
 - [C1/C2 raw cells](../../evidence/raw/scaled_direct/claim_1_2_raw.csv)
 - [C4 estimator rows](../../evidence/raw/scaled_direct/claim_4_upper_raw.csv)

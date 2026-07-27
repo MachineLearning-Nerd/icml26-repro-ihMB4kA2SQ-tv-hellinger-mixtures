@@ -16,16 +16,17 @@ tags:
 # Claim-by-claim reproduction
 
 This bundle evaluates the five headline claims of *Sharp Inequalities between
-Total Variation and Hellinger Distances for Gaussian Mixtures* with executable,
-fail-closed checks.
+Total Variation and Hellinger Distances for Gaussian Mixtures*. Each claim has
+three materially different executable routes, including a direct route and a
+source-pinned universal or asymptotic certificate.
 
-| Claim | Direct observed result |
+| Claim | Three-route outcome |
 | --- | --- |
-| C1 | Exact chi-square/TV expression: `0/420` violations; TV down to `6.505e-12` |
-| C2 | Exact Hellinger/TV expression: `0/420` violations; normalized ratio `2.566e-9` |
-| C3 | Paper’s Chebyshev mixtures: `11/11` orders pass; TV down to `3.747e-38` |
-| C4 | Sample estimator `n^-0.474`; independent Le Cam lower bound `n^-0.497` |
-| C5 | Worst-Q upper `H² ~ epsilon^1.688`; equal-law lower `H² ~ epsilon^1.920` |
+| C1 | `0/420` 1D violations; `0/14` d=2/d=3 violations; all-d certificate passes |
+| C2 | `0/420` 1D violations; `0/14` d=2/d=3 violations; universal pointwise reduction passes |
+| C3 | `11/11` explicit orders pass; independent integration and infinite-sequence certificate pass |
+| C4 | sample upper `n^-0.474`; Le Cam lower `n^-0.497`; 21 log-correction calibrations pass |
+| C5 | finite upper `H²~epsilon^1.688`; lower `H²~epsilon^1.920`; exact exponents converge to 2 |
 
 The C1/C2 doubled-grid checker agrees to `2.14e-6`, the C3 independent
 high-precision checker agrees to `1.759e-4`, and all intended negative controls
@@ -51,7 +52,10 @@ uv sync --frozen && uv run python repro/src/run_publication_gate.py
 
 Python `3.12`; exact dependencies are pinned in [`pyproject.toml`](evidence/src/pyproject.toml) and [`uv.lock`](evidence/src/uv.lock). Every scientific gate and negative control is fail-closed: a mismatch exits nonzero.
 
-Download the [complete result](evidence/raw/scaled_direct/result.json),
+Download the [three-route result](evidence/raw/three_route/result.json),
+[route matrix](evidence/raw/three_route/route_matrix.json), [d=2/d=3 raw
+cells](evidence/raw/three_route/multidimensional_direct.csv), [complete scaled
+result](evidence/raw/scaled_direct/result.json),
 [raw CSVs](evidence/raw/scaled_direct/claim_1_2_raw.csv), [independent
 checker](evidence/raw/scaled_direct/independent_checker.json), and [negative
 controls](evidence/raw/scaled_direct/negative_control.json). The

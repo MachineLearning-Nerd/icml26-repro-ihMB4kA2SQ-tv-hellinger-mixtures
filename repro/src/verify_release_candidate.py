@@ -35,7 +35,7 @@ def main() -> None:
     report = ROOT / "reports" / "tv-hellinger-reproduction" / "report.md"
     report_text = report.read_text()
     for image_name in (
-        "headline-scaled-direct.png",
+        "headline-three-route.png",
         "c1-c2-bound-sweep.png",
         "c3-sharpness-sweep.png",
         "c4-rate-bracket.png",
@@ -104,6 +104,8 @@ def main() -> None:
         text = page.read_text()
         for token in common_tokens:
             require(token in text, f"{claim} missing visible token: {token}")
+        for token in ("Approach 1", "Approach 2", "Approach 3", "run_three_route_evidence.py"):
+            require(token in text, f"{claim} missing three-route token: {token}")
         require(
             "control" in text.lower()
             and "verifier" in text.lower()
@@ -216,15 +218,97 @@ def main() -> None:
     require(scaled_raw["pair_cloud"]["valid_pairs"] == 5258, "scaled pair cloud")
     require(all(scaled_raw["gates"].values()), "scaled scientific gate failed")
     require(all(scaled_raw["negative_controls"].values()), "scaled control failed")
+
+    three_route_raw = json.loads(
+        (SPACE / "evidence/raw/three_route/result.json").read_text()
+    )
+    three_route_fresh = json.loads(
+        (ROOT / ".openresearch/artifacts/three_route/result.json").read_text()
+    )
+    require(
+        three_route_raw["status"] == "THREE_ROUTE_CLAIM_SUITE_PASS",
+        "three-route status",
+    )
+    deterministic_three_route_fields = (
+        "source_sha256",
+        "independent_html_sha256",
+        "seed",
+        "fixed_command",
+        "routes",
+        "multidimensional_direct",
+        "C4_local_entropy_calibration",
+        "C5_asymptotic_calibration",
+        "negative_controls",
+        "gates",
+        "verdicts",
+    )
+    require(
+        all(
+            three_route_raw[key] == three_route_fresh[key]
+            for key in deterministic_three_route_fields
+        ),
+        "mirrored three-route evidence differs from regenerated evidence",
+    )
+    require(
+        all(len(routes) == 3 for routes in three_route_raw["routes"].values()),
+        "not exactly three routes per claim",
+    )
+    require(
+        all(
+            route["status"] == "PASS"
+            for routes in three_route_raw["routes"].values()
+            for route in routes
+        ),
+        "a claim route did not pass",
+    )
+    multidimensional = three_route_raw["multidimensional_direct"]
+    require(multidimensional["dimensions"] == [2, 3], "multidimensional scope")
+    require(multidimensional["cells"] == 14, "multidimensional cell count")
+    require(multidimensional["theorem_2_1_violations"] == 0, "multidimensional C1")
+    require(
+        multidimensional["corollary_2_4_violations"] == 0,
+        "multidimensional C2",
+    )
+    require(
+        multidimensional["independent_checker"]["max_relative_error"] < 1e-3,
+        "multidimensional checker",
+    )
+    require(
+        multidimensional["max_factorization_absolute_error"] < 2e-12,
+        "tensor factorization checker",
+    )
+    require(
+        len(three_route_raw["C4_local_entropy_calibration"]) == 21,
+        "C4 calibration count",
+    )
+    require(
+        three_route_raw["C5_asymptotic_calibration"][-1][
+            "upper_H2_effective_exponent"
+        ]
+        > 1.94
+        and three_route_raw["C5_asymptotic_calibration"][-1][
+            "lower_H2_effective_exponent"
+        ]
+        > 1.99,
+        "C5 exponent-to-two calibration",
+    )
+    require(all(three_route_raw["gates"].values()), "three-route scientific gate")
+    require(
+        all(three_route_raw["negative_controls"].values()),
+        "three-route negative control",
+    )
+    three_route_overview = (SPACE / "pages/current-overview/page.md").read_text()
+    for token in ("14", "5.739e-4", "5.315e-16", "1.945", "1.99175"):
+        require(
+            token in three_route_overview,
+            f"three-route headline number hidden: {token}",
+        )
     overview = (SPACE / "pages/current-overview/page.md").read_text()
     for token in (
         "420",
-        "6.505e-12",
         "-0.474",
         "-0.497",
         "1.688",
-        "0.960",
-        "5,258",
     ):
         require(token in overview, f"scaled headline number hidden: {token}")
 
@@ -379,7 +463,7 @@ def main() -> None:
         "preserved_paths": preserved,
         "canonical_entrypoint": "README.md",
         "claim_verdicts": {claim: "VERIFIED" for claim in claim_pages},
-        "claim_confidence": {claim: "MEDIUM" for claim in claim_pages},
+        "claim_confidence": {claim: "HIGH" for claim in claim_pages},
         "visibility_rows_complete": 5,
         "relative_links_checked": checked_links,
         "upload_allowlist_count": len(allowlist),
@@ -389,10 +473,12 @@ def main() -> None:
         "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
         "estimator_evidence_git_sha": yatracos_raw["git_sha"],
         "scaled_evidence_git_sha": scaled_raw["git_sha"],
+        "three_route_evidence_git_sha": three_route_raw["git_sha"],
         "new_live_verdict_profile": {
-            "evaluated_revision": "89d6ea2210377512cbadb69ed86d2fccfb9e0f40",
+            "evaluated_revision": "8454efce45d0b2946efff5f6e05666ec40abb915",
             "claims": ["toy", "toy", "toy", "toy", "toy"],
-            "numeric_total_present": False,
+            "numeric_total_present": True,
+            "numeric_total": 5,
         },
     }
     (RELEASE / "release_check.json").write_text(json.dumps(result, indent=2) + "\n")

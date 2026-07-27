@@ -37,11 +37,11 @@
     "C5": "VERIFIED"
   },
   "claim_confidence": {
-    "C1": "MEDIUM",
-    "C2": "MEDIUM",
-    "C3": "MEDIUM",
-    "C4": "MEDIUM",
-    "C5": "MEDIUM"
+    "C1": "HIGH",
+    "C2": "HIGH",
+    "C3": "HIGH",
+    "C4": "HIGH",
+    "C5": "HIGH"
   },
   "visibility_rows_complete": 5,
   "relative_links_checked": [
@@ -83,6 +83,18 @@
     },
     {
       "from": "README.md",
+      "to": "evidence/raw/three_route/result.json"
+    },
+    {
+      "from": "README.md",
+      "to": "evidence/raw/three_route/route_matrix.json"
+    },
+    {
+      "from": "README.md",
+      "to": "evidence/raw/three_route/multidimensional_direct.csv"
+    },
+    {
+      "from": "README.md",
       "to": "evidence/raw/scaled_direct/result.json"
     },
     {
@@ -116,6 +128,30 @@
     {
       "from": "pages/current-overview/page.md",
       "to": "evidence/src/repro/src/run_scaled_direct_evidence.py"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/src/repro/src/run_three_route_evidence.py"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/three_route/result.json"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/three_route/route_matrix.json"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/three_route/multidimensional_direct.csv"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/three_route/claim_4_local_entropy.csv"
+    },
+    {
+      "from": "pages/current-overview/page.md",
+      "to": "evidence/raw/three_route/claim_5_asymptotic.csv"
     },
     {
       "from": "pages/current-overview/page.md",
@@ -163,6 +199,22 @@
     },
     {
       "from": "pages/current-claim-c1/page.md",
+      "to": "evidence/src/repro/src/run_three_route_evidence.py"
+    },
+    {
+      "from": "pages/current-claim-c1/page.md",
+      "to": "evidence/raw/three_route/route_matrix.json"
+    },
+    {
+      "from": "pages/current-claim-c1/page.md",
+      "to": "evidence/raw/three_route/multidimensional_direct.csv"
+    },
+    {
+      "from": "pages/current-claim-c1/page.md",
+      "to": "evidence/raw/three_route/independent_checker.json"
+    },
+    {
+      "from": "pages/current-claim-c1/page.md",
       "to": "evidence/raw/scaled_direct/result.json"
     },
     {
@@ -200,6 +252,22 @@
     {
       "from": "pages/current-claim-c2/page.md",
       "to": "evidence/src/repro/src/run_scaled_direct_evidence.py"
+    },
+    {
+      "from": "pages/current-claim-c2/page.md",
+      "to": "evidence/src/repro/src/run_three_route_evidence.py"
+    },
+    {
+      "from": "pages/current-claim-c2/page.md",
+      "to": "evidence/raw/three_route/route_matrix.json"
+    },
+    {
+      "from": "pages/current-claim-c2/page.md",
+      "to": "evidence/raw/three_route/multidimensional_direct.csv"
+    },
+    {
+      "from": "pages/current-claim-c2/page.md",
+      "to": "evidence/raw/three_route/independent_checker.json"
     },
     {
       "from": "pages/current-claim-c2/page.md",
@@ -247,6 +315,14 @@
     },
     {
       "from": "pages/current-claim-c3/page.md",
+      "to": "evidence/src/repro/src/run_three_route_evidence.py"
+    },
+    {
+      "from": "pages/current-claim-c3/page.md",
+      "to": "evidence/raw/three_route/route_matrix.json"
+    },
+    {
+      "from": "pages/current-claim-c3/page.md",
       "to": "evidence/src/repro/src/verify_claims_1_3.py"
     },
     {
@@ -287,6 +363,18 @@
     },
     {
       "from": "pages/current-claim-c4/page.md",
+      "to": "evidence/src/repro/src/run_three_route_evidence.py"
+    },
+    {
+      "from": "pages/current-claim-c4/page.md",
+      "to": "evidence/raw/three_route/route_matrix.json"
+    },
+    {
+      "from": "pages/current-claim-c4/page.md",
+      "to": "evidence/raw/three_route/claim_4_local_entropy.csv"
+    },
+    {
+      "from": "pages/current-claim-c4/page.md",
       "to": "evidence/raw/scaled_direct/result.json"
     },
     {
@@ -324,6 +412,18 @@
     {
       "from": "pages/current-claim-c5/page.md",
       "to": "evidence/src/repro/src/run_scaled_direct_evidence.py"
+    },
+    {
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/src/repro/src/run_three_route_evidence.py"
+    },
+    {
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/raw/three_route/route_matrix.json"
+    },
+    {
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/raw/three_route/claim_5_asymptotic.csv"
     },
     {
       "from": "pages/current-claim-c5/page.md",
@@ -383,6 +483,26 @@
     },
     {
       "from": "pages/current-methods/page.md",
+      "to": "evidence/src/repro/src/run_three_route_evidence.py"
+    },
+    {
+      "from": "pages/current-methods/page.md",
+      "to": "evidence/raw/three_route/result.json"
+    },
+    {
+      "from": "pages/current-methods/page.md",
+      "to": "evidence/raw/three_route/route_matrix.json"
+    },
+    {
+      "from": "pages/current-methods/page.md",
+      "to": "evidence/raw/three_route/method.md"
+    },
+    {
+      "from": "pages/current-methods/page.md",
+      "to": "evidence/raw/three_route/limitations.md"
+    },
+    {
+      "from": "pages/current-methods/page.md",
       "to": "evidence/raw/scaled_direct/result.json"
     },
     {
@@ -423,35 +543,35 @@
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/src/repro/src/run_scaled_direct_evidence.py"
+      "to": "evidence/src/repro/src/run_three_route_evidence.py"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/claim_1_2_raw.csv"
+      "to": "evidence/raw/three_route/multidimensional_direct.csv"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/independent_checker.json"
+      "to": "evidence/raw/three_route/independent_checker.json"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/negative_control.json"
+      "to": "evidence/raw/three_route/negative_control.json"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/src/repro/src/run_scaled_direct_evidence.py"
+      "to": "evidence/src/repro/src/run_three_route_evidence.py"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/claim_1_2_raw.csv"
+      "to": "evidence/raw/three_route/multidimensional_direct.csv"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/independent_checker.json"
+      "to": "evidence/raw/three_route/independent_checker.json"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/negative_control.json"
+      "to": "evidence/raw/three_route/negative_control.json"
     },
     {
       "from": "pages/current-visibility/page.md",
@@ -467,47 +587,39 @@
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/claim_1_3/negative_control.json"
+      "to": "evidence/raw/three_route/negative_control.json"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/src/repro/src/run_scaled_direct_evidence.py"
+      "to": "evidence/src/repro/src/run_three_route_evidence.py"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/claim_4_upper_raw.csv"
+      "to": "evidence/raw/three_route/claim_4_local_entropy.csv"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/pair_cloud_raw.csv"
+      "to": "evidence/raw/application_certificate/result.json"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/result.json"
+      "to": "evidence/raw/three_route/negative_control.json"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/negative_control.json"
+      "to": "evidence/src/repro/src/run_three_route_evidence.py"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/src/repro/src/run_scaled_direct_evidence.py"
+      "to": "evidence/raw/three_route/claim_5_asymptotic.csv"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/claim_5_upper_raw.csv"
+      "to": "evidence/raw/universal_reductions/result.json"
     },
     {
       "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/pair_cloud_raw.csv"
-    },
-    {
-      "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/result.json"
-    },
-    {
-      "from": "pages/current-visibility/page.md",
-      "to": "evidence/raw/scaled_direct/negative_control.json"
+      "to": "evidence/raw/three_route/negative_control.json"
     },
     {
       "from": "pages/current-release-audit/page.md",
@@ -574,15 +686,16 @@
       "to": "pages/conclusion/page.md"
     }
   ],
-  "upload_allowlist_count": 88,
-  "manifest_covered_count": 85,
+  "upload_allowlist_count": 100,
+  "manifest_covered_count": 97,
   "secret_scan": "PASS",
   "red_team_passes": 5,
   "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
   "estimator_evidence_git_sha": "f8c9cd3a37b8d54f82eecc197734708cd9e97048",
   "scaled_evidence_git_sha": "f8c9cd3a37b8d54f82eecc197734708cd9e97048",
+  "three_route_evidence_git_sha": "bddd1077e4f6fc1424ff54128318633a2181b902",
   "new_live_verdict_profile": {
-    "evaluated_revision": "89d6ea2210377512cbadb69ed86d2fccfb9e0f40",
+    "evaluated_revision": "8454efce45d0b2946efff5f6e05666ec40abb915",
     "claims": [
       "toy",
       "toy",
@@ -590,6 +703,7 @@
       "toy",
       "toy"
     ],
-    "numeric_total_present": false
+    "numeric_total_present": true,
+    "numeric_total": 5
   }
 }

@@ -13,7 +13,7 @@ up to constants. Here
 `epsilon_n^2 ~ inf_epsilon {epsilon^2 + log N_H,loc(P,epsilon)/n}`.
 The arbitrary-estimator and proper-estimator risks agree up to constants.
 
-## Outcome: upper and lower rates measured independently
+## Approach 1 — sample upper-risk route
 
 The upper route samples a fixed 9-atom mixture and fits nonnegative mixture
 weights on an independently fixed 121-point support grid. Eight replicates are
@@ -26,7 +26,9 @@ run at each horizon:
 The fitted TV exponent is `-0.47376`, hence squared-TV exponent `-0.94752`.
 A fixed-estimator control has slope `0` and is rejected.
 
-The lower route is independent of that estimator. It generates `5,257` valid
+## Approach 2 — all-estimator lower route
+
+This route is independent of that estimator. It generates `5,257` valid
 random compact-support pairs and adds one Chebyshev extremal pair. At each
 horizon it maximizes the exact Le Cam certificate
 
@@ -35,6 +37,27 @@ horizon it maximizes the exact Le Cam certificate
 using product affinity `(1-H(P0,P1)^2)^n`. The lower TV exponent is `-0.49711`
 (squared-risk exponent `-0.99423`). Thus upper and all-estimator lower routes
 bracket the same near-`n^-1/2` TV scale.
+
+## Approach 3 — local-entropy and logarithmic-correction route
+
+The new calibration independently minimizes
+
+`epsilon² + log(1/epsilon)^(d+1)/n`
+
+over a broad log-scale grid for `d=1,2,3`, then evaluates the exact theorem
+lower power. It exposes, rather than hides, the correction
+`(2+delta)/log log(1/epsilon_n)`:
+
+| d | log10 n | log(1/epsilon_n) | correction (`delta=.5`) |
+| ---: | ---: | ---: | ---: |
+| 1 | 4 | `3.922` | `1.8294` |
+| 1 | 12 | `12.551` | `.9882` |
+| 1 | 40 | `44.158` | `.6600` |
+| 1 | 80 | `89.854` | `.5558` |
+
+All `21` `(d,n)` calibration cells are downloadable. The correction is
+positive and decreases at every horizon within each dimension. A fixed
+exponent would erase this measured gap and is rejected.
 
 The source-pinned symbolic checker separately reconstructs the local-entropy
 definition, Fano event, monotone inverse, projection-to-proper-estimator step,
@@ -53,6 +76,9 @@ uv sync --frozen && uv run python repro/src/run_publication_gate.py
 Seeds `260203514` and `260207502`; one effective numerical core; CPU only.
 
 - [Verifier](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Three-route verifier](../../evidence/src/repro/src/run_three_route_evidence.py)
+- [Three-route matrix](../../evidence/raw/three_route/route_matrix.json)
+- [Local-entropy calibration CSV](../../evidence/raw/three_route/claim_4_local_entropy.csv)
 - [Complete result](../../evidence/raw/scaled_direct/result.json)
 - [Estimator CSV](../../evidence/raw/scaled_direct/claim_4_upper_raw.csv)
 - [5,258-pair cloud](../../evidence/raw/scaled_direct/pair_cloud_raw.csv)
