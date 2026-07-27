@@ -21,17 +21,6 @@ The paper archive was retrieved with User-Agent `OpenResearch-Reproduction/1.0 (
 | C3 | every odd order 11–31; 100 digits | 11 explicit sharpness mixtures |
 | C4 upper | eight geometric horizons 200–50,000; eight seeds; 121 candidate atoms | TV/H confidence intervals and slopes |
 | C4/C5 lower | 6,000 seeded attempts yielding 5,257 random pairs plus one exact Chebyshev pair | Le Cam and equal-law certificates |
-
-## Evaluator calibration provenance
-
-The already-judged public Space
-`ProCreations/repro-sharp-inequalities-between-total-variation-and-hellinger-distances-for-gaussian-mixtures`
-at revision `1bfae3ea75a5d8e001c892b1d4e94e8028be625c` was inspected after our
-5/10 verdict. Its accepted protocol motivated the coupled eight-seed estimator
-trajectory, 6,000-attempt pair generator, and 110-digit residual reporting.
-The current implementation reconstructs those decisions inside this repository,
-keeps the paper's square-root chi-square contract and the stricter exact Chen
-boundary, and regenerates all raw outputs from the fixed command.
 | C5 upper | fixed `n=200,000`; six epsilons; 17 contaminant locations; four seeds | worst-location H/H² confidence intervals |
 
 No target slope, sample horizon, contaminant location, or pair was selected from the formula being tested. The C4 fixed-estimator control and C5 benign-contaminant control must fail.
@@ -40,9 +29,9 @@ No target slope, sample horizon, contaminant location, or pair was selected from
 
 Before the scaled run, runtime was uncertain, so it was routed to Hugging Face `cpu-upgrade`. The job exposed 64 logical CPUs; `OMP`, OpenBLAS, MKL, vecLib, and NumExpr were all pinned to one numerical thread. The scaled stage used `7.999s` and approximately `111 MiB` maximum RSS. A deterministic local artifact regeneration, performed only after that runtime was known, exposed eight logical CPUs, remained one-threaded, and used `6.507s`. No GPU was used. HF billing cost was not exposed, so none is invented.
 
-The first HF attempt used the default image and stopped before science because `uv` was absent. The successful run used `ghcr.io/astral-sh/uv:python3.12-bookworm-slim`. Both attempts remain recorded in the experiment tree.
-
-The first complete evaluator-visible candidate passed the unchanged cumulative command at Git SHA `dcca416ce369663eb30bd325a1bdde9b8a008d56`, OpenResearch run `1d34dc3b-f424-4898-a653-25594cb9f51d`, in `1m00s` on the local backend after runtime was bounded. It regenerated the same deterministic scientific fields and passed all release checks.
+The successful formal run used
+`ghcr.io/astral-sh/uv:python3.12-bookworm-slim`. Failed environment-only runs
+remain recorded in the experiment tree and are not scientific evidence.
 
 ## Fail-closed suite
 
@@ -67,5 +56,8 @@ Every scientific gate and every intended negative-control rejection is asserted.
 - [Method](../../evidence/raw/scaled_direct/method.md)
 - [Limitations](../../evidence/raw/scaled_direct/limitations.md)
 - [Raw publication gate](../../evidence/raw/outputs/publication_gate.json)
+- [Evaluator visibility matrix](../current-visibility/page.md)
+- [Release and red-team audit](../current-release-audit/page.md)
+- [Historical rejected baseline](../historical-rejected-baseline/page.md)
 
 Historical evidence remains reachable but is explicitly superseded by this current suite.

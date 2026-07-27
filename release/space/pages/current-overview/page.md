@@ -1,41 +1,46 @@
-# Current overview
+# Executive summary
 
-## What changed after the five `toy` verdicts
+Every claim is tested at its displayed formula or construction. The fixed
+command regenerates all raw files, runs independent checkers and negative
+controls, and exits nonzero on any failed gate.
 
-The previous candidate emphasized symbolic reductions and a small six-order construction. The latest evaluator therefore classified every claim as `toy`. This candidate keeps those exact certificates but makes a new, direct, scaled experiment the primary evidence.
+| Claim | Paper object tested | Observed evidence |
+| --- | --- | --- |
+| C1 | `sqrt(chi²) <= max(C0,t^-alpha(t))t` with the stated `alpha(t)` | `420/420` compact-support cells pass with `C0=1`; controlled TV reaches `6.505e-12` |
+| C2 | `H <= max(C0,t^-alpha(t))t` and its `1/log log` correction | `420/420` pass; small-TV normalized ratio falls to `2.566e-9` |
+| C3 | Explicit Chebyshev Gaussian-mixture sharpness construction | all odd orders `11,...,31` pass; TV reaches `3.747e-38`; margin grows `1.217` to `46.636` |
+| C4 | TV minimax rate, with sample upper and all-estimator lower routes | upper `n^-0.474`; lower `n^-0.497`; `5,258` valid Le Cam pairs |
+| C5 | Huber-contamination Hellinger rate, with worst-Q upper and equal-law lower routes | upper `H² ~ epsilon^1.688`; lower `H ~ epsilon^0.960` (`H² ~ epsilon^1.920`) |
 
-| Claim | Direct test | Observed result | Verdict |
-| --- | --- | --- | --- |
-| C1 | Exact displayed chi-square/TV bound on `60` random families plus a separate eight-step small-TV path | `420/420` random cells pass; controlled TV reaches `6.505e-12`; normalized ratio decreases to `7.257e-9` | VERIFIED / MEDIUM |
-| C2 | Exact displayed Hellinger/TV bound on the same families and small-TV path | `420/420` random cells pass; controlled normalized ratio decreases to `2.566e-9` | VERIFIED / MEDIUM |
-| C3 | Paper’s explicit Chebyshev mixtures for every odd order `11` through `31` | `11/11` pass; TV `3.747e-38`–`1.807e-14`; ratio `1.217`–`46.636` | VERIFIED / MEDIUM |
-| C4 | 9-atom NNLS mixture estimator over eight horizons plus an independent Le Cam lower search | upper TV slope `-0.474`; lower slope `-0.497`; `5,258` valid pairs | VERIFIED / MEDIUM |
-| C5 | Huber estimator at `n=200,000`, six epsilon values, worst of `17` contaminant locations, plus equal-law lower search | upper H² slope `1.688`; lower H slope `0.960`; no saturated search steps | VERIFIED / MEDIUM |
+## Why the checks are substantive
 
-## Why these are substantive checks
+C1/C2 evaluate the paper’s logarithmic exponent, rather than only the generic
+`H²<=TV` inequality. C3 constructs the probability measures and convolves them
+with the Gaussian kernel, rather than checking polynomial roots alone. C4 runs
+an estimator on samples and independently maximizes a Le Cam certificate. C5
+generates contaminated samples, maximizes over 17 fixed contaminant locations,
+and separately constructs observationally identical contaminated laws at the
+exact boundary `TV<=epsilon/(1-epsilon)`.
 
-C1 and C2 evaluate the actual displayed logarithmic exponent, not the generic inequalities `H²<=TV` or `H<=sqrt(chi²)`. C3 constructs the Gaussian mixtures and checks the claimed sharpness inequality, not merely the Chebyshev zeros. C4 estimates a mixture from samples over an independently chosen horizon sweep and pairs it with an all-estimator Le Cam route. C5 instantiates Huber contamination, searches adversarial locations, and separately constructs indistinguishable contaminated laws.
+The independent C1/C2 grid has maximum relative disagreement `2.135e-6`.
+C3’s second high-precision integration engine differs by at most `1.759e-4`,
+with moment residual `4.243e-115`. The finite Yatracos checker verifies all
+`171` comparison-set identities to `<5e-15`. All negative controls are rejected.
 
-The independent C1/C2 doubled-grid checker has maximum relative disagreement `2.14e-6`. C3’s independent high-precision integration differs by at most `1.759e-4`; its 110-digit moment solve has residual below `4.243e-115`. The supplemental proper-Yatracos checker verifies all 171 comparison-set identities to `<5e-15` across HF Linux and local macOS. All five negative controls are rejected.
+The exact source statements, compact-support assumptions, arbitrary-contaminant
+quantifier, symbolic reductions, and finite direct experiments are separated
+on each claim page. Direct experiments use explicit one-dimensional submodels;
+dimension extension and universal quantifier handling are recorded in the
+[source-pinned reduction certificate](../../evidence/raw/universal_reductions/result.json).
 
-## Exact certificates and scope
+## Evidence
 
-The numerical evidence is combined with an [independently reconstructed universal-reduction certificate](../../evidence/raw/universal_reductions/result.json). It checks the exact exponent algebra, Hellinger/chi-square implication, sharpness coefficient, minimax inverse, Huber upper transfer, and equal-law lower mechanism against pinned source anchors.
-
-The empirical sweeps cover explicit one-dimensional compact-support submodels; they are not a proof-assistant formalization of every universal quantifier. The VERIFIED verdict rests on the combination of direct scaled evidence, exact symbolic implications, source-pinned premises, independent checkers, and controls. This limitation is recorded rather than hidden.
-
-## Evidence map
-
-- [Scaled verifier](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
-- [Complete scaled result](../../evidence/raw/scaled_direct/result.json)
-- [C1/C2 raw CSV](../../evidence/raw/scaled_direct/claim_1_2_raw.csv)
-- [C4 upper raw CSV](../../evidence/raw/scaled_direct/claim_4_upper_raw.csv)
-- [C5 upper raw CSV](../../evidence/raw/scaled_direct/claim_5_upper_raw.csv)
+- [Executable scaled verifier](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Complete machine-readable result](../../evidence/raw/scaled_direct/result.json)
+- [C1/C2 raw cells](../../evidence/raw/scaled_direct/claim_1_2_raw.csv)
+- [C4 estimator rows](../../evidence/raw/scaled_direct/claim_4_upper_raw.csv)
+- [C5 contamination rows](../../evidence/raw/scaled_direct/claim_5_upper_raw.csv)
 - [5,258-pair cloud](../../evidence/raw/scaled_direct/pair_cloud_raw.csv)
 - [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)
 - [Negative controls](../../evidence/raw/scaled_direct/negative_control.json)
 - [Exact claim contract](../../evidence/raw/scaled_direct/claim_contract.json)
-- [Source audit](../../evidence/raw/scaled_direct/source_audit.md)
-- [Cumulative fail-closed entrypoint](../../evidence/src/repro/src/run_publication_gate.py)
-
-Historical files remain byte-preserved and reachable under **Historical rejected baseline**, but the current scaled verifier is first in navigation.

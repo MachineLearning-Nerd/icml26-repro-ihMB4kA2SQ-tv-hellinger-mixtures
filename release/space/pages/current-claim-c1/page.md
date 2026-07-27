@@ -1,8 +1,6 @@
 # C1 — chi-square and total variation
 
-**Verdict: VERIFIED. Confidence: MEDIUM.**
-
-## Exact claim contract
+## Exact theorem
 
 Theorem 2.1 quantifies over every pair of mixing laws `pi,eta` supported on `[-M,M]^d` and every `delta>0`. There is a constant `C0=C0(delta,M,d)>0`, independent of `pi,eta`, such that, for `t=TV(f_pi,f_eta)`,
 
@@ -10,7 +8,7 @@ Theorem 2.1 quantifies over every pair of mixing laws `pi,eta` supported on `[-M
 
 where `alpha(t)=(2+delta)/log(max(log(1/t),e))`. The square root, unit covariance, location-mixture model, compact support, and quantifiers are all enforced by the [claim contract](../../evidence/raw/scaled_direct/claim_contract.json).
 
-## Direct scaled test
+## Outcome: exact expression tested directly
 
 `run_scaled_direct_evidence.py` generates `60` deterministic but independently randomized compact-support mixture families. Each family is evaluated at seven amplitude levels, producing `420` direct theorem cells:
 
@@ -29,7 +27,7 @@ A separate deterministic 11-location path uses amplitudes `2^-4` through
 falls from `5.487e-4` to `7.257e-9`. This independently exercises the
 small-TV regime that drives the theorem's logarithmic exponent.
 
-## Exact certificate, checker, and control
+## Independent checker and control
 
 The independent symbolic verifier reconstructs the exponent identity, norm chain, tail thresholds, max/min inversion, and mixture-denominator Jensen step for symbolic `delta>0`. The numerical checker recomputes eight sentinel cells on a doubled `16,385`-point grid; maximum relative disagreement is `2.135e-6`.
 

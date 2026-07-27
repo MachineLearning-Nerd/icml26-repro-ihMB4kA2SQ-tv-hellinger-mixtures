@@ -1,8 +1,6 @@
 # C3 — sharp Chebyshev construction
 
-**Verdict: VERIFIED. Confidence: MEDIUM.**
-
-## Exact claim contract
+## Exact theorem and construction
 
 Theorem 3.1 asserts the existence of compactly supported mixing-law sequences for which `TV_n` decreases to zero and
 
@@ -12,7 +10,7 @@ Lemma 3.2 supplies the explicit odd-order Chebyshev construction with zeros
 
 `theta_j=cos((2j+1)pi/(2n+2))`.
 
-## Complete explicit order sweep
+## Outcome: complete explicit order sweep
 
 The verifier solves the paper’s moment system, checks probability weights, constructs the Gaussian location mixtures, and evaluates every odd order from `11` through `31` at 110-digit working precision.
 
@@ -34,7 +32,7 @@ All `11/11` sharpness cells pass. The high-precision moment residual is at most
 `4.243e-115` (the separately reported float64 projection residual is
 `1.118e-19`), and the minimum probability weight remains positive.
 
-## Asymptotic certificate, checker, and controls
+## Independent checker and controls
 
 The symbolic route checks the exact gamma limits, the coefficient margin
 
