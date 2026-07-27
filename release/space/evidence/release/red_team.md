@@ -1,70 +1,62 @@
 # Evaluator-blind red-team record
 
-Rubric: five live-judge criticisms plus the evaluator-visible evidence gate. Reviewers were not told where evidence was stored and used no unpublished repository, dashboard, or OpenResearch-log knowledge.
+Rubric: the five latest `toy` criticisms plus the evaluator-visible evidence gate. The review used only a fresh candidate archive, began at `README.md`, and did not use OpenResearch logs, dashboard files, unpublished artifacts, or hints about evidence locations.
 
-## Pass 1 — exact Git candidate, fixes required
+## Pass 1 — pre-freeze candidate, fixes required
 
-Candidate Git SHA: `fe2d52b`. Fresh empty directory: an archive of `release/space` at that SHA. Starting point: `README.md` only.
+Starting point: the candidate `README.md` before Git freeze.
 
-Files opened by following reachable links:
+Files opened by following visible links:
 
 - `README.md`
 - `pages/current-overview/page.md`
 - `pages/current-claim-c1/page.md` through `pages/current-claim-c5/page.md`
 - `pages/current-methods/page.md`
 - `pages/current-visibility/page.md`
-- `pages/current-release-audit/page.md`
-- `pages/historical-rejected-baseline/page.md`
 - `evidence/raw/universal_reductions/result.json`
 - `evidence/raw/yatracos_experiment/result.json`
-- `evidence/raw/yatracos_experiment/aggregate_results.csv`
-- `evidence/raw/yatracos_experiment/raw_replicates.csv`
-- `evidence/raw/yatracos_experiment/independent_checker.json`
-- `evidence/raw/yatracos_experiment/negative_control.json`
-- `logbook.json`
+- `evidence/src/repro/src/run_publication_gate.py`
 
-Located:
+Could locate the exact symbolic certificates and the earlier finite-cover Yatracos evidence, but could not locate the new 420-cell sweep, 11-order construction, 7,000-pair lower search, or scaled contamination CSV from the landing page. The new scientific output existed internally but was not yet evaluator-visible.
 
-- all five exact contracts, assumptions, verdicts, and confidence labels;
-- exact universal-reduction source/output and explicit premise ledgers;
-- proper-estimator source, actual Huber model, horizons, seeds, confidence intervals, finite-cover lower bounds, checkers, controls, limitations, and raw rows;
-- fixed command, lockfile, CPU/runtime metadata, fail-closed entrypoint, history subset statement, and no-children historical navigation.
+Required fixes:
 
-Could not accept:
+- place `run_scaled_direct_evidence.py` and its result first in the landing page;
+- mirror all four scaled CSV files, claim contract, source audit, independent checker, negative controls, method, and limitations;
+- put exact raw values inline on every claim page;
+- replace the report headline and claim figures with the scaled evidence;
+- require the mirrored scaled result to match freshly regenerated deterministic fields.
 
-- C4/C5 pages and the canonical overview still displayed the earlier HF checker error `7.216e-16`, while the promoted immutable raw evidence displays `4.218847493575595e-15`;
-- C4/C5 pages still cited preliminary estimator SHA `094d92e` and run `7bc34e8e…`, while the current raw result cites immutable SHA `959e052` and run `05a4e1bb…`.
+Pass-1 conclusion: **FAIL — scientifically useful output was hidden from the evaluator.**
 
-Fixes:
+## Pass 2 — frozen Git candidate
 
-- changed every current displayed checker error to `4.219e-15`;
-- changed current estimator provenance to SHA `959e052077f7edb0609e1d81b3e4b5f59c400a55`, run `05a4e1bb-3d3b-4a80-a27d-6f886c81968e`, and cumulative runtime `1m30s`;
-- added a fail-closed release assertion that the displayed checker error equals the formatted raw value.
-
-Pass-1 conclusion: **FAIL until the displayed-data/provenance mismatches are fixed.**
-
-## Pass 2 — fixed candidate, visibility complete
-
-Candidate Git SHA: `f3baf49`. Fresh empty directory: a new archive of `release/space` at that SHA. Starting point: `README.md` only.
+Candidate Git SHA: `94ebab9`. Fresh directory: `/tmp/tvhellinger-blind.RidcWg`, created from `git archive 94ebab9 release/space`. Starting point: `README.md` only.
 
 Files opened:
 
 - `README.md`
 - all current overview, C1–C5, methods, visibility, release-audit, and historical-label pages;
-- current cumulative entrypoint, exact universal verifier, and proper Yatracos estimator source;
-- universal and Yatracos result JSON;
-- aggregate and raw-replicate CSV;
-- independent checker, negative controls, and limitations;
-- exact upload allowlist and `logbook.json`.
+- `evidence/src/repro/src/run_scaled_direct_evidence.py`;
+- `evidence/src/repro/src/run_publication_gate.py`;
+- `evidence/raw/scaled_direct/result.json`;
+- `evidence/raw/scaled_direct/claim_1_2_raw.csv`;
+- `evidence/raw/claim_1_3/raw_results.csv`;
+- `evidence/raw/scaled_direct/claim_4_upper_raw.csv`;
+- `evidence/raw/scaled_direct/claim_5_upper_raw.csv`;
+- `evidence/raw/scaled_direct/pair_cloud_raw.csv`;
+- scaled claim contract, source audit, independent checker, negative controls, method, and limitations;
+- exact upload allowlist, candidate manifest, release check, secret scan, and `logbook.json`.
 
-Conclusions:
+Checks and conclusions:
 
-- all five exact contracts, assumptions, verdicts, and MEDIUM confidence labels were found;
-- every page exposes the fixed command, raw links, source, checker, control, limitation, provenance, CPU/runtime, and fail-closed behavior;
-- displayed checker error `4.219e-15` and evidence SHA `959e052…` match raw data;
-- the proper estimator, actual Huber contamination, 95% intervals, exhaustive finite-cover lower bounds, and raw replicates are directly reachable;
-- every practical epsilon row is visibly and machine-readably `nonvacuous_paper_term=false`, so no finite slope is misrepresented as asymptotic verification;
-- universal/asymptotic conclusions point to exact symbolic reductions and explicit imported-premise ledgers rather than finite cells;
-- the historical node is last, labeled exactly `Historical rejected baseline`, has no children, and its preserved files remain reachable.
+- C1/C2 raw row count is `420` plus one header; the result reports `60` families, TV `1.15577e-7`–`0.0475248`, and zero violations.
+- C3 raw row count is `11` plus one header; orders are exactly every odd integer 11–31, and all sharpness gates pass.
+- The pair cloud contains `7,000` rows plus one header. C4 upper/lower slopes are `-0.431397` and `-0.500026`.
+- C5 upper H² and lower H slopes are `1.671174` and `0.929163`; the lower search has no saturated steps.
+- All five negative controls are true because the intended false alternatives were rejected.
+- Every claim page exposes its exact contract, assumptions, inline data, raw link, source, checker, control, limitation, fixed command, seed, and compute information.
+- The cumulative entrypoint invokes every stage with `check=True`; the scaled verifier raises on a failed scientific gate.
+- The historical node remains last, labeled exactly `Historical rejected baseline`, and its protected file set remains a subset.
 
-Pass-2 conclusion: **PASS.** No conclusion required a hidden repository path, unpublished branch, dashboard artifact, or agent hint.
+Pass-2 conclusion: **PASS.** No conclusion required an inaccessible path or repository knowledge.
