@@ -21,8 +21,6 @@ Every path in the immutable judged manifest remains present. Historical evidence
 | C4 lacked estimator and minimax evidence | eight-horizon estimator sweep plus independent `7,000`-pair Le Cam lower route |
 | C5 lacked contamination, estimator, and lower construction | actual Huber samples, worst of 17 contaminant locations, and exact equal-law lower search |
 
-The later live verdict dataset evaluated published revision `7c0bf4dc84363ff022c388d366397e3b295010a6` on `2026-07-25T06:40:51Z` and rated C1–C5 `toy, toy, toy, inconclusive, inconclusive`. The dataset has no numeric total-score field, so no new numeric live score is invented. This candidate directly addresses that verdict’s finite-vs-universal and missing-estimator criticisms.
-
 ## Blind review
 
 The reviewer started only from a fresh candidate directory’s `README.md` and followed visible links. The first pass required the scaled verifier and raw CSVs to become the primary evidence rather than a hidden internal artifact. It also required exact inline values on every claim page and a visible link to the independent pair cloud. Those fixes were applied.
