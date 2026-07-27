@@ -116,3 +116,34 @@ Checks and conclusions:
 
 Pass-5 conclusion: **PASS.** No stale display, broken link, hidden current
 verifier, or protected-history regression was found.
+
+## Pass 6 — three-route publication freeze
+
+Candidate Git SHA: `096b8a477779252871d3835bd3a19f7f26c5f11f`.
+Fresh directory: `/tmp/three-route-blind.ALIMCE`, created only from
+`git archive 096b8a4 release/space`. The automated blind crawler began at
+`README.md` and followed only relative links it discovered there and on
+subsequent Markdown pages.
+
+It opened 66 reachable files. These included the seven canonical pages, all
+five exact claim contracts, `run_three_route_evidence.py`, the three-route
+matrix, d=2/d=3 raw cells, C4 and C5 calibration CSVs, independent checkers,
+negative controls, source audits, limitations, the universal/application
+certificates, and immutable historical evidence. No required file was unseen
+and no discovered relative link was missing.
+
+From those files alone the reviewer located:
+
+- exactly three materially different routes for each claim;
+- zero C1/C2 violations in 14 direct multidimensional cells;
+- C3's exact infinite-sequence limit and subsequence certificate;
+- 21 C4 local-entropy cells exposing the logarithmic correction;
+- C5 effective H² exponents `1.945` and `1.99175` approaching two;
+- the fixed command, pinned environment, formal HF CPU record, controls,
+  limitations, and fail-closed source.
+
+All 98 stable candidate-manifest hashes verified inside the fresh directory.
+
+Pass-6 conclusion: **PASS.** Every item required to evaluate the current
+three-route claim suite was discoverable from the canonical entrypoint without
+repository or OpenResearch knowledge.
