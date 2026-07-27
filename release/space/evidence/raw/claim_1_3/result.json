@@ -1,14 +1,16 @@
 {
   "claim_scope": "finite direct corroboration of exact formulas; universal proof certificate pending",
   "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
-  "git_sha": "1b59b9e1b60940c8e4cce58ff7359933032f2571",
+  "git_sha": "9ef83c11c7c527c32bebfbae69585518eac8551b",
   "seed": 260203202,
+  "mp_dps": 110,
+  "max_high_precision_moment_residual": 4.242807927109529e-115,
   "primary_engine": "adaptive_gauss_kronrod",
   "cpu_estimate": "1 effective core",
   "actual_logical_cpus_visible": 8,
   "platform": "macOS-26.5.2-arm64-arm-64bit",
-  "runtime_seconds": 17.35861258400837,
-  "max_rss_kib": 80248832,
+  "runtime_seconds": 38.383418083016295,
+  "max_rss_kib": 85540864,
   "sharpness_orders_passing": [
     11,
     13,
@@ -48,6 +50,7 @@
       "wrong_sharpness_ratio": 0.2565410867418326,
       "chebyshev_residual": 4.165656059010766e-15,
       "moment_residual": 7.31095312598868e-20,
+      "high_precision_moment_residual": "4.24280792710952915e-115",
       "min_probability_weight": 0.08285745539675367,
       "root_count": 5,
       "reported_integration_error": 1.1493080075155635e-15
@@ -72,6 +75,7 @@
       "wrong_sharpness_ratio": 0.3103780631780579,
       "chebyshev_residual": 3.6757973393518245e-15,
       "moment_residual": 4.407714612050063e-20,
+      "high_precision_moment_residual": "2.54782764321343658e-115",
       "min_probability_weight": 0.07088929454203889,
       "root_count": 7,
       "reported_integration_error": 1.1854711789106874e-17
@@ -96,6 +100,7 @@
       "wrong_sharpness_ratio": 0.37030307950177915,
       "chebyshev_residual": 6.944615092633338e-15,
       "moment_residual": 2.168404344971009e-19,
+      "high_precision_moment_residual": "2.2184808855705679e-115",
       "min_probability_weight": 0.06204948756377171,
       "root_count": 5,
       "reported_integration_error": 3.162169971844705e-17
@@ -120,6 +125,7 @@
       "wrong_sharpness_ratio": 0.4452895101762644,
       "chebyshev_residual": 6.861116978408119e-15,
       "moment_residual": 1.0842021724855044e-19,
+      "high_precision_moment_residual": "1.92002670515630204e-115",
       "min_probability_weight": 0.055219388328156635,
       "root_count": 7,
       "reported_integration_error": 1.2139439661464967e-18
@@ -144,6 +150,7 @@
       "wrong_sharpness_ratio": 0.5400797117453179,
       "chebyshev_residual": 4.164418097737589e-15,
       "moment_residual": 4.035097534193627e-20,
+      "high_precision_moment_residual": "7.52970291126321958e-116",
       "min_probability_weight": 0.04976330434965342,
       "root_count": 9,
       "reported_integration_error": 3.713869755351226e-20
@@ -168,6 +175,7 @@
       "wrong_sharpness_ratio": 0.6542367994426797,
       "chebyshev_residual": 8.154418042268791e-15,
       "moment_residual": 5.886895259195584e-20,
+      "high_precision_moment_residual": "2.32540700092634453e-115",
       "min_probability_weight": 0.04529366503279067,
       "root_count": 7,
       "reported_integration_error": 6.1410322908725446e-21
@@ -192,6 +200,7 @@
       "wrong_sharpness_ratio": 0.7936990506217135,
       "chebyshev_residual": 1.1759704174997533e-14,
       "moment_residual": 5.421010862427522e-20,
+      "high_precision_moment_residual": "9.34258828790059084e-116",
       "min_probability_weight": 0.041559906579094946,
       "root_count": 9,
       "reported_integration_error": 1.0765976120796109e-22
@@ -216,6 +225,7 @@
       "wrong_sharpness_ratio": 0.9657655673008088,
       "chebyshev_residual": 1.071937337635887e-14,
       "moment_residual": 2.710505431213761e-20,
+      "high_precision_moment_residual": "1.46034326995812222e-115",
       "min_probability_weight": 0.03839193783298108,
       "root_count": 11,
       "reported_integration_error": 6.090021065750417e-24
@@ -240,6 +250,7 @@
       "wrong_sharpness_ratio": 1.175846930919958,
       "chebyshev_residual": 2.1155469807835342e-14,
       "moment_residual": 1.1237549776529716e-20,
+      "high_precision_moment_residual": "4.05443910815838497e-116",
       "min_probability_weight": 0.03566954620583554,
       "root_count": 9,
       "reported_integration_error": 1.4663309397219442e-26
@@ -264,6 +275,7 @@
       "wrong_sharpness_ratio": 1.4326552655150353,
       "chebyshev_residual": 2.325345117717092e-14,
       "moment_residual": 6.776263578034403e-21,
+      "high_precision_moment_residual": "3.29652879417988206e-116",
       "min_probability_weight": 0.03330491665813275,
       "root_count": 11,
       "reported_integration_error": 5.337006021968362e-29
@@ -288,6 +300,7 @@
       "wrong_sharpness_ratio": 1.7418284810242046,
       "chebyshev_residual": 1.2252038817202827e-14,
       "moment_residual": 1.0164395380210775e-20,
+      "high_precision_moment_residual": "1.66197761592132261e-116",
       "min_probability_weight": 0.031232144029629042,
       "root_count": 11,
       "reported_integration_error": 1.608691298897456e-30

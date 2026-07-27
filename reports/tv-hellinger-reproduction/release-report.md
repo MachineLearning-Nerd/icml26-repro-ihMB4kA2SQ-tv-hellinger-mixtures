@@ -1,7 +1,7 @@
 - Previous live judged score: `0/10`
-- Current user-reported live score: `5/10`
 - Conservative projected score range after the proposed change: `8–10/10`
 - Best-supported possible new score: `10/10` — forecast only, not a judge result
+- Current live judged score: `5/10`
 
 # Scaled direct-evidence release report
 
@@ -31,11 +31,11 @@ Stacked lineage:
 
 `historical baseline → exact construction → analytic/application certificates → proper Yatracos experiment → scaled direct evidence → evaluator-visible candidate → publication candidate`.
 
-Winning scientific branch: `orx/scaled-direct-evidence-judge-remediation`, Git SHA `1b59b9e1b60940c8e4cce58ff7359933032f2571`.
+Winning scientific branch: `orx/evaluator-calibrated-exact-replication-v2`, Git SHA `9ef83c11c7c527c32bebfbae69585518eac8551b`.
 
-Winning complete gate branch: `orx/evaluator-visible-scaled-evidence-release`, Git SHA `dcca416ce369663eb30bd325a1bdde9b8a008d56`.
+Publication branch: `orx/evaluator-calibrated-publication-release`, created directly from the passing scientific commit.
 
-Formal complete run: `1d34dc3b-f424-4898-a653-25594cb9f51d`, local CPU, `1m00s`, one effective numerical thread. Result: `publication_gate_passed=true`.
+Complete pre-freeze gate run: `1fe4016d-5c41-4c6f-9f89-99a36bc3e2c8`, local CPU, `2m25s`, one effective numerical thread. Result: `publication_gate_passed=true`. The same science stage previously passed on Hugging Face `cpu-upgrade` with 64 logical CPUs visible and numerical libraries pinned to one thread.
 
 ## Commands and compute
 
@@ -48,12 +48,12 @@ uv sync --frozen && uv run python repro/src/run_publication_gate.py
 New formal launches:
 
 ```bash
-orx exp run a7d6796a-606d-428d-928c-81ea90dd48d2 --backend hf --flavor cpu-upgrade
-orx exp run a7d6796a-606d-428d-928c-81ea90dd48d2 --backend hf --flavor cpu-upgrade --image ghcr.io/astral-sh/uv:python3.12-bookworm-slim --timeout 1h
-orx exp run 67156ee5-73b1-48ea-8455-5574d8109e5f --backend local
+orx exp run 57908ed9-d3e1-4427-aacd-4a89361a81e1 --backend hf --flavor cpu-upgrade --image ghcr.io/astral-sh/uv:python3.12-bookworm-slim --timeout 1h
+orx exp run 57908ed9-d3e1-4427-aacd-4a89361a81e1 --backend local
+orx exp run f50a2a14-b286-4d43-99ee-e9c0a57c3e3a --backend hf --flavor cpu-upgrade --image ghcr.io/astral-sh/uv:python3.12-bookworm-slim --timeout 1h
 ```
 
-The first HF launch stopped before science because its default image lacked `uv`. The successful HF job exposed 64 logical CPUs but pinned all numerical libraries to one thread; its scaled stage used `7.999s` and approximately `111 MiB` maximum RSS. The complete local gate was launched only after runtime was bounded and finished in `1m00s`. No GPU was used. HF cost was not exposed, so none is invented.
+The successful HF science job exposed 64 logical CPUs but pinned all numerical libraries to one thread; its scaled stage used `13.744s`. The complete local gate was launched only after runtime was bounded and finished in `2m25s`. No GPU was used. HF cost was not exposed, so none is invented.
 
 ## Release integrity
 

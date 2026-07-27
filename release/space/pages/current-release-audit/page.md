@@ -39,7 +39,7 @@ The second pass located the current verifier, exact claim contracts, raw data, i
 
 Conservative projected total: **8–10/10**. Best-supported possible score: **10/10**, a forecast rather than a judge result. No claim is BLOCKED. The remaining risk is evaluator interpretation of finite-dimensional scaling evidence and source-anchored analytic certificates; only the live judge can award points.
 
-The cumulative candidate gate passed at Git SHA `dcca416ce369663eb30bd325a1bdde9b8a008d56`, run `1d34dc3b-f424-4898-a653-25594cb9f51d`, in `1m00s`. The exact publication action is one text-only Hugging Face Hub commit containing the 88 allowlisted paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be created.
+The evaluator-calibrated cumulative gate passed at Git SHA `9ef83c11c7c527c32bebfbae69585518eac8551b`, run `1fe4016d-5c41-4c6f-9f89-99a36bc3e2c8`, in `2m25s`. The exact publication action is one text-only Hugging Face Hub commit containing the 88 allowlisted paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be created.
 
 ## Integrity files
 

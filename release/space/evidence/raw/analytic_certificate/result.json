@@ -1318,9 +1318,9 @@
     "C3_constant_0_34_rejected": true,
     "C3_direct_relabel_not_monotone": true
   },
-  "git_sha": "de2c3a8fba29e433c552ce82c194196fefaaa4d8",
+  "git_sha": "9ef83c11c7c527c32bebfbae69585518eac8551b",
   "cpu_estimate": "1 effective core",
   "actual_logical_cpus_visible": 8,
   "platform": "macOS-26.5.2-arm64-arm-64bit",
-  "runtime_seconds": 0.4353768329997365
+  "runtime_seconds": 0.1134240000101272
 }
