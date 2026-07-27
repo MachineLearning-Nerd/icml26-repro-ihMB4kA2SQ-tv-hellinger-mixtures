@@ -30,12 +30,11 @@ No target slope, sample horizon, contaminant location, or pair was selected from
 
 ## Compute record
 
-The first uncertain scaled run used Hugging Face `cpu-upgrade`; numerical
-libraries were pinned to one thread. Once runtime was bounded, the current
-formal remediation used the authorized local backend: one effective core,
-eight logical CPUs visible, `15.070s` for the scaled stage, `2m00s` total, and
-`114,786,304` bytes maximum RSS. No GPU was used. The HF billing cost was not
-exposed, so none is invented.
+The formal three-route remediation used Hugging Face `cpu-upgrade`; numerical
+libraries were pinned to one thread. It exposed 64 logical CPUs, used `15.595s`
+for the scaled stage and `0.232s` for the three-route stage, and finished the
+complete gate in `2m34s`. No GPU was used. The HF billing cost was not exposed,
+so none is invented.
 
 ## Fail-closed suite
 

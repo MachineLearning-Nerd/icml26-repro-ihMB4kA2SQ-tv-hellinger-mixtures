@@ -52,14 +52,15 @@ reconstruction that is not a proof-assistant kernel certificate; only the
 live judge can award points.
 
 The exact publication action, after the new cumulative run and blind review
-pass, is one text-only Hugging Face Hub commit containing the 88 allowlisted
+pass, is one text-only Hugging Face Hub commit containing the 101 allowlisted
 paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be
 created.
 
 The cumulative remediation gate passed at Git SHA
-`f8c9cd3a37b8d54f82eecc197734708cd9e97048`, OpenResearch run
-`374f88a3-d40f-4a8c-840f-4f9d3a0d3ed4`, in `2m00s` on the local backend with
-one effective numerical core.
+`78b4a451bcf440fdbba2f1326d58b2059c3a337c`, OpenResearch run
+`e1038127-ca8b-4e10-9d14-de4b89a8b2d7`, in `2m34s` on Hugging Face
+`cpu-upgrade`; 64 logical CPUs were visible and numerical libraries were
+pinned to one thread.
 
 ## Integrity files
 
