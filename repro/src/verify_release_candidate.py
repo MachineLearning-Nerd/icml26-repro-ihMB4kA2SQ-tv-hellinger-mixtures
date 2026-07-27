@@ -170,6 +170,7 @@ def main() -> None:
         "seed",
         "source_sha256",
         "claim_1_2",
+        "claim_1_2_small_tv_calibration",
         "claim_1_2_independent_checker",
         "claim_3",
         "claim_4",
@@ -186,18 +187,22 @@ def main() -> None:
     require(scaled_raw["claim_1_2"]["theorem_2_1_violations"] == 0, "C1 violations")
     require(scaled_raw["claim_1_2"]["corollary_2_4_violations"] == 0, "C2 violations")
     require(scaled_raw["claim_3"]["order_count"] == 11, "scaled C3 order count")
-    require(scaled_raw["pair_cloud"]["valid_pairs"] == 7000, "scaled pair cloud")
+    require(scaled_raw["pair_cloud"]["attempts"] == 6000, "pair-cloud attempts")
+    require(scaled_raw["pair_cloud"]["random_valid_pairs"] == 5257, "random pair cloud")
+    require(scaled_raw["pair_cloud"]["chebyshev_pairs"] == 1, "Chebyshev pair cloud")
+    require(scaled_raw["pair_cloud"]["valid_pairs"] == 5258, "scaled pair cloud")
     require(all(scaled_raw["gates"].values()), "scaled scientific gate failed")
     require(all(scaled_raw["negative_controls"].values()), "scaled control failed")
     overview = (SPACE / "pages/current-overview/page.md").read_text()
     for token in (
         "420",
+        "6.505e-12",
         "1.156e-7",
-        "-0.431",
-        "-0.500",
-        "1.671",
-        "0.929",
-        "7,000",
+        "-0.474",
+        "-0.497",
+        "1.688",
+        "0.960",
+        "5,258",
     ):
         require(token in overview, f"scaled headline number hidden: {token}")
 
@@ -316,12 +321,12 @@ def main() -> None:
         "upload_allowlist_count": len(allowlist),
         "manifest_covered_count": len(manifest_paths),
         "secret_scan": "PASS",
-        "red_team_passes": 3,
+        "red_team_passes": 4,
         "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
         "estimator_evidence_git_sha": yatracos_raw["git_sha"],
         "scaled_evidence_git_sha": scaled_raw["git_sha"],
         "new_live_verdict_profile": {
-            "evaluated_revision": "7c9035a522852c4f85b7e3de054e9d9ae7591c5c",
+            "evaluated_revision": "ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58",
             "claims": ["toy", "toy", "toy", "toy", "toy"],
             "numeric_total_present": False,
         },

@@ -232,8 +232,8 @@ axes[2].bar(
 )
 axes[2].set_ylim(0, 2.1)
 axes[2].set_title("C5 slope in contamination")
-axes[2].text(0, c5["upper"]["hellinger_squared_exponent_in_epsilon"] + 0.06, "1.671", ha="center")
-axes[2].text(1, c5["lower"]["hellinger_exponent_in_epsilon"] + 0.06, "0.929", ha="center")
+axes[2].text(0, c5["upper"]["hellinger_squared_exponent_in_epsilon"] + 0.06, "1.688", ha="center")
+axes[2].text(1, c5["lower"]["hellinger_exponent_in_epsilon"] + 0.06, "0.960", ha="center")
 fig.suptitle("Scaled direct evidence addresses all five paper claims")
 fig.tight_layout()
 fig.savefig(IMAGES / "headline-scaled-direct.png")
@@ -286,9 +286,9 @@ c4_tv_low = np.array([row["tv"]["ci95_low"] for row in upper_rows])
 c4_tv_high = np.array([row["tv"]["ci95_high"] for row in upper_rows])
 c4_lb = np.array([row["lower_bound_tv"] for row in lower_rows])
 fig, ax = plt.subplots(figsize=(7.2, 4.0))
-ax.loglog(c4_n, c4_tv, "o-", linewidth=2, label="NNLS mixture estimator, slope -0.431")
+ax.loglog(c4_n, c4_tv, "o-", linewidth=2, label="NNLS mixture estimator, slope -0.474")
 ax.fill_between(c4_n, c4_tv_low, c4_tv_high, alpha=0.18)
-ax.loglog(c4_n, c4_lb, "s--", linewidth=1.8, label="Le Cam pair-cloud lower, slope -0.500")
+ax.loglog(c4_n, c4_lb, "s--", linewidth=1.8, label="Le Cam pair-cloud lower, slope -0.497")
 ax.set(
     xlabel="sample size n",
     ylabel="TV error / lower bound",
@@ -307,8 +307,8 @@ c5_h2 = np.array([row["worst_hellinger_squared"] for row in c5_upper_rows])
 c5_low_eps = np.array([row["epsilon"] for row in c5_lower_rows])
 c5_low_h = np.array([row["minimax_hellinger_lower_bound"] for row in c5_lower_rows])
 fig, ax = plt.subplots(figsize=(7.2, 4.0))
-ax.loglog(c5_eps, c5_h2, "o-", linewidth=2, label="worst-of-17 estimator H², slope 1.671")
-ax.loglog(c5_low_eps, c5_low_h, "s--", linewidth=1.8, label="equal-law H lower, slope 0.929")
+ax.loglog(c5_eps, c5_h2, "o-", linewidth=2, label="worst-of-17 estimator H², slope 1.688")
+ax.loglog(c5_low_eps, c5_low_h, "s--", linewidth=1.8, label="equal-law H lower, slope 0.960")
 ax.set(
     xlabel="Huber contamination epsilon",
     ylabel="direct error / certified lower bound",

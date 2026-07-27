@@ -5,15 +5,15 @@
 
 # Scaled direct-evidence release report
 
-The latest machine-readable verdict evaluates Space revision `7c9035a522852c4f85b7e3de054e9d9ae7591c5c` and labels C1–C5 `toy, toy, toy, toy, toy`. The current user-reported total is `5/10`, consistent with one point per toy claim. This release does not claim an increase before the live judge evaluates the new revision.
+The latest machine-readable verdict evaluates Space revision `ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58` and labels C1–C5 `toy, toy, toy, toy, toy`. The current total is `5/10`, consistent with one point per toy claim. This release does not claim an increase before the live judge evaluates the new revision.
 
 | Claim | Current points | Possible points | Confidence | Evidence status | Basis and remaining risk |
 | --- | ---: | ---: | --- | --- | --- |
 | C1 | 1 | 2 | MEDIUM | VERIFIED | 60 families, 420 exact displayed-bound cells, zero violations, doubled-grid checker. Risk: finite submodels do not enumerate the universal domain. |
 | C2 | 1 | 2 | MEDIUM | VERIFIED | Same 420 cells evaluate the exact `1/log log` exponent; zero violations and a false linear control. Risk follows C1’s universal premise boundary. |
-| C3 | 1 | 2 | MEDIUM | VERIFIED | Every odd order 11–31 constructs valid mixtures; all 11 sharpness inequalities pass, backed by an asymptotic certificate. Risk: source tail propositions are not proof-assistant checked. |
-| C4 | 1 | 2 | MEDIUM | VERIFIED | Eight-horizon estimator slope `-0.431` plus independent 7,000-pair Le Cam lower slope `-0.500`. Risk: the numerical submodel is finite-dimensional. |
-| C5 | 1 | 2 | MEDIUM | VERIFIED | Huber samples at `n=200,000`, worst of 17 Q locations, H² slope `1.671`, and equal-law lower H slope `0.929`. Risk: arbitrary Q is supported by the analytic reduction, not exhaustively searched. |
+| C3 | 1 | 2 | MEDIUM | VERIFIED | Every odd order 11–31 constructs valid mixtures at 110 digits; residual `4.243e-115`, all sharpness cells pass, and an asymptotic certificate supplies the sequence route. Risk: source tail propositions are not proof-assistant checked. |
+| C4 | 1 | 2 | MEDIUM | VERIFIED | Eight-horizon estimator slope `-0.474` plus independent 5,258-pair Le Cam lower slope `-0.497`. Risk: the numerical submodel is finite-dimensional. |
+| C5 | 1 | 2 | MEDIUM | VERIFIED | Huber samples at `n=200,000`, worst of 17 Q locations, H² slope `1.688`, and exact-Chen equal-law lower H slope `0.960`. Risk: arbitrary Q is supported by the analytic reduction, not exhaustively searched. |
 
 ## Claim changes and blockers
 
@@ -58,7 +58,7 @@ The first HF launch stopped before science because its default image lacked `uv`
 ## Release integrity
 
 - Protected judged revision: `1c98799a89d8c1d3c45136c8b912e74371e975b3`
-- Current HF and judge head before upload: `7c9035a522852c4f85b7e3de054e9d9ae7591c5c`
+- Current HF and judge head before upload: `ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58`
 - Protected historical file count: `22`; old file set is a byte-preserved subset
 - Exact text upload allowlist: `88` paths
 - Stable candidate manifest: `85` paths
@@ -74,7 +74,7 @@ The first HF launch stopped before science because its default image lacked `uv`
 - [C3 raw construction](../../release/space/evidence/raw/claim_1_3/raw_results.csv)
 - [C4 estimator rows](../../release/space/evidence/raw/scaled_direct/claim_4_upper_raw.csv)
 - [C5 contamination rows](../../release/space/evidence/raw/scaled_direct/claim_5_upper_raw.csv)
-- [7,000-pair cloud](../../release/space/evidence/raw/scaled_direct/pair_cloud_raw.csv)
+- [5,258-pair cloud](../../release/space/evidence/raw/scaled_direct/pair_cloud_raw.csv)
 - [Independent checker](../../release/space/evidence/raw/scaled_direct/independent_checker.json)
 - [Negative controls](../../release/space/evidence/raw/scaled_direct/negative_control.json)
 - [Visibility matrix](../../release/space/pages/current-visibility/page.md)

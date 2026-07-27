@@ -73,7 +73,7 @@ def _(mo):
     | C1 | 420 exact displayed-bound cells, zero violations | VERIFIED, MEDIUM |
     | C2 | 420 exact exponent cells, zero violations | VERIFIED, MEDIUM |
     | C3 | 11 explicit mixtures + asymptotic certificate | VERIFIED, MEDIUM |
-    | C4 | Eight-horizon estimator + 7,000-pair lower | VERIFIED, MEDIUM |
+    | C4 | Eight-horizon estimator + 5,258-pair lower | VERIFIED, MEDIUM |
     | C5 | Worst-of-17 Huber upper + equal-law lower | VERIFIED, MEDIUM |
 
     These are reproduction conclusions, not live judge points. The
@@ -159,10 +159,10 @@ def _(clean_pair_lower, clean_worst_h2, plt, sample_sizes):
 @app.cell
 def _(mo):
     mo.md(r"""
-    The C4 estimator has TV slope `-0.431`; its independent Le Cam lower has
-    slope `-0.500`. Under actual point-mass Huber contamination at
-    `n=200,000`, worst-of-17 Hellinger-squared error has epsilon slope `1.671`.
-    The independent equal-law lower Hellinger route has slope `0.929` over
+    The C4 estimator has TV slope `-0.474`; its independent Le Cam lower has
+    slope `-0.497`. Under actual point-mass Huber contamination at
+    `n=200,000`, worst-of-17 Hellinger-squared error has epsilon slope `1.688`.
+    The independent equal-law lower Hellinger route has slope `0.960` over
     nine epsilon levels, with no saturated search steps.
     """)
     return

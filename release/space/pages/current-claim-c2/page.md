@@ -23,6 +23,11 @@ The exact Hellinger bound is evaluated—not the weaker generic inequality `H²<
 
 The fact that `H/TV` exceeds one supplies a real negative control against replacing the logarithmic exponent with a constant-factor linear claim. Every cell is in the [raw CSV](../../evidence/raw/scaled_direct/claim_1_2_raw.csv).
 
+On the independent eight-amplitude small-TV path, TV reaches `6.505e-12`,
+`H/TV` stabilizes near `1.041566`, and
+`H/TV^(1-alpha(TV))` decreases to `2.566e-9`. Thus the required normalized
+quantity becomes smaller—not merely non-violating—as TV approaches zero.
+
 ## Exact certificate, checker, and control
 
 For symbolic positive densities `x,y`, the independent verifier simplifies
