@@ -25,7 +25,7 @@ Every path in the immutable judged manifest remains present. Historical evidence
 
 The reviewer started only from a fresh candidate directory’s `README.md` and followed visible links. The first pass required the scaled verifier and raw CSVs to become the primary evidence rather than a hidden internal artifact. It also required exact inline values on every claim page and a visible link to the independent pair cloud. Those fixes were applied.
 
-The second pass located the current verifier, exact claim contracts, raw data, independent checker, negative controls, source assumptions, fixed command, pinned environment, seeds, CPU/runtime information, limitations, and fail-closed behavior for all five claims. The exact opened-file trace is in the [red-team record](../../evidence/release/red_team.md).
+The second pass located the current verifier, exact claim contracts, raw data, independent checker, negative controls, source assumptions, fixed command, pinned environment, seeds, CPU/runtime information, limitations, and fail-closed behavior for all five claims. A third fresh-archive pass after provenance-only edits verified all 85 stable manifest hashes. The exact opened-file trace is in the [red-team record](../../evidence/release/red_team.md).
 
 ## Release forecast
 

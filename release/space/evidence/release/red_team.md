@@ -60,3 +60,11 @@ Checks and conclusions:
 - The historical node remains last, labeled exactly `Historical rejected baseline`, and its protected file set remains a subset.
 
 Pass-2 conclusion: **PASS.** No conclusion required an inaccessible path or repository knowledge.
+
+## Pass 3 — final provenance-only candidate
+
+Candidate Git SHA: `c02901f`. Fresh directory: `/tmp/tvhellinger-final-blind.oR4Mpd`, created from `git archive c02901f release/space`.
+
+The reviewer reopened `README.md`, current overview, methods, release audit, scaled result, upload allowlist, and manifest. The only evaluator-page changes since pass 2 were the exact successful gate SHA/run/runtime and the 88-path publication action. The reviewer located those fields, reconfirmed the headline raw values, and verified all 85 stable SHA-256 entries from inside the fresh directory.
+
+Pass-3 conclusion: **PASS.** Provenance and manifest are consistent with the final candidate.
