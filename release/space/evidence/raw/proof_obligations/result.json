@@ -1,11 +1,11 @@
 {
   "status": "PROOF_OBLIGATIONS_CHECKED_WITH_EXPLICIT_EXTERNAL_DEPENDENCIES",
   "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
-  "git_sha": "99aa3a9702e93cd547f2f9fe258bd371b16874bd",
+  "git_sha": "bddd1077e4f6fc1424ff54128318633a2181b902",
   "cpu_estimate": "1 effective core",
   "actual_logical_cpus_visible": 8,
   "platform": "macOS-26.5.2-arm64-arm-64bit",
-  "runtime_seconds": 0.1510204160003923,
+  "runtime_seconds": 0.3031681669817772,
   "anchors": {
     "C1": "\\label{theorem:uniformTV}",
     "C2": "\\label{corollary:uniformTV}",

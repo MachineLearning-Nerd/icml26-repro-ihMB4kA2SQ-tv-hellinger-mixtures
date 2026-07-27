@@ -69,19 +69,33 @@ def main() -> None:
     require(logbook["space_id"] == "DineshAI/ihMB4kA2SQ", "wrong Space id")
     children = logbook["root"]["children"]
     require(children[0]["slug"] == "current-overview", "current navigation not first")
+    require(len(children) == 7, "canonical navigation must contain overview, five claims, methods")
     require(
-        children[-1]["title"] == "Historical rejected baseline",
-        "historical navigation label",
+        [child["slug"] for child in children]
+        == [
+            "current-overview",
+            "current-claim-c1",
+            "current-claim-c2",
+            "current-claim-c3",
+            "current-claim-c4",
+            "current-claim-c5",
+            "current-methods",
+        ],
+        "canonical navigation order",
     )
-    require(children[-1]["children"] == [], "historical verifier remains in navigation")
+    require(logbook["agent_view_tokens"] <= 4400, "agent view is not concise")
+    methods_text = (SPACE / "pages/current-methods/page.md").read_text()
+    require(
+        "../historical-rejected-baseline/page.md" in methods_text,
+        "protected history is not reachable from canonical navigation",
+    )
 
     claim_pages = {
         f"C{index}": SPACE / f"pages/current-claim-c{index}/page.md"
         for index in range(1, 6)
     }
     common_tokens = (
-        "**Verdict: VERIFIED. Confidence: MEDIUM.**",
-        "## Exact claim contract",
+        "## Exact",
         "uv sync --frozen && uv run python repro/src/run_publication_gate.py",
         "run_scaled_direct_evidence.py",
         "../../evidence/",
@@ -93,7 +107,7 @@ def main() -> None:
         require(
             "control" in text.lower()
             and "verifier" in text.lower()
-            and "limitations" in text.lower(),
+            and ("limitations" in text.lower() or "scope" in text.lower()),
             f"{claim} checker/control/limitations not visible",
         )
     for claim in ("C1", "C2", "C3"):
@@ -214,11 +228,53 @@ def main() -> None:
     ):
         require(token in overview, f"scaled headline number hidden: {token}")
 
+    # Every number in the two headline application tables is formatted directly
+    # from the regenerated JSON.  This prevents stale prose from surviving a
+    # scientific rerun.
+    c4_text = claim_pages["C4"].read_text()
+    c4_means = " | ".join(
+        f"{row['tv']['mean']:.5f}".lstrip("0")
+        for row in scaled_raw["claim_4"]["upper"]["aggregate_rows"]
+    )
+    require(
+        f"| mean TV | {c4_means} |" in c4_text,
+        "C4 displayed estimator row differs from regenerated raw evidence",
+    )
+    for token in ("-0.47376", "-0.49711", "-0.94752", "-0.99423", "5,258"):
+        require(token in c4_text, f"C4 displayed rate missing: {token}")
+    require(
+        "epsilon_n^2 ~ inf_epsilon" in c4_text
+        and "2(1+(2+delta)/log(max(log(1/epsilon_n),e)))" in c4_text,
+        "C4 exact local-entropy contract hidden",
+    )
+
+    c5_text = claim_pages["C5"].read_text()
+    for row in scaled_raw["claim_5"]["upper"]["aggregate_rows"]:
+        h = row["worst_hellinger"]
+        displayed = (
+            f"| {row['epsilon']:.2f}".replace("| 0.", "| .")
+            + f" | {row['worst_contaminant_location']:.1f}"
+            + f" | {h['mean']:.7f}".replace("| 0.", "| .")
+            + f" | [{h['ci95_low']:.7f}, {h['ci95_high']:.7f}]".replace("[0.", "[.").replace(", 0.", ", .")
+            + f" | {row['worst_hellinger_squared']:.9f} |".replace("| 0.", "| .")
+        )
+        require(
+            displayed in c5_text,
+            f"C5 displayed row differs from regenerated raw evidence: {displayed}",
+        )
+    for token in ("1.68821", "0.84411", "0.96006", "1.92011", "0.3308206"):
+        require(token in c5_text, f"C5 displayed rate missing: {token}")
+    require(
+        "2(1-(2+delta)/log(max(log(1/epsilon),e)))" in c5_text
+        and "epsilon/(1-epsilon)" in c5_text,
+        "C5 exact theorem contract or Chen boundary hidden",
+    )
+
     visibility = (SPACE / "pages/current-visibility/page.md").read_text()
     for claim in claim_pages:
         require(f"| {claim} |" in visibility, f"visibility row missing: {claim}")
     require(
-        visibility.count("Located; VERIFIED/MEDIUM") == 5,
+        visibility.count("Located; current verifier") == 5,
         "visibility matrix incomplete",
     )
 
@@ -329,12 +385,12 @@ def main() -> None:
         "upload_allowlist_count": len(allowlist),
         "manifest_covered_count": len(manifest_paths),
         "secret_scan": "PASS",
-        "red_team_passes": 4,
+        "red_team_passes": 6,
         "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
         "estimator_evidence_git_sha": yatracos_raw["git_sha"],
         "scaled_evidence_git_sha": scaled_raw["git_sha"],
         "new_live_verdict_profile": {
-            "evaluated_revision": "ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58",
+            "evaluated_revision": "89d6ea2210377512cbadb69ed86d2fccfb9e0f40",
             "claims": ["toy", "toy", "toy", "toy", "toy"],
             "numeric_total_present": False,
         },

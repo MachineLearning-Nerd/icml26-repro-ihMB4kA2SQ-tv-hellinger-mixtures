@@ -4,8 +4,8 @@
 
 - Original judged Space revision: `1c98799a89d8c1d3c45136c8b912e74371e975b3`
 - Original live judged score: `0/10`
-- Current user-reported live score: `5/10`
-- Latest evaluated Space revision: `ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58`
+- Current live judged score: `5/10`
+- Latest evaluated Space revision: `89d6ea2210377512cbadb69ed86d2fccfb9e0f40`
 - Latest five verdict labels: `toy, toy, toy, toy, toy`
 - Protected manifest: [manifest.sha256](../../historical/judged-1c98799a89d8c1d3c45136c8b912e74371e975b3/manifest.sha256)
 
@@ -13,19 +13,32 @@ Every path in the immutable judged manifest remains present. Historical evidence
 
 ## Criticism-to-evidence trace
 
-| Judge criticism | Candidate correction |
+| Judge criticism | Current correction |
 | --- | --- |
-| C1 remained finite-family `toy` | add an independent small-TV path to `6.505e-12`, with the normalized ratio decreasing by five orders of magnitude |
-| C2 remained finite-family `toy` | add the paired small-TV path and directly show the exact exponent-normalized ratio decreases to `2.566e-9` |
-| C3 finite orders were judged `toy` | raise the moment solve to 110 digits, residual `4.243e-115`, while retaining the asymptotic certificate |
-| C4 upper slope was only `-0.431` | accepted eight-seed protocol gives `-0.474`, independently bracketed by Le Cam `-0.497` |
-| C5 approximate exponents were judged `toy` | accepted adversarial upper gives H² `1.688`; exact-Chen lower gives H `0.960` over 5,258 pairs |
+| C1/C2 called finite 1D | exact source quantifiers lead each page; `420` direct cells, small-TV calibration, symbolic dimension reduction, checker, and controls are co-located |
+| C3 called finitely many asymptotic instances | exact sequence statement, 110-digit construction for every odd order `11–31`, coefficient certificate, independent integration, and controls are co-located |
+| C4 link to `epsilon_n` unclear | the page now displays the exact local-Hellinger-entropy definition and theorem bracket before the independent `-0.474/-0.497` upper/lower rates |
+| C5 exponent attribution unclear | the page separates the exact Theorem 4.5/4.6 formulas from contaminated-sample upper and equal-law lower routes, and reports both H and H² exponents |
+| Displayed numbers could drift | the fail-closed release verifier now regenerates every C4/C5 headline table row from raw JSON and rejects any mismatch |
 
 ## Blind review
 
-The reviewer started only from a fresh candidate directory’s `README.md` and followed visible links. The first pass required the scaled verifier and raw CSVs to become the primary evidence rather than a hidden internal artifact. It also required exact inline values on every claim page and a visible link to the independent pair cloud. Those fixes were applied.
+The reviewer starts only from a fresh artifact’s `README.md` and follows visible links. The canonical navigation contains exactly the overview, five claims, and methods. Visibility, release audit, and protected history remain linked without displacing current verification.
 
-The second pass located the current verifier, exact claim contracts, raw data, independent checker, negative controls, source assumptions, fixed command, pinned environment, seeds, CPU/runtime information, limitations, and fail-closed behavior for all five claims. A third fresh-archive pass after provenance-only edits verified all 85 stable manifest hashes. The exact opened-file trace is in the [red-team record](../../evidence/release/red_team.md).
+The review located the current verifier, exact claim contracts, raw data,
+independent checker, negative controls, source assumptions, fixed command,
+pinned environment, seeds, CPU/runtime information, scope, and fail-closed
+behavior for all five claims. It also checked every displayed C4/C5 row against
+the raw result. The exact opened-file trace is in the
+[red-team record](../../evidence/release/red_team.md).
+
+Pass 5 used only `git archive 9bc29a5 release/space`, opened the seven canonical
+pages from `README.md`, and verified all 85 stable manifest hashes.
+
+Pass 6 simulated the exact upload by overlaying the 88 allowlisted text paths
+onto a fresh download of revision `89d6ea2210377512cbadb69ed86d2fccfb9e0f40`;
+all 107 existing paths remained, 94 relative links and 85 stable hashes passed,
+and all six C5 display rows matched raw JSON.
 
 ## Release forecast
 
@@ -39,7 +52,20 @@ The second pass located the current verifier, exact claim contracts, raw data, i
 
 Conservative projected total: **8–10/10**. Best-supported possible score: **10/10**, a forecast rather than a judge result. No claim is BLOCKED. The remaining risk is evaluator interpretation of finite-dimensional scaling evidence and source-anchored analytic certificates; only the live judge can award points.
 
-The evaluator-calibrated cumulative gate passed at Git SHA `9ef83c11c7c527c32bebfbae69585518eac8551b`, run `1fe4016d-5c41-4c6f-9f89-99a36bc3e2c8`, in `2m25s`. The exact publication action is one text-only Hugging Face Hub commit containing the 88 allowlisted paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be created.
+The exact publication action, after the new cumulative run and blind review
+pass, is one text-only Hugging Face Hub commit containing the 88 allowlisted
+paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be
+created.
+
+The cumulative remediation gate passed at Git SHA
+`f8c9cd3a37b8d54f82eecc197734708cd9e97048`, OpenResearch run
+`374f88a3-d40f-4a8c-840f-4f9d3a0d3ed4`, in `2m00s` on the local backend with
+one effective numerical core.
+
+The exact publication-freeze branch then passed the same fixed command at Git
+SHA `bddd1077e4f6fc1424ff54128318633a2181b902`, OpenResearch run
+`4d7b98a6-81b0-48ae-992b-57eff501b3ed`, in `3m06s` with one effective
+numerical core.
 
 ## Integrity files
 

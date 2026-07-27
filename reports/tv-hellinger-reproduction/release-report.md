@@ -5,7 +5,11 @@
 
 # Scaled direct-evidence release report
 
-The latest machine-readable verdict evaluates Space revision `ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58` and labels C1–C5 `toy, toy, toy, toy, toy`. The current total is `5/10`, consistent with one point per toy claim. This release does not claim an increase before the live judge evaluates the new revision.
+The latest machine-readable verdict evaluates Space revision
+`89d6ea2210377512cbadb69ed86d2fccfb9e0f40` and labels C1–C5
+`toy, toy, toy, toy, toy`. The current total is `5/10`. Corrected revision
+`8454efce45d0b2946efff5f6e05666ec40abb915` is published and awaiting judge;
+this report does not claim an increase before that live evaluation.
 
 | Claim | Current points | Possible points | Confidence | Evidence status | Basis and remaining risk |
 | --- | ---: | ---: | --- | --- | --- |
@@ -29,13 +33,20 @@ The latest machine-readable verdict evaluates Space revision `ff1f8c3b30b0a58025
 
 Stacked lineage:
 
-`historical baseline → exact construction → analytic/application certificates → proper Yatracos experiment → scaled direct evidence → evaluator-visible candidate → publication candidate`.
+`historical baseline → exact construction → analytic/application certificates → proper Yatracos experiment → scaled direct evidence → evaluator-calibrated release → exact-display remediation → publication freeze`.
 
-Winning scientific branch: `orx/evaluator-calibrated-exact-replication-v2`, Git SHA `9ef83c11c7c527c32bebfbae69585518eac8551b`.
+Winning scientific remediation branch:
+`orx/exact-display-and-evaluator-path-remediation`, Git SHA
+`f8c9cd3a37b8d54f82eecc197734708cd9e97048`.
 
-Publication branch: `orx/evaluator-calibrated-publication-release`, created directly from the passing scientific commit.
+Publication branch: `orx/exact-display-publication-freeze`, Git SHA
+`bddd1077e4f6fc1424ff54128318633a2181b902`.
 
-Complete pre-freeze gate run: `1fe4016d-5c41-4c6f-9f89-99a36bc3e2c8`, local CPU, `2m25s`, one effective numerical thread. Result: `publication_gate_passed=true`. The same science stage previously passed on Hugging Face `cpu-upgrade` with 64 logical CPUs visible and numerical libraries pinned to one thread.
+The remediation gate run `374f88a3-d40f-4a8c-840f-4f9d3a0d3ed4`
+passed in `2m00s`. The exact publication-freeze run
+`4d7b98a6-81b0-48ae-992b-57eff501b3ed` passed in `3m06s`. Both used the
+local CPU backend, eight logical CPUs visible, and one effective numerical
+thread. Result: `publication_gate_passed=true`.
 
 ## Commands and compute
 
@@ -45,30 +56,33 @@ Fixed command on every experiment node:
 uv sync --frozen && uv run python repro/src/run_publication_gate.py
 ```
 
-New formal launches:
+Current formal launches:
 
 ```bash
-orx exp run 57908ed9-d3e1-4427-aacd-4a89361a81e1 --backend hf --flavor cpu-upgrade --image ghcr.io/astral-sh/uv:python3.12-bookworm-slim --timeout 1h
-orx exp run 57908ed9-d3e1-4427-aacd-4a89361a81e1 --backend local
-orx exp run f50a2a14-b286-4d43-99ee-e9c0a57c3e3a --backend hf --flavor cpu-upgrade --image ghcr.io/astral-sh/uv:python3.12-bookworm-slim --timeout 1h
+orx exp run 1f505a46-ee91-4006-8b48-ec28e84b9919 --backend local
+orx exp run 2882629b-41ae-4ffa-af97-7f63e9ae4325 --backend local
 ```
 
-The successful HF science job exposed 64 logical CPUs but pinned all numerical libraries to one thread; its scaled stage used `13.744s`. The complete local gate was launched only after runtime was bounded and finished in `2m25s`. No GPU was used. HF cost was not exposed, so none is invented.
+The publication-freeze scaled stage used `31.403s` and `115,638,272` bytes
+maximum RSS. No GPU was used. Prior uncertain work used Hugging Face
+`cpu-upgrade`; HF cost was not exposed, so none is invented.
 
 ## Release integrity
 
 - Protected judged revision: `1c98799a89d8c1d3c45136c8b912e74371e975b3`
-- Current HF and judge head before upload: `ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58`
+- HF and judge head before upload: `89d6ea2210377512cbadb69ed86d2fccfb9e0f40`
+- Exact published HF revision: `8454efce45d0b2946efff5f6e05666ec40abb915`
 - Protected historical file count: `22`; old file set is a byte-preserved subset
 - Exact text upload allowlist: `88` paths
 - Stable candidate manifest: `85` paths
 - Visibility rows complete: `5`
 - Secret scan: PASS
-- Evaluator-blind review: PASS after a fresh archive traversal
+- Evaluator-blind review: six passes; final no-delete overlay retained all `107` paths
+- Post-publication verification: all `88` uploaded files byte-identical, `85` hashes pass, `94` canonical links resolve
 
 ## Evidence paths
 
-- [Canonical candidate](../../release/space/README.md)
+- [Exact published tree](../../release/space/README.md)
 - [Scaled result](../../release/space/evidence/raw/scaled_direct/result.json)
 - [C1/C2 raw cells](../../release/space/evidence/raw/scaled_direct/claim_1_2_raw.csv)
 - [C3 raw construction](../../release/space/evidence/raw/claim_1_3/raw_results.csv)
@@ -82,4 +96,7 @@ The successful HF science job exposed 64 logical CPUs but pinned all numerical l
 - [Upload allowlist](../../release/space/evidence/release/upload_allowlist.txt)
 - [SHA-256 manifest](../../release/space/evidence/release/candidate_manifest.sha256)
 
-Exact publication action: upload only the 88 allowlisted text paths in one Hugging Face Hub commit to the existing `DineshAI/ihMB4kA2SQ` Space, verify the returned revision by exact-revision download and hash traversal, then mirror the published text paths and public report to GitHub `main`. No second Space will be created.
+Publication action completed: the 88 allowlisted text paths were committed to
+the existing `DineshAI/ihMB4kA2SQ` Space without deletion or a second Space.
+Exact revision `8454efce45d0b2946efff5f6e05666ec40abb915` was downloaded and
+verified, then mirrored here.

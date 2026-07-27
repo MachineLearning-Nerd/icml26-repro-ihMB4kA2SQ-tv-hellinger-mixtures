@@ -59,27 +59,9 @@
         "title": "Current methods and reproducibility",
         "file": "pages/current-methods/page.md",
         "children": []
-      },
-      {
-        "slug": "current-visibility",
-        "title": "Evaluator visibility matrix",
-        "file": "pages/current-visibility/page.md",
-        "children": []
-      },
-      {
-        "slug": "current-release-audit",
-        "title": "Release and red-team audit",
-        "file": "pages/current-release-audit/page.md",
-        "children": []
-      },
-      {
-        "slug": "historical-rejected-baseline",
-        "title": "Historical rejected baseline",
-        "file": "pages/historical-rejected-baseline/page.md",
-        "children": []
       }
     ]
   },
-  "agent_view_tokens": 8500,
-  "revision": "candidate-20260726-judge-remediation"
+  "agent_view_tokens": 4400,
+  "revision": "20260727-exact-display-remediation"
 }

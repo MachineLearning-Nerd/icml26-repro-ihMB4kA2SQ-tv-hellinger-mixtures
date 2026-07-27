@@ -4,7 +4,7 @@
 
 [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/blob/main/notebooks/tv_hellinger_reproduction.py)
 
-This CPU-only campaign reproduces all five theorem-level claims in *Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures* ([arXiv:2602.03202](https://arxiv.org/abs/2602.03202)). Space revision `ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58` scored `5/10`, with all five checks classified as `toy`.
+This CPU-only campaign reproduces all five theorem-level claims in *Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures* ([arXiv:2602.03202](https://arxiv.org/abs/2602.03202)). The latest judged revision, `89d6ea2210377512cbadb69ed86d2fccfb9e0f40`, scored `5/10`. The corrected Space revision `8454efce45d0b2946efff5f6e05666ec40abb915` is published and awaiting a new judge verdict.
 
 The remediation adds direct scaled evidence:
 
@@ -34,7 +34,7 @@ The finite sweeps cover explicit compact-support submodels. Universal conclusion
 - [Illustrated technical report](reports/tv-hellinger-reproduction/report.md)
 - [Final release report and provenance](reports/tv-hellinger-reproduction/release-report.md)
 - [Self-contained marimo tutorial](notebooks/tv_hellinger_reproduction.py)
-- [Candidate Hugging Face text tree](release/space/README.md)
+- [Exact published Hugging Face text tree](release/space/README.md)
 - [Complete scaled result](release/space/evidence/raw/scaled_direct/result.json)
 - [C1/C2 420-cell CSV](release/space/evidence/raw/scaled_direct/claim_1_2_raw.csv)
 - [C4 estimator CSV](release/space/evidence/raw/scaled_direct/claim_4_upper_raw.csv)
@@ -75,5 +75,7 @@ The command below is copied verbatim from `orx exp status` and is identical on e
 | [`orx/scaled-evidence-publication-candidate`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/scaled-evidence-publication-candidate) | Add exact formal-run provenance and stage the text-only Space release | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | Final release candidate | local CPU, one effective core |
 | [`orx/evaluator-calibrated-exact-replication-v2`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/evaluator-calibrated-exact-replication-v2) | Match the successful evaluator’s direct-evidence scale while retaining stricter exact certificates | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | All five science gates and the cumulative publication gate passed at `9ef83c1`; run `1fe4016d…` | HF `cpu-upgrade` science pass, then local one-core packaging pass in `2m25s` |
 | [`orx/evaluator-calibrated-publication-release`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/evaluator-calibrated-publication-release) | Freeze regenerated evaluator-visible evidence and perform the final release run | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | Publication branch; exact live score remains `5/10` until a new judge verdict | HF `cpu-upgrade`, CPU only |
+| [`orx/exact-display-and-evaluator-path-remediation`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/exact-display-and-evaluator-path-remediation) | Correct stale displayed data, expose exact C4/C5 contracts, and reduce the canonical path to seven pages | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | All scientific, display-integrity, subset, link, notebook, and secret gates passed at `f8c9cd3`; run `374f88a3…` | local CPU, `2m00s`, one effective core |
+| [`orx/exact-display-publication-freeze`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/exact-display-publication-freeze) | Freeze exact run artifacts, repeat blind overlay review, and publish the 88-path text allowlist | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | All gates passed at `bddd107`; run `4d7b98a6…`; published Space revision `8454efce…` is awaiting judge | local CPU, `3m06s`, eight logical visible / one effective |
 
 Hugging Face billing cost was not exposed in the run logs, so no cost is inferred.

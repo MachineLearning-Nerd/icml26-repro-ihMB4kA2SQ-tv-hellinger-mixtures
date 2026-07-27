@@ -75,15 +75,11 @@
     },
     {
       "from": "README.md",
-      "to": "pages/current-visibility/page.md"
+      "to": "evidence/src/pyproject.toml"
     },
     {
       "from": "README.md",
-      "to": "pages/current-release-audit/page.md"
-    },
-    {
-      "from": "README.md",
-      "to": "evidence/src/repro/src/run_scaled_direct_evidence.py"
+      "to": "evidence/src/uv.lock"
     },
     {
       "from": "README.md",
@@ -95,18 +91,6 @@
     },
     {
       "from": "README.md",
-      "to": "evidence/raw/scaled_direct/claim_4_upper_raw.csv"
-    },
-    {
-      "from": "README.md",
-      "to": "evidence/raw/scaled_direct/claim_5_upper_raw.csv"
-    },
-    {
-      "from": "README.md",
-      "to": "evidence/raw/scaled_direct/pair_cloud_raw.csv"
-    },
-    {
-      "from": "README.md",
       "to": "evidence/raw/scaled_direct/independent_checker.json"
     },
     {
@@ -115,31 +99,15 @@
     },
     {
       "from": "README.md",
-      "to": "evidence/raw/scaled_direct/claim_contract.json"
+      "to": "pages/current-visibility/page.md"
     },
     {
       "from": "README.md",
-      "to": "evidence/raw/scaled_direct/source_audit.md"
+      "to": "pages/current-release-audit/page.md"
     },
     {
       "from": "README.md",
-      "to": "evidence/raw/scaled_direct/limitations.md"
-    },
-    {
-      "from": "README.md",
-      "to": "evidence/src/pyproject.toml"
-    },
-    {
-      "from": "README.md",
-      "to": "evidence/src/uv.lock"
-    },
-    {
-      "from": "README.md",
-      "to": "historical/judged-1c98799a89d8c1d3c45136c8b912e74371e975b3/README.md"
-    },
-    {
-      "from": "README.md",
-      "to": "historical/judged-1c98799a89d8c1d3c45136c8b912e74371e975b3/manifest.sha256"
+      "to": "pages/historical-rejected-baseline/page.md"
     },
     {
       "from": "pages/current-overview/page.md",
@@ -180,14 +148,6 @@
     {
       "from": "pages/current-overview/page.md",
       "to": "evidence/raw/scaled_direct/claim_contract.json"
-    },
-    {
-      "from": "pages/current-overview/page.md",
-      "to": "evidence/raw/scaled_direct/source_audit.md"
-    },
-    {
-      "from": "pages/current-overview/page.md",
-      "to": "evidence/src/repro/src/run_publication_gate.py"
     },
     {
       "from": "pages/current-claim-c1/page.md",
@@ -347,14 +307,6 @@
     },
     {
       "from": "pages/current-claim-c4/page.md",
-      "to": "evidence/src/repro/src/run_yatracos_experiment.py"
-    },
-    {
-      "from": "pages/current-claim-c4/page.md",
-      "to": "evidence/raw/yatracos_experiment/raw_replicates.csv"
-    },
-    {
-      "from": "pages/current-claim-c4/page.md",
       "to": "evidence/src/repro/src/verify_universal_reductions.py"
     },
     {
@@ -363,11 +315,11 @@
     },
     {
       "from": "pages/current-claim-c4/page.md",
-      "to": "evidence/raw/scaled_direct/method.md"
+      "to": "evidence/raw/scaled_direct/limitations.md"
     },
     {
-      "from": "pages/current-claim-c4/page.md",
-      "to": "evidence/raw/scaled_direct/limitations.md"
+      "from": "pages/current-claim-c5/page.md",
+      "to": "evidence/raw/scaled_direct/claim_contract.json"
     },
     {
       "from": "pages/current-claim-c5/page.md",
@@ -395,23 +347,11 @@
     },
     {
       "from": "pages/current-claim-c5/page.md",
-      "to": "evidence/src/repro/src/run_yatracos_experiment.py"
-    },
-    {
-      "from": "pages/current-claim-c5/page.md",
-      "to": "evidence/raw/yatracos_experiment/raw_replicates.csv"
-    },
-    {
-      "from": "pages/current-claim-c5/page.md",
       "to": "evidence/src/repro/src/verify_universal_reductions.py"
     },
     {
       "from": "pages/current-claim-c5/page.md",
       "to": "evidence/raw/primary_dependencies/source_audit.md"
-    },
-    {
-      "from": "pages/current-claim-c5/page.md",
-      "to": "evidence/raw/scaled_direct/method.md"
     },
     {
       "from": "pages/current-claim-c5/page.md",
@@ -468,6 +408,18 @@
     {
       "from": "pages/current-methods/page.md",
       "to": "evidence/raw/outputs/publication_gate.json"
+    },
+    {
+      "from": "pages/current-methods/page.md",
+      "to": "pages/current-visibility/page.md"
+    },
+    {
+      "from": "pages/current-methods/page.md",
+      "to": "pages/current-release-audit/page.md"
+    },
+    {
+      "from": "pages/current-methods/page.md",
+      "to": "pages/historical-rejected-baseline/page.md"
     },
     {
       "from": "pages/current-visibility/page.md",
@@ -625,12 +577,12 @@
   "upload_allowlist_count": 88,
   "manifest_covered_count": 85,
   "secret_scan": "PASS",
-  "red_team_passes": 4,
+  "red_team_passes": 6,
   "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
-  "estimator_evidence_git_sha": "99aa3a9702e93cd547f2f9fe258bd371b16874bd",
-  "scaled_evidence_git_sha": "99aa3a9702e93cd547f2f9fe258bd371b16874bd",
+  "estimator_evidence_git_sha": "bddd1077e4f6fc1424ff54128318633a2181b902",
+  "scaled_evidence_git_sha": "bddd1077e4f6fc1424ff54128318633a2181b902",
   "new_live_verdict_profile": {
-    "evaluated_revision": "ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58",
+    "evaluated_revision": "89d6ea2210377512cbadb69ed86d2fccfb9e0f40",
     "claims": [
       "toy",
       "toy",
