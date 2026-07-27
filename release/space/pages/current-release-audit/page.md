@@ -32,6 +32,9 @@ behavior for all five claims. It also checked every displayed C4/C5 row against
 the raw result. The exact opened-file trace is in the
 [red-team record](../../evidence/release/red_team.md).
 
+Pass 5 used only `git archive 9bc29a5 release/space`, opened the seven canonical
+pages from `README.md`, and verified all 85 stable manifest hashes.
+
 ## Release forecast
 
 | Claim | Status | Expected points | Confidence | Expected evaluator status |

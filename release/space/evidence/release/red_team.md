@@ -81,3 +81,38 @@ new headline values match raw data: C4 `-0.473762/-0.497115`, C5
 `1.688213/0.960057`, C3 residual `4.243e-115`, and C1/C2 TV to `6.505e-12`.
 
 Pass-4 conclusion: **PASS.** No result or provenance dependency is hidden.
+
+## Pass 5 — exact-display remediation
+
+Candidate Git SHA: `9bc29a5`. Fresh directory:
+`/tmp/tvhellinger-remediation-blind.GVXxDA`, created only from
+`git archive 9bc29a5 release/space`. The reviewer began at `README.md`, read
+`pages/index.md`, and followed the seven canonical navigation entries without
+using repository or OpenResearch state.
+
+Files opened from navigation:
+
+- `README.md` and `pages/index.md`;
+- current overview and all five current claim pages;
+- current methods;
+- the raw scaled JSON/CSVs, independent checker, negative controls, exact
+  reductions, source audits, visibility matrix, release audit, and protected
+  historical page linked from those entries.
+
+Checks and conclusions:
+
+- canonical navigation contains exactly overview, C1–C5, and methods, with a
+  `4,400`-token agent budget;
+- all `85` stable manifest hashes verify in the fresh archive;
+- C4 displays the exact local-Hellinger-entropy definition before its
+  `-0.47376/-0.49711` upper/lower experiment;
+- every displayed C4 estimator cell and C5 contamination cell is generated
+  from, and agrees with, the raw result JSON;
+- C5 separates the exact upper and lower theorem formulas from the observed
+  worst-Q upper (`H²` exponent `1.68821`) and equal-law lower (`H²` exponent
+  `1.92011`);
+- the current verifier, command, environment, raw downloads, checker, controls,
+  scope, and immutable historical baseline are reachable from the entrypoint.
+
+Pass-5 conclusion: **PASS.** No stale display, broken link, hidden current
+verifier, or protected-history regression was found.
