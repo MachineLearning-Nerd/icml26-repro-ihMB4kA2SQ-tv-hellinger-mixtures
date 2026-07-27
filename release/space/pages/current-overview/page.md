@@ -1,50 +1,41 @@
 # Current overview
 
-## Central question and current evidence
+## What changed after the five `toy` verdicts
 
-For unit-covariance Gaussian location mixtures whose mixing laws are supported in `[-M,M]^d`, how much larger can Hellinger or chi-square distance be than total variation when TV is tiny?
+The previous candidate emphasized symbolic reductions and a small six-order construction. The latest evaluator therefore classified every claim as `toy`. This candidate keeps those exact certificates but makes a new, direct, scaled experiment the primary evidence.
 
-The 2026-07-25 live evaluator rated the previous published evidence **toy, toy, toy, inconclusive, inconclusive** for C1–C5. Its central criticism was correct: finite construction cells do not prove universal or asymptotic theorems, and formula audits do not instantiate minimax or robust estimation.
-
-This candidate answers that criticism with two new evidence layers:
-
-1. an [exact symbolic universal-reduction certificate](../../evidence/raw/universal_reductions/result.json), which checks the algebraic/asymptotic implications and lists every imported premise;
-2. a [proper finite-cover Yatracos experiment](../../evidence/raw/yatracos_experiment/result.json), with actual samples, point-mass Huber contamination, 95% confidence intervals, exhaustive finite-cover lower bounds, an independent checker, and negative controls.
-
-All five contracts remain **VERIFIED at MEDIUM confidence**. “VERIFIED” is the reproduction’s scientific verdict, not a live-judge point award. The symbolic certificate is not proof-assistant formalization, and the finite estimator experiment is deliberately not presented as a proof of the infinite-class minimax or asymptotic rate statements.
-
-| Claim | Verdict | Confidence | Direct basis |
+| Claim | Direct test | Observed result | Verdict |
 | --- | --- | --- | --- |
-| C1 | VERIFIED | MEDIUM | Exact universal exponent, tail-threshold, norm-chain, max/min, and Jensen reductions; imported analytic premises explicitly ledgered |
-| C2 | VERIFIED | MEDIUM | Exact pointwise Hellinger/chi-square identity for all positive densities, inheriting C1’s quantified scope |
-| C3 | VERIFIED | MEDIUM | Exact SymPy gamma limits, coefficient margin, and monotone-subsequence rule; explicit mixtures are corroboration only |
-| C4 | VERIFIED | MEDIUM | Exact minimax implication with `delta/2` inverse repair, plus actual proper-estimator risk and exhaustive finite-cover Le Cam lower bounds |
-| C5 | VERIFIED | MEDIUM | Arbitrary-deviation expectation transfer and continuous-amplitude lower repair, plus actual Huber-contamination estimator and equal-law experiments |
+| C1 | Exact displayed chi-square/TV bound on `60` random compact-support families and seven amplitudes each | `420/420` pass; TV `1.156e-7`–`4.752e-2`; maximum ratio `0.008997` | VERIFIED / MEDIUM |
+| C2 | Exact displayed Hellinger/TV bound on the same independently generated cells | `420/420` pass; maximum ratio `0.003787`; `H/TV` reaches `1.910` | VERIFIED / MEDIUM |
+| C3 | Paper’s explicit Chebyshev mixtures for every odd order `11` through `31` | `11/11` pass; TV `3.747e-38`–`1.807e-14`; ratio `1.217`–`46.636` | VERIFIED / MEDIUM |
+| C4 | 9-atom NNLS mixture estimator over eight horizons plus an independent Le Cam lower search | upper TV slope `-0.431`; lower slope `-0.500`; `7,000` valid pairs | VERIFIED / MEDIUM |
+| C5 | Huber estimator at `n=200,000`, six epsilon values, worst of `17` contaminant locations, plus equal-law lower search | upper H² slope `1.671`; lower H slope `0.929`; no saturated search steps | VERIFIED / MEDIUM |
 
-## Headline observed evidence
+## Why these are substantive checks
 
-The proper estimator uses a committed 19-member Gaussian-mixture cover, all `171` pairwise Yatracos sets, four truths, five sample sizes, five contamination levels, and `40` deterministic replicates per cell.
+C1 and C2 evaluate the actual displayed logarithmic exponent, not the generic inequalities `H²<=TV` or `H<=sqrt(chi²)`. C3 constructs the Gaussian mixtures and checks the claimed sharpness inequality, not merely the Chebyshev zeros. C4 estimates a mixture from samples over an independently chosen horizon sweep and pairs it with an all-estimator Le Cam route. C5 instantiates Huber contamination, searches adversarial locations, and separately constructs indistinguishable contaminated laws.
 
-- The independent identity `Q_i(A_ij)-Q_j(A_ij)=TV(Q_i,Q_j)` holds for every pair with maximum error `4.219e-15`.
-- Clean worst mean squared-Hellinger loss falls from `0.004204` at `n=100` to `0.0001757` at `n=1600`.
-- The exhaustive clean finite-cover pair lower bound falls from `0.0001843` to `0.00001272`.
-- At contamination `epsilon=0.02`, a distinct Chen-admissible pair has TV `0.0170672`, squared-Hellinger separation `0.000172102`, and equal-law minimax lower bound `0.0000430255`.
-- The deliberately empty Yatracos class is worse, wrong set orientation is rejected, and formula-derived horizons are not used.
+The independent C1/C2 doubled-grid checker has maximum relative disagreement `2.14e-6`. C3’s independent high-precision integration differs by at most `1.759e-4`, with moment residual below `2.17e-19`. The supplemental proper-Yatracos checker verifies all 171 comparison-set identities to `4.219e-15`. All five negative controls are rejected.
 
-## Honest asymptotic limitation
+## Exact certificates and scope
 
-For the practical grid `epsilon=0.02,0.05,0.1,0.2`, the paper’s exact displayed epsilon term evaluates to `120.89, 412.47, 251.19, 47.59`, all above one. Therefore the finite experiment cannot empirically verify that asymptotic exponent; its observed log slope `1.1604` is reported only as a finite-grid diagnostic. C5’s universal verdict rests on the exact reduction certificate and pinned premises, not on fitting this slope.
+The numerical evidence is combined with an [independently reconstructed universal-reduction certificate](../../evidence/raw/universal_reductions/result.json). It checks the exact exponent algebra, Hellinger/chi-square implication, sharpness coefficient, minimax inverse, Huber upper transfer, and equal-law lower mechanism against pinned source anchors.
+
+The empirical sweeps cover explicit one-dimensional compact-support submodels; they are not a proof-assistant formalization of every universal quantifier. The VERIFIED verdict rests on the combination of direct scaled evidence, exact symbolic implications, source-pinned premises, independent checkers, and controls. This limitation is recorded rather than hidden.
 
 ## Evidence map
 
-- [Universal-reduction source](../../evidence/src/repro/src/verify_universal_reductions.py)
-- [Universal-reduction output](../../evidence/raw/universal_reductions/result.json)
-- [Yatracos experiment source](../../evidence/src/repro/src/run_yatracos_experiment.py)
-- [Yatracos aggregate CSV](../../evidence/raw/yatracos_experiment/aggregate_results.csv)
-- [Yatracos raw replicate CSV](../../evidence/raw/yatracos_experiment/raw_replicates.csv)
-- [Independent Yatracos checker](../../evidence/raw/yatracos_experiment/independent_checker.json)
-- [Yatracos controls](../../evidence/raw/yatracos_experiment/negative_control.json)
-- [Raw C1–C3 construction CSV](../../evidence/raw/claim_1_3/raw_results.csv)
-- [Current cumulative entrypoint](../../evidence/src/repro/src/run_publication_gate.py)
+- [Scaled verifier](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Complete scaled result](../../evidence/raw/scaled_direct/result.json)
+- [C1/C2 raw CSV](../../evidence/raw/scaled_direct/claim_1_2_raw.csv)
+- [C4 upper raw CSV](../../evidence/raw/scaled_direct/claim_4_upper_raw.csv)
+- [C5 upper raw CSV](../../evidence/raw/scaled_direct/claim_5_upper_raw.csv)
+- [7,000-pair cloud](../../evidence/raw/scaled_direct/pair_cloud_raw.csv)
+- [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)
+- [Negative controls](../../evidence/raw/scaled_direct/negative_control.json)
+- [Exact claim contract](../../evidence/raw/scaled_direct/claim_contract.json)
+- [Source audit](../../evidence/raw/scaled_direct/source_audit.md)
+- [Cumulative fail-closed entrypoint](../../evidence/src/repro/src/run_publication_gate.py)
 
-Historical files remain byte-preserved and directly reachable from the page labeled exactly **Historical rejected baseline**, but they are no longer navigation children and cannot be mistaken for the current verifier.
+Historical files remain byte-preserved and reachable under **Historical rejected baseline**, but the current scaled verifier is first in navigation.

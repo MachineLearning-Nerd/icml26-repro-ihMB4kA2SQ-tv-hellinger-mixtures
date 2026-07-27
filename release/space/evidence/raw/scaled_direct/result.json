@@ -1,0 +1,571 @@
+{
+  "status": "SCALED_DIRECT_EVIDENCE_PASS",
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+  "seed": 260203202,
+  "claim_1_2": {
+    "families": 60,
+    "cells": 420,
+    "seed": 260203214,
+    "support_dimension": 1,
+    "support_half_width_range": [
+      1.0306613715413233,
+      3.986551231395362
+    ],
+    "tv_range": [
+      1.155771898718629e-07,
+      0.04752475911835193
+    ],
+    "theorem_2_1_violations": 0,
+    "corollary_2_4_violations": 0,
+    "max_theorem_2_1_ratio": 0.00899694474496902,
+    "max_corollary_2_4_ratio": 0.0037867003160089075,
+    "hellinger_over_tv_range": [
+      0.7584118643592577,
+      1.9101367592640301
+    ]
+  },
+  "claim_1_2_independent_checker": {
+    "status": "PASS",
+    "engine": "16,385-point trapezoidal integration",
+    "cells": 8,
+    "rows": [
+      {
+        "family": 0,
+        "relative_amplitude": 1.0,
+        "tv_relative_error": 1.4298241186362946e-07,
+        "hellinger_relative_error": 0.0,
+        "sqrt_chi_relative_error": 1.2538851993311295e-16
+      },
+      {
+        "family": 1,
+        "relative_amplitude": 0.3,
+        "tv_relative_error": 1.2364254324206256e-07,
+        "hellinger_relative_error": 1.6425216353050301e-16,
+        "sqrt_chi_relative_error": 1.1631752459957902e-16
+      },
+      {
+        "family": 2,
+        "relative_amplitude": 0.1,
+        "tv_relative_error": 3.889031312641801e-07,
+        "hellinger_relative_error": 1.841471778453881e-16,
+        "sqrt_chi_relative_error": 2.6004615616976097e-16
+      },
+      {
+        "family": 3,
+        "relative_amplitude": 0.03,
+        "tv_relative_error": 2.78107098934294e-07,
+        "hellinger_relative_error": 3.1066375404086035e-15,
+        "sqrt_chi_relative_error": 0.0
+      },
+      {
+        "family": 4,
+        "relative_amplitude": 0.01,
+        "tv_relative_error": 5.203376729964117e-07,
+        "hellinger_relative_error": 1.0183647979073277e-15,
+        "sqrt_chi_relative_error": 9.257913323009569e-15
+      },
+      {
+        "family": 5,
+        "relative_amplitude": 0.003,
+        "tv_relative_error": 2.135005633850049e-06,
+        "hellinger_relative_error": 6.395744954617231e-14,
+        "sqrt_chi_relative_error": 2.048487979376174e-14
+      },
+      {
+        "family": 6,
+        "relative_amplitude": 0.001,
+        "tv_relative_error": 5.672570883336898e-07,
+        "hellinger_relative_error": 1.4888752293962656e-14,
+        "sqrt_chi_relative_error": 1.4942892574064598e-14
+      },
+      {
+        "family": 7,
+        "relative_amplitude": 1.0,
+        "tv_relative_error": 7.894225739891011e-07,
+        "hellinger_relative_error": 0.0,
+        "sqrt_chi_relative_error": 1.7782466538061942e-16
+      }
+    ],
+    "max_relative_error": 2.135005633850049e-06
+  },
+  "claim_3": {
+    "orders": [
+      11,
+      13,
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      27,
+      29,
+      31
+    ],
+    "order_count": 11,
+    "mp_dps": 100,
+    "all_sharpness_rows_pass": true,
+    "min_sharpness_ratio": 1.2174623476764377,
+    "max_sharpness_ratio": 46.635942326386896,
+    "tv_range": [
+      3.746584816367002e-38,
+      1.806984425525038e-14
+    ],
+    "max_moment_residual": 2.168404344971009e-19,
+    "independent_engine": "independent fixed-node Gauss-Hermite with +20 mpmath digits",
+    "independent_max_relative_error": 0.0001758914337290375
+  },
+  "claim_4": {
+    "upper": {
+      "sample_sizes": [
+        200,
+        500,
+        1000,
+        2000,
+        5000,
+        10000,
+        20000,
+        50000
+      ],
+      "atoms": 9,
+      "candidate_grid_points": 121,
+      "replicates": 8,
+      "aggregate_rows": [
+        {
+          "n": 200,
+          "replicates": 8,
+          "tv": {
+            "mean": 0.06587675407199842,
+            "sd": 0.020173330592371468,
+            "ci95_low": 0.04901142763782318,
+            "ci95_high": 0.08274208050617365
+          },
+          "hellinger": {
+            "mean": 0.0607853511950027,
+            "sd": 0.0171831220967646,
+            "ci95_low": 0.04641990162318971,
+            "ci95_high": 0.0751508007668157
+          }
+        },
+        {
+          "n": 500,
+          "replicates": 8,
+          "tv": {
+            "mean": 0.04433862260528461,
+            "sd": 0.00878897284454235,
+            "ci95_low": 0.03699085742761181,
+            "ci95_high": 0.05168638778295741
+          },
+          "hellinger": {
+            "mean": 0.042120939839292874,
+            "sd": 0.00904494970884899,
+            "ci95_low": 0.03455917264760655,
+            "ci95_high": 0.0496827070309792
+          }
+        },
+        {
+          "n": 1000,
+          "replicates": 8,
+          "tv": {
+            "mean": 0.02788856627490486,
+            "sd": 0.008274447682121079,
+            "ci95_low": 0.020970954897721168,
+            "ci95_high": 0.03480617765208855
+          },
+          "hellinger": {
+            "mean": 0.027581387139133617,
+            "sd": 0.008802066625374026,
+            "ci95_low": 0.020222675286742302,
+            "ci95_high": 0.034940098991524934
+          }
+        },
+        {
+          "n": 2000,
+          "replicates": 8,
+          "tv": {
+            "mean": 0.021347565395294338,
+            "sd": 0.005588188214452321,
+            "ci95_low": 0.016675723134007617,
+            "ci95_high": 0.026019407656581058
+          },
+          "hellinger": {
+            "mean": 0.025657594790220884,
+            "sd": 0.007831713404360638,
+            "ci95_low": 0.019110118531967542,
+            "ci95_high": 0.032205071048474226
+          }
+        },
+        {
+          "n": 5000,
+          "replicates": 8,
+          "tv": {
+            "mean": 0.014581360769629561,
+            "sd": 0.00418526044337335,
+            "ci95_low": 0.011082395476500199,
+            "ci95_high": 0.018080326062758924
+          },
+          "hellinger": {
+            "mean": 0.014938070860157247,
+            "sd": 0.003831800488347764,
+            "ci95_low": 0.011734605484387572,
+            "ci95_high": 0.01814153623592692
+          }
+        },
+        {
+          "n": 10000,
+          "replicates": 8,
+          "tv": {
+            "mean": 0.010988598683520763,
+            "sd": 0.002843339596932616,
+            "ci95_low": 0.008611507293186906,
+            "ci95_high": 0.01336569007385462
+          },
+          "hellinger": {
+            "mean": 0.011534727234585249,
+            "sd": 0.0026483978236492324,
+            "ci95_low": 0.009320611245215896,
+            "ci95_high": 0.013748843223954602
+          }
+        },
+        {
+          "n": 20000,
+          "replicates": 8,
+          "tv": {
+            "mean": 0.008774816082838283,
+            "sd": 0.002494923618679509,
+            "ci95_low": 0.0066890077397541055,
+            "ci95_high": 0.01086062442592246
+          },
+          "hellinger": {
+            "mean": 0.009146453641687138,
+            "sd": 0.0016716170478375965,
+            "ci95_low": 0.007748946816742014,
+            "ci95_high": 0.010543960466632262
+          }
+        },
+        {
+          "n": 50000,
+          "replicates": 8,
+          "tv": {
+            "mean": 0.006030130237164928,
+            "sd": 0.0013351943852813776,
+            "ci95_low": 0.004913879796627175,
+            "ci95_high": 0.007146380677702681
+          },
+          "hellinger": {
+            "mean": 0.00643577348307644,
+            "sd": 0.0015416899157162539,
+            "ci95_low": 0.005146888458872106,
+            "ci95_high": 0.0077246585072807735
+          }
+        }
+      ],
+      "tv_exponent_in_n": -0.4313970840859627,
+      "hellinger_exponent_in_n": -0.40876948002363067,
+      "fixed_estimator_mean_tv": 0.1289960490812776,
+      "fixed_estimator_exponent_in_n": 0.0
+    },
+    "lower": {
+      "rows": [
+        {
+          "n": 200,
+          "lower_bound_tv": 0.00924459636328587,
+          "pair_tv": 0.04480031737685882,
+          "pair_hellinger": 0.03251046879243292
+        },
+        {
+          "n": 500,
+          "lower_bound_tv": 0.005699846963691226,
+          "pair_tv": 0.027670446090495897,
+          "pair_hellinger": 0.0205961401455224
+        },
+        {
+          "n": 1000,
+          "lower_bound_tv": 0.004100388316226152,
+          "pair_tv": 0.016766992946601816,
+          "pair_hellinger": 0.01229749180113272
+        },
+        {
+          "n": 2000,
+          "lower_bound_tv": 0.002894443535644264,
+          "pair_tv": 0.01406239498112971,
+          "pair_hellinger": 0.010305950024826989
+        },
+        {
+          "n": 5000,
+          "lower_bound_tv": 0.001829193006451342,
+          "pair_tv": 0.007945056382085999,
+          "pair_hellinger": 0.005865481013127138
+        },
+        {
+          "n": 10000,
+          "lower_bound_tv": 0.0012734173809657127,
+          "pair_tv": 0.0054578428974981184,
+          "pair_hellinger": 0.004091066812816146
+        },
+        {
+          "n": 20000,
+          "lower_bound_tv": 0.0009255440255034811,
+          "pair_tv": 0.0037249478957199736,
+          "pair_hellinger": 0.0027008211268362624
+        },
+        {
+          "n": 50000,
+          "lower_bound_tv": 0.0005786544765928267,
+          "pair_tv": 0.0024791521321814018,
+          "pair_hellinger": 0.0018288583356163373
+        }
+      ],
+      "tv_risk_exponent_in_n": -0.50002629619869,
+      "squared_tv_risk_exponent_in_n": -1.00005259239738,
+      "formula": "(TV(P0,P1)/2)*(1-upper_bound_TV(P0^n,P1^n))",
+      "product_affinity_identity": "(1-H(P0,P1)^2)^n"
+    }
+  },
+  "claim_5": {
+    "upper": {
+      "epsilons": [
+        0.01,
+        0.02,
+        0.04,
+        0.08,
+        0.16,
+        0.32
+      ],
+      "n": 200000,
+      "replicates": 4,
+      "contaminant_locations": [
+        -4.0,
+        -3.5,
+        -3.0,
+        -2.5,
+        -2.0,
+        -1.5,
+        -1.0,
+        -0.5,
+        0.0,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        3.5,
+        4.0
+      ],
+      "aggregate_rows": [
+        {
+          "epsilon": 0.01,
+          "n": 200000,
+          "locations_searched": 17,
+          "worst_contaminant_location": -4.0,
+          "worst_hellinger": {
+            "mean": 0.013900968011580238,
+            "sd": 0.0025174306169796043,
+            "ci95_low": 0.009895174128672826,
+            "ci95_high": 0.01790676189448765
+          },
+          "worst_hellinger_squared": 0.00019323691165897705
+        },
+        {
+          "epsilon": 0.02,
+          "n": 200000,
+          "locations_searched": 17,
+          "worst_contaminant_location": -4.0,
+          "worst_hellinger": {
+            "mean": 0.026254095322199557,
+            "sd": 0.007039513819810896,
+            "ci95_low": 0.015052657948774164,
+            "ci95_high": 0.037455532695624946
+          },
+          "worst_hellinger_squared": 0.0006892775211871406
+        },
+        {
+          "epsilon": 0.04,
+          "n": 200000,
+          "locations_searched": 17,
+          "worst_contaminant_location": -4.0,
+          "worst_hellinger": {
+            "mean": 0.04768989537213435,
+            "sd": 0.009279229486359434,
+            "ci95_low": 0.03292457057476224,
+            "ci95_high": 0.062455220169506456
+          },
+          "worst_hellinger_squared": 0.002274326120605121
+        },
+        {
+          "epsilon": 0.08,
+          "n": 200000,
+          "locations_searched": 17,
+          "worst_contaminant_location": -4.0,
+          "worst_hellinger": {
+            "mean": 0.08613216248591671,
+            "sd": 0.014469832885231442,
+            "ci95_low": 0.06310742938407796,
+            "ci95_high": 0.10915689558775546
+          },
+          "worst_hellinger_squared": 0.007418749414500357
+        },
+        {
+          "epsilon": 0.16,
+          "n": 200000,
+          "locations_searched": 17,
+          "worst_contaminant_location": -4.0,
+          "worst_hellinger": {
+            "mean": 0.14826156155367715,
+            "sd": 0.021254731654542496,
+            "ci95_low": 0.11444054044177943,
+            "ci95_high": 0.18208258266557487
+          },
+          "worst_hellinger_squared": 0.021981490634334796
+        },
+        {
+          "epsilon": 0.32,
+          "n": 200000,
+          "locations_searched": 17,
+          "worst_contaminant_location": -4.0,
+          "worst_hellinger": {
+            "mean": 0.2519737550710618,
+            "sd": 0.029593717794886298,
+            "ci95_low": 0.20488354614308948,
+            "ci95_high": 0.2990639639990341
+          },
+          "worst_hellinger_squared": 0.06349077324461144
+        }
+      ],
+      "hellinger_exponent_in_epsilon": 0.8355868628158392,
+      "hellinger_squared_exponent_in_epsilon": 1.6711737256316783
+    },
+    "lower": {
+      "rows": [
+        {
+          "epsilon": 1e-05,
+          "chen_tv_boundary": 1.000010000100001e-05,
+          "max_hellinger": 2.7426459128560123e-05,
+          "pair_tv": 3.815824012029941e-06,
+          "minimax_hellinger_lower_bound": 1.3713229564280062e-05,
+          "admissible_pair_count": 1288
+        },
+        {
+          "epsilon": 3e-05,
+          "chen_tv_boundary": 3.000090002700081e-05,
+          "max_hellinger": 8.466904346870612e-05,
+          "pair_tv": 1.9396105469640385e-05,
+          "minimax_hellinger_lower_bound": 4.233452173435306e-05,
+          "admissible_pair_count": 2014
+        },
+        {
+          "epsilon": 0.0001,
+          "chen_tv_boundary": 0.00010001000100010001,
+          "max_hellinger": 0.0003932928626761393,
+          "pair_tv": 6.359188377310642e-05,
+          "minimax_hellinger_lower_bound": 0.00019664643133806965,
+          "admissible_pair_count": 2798
+        },
+        {
+          "epsilon": 0.0003,
+          "chen_tv_boundary": 0.0003000900270081024,
+          "max_hellinger": 0.0007386789586169384,
+          "pair_tv": 0.0001567520879991559,
+          "minimax_hellinger_lower_bound": 0.0003693394793084692,
+          "admissible_pair_count": 3531
+        },
+        {
+          "epsilon": 0.001,
+          "chen_tv_boundary": 0.001001001001001001,
+          "max_hellinger": 0.0027342455538765863,
+          "pair_tv": 0.000485668756248267,
+          "minimax_hellinger_lower_bound": 0.0013671227769382931,
+          "admissible_pair_count": 4397
+        },
+        {
+          "epsilon": 0.003,
+          "chen_tv_boundary": 0.0030090270812437314,
+          "max_hellinger": 0.007000116856520031,
+          "pair_tv": 0.0016571144308269367,
+          "minimax_hellinger_lower_bound": 0.0035000584282600155,
+          "admissible_pair_count": 5217
+        },
+        {
+          "epsilon": 0.01,
+          "chen_tv_boundary": 0.010101010101010102,
+          "max_hellinger": 0.02864333083822598,
+          "pair_tv": 0.008901844451320827,
+          "minimax_hellinger_lower_bound": 0.01432166541911299,
+          "admissible_pair_count": 6131
+        },
+        {
+          "epsilon": 0.03,
+          "chen_tv_boundary": 0.030927835051546393,
+          "max_hellinger": 0.05408655412430878,
+          "pair_tv": 0.022604907901326993,
+          "minimax_hellinger_lower_bound": 0.02704327706215439,
+          "admissible_pair_count": 6720
+        },
+        {
+          "epsilon": 0.1,
+          "chen_tv_boundary": 0.11111111111111112,
+          "max_hellinger": 0.13377962834953414,
+          "pair_tv": 0.10881330376970325,
+          "minimax_hellinger_lower_bound": 0.06688981417476707,
+          "admissible_pair_count": 6990
+        }
+      ],
+      "hellinger_exponent_in_epsilon": 0.929163134325539,
+      "hellinger_squared_exponent_in_epsilon": 1.858326268651078,
+      "saturated_steps": 0,
+      "equal_contaminated_law_condition": "TV(P0,P1)<=epsilon/(1-epsilon)"
+    }
+  },
+  "pair_cloud": {
+    "attempts": 7000,
+    "valid_pairs": 7000,
+    "seed": 260207502,
+    "tv_range": [
+      1.6418924959432503e-07,
+      0.1783865430403314
+    ]
+  },
+  "negative_controls": {
+    "C1_linear_sqrt_chi_control_rejected": true,
+    "C2_linear_hellinger_control_rejected": true,
+    "C3_wrong_exponent_control_rejected": true,
+    "C4_fixed_estimator_control_rejected": true,
+    "C5_nonadversarial_control_rejected": true
+  },
+  "gates": {
+    "C1_exact_bound_zero_violations": true,
+    "C2_exact_bound_zero_violations": true,
+    "C1_C2_independent_grid_agrees": true,
+    "C3_all_odd_orders_11_through_31": true,
+    "C3_exact_sharpness_rows_pass": true,
+    "C4_estimator_rate_near_half": true,
+    "C4_lecam_rate_near_half": true,
+    "C5_adversarial_H2_rate_nontrivial": true,
+    "C5_lower_H_rate_near_one": true,
+    "C5_lower_search_not_saturated": true,
+    "negative_controls_fail_as_intended": true
+  },
+  "compute": {
+    "estimated_effective_cores": 1,
+    "runtime_class": "uncertain before run",
+    "formal_backend": "Hugging Face",
+    "formal_flavor": "cpu-upgrade",
+    "formal_job_id": "DineshAI/6a66bae3db23d7a7ec1cf1ba",
+    "observed_execution_context": "local deterministic artifact regeneration",
+    "actual_logical_cpus_visible": 8,
+    "thread_limits": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "runtime_seconds": 6.57781841699034,
+    "max_rss_reported": 126025728,
+    "max_rss_unit": "bytes"
+  },
+  "git_sha": "1b59b9e1b60940c8e4cce58ff7359933032f2571",
+  "limitations": "Finite computational reproduction over explicit compactly supported submodels. It directly tests the displayed inequalities, explicit sharpness construction, and upper/lower rate behavior; it is not a proof-assistant formalization of all universal quantifiers."
+}

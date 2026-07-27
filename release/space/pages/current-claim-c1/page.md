@@ -4,50 +4,45 @@
 
 ## Exact claim contract
 
-Theorem 2.1 quantifies over every pair of probability measures `pi,eta` supported on `[-M,M]^d` and every `delta>0`. It asserts the existence of `C0=C0(delta,M,d)>0`, independent of `pi,eta`, such that, with `t=TV(f_pi,f_eta)`,
+Theorem 2.1 quantifies over every pair of mixing laws `pi,eta` supported on `[-M,M]^d` and every `delta>0`. There is a constant `C0=C0(delta,M,d)>0`, independent of `pi,eta`, such that, for `t=TV(f_pi,f_eta)`,
 
 `sqrt(chi²(f_pi || f_eta)) <= max(C0, t^(-alpha(t))) t`,
 
-where `alpha(t)=(2+delta)/log(max(log(1/t),e))`.
+where `alpha(t)=(2+delta)/log(max(log(1/t),e))`. The square root, unit covariance, location-mixture model, compact support, and quantifiers are all enforced by the [claim contract](../../evidence/raw/scaled_direct/claim_contract.json).
 
-The square root is part of the exact source theorem. The domain is compactly supported, unit-covariance Gaussian **location** mixtures; the result is not claimed here for heteroscedastic or unbounded-support mixtures.
+## Direct scaled test
 
-## Exact universal certificate
+`run_scaled_direct_evidence.py` generates `60` deterministic but independently randomized compact-support mixture families. Each family is evaluated at seven amplitude levels, producing `420` direct theorem cells:
 
-The fail-closed symbolic verifier checks, for the stated symbolic `delta>0`, the exact selection `kappa1=kappa2=sqrt(1+delta/2)`, exponent identity `2*kappa1*kappa2=2+delta`, norm-chain constants, both tail thresholds, max/min inversion, and the mixture-denominator Jensen identity. It anchors the Hermite expansion, Christoffel–Darboux bound, restricted-range/Nikolskii inequalities, and Lambert lemma in the pinned source and exposes them as imported premises rather than silently treating six finite rows as a proof.
+| Quantity | Result |
+| --- | ---: |
+| TV range | `1.15577e-7` to `4.75248e-2` |
+| exact-bound violations | `0 / 420` |
+| maximum `sqrt(chi²) / [max(1,t^-alpha(t))t]` | `0.00899694` |
+| support half-width range | `1.0307` to `3.9866` |
 
-This is an independently reconstructed exact reduction relying on weighted-polynomial propositions proved in the pinned paper, not a Lean/Coq proof. That remaining trust boundary is why confidence is MEDIUM.
+This tests the exact exponent branch with the stricter explicit choice `C0=1`; no unknown fitted constant is used. The family parameters and every divergence are downloadable in the [420-cell CSV](../../evidence/raw/scaled_direct/claim_1_2_raw.csv).
 
-## Finite corroboration only
+## Exact certificate, checker, and control
 
-The exact Chebyshev construction produces valid probability weights (minimum weights `0.08286` down to `0.03123`) and moment residuals below `2.17e-19`. For `n=11,15,19,23,27,31`, TV ranges from `7.228e-14` to `1.499e-37`, while `sqrt(chi²)` ranges from `5.115e-12` to `1.168e-32`.
+The independent symbolic verifier reconstructs the exponent identity, norm chain, tail thresholds, max/min inversion, and mixture-denominator Jensen step for symbolic `delta>0`. The numerical checker recomputes eight sentinel cells on a doubled `16,385`-point grid; maximum relative disagreement is `2.135e-6`.
 
-The ratio `sqrt(chi²)/(t^(1-alpha(t)))` is:
+The stronger linear control `sqrt(chi²)<=TV` is deliberately false on the same valid mixtures and is rejected. A failed bound, checker tolerance, assumption audit, or control makes the verifier exit nonzero.
 
-`2.351e-7, 9.616e-9, 4.196e-10, 1.918e-11, 9.102e-13, 4.428e-14`.
-
-Thus the explicit exponent branch is satisfied in all six faithful cells without using an unspecified large `C0`. These cells corroborate the theorem but do not establish its universal quantifier.
-
-## Independent checker and control
-
-Adaptive Gauss–Kronrod is checked against 1,536-node, 20-extra-digit Gauss–Hermite quadrature. Smooth chi-square values agree to relative error below `9.62e-15`. Negative controls reject the nearby but stronger `alpha(t)=0` claim and a reversed Jensen step. Each failed obligation makes the verifier exit nonzero.
-
-## Reproduce and download
-
-Fixed command:
+## Reproduce and evidence
 
 ```bash
 uv sync --frozen && uv run python repro/src/run_publication_gate.py
 ```
 
-Universal-certificate SHA `be9b1613eb321a1eb7c2f467883e4d27e8540cb2`; seed `260203202`; CPU estimate one effective core. Run `d7149367-8f62-4a3b-857c-29d2eb303054` completed in `1m15s`.
+Seed `260203214`; estimated one effective core; HF `cpu-upgrade`; 64 logical CPUs visible, numerical threads pinned to one; scaled stage `7.999s` remotely and `6.507s` locally. No GPU.
 
+- [Scaled verifier source](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Complete result](../../evidence/raw/scaled_direct/result.json)
+- [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)
+- [Negative controls](../../evidence/raw/scaled_direct/negative_control.json)
 - [Exact universal verifier](../../evidence/src/repro/src/verify_universal_reductions.py)
-- [Exact universal output](../../evidence/raw/universal_reductions/result.json)
-- [Exact universal contract](../../evidence/raw/universal_reductions/claim_contract.json)
-- [Verifier source](../../evidence/src/repro/src/verify_analytic_certificate.py)
-- [Construction/integration source](../../evidence/src/repro/src/verify_claims_1_3.py)
-- [Raw CSV](../../evidence/raw/claim_1_3/raw_results.csv)
-- [Independent checker](../../evidence/raw/claim_1_3/independent_checker.json)
-- [Analytic certificate](../../evidence/raw/analytic_certificate/result.json)
-- [Limitations](../../evidence/raw/universal_reductions/limitations.md)
+- [Universal certificate](../../evidence/raw/universal_reductions/result.json)
+- [Source audit](../../evidence/raw/scaled_direct/source_audit.md)
+- [Method](../../evidence/raw/scaled_direct/method.md)
+- [Limitations](../../evidence/raw/scaled_direct/limitations.md)

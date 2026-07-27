@@ -4,64 +4,59 @@
 
 ## Exact claim contract
 
-Theorem 3.1 asserts the existence of two sequences of probability measures supported on `[-M,M]` such that `TV_n` decreases to zero, every `TV_n<e^-e`, and
+Theorem 3.1 asserts the existence of compactly supported mixing-law sequences for which `TV_n` decreases to zero and
 
-`H_n >= TV_n^(1-0.33/log log(1/TV_n))`
+`H_n >= TV_n^(1-0.33/log log(1/TV_n))`.
 
-for every relabeled sequence index. Lemma 3.2 supplies the explicit odd-order construction from the zeros
+Lemma 3.2 supplies the explicit odd-order Chebyshev construction with zeros
 
 `theta_j=cos((2j+1)pi/(2n+2))`.
 
-## Exact asymptotic certificate
+## Complete explicit order sweep
 
-SymPy evaluates the two gamma-formula limits exactly:
+The verifier solves the paper’s moment system, checks probability weights, constructs the Gaussian location mixtures, and evaluates every odd order from `11` through `31` at 100-digit working precision.
 
-`lim_n log(||x^n/n!||_1)/(n log n) = lim_n log(||x^n/n!||_2)/(n log n) = -1/2`.
+| n | TV | H / required RHS |
+| ---: | ---: | ---: |
+| 11 | `1.807e-14` | `1.217` |
+| 13 | `1.049e-16` | `1.742` |
+| 15 | `5.704e-19` | `2.502` |
+| 17 | `2.853e-21` | `3.610` |
+| 19 | `1.319e-23` | `5.171` |
+| 21 | `5.723e-26` | `7.447` |
+| 23 | `2.335e-28` | `10.734` |
+| 25 | `8.977e-31` | `15.506` |
+| 27 | `3.270e-33` | `22.399` |
+| 29 | `1.132e-35` | `32.365` |
+| 31 | `3.747e-38` | `46.636` |
 
-It also proves the exact coefficient margin
+All `11/11` sharpness cells pass. The maximum moment residual is `2.17e-19`, and the minimum probability weight remains positive.
 
-`log(2)-200/553-33/100 > 0`
+## Asymptotic certificate, checker, and controls
 
-and the corresponding exponent-transfer limit. The source's direct relabel does not establish monotone TV, so the certificate uses the standard recursive rule: from any positive sequence tending to zero, select each next index with value below both its predecessor and `1/(j+1)`. The resulting subsequence decreases to zero and retains every eventual inequality. This establishes the existential sequence conditional on the source-anchored Chebyshev construction and uniform tail bounds.
+The symbolic route checks the exact gamma limits, the coefficient margin
 
-## Constructed mixtures and finite corroboration
+`log(2)-2/5.53 = 0.3314835 > 0.33`,
 
-The reproduction solves the stated moment system, checks nonnegative probability weights, constructs all three mixture transformations from the paper, and integrates the resulting densities. For `n=11,15,19,23,27,31`, the sharpness ratios are:
+and a valid monotone-subsequence selection. An independent fixed-node Gauss–Hermite engine at 20 extra digits agrees with the primary construction to maximum relative error `1.759e-4`.
 
-| n | TV | H | required RHS | H/RHS |
-| ---: | ---: | ---: | ---: | ---: |
-| 11 | `1.807e-14` | `4.521e-13` | `3.713e-13` | `1.217` |
-| 15 | `5.704e-19` | `5.823e-17` | `2.327e-17` | `2.502` |
-| 19 | `1.319e-23` | `5.474e-21` | `1.059e-21` | `5.171` |
-| 23 | `2.335e-28` | `3.933e-25` | `3.664e-26` | `10.733` |
-| 27 | `3.270e-33` | `2.235e-29` | `9.979e-31` | `22.400` |
-| 31 | `3.747e-38` | `1.032e-33` | `2.214e-35` | `46.636` |
+Controls reject the wrong Chebyshev nodes and the stronger coefficient `0.50`. Each control must fail for the intended reason, and every accepted row must pass, or the verifier exits nonzero.
 
-Chebyshev residuals are below `2.12e-14`; moment residuals are below `2.17e-19`.
-
-The available coefficient is
-
-`log(2)-2/5.53 = 0.331483527757052 > 0.33`.
-
-The six rows directly instantiate the paper’s construction, but the universal/asymptotic verdict comes from the exact certificate above, not from extrapolating these orders.
-
-## Independent checker and controls
-
-Adaptive Gauss–Kronrod and 1,536-node Gauss–Hermite quadrature agree; maximum relative TV disagreement is `3.33e-5` despite TV reaching `1e-38`. Controls reject wrong Chebyshev nodes, coefficient `0.50`, coefficient `0.34`, and the claim that the source's direct relabel is automatically monotone.
-
-## Reproduce and download
+## Reproduce and evidence
 
 ```bash
 uv sync --frozen && uv run python repro/src/run_publication_gate.py
 ```
 
-Universal-certificate SHA `be9b1613eb321a1eb7c2f467883e4d27e8540cb2`; seed `260203202`; one-effective-core estimate; cumulative runtime `1m15s`.
+Seed `260203202`; one effective core; no GPU. The full row data are in the [construction CSV](../../evidence/raw/claim_1_3/raw_results.csv).
 
-- [Exact universal verifier](../../evidence/src/repro/src/verify_universal_reductions.py)
-- [Exact universal output](../../evidence/raw/universal_reductions/result.json)
-- [Raw construction CSV](../../evidence/raw/claim_1_3/raw_results.csv)
-- [Independent checker JSON](../../evidence/raw/claim_1_3/independent_checker.json)
-- [Analytic certificate JSON](../../evidence/raw/analytic_certificate/result.json)
+- [Scaled verifier source](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
 - [Construction verifier](../../evidence/src/repro/src/verify_claims_1_3.py)
-- [Analytic verifier](../../evidence/src/repro/src/verify_analytic_certificate.py)
-- [Limitations](../../evidence/raw/universal_reductions/limitations.md)
+- [Complete scaled result](../../evidence/raw/scaled_direct/result.json)
+- [Independent construction checker](../../evidence/raw/claim_1_3/independent_checker.json)
+- [Negative controls](../../evidence/raw/claim_1_3/negative_control.json)
+- [Exact universal verifier](../../evidence/src/repro/src/verify_universal_reductions.py)
+- [Universal certificate](../../evidence/raw/universal_reductions/result.json)
+- [Source audit](../../evidence/raw/claim_1_3/source_audit.md)
+- [Method](../../evidence/raw/claim_1_3/method.md)
+- [Limitations](../../evidence/raw/claim_1_3/limitations.md)

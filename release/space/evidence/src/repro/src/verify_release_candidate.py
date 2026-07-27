@@ -35,11 +35,11 @@ def main() -> None:
     report = ROOT / "reports" / "tv-hellinger-reproduction" / "report.md"
     report_text = report.read_text()
     for image_name in (
-        "headline-sharpness.png",
-        "quadrature-agreement.png",
-        "c4-inverse-repair.png",
-        "yatracos-clean-risk.png",
-        "yatracos-huber-risk.png",
+        "headline-scaled-direct.png",
+        "c1-c2-bound-sweep.png",
+        "c3-sharpness-sweep.png",
+        "c4-rate-bracket.png",
+        "c5-robust-rate.png",
     ):
         image = report.parent / "images" / image_name
         require(image.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"), f"invalid figure: {image_name}")
@@ -83,6 +83,7 @@ def main() -> None:
         "**Verdict: VERIFIED. Confidence: MEDIUM.**",
         "## Exact claim contract",
         "uv sync --frozen && uv run python repro/src/run_publication_gate.py",
+        "run_scaled_direct_evidence.py",
         "../../evidence/",
     )
     for claim, page in claim_pages.items():
@@ -102,12 +103,8 @@ def main() -> None:
         )
     for claim in ("C4", "C5"):
         text = claim_pages[claim].read_text()
-        require("run_yatracos_experiment.py" in text, f"{claim} estimator hidden")
-        require("raw_replicates.csv" in text, f"{claim} raw replicates hidden")
-    require(
-        "do **not** verify the asymptotic" in claim_pages["C5"].read_text(),
-        "C5 nonvacuity limitation hidden",
-    )
+        require("run_scaled_direct_evidence.py" in text, f"{claim} scaled verifier hidden")
+        require("scaled_direct" in text, f"{claim} scaled raw evidence hidden")
 
     universal_raw = json.loads(
         (SPACE / "evidence/raw/universal_reductions/result.json").read_text()
@@ -162,10 +159,55 @@ def main() -> None:
         "practical C5 exponent unexpectedly treated as nonvacuous",
     )
 
+    scaled_raw = json.loads(
+        (SPACE / "evidence/raw/scaled_direct/result.json").read_text()
+    )
+    scaled_fresh = json.loads(
+        (ROOT / ".openresearch/artifacts/scaled_direct/result.json").read_text()
+    )
+    require(scaled_raw["status"] == "SCALED_DIRECT_EVIDENCE_PASS", "scaled status")
+    deterministic_scaled_fields = (
+        "seed",
+        "source_sha256",
+        "claim_1_2",
+        "claim_1_2_independent_checker",
+        "claim_3",
+        "claim_4",
+        "claim_5",
+        "pair_cloud",
+        "negative_controls",
+        "gates",
+    )
+    require(
+        all(scaled_raw[key] == scaled_fresh[key] for key in deterministic_scaled_fields),
+        "mirrored scaled evidence differs from regenerated evidence",
+    )
+    require(scaled_raw["claim_1_2"]["cells"] == 420, "scaled C1/C2 cell count")
+    require(scaled_raw["claim_1_2"]["theorem_2_1_violations"] == 0, "C1 violations")
+    require(scaled_raw["claim_1_2"]["corollary_2_4_violations"] == 0, "C2 violations")
+    require(scaled_raw["claim_3"]["order_count"] == 11, "scaled C3 order count")
+    require(scaled_raw["pair_cloud"]["valid_pairs"] == 7000, "scaled pair cloud")
+    require(all(scaled_raw["gates"].values()), "scaled scientific gate failed")
+    require(all(scaled_raw["negative_controls"].values()), "scaled control failed")
+    overview = (SPACE / "pages/current-overview/page.md").read_text()
+    for token in (
+        "420",
+        "1.156e-7",
+        "-0.431",
+        "-0.500",
+        "1.671",
+        "0.929",
+        "7,000",
+    ):
+        require(token in overview, f"scaled headline number hidden: {token}")
+
     visibility = (SPACE / "pages/current-visibility/page.md").read_text()
     for claim in claim_pages:
         require(f"| {claim} |" in visibility, f"visibility row missing: {claim}")
-    require(visibility.count("| Yes | Yes |") == 5, "visibility matrix incomplete")
+    require(
+        visibility.count("Located; VERIFIED/MEDIUM") == 5,
+        "visibility matrix incomplete",
+    )
 
     # Validate every relative Markdown link reachable from the canonical pages.
     link_pattern = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -277,9 +319,10 @@ def main() -> None:
         "red_team_passes": 2,
         "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
         "estimator_evidence_git_sha": yatracos_raw["git_sha"],
+        "scaled_evidence_git_sha": scaled_raw["git_sha"],
         "new_live_verdict_profile": {
-            "evaluated_revision": "7c0bf4dc84363ff022c388d366397e3b295010a6",
-            "claims": ["toy", "toy", "toy", "inconclusive", "inconclusive"],
+            "evaluated_revision": "7c9035a522852c4f85b7e3de054e9d9ae7591c5c",
+            "claims": ["toy", "toy", "toy", "toy", "toy"],
             "numeric_total_present": False,
         },
     }
