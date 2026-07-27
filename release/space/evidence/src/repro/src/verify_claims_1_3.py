@@ -42,7 +42,14 @@ def double_factorial(value: int) -> int:
 
 def construction(
     order: int, dps: int
-) -> tuple[np.ndarray, np.ndarray, float, list[mp.mpf], list[mp.mpf]]:
+) -> tuple[
+    np.ndarray,
+    np.ndarray,
+    float,
+    list[mp.mpf],
+    list[mp.mpf],
+    mp.mpf,
+]:
     """Return nodes, scaled weights u=w/s, and s from Lemma 3.2 (M=1)."""
     mp.mp.dps = dps
     nodes_mp = [
@@ -59,10 +66,27 @@ def construction(
         ]
     )
     scaled_weights = mp.lu_solve(vandermonde, scaled_moments)
-    scale = float((mp.sqrt(2) - 1) ** (order + 1))
+    scale_mp = (mp.sqrt(2) - 1) ** (order + 1)
+    high_precision_residual = max(
+        abs(
+            mp.fsum(
+                scaled_weights[j] * nodes_mp[j] ** k for j in range(order + 1)
+            )
+            - scaled_moments[k]
+        )
+        for k in range(order + 1)
+    ) * scale_mp
+    scale = float(scale_mp)
     nodes = np.array([float(value) for value in nodes_mp])
     u = np.array([float(value) for value in scaled_weights])
-    return nodes, u, scale, nodes_mp, list(scaled_weights)
+    return (
+        nodes,
+        u,
+        scale,
+        nodes_mp,
+        list(scaled_weights),
+        high_precision_residual,
+    )
 
 
 def signed_value(
@@ -126,6 +150,7 @@ def finish_row(
     expected_hellinger_scaled: float,
     root_count: int,
     integration_error: float,
+    high_precision_moment_residual: mp.mpf,
 ) -> dict[str, float | int | str]:
     lambda_n = math.exp(-math.sqrt(8 * n + 4))
     tv1 = 0.5 * lambda_n * scale * expected_abs
@@ -170,6 +195,9 @@ def finish_row(
             np.max(np.abs(np.cos((n + 1) * np.arccos(nodes))))
         ),
         "moment_residual": moment_residual,
+        "high_precision_moment_residual": mp.nstr(
+            high_precision_moment_residual, 18
+        ),
         "min_probability_weight": float(np.min(1 / (n + 1) + weights)),
         "root_count": root_count,
         "reported_integration_error": integration_error,
@@ -179,7 +207,9 @@ def finish_row(
 def evaluate_adaptive(
     n: int, delta: float, dps: int
 ) -> dict[str, float | int | str]:
-    nodes, u, scale, nodes_mp, u_mp = construction(n, dps)
+    nodes, u, scale, nodes_mp, u_mp, high_precision_residual = construction(
+        n, dps
+    )
     lambda_n = math.exp(-math.sqrt(8 * n + 4))
     roots = find_sign_changes(nodes_mp, u_mp)
     integration_extent = 40.0
@@ -264,13 +294,16 @@ def evaluate_adaptive(
         hellinger_total,
         len(roots),
         abs_error + chi_error + hellinger_error + tail_bound_abs,
+        high_precision_residual,
     )
 
 
 def evaluate_gauss_hermite(
     n: int, quadrature_order: int, delta: float, dps: int
 ) -> dict[str, float | int | str]:
-    nodes, u, scale, nodes_mp, u_mp = construction(n, dps)
+    nodes, u, scale, nodes_mp, u_mp, high_precision_residual = construction(
+        n, dps
+    )
     signed, probability_weights = expectation_grid(nodes_mp, u_mp, quadrature_order)
     x, _ = roots_hermitenorm(quadrature_order)
     exponent = np.exp(x[:, None] * nodes[None, :] - 0.5 * nodes[None, :] ** 2)
@@ -294,6 +327,7 @@ def evaluate_gauss_hermite(
         ),
         -1,
         0.0,
+        high_precision_residual,
     )
 
 
@@ -404,6 +438,8 @@ def main() -> None:
             raise AssertionError("Chebyshev node identity failed")
         if primary["moment_residual"] >= 2e-12:
             raise AssertionError("moment system failed")
+        if float(primary["high_precision_moment_residual"]) >= 1e-100:
+            raise AssertionError("high-precision moment system failed")
         if primary["min_probability_weight"] < -2e-14:
             raise AssertionError("invalid mixing probability")
         if primary["theorem_2_1_ratio"] > 1.0 + 1e-10:
@@ -458,6 +494,10 @@ def main() -> None:
             ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
         ).strip(),
         "seed": config["seed"],
+        "mp_dps": config["mp_dps"],
+        "max_high_precision_moment_residual": max(
+            float(row["high_precision_moment_residual"]) for row in rows
+        ),
         "primary_engine": config["primary_engine"],
         "cpu_estimate": "1 effective core",
         "actual_logical_cpus_visible": os.cpu_count(),

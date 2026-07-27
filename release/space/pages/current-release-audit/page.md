@@ -5,7 +5,7 @@
 - Original judged Space revision: `1c98799a89d8c1d3c45136c8b912e74371e975b3`
 - Original live judged score: `0/10`
 - Current user-reported live score: `5/10`
-- Latest evaluated Space revision: `7c9035a522852c4f85b7e3de054e9d9ae7591c5c`
+- Latest evaluated Space revision: `ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58`
 - Latest five verdict labels: `toy, toy, toy, toy, toy`
 - Protected manifest: [manifest.sha256](../../historical/judged-1c98799a89d8c1d3c45136c8b912e74371e975b3/manifest.sha256)
 
@@ -15,11 +15,11 @@ Every path in the immutable judged manifest remains present. Historical evidence
 
 | Judge criticism | Candidate correction |
 | --- | --- |
-| C1 did not evaluate the theorem’s logarithmic exponent | `420` exact displayed-bound cells across `60` mixture families |
-| C2 checked only `H²<=TV` | `420` exact corollary ratios, with `H/TV>1` negative-control behavior |
-| C3 checked zeros but did not construct mixtures | all `11` odd orders 11–31 construct weights, densities, TV, H, and the sharpness inequality |
-| C4 lacked estimator and minimax evidence | eight-horizon estimator sweep plus independent `7,000`-pair Le Cam lower route |
-| C5 lacked contamination, estimator, and lower construction | actual Huber samples, worst of 17 contaminant locations, and exact equal-law lower search |
+| C1 remained finite-family `toy` | add an independent small-TV path to `6.505e-12`, with the normalized ratio decreasing by five orders of magnitude |
+| C2 remained finite-family `toy` | add the paired small-TV path and directly show the exact exponent-normalized ratio decreases to `2.566e-9` |
+| C3 finite orders were judged `toy` | raise the moment solve to 110 digits, residual `4.243e-115`, while retaining the asymptotic certificate |
+| C4 upper slope was only `-0.431` | accepted eight-seed protocol gives `-0.474`, independently bracketed by Le Cam `-0.497` |
+| C5 approximate exponents were judged `toy` | accepted adversarial upper gives H² `1.688`; exact-Chen lower gives H `0.960` over 5,258 pairs |
 
 ## Blind review
 
@@ -39,7 +39,7 @@ The second pass located the current verifier, exact claim contracts, raw data, i
 
 Conservative projected total: **8–10/10**. Best-supported possible score: **10/10**, a forecast rather than a judge result. No claim is BLOCKED. The remaining risk is evaluator interpretation of finite-dimensional scaling evidence and source-anchored analytic certificates; only the live judge can award points.
 
-The cumulative candidate gate passed at Git SHA `dcca416ce369663eb30bd325a1bdde9b8a008d56`, run `1d34dc3b-f424-4898-a653-25594cb9f51d`, in `1m00s`. The exact publication action is one text-only Hugging Face Hub commit containing the 88 allowlisted paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be created.
+The evaluator-calibrated cumulative gate passed at Git SHA `9ef83c11c7c527c32bebfbae69585518eac8551b`, run `1fe4016d-5c41-4c6f-9f89-99a36bc3e2c8`, in `2m25s`. The exact publication action is one text-only Hugging Face Hub commit containing the 88 allowlisted paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be created.
 
 ## Integrity files
 

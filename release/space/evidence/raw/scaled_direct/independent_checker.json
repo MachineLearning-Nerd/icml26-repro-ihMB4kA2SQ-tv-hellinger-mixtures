@@ -69,11 +69,11 @@
     "max_relative_error": 0.0001758914337290375
   },
   "claim_4": {
-    "upper_exponent": -0.4313970840859627,
-    "lower_exponent": -0.50002629619869
+    "upper_exponent": -0.4737621578241169,
+    "lower_exponent": -0.49711489570666173
   },
   "claim_5": {
-    "upper_H_exponent": 0.8355868628158392,
-    "lower_H_exponent": 0.929163134325539
+    "upper_H_exponent": 0.8441067331261956,
+    "lower_H_exponent": 0.9600569562256783
   }
 }

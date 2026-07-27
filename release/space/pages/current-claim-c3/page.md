@@ -14,7 +14,7 @@ Lemma 3.2 supplies the explicit odd-order Chebyshev construction with zeros
 
 ## Complete explicit order sweep
 
-The verifier solves the paper’s moment system, checks probability weights, constructs the Gaussian location mixtures, and evaluates every odd order from `11` through `31` at 100-digit working precision.
+The verifier solves the paper’s moment system, checks probability weights, constructs the Gaussian location mixtures, and evaluates every odd order from `11` through `31` at 110-digit working precision.
 
 | n | TV | H / required RHS |
 | ---: | ---: | ---: |
@@ -30,7 +30,9 @@ The verifier solves the paper’s moment system, checks probability weights, con
 | 29 | `1.132e-35` | `32.365` |
 | 31 | `3.747e-38` | `46.636` |
 
-All `11/11` sharpness cells pass. The maximum moment residual is `2.17e-19`, and the minimum probability weight remains positive.
+All `11/11` sharpness cells pass. The high-precision moment residual is at most
+`4.243e-115` (the separately reported float64 projection residual is
+`1.118e-19`), and the minimum probability weight remains positive.
 
 ## Asymptotic certificate, checker, and controls
 

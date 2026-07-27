@@ -23,21 +23,21 @@ The scaled experiment uses `n=200,000`, four deterministic replicates, six epsil
 | 0.16 | `-4.0` | `0.14826` | `[0.11444, 0.18208]` | `0.02198` |
 | 0.32 | `-4.0` | `0.25197` | `[0.20488, 0.29906]` | `0.06349` |
 
-The fitted Hellinger-squared exponent is `1.6712` (`H` exponent `0.8356`). The practical exponent approaches the claimed `2(1-o(1))` direction while the fixed `n` suppresses the sampling term. The estimator grid and epsilon horizon were committed independently of this fitted slope.
+The fitted Hellinger-squared exponent is `1.68821` (`H` exponent `0.84411`). The practical exponent approaches the claimed `2(1-o(1))` direction while the fixed `n` suppresses the sampling term. The estimator grid and epsilon horizon were committed independently of this fitted slope.
 
 ## All-estimator lower construction
 
-The separate `7,000`-pair cloud is filtered at the exact Chen boundary
+The separate `5,258`-pair cloud is filtered at the exact Chen boundary
 
 `TV(P0,P1) <= epsilon/(1-epsilon)`.
 
-For each of nine epsilon values from `1e-5` to `0.1`, an admissible pair is found and the contaminated observation laws can be made identical. Triangle inequality therefore lower-bounds every estimator by half the pair’s Hellinger separation. The resulting lower Hellinger exponent is `0.92916` (H² exponent `1.85833`), with `0` saturated search steps.
+For each of nine epsilon values from `1e-5` to `0.1`, an admissible pair is found and the contaminated observation laws can be made identical. Triangle inequality therefore lower-bounds every estimator by half the pair’s Hellinger separation. The resulting lower Hellinger exponent is `0.96006` (H² exponent `1.92011`), with `0` saturated search steps.
 
 This lower route does not rely on the implemented estimator and directly exercises the theorem’s indistinguishability mechanism.
 
 ## Exact reduction, checker, and controls
 
-The symbolic verifier checks the Yatracos expectation transfer, continuous-amplitude extension of the Chebyshev construction, exact Chen boundary, coefficient budget `0.3308206>0.33`, and dimension-preserving tensorization. The separate proper Yatracos experiment instantiates actual Huber samples and checks all `171` comparison-set identities to `4.219e-15`.
+The symbolic verifier checks the Yatracos expectation transfer, continuous-amplitude extension of the Chebyshev construction, exact Chen boundary, coefficient budget `0.3308206>0.33`, and dimension-preserving tensorization. The separate proper Yatracos experiment instantiates actual Huber samples and checks all `171` comparison-set identities to `<5e-15` across both formal and local platforms.
 
 The adversarial-location control confirms that using only a benign contaminant understates the loss; the lower-search control rejects the stronger but invalid `TV<=epsilon` equivalence. Every scientific gate and control is fail-closed.
 
@@ -52,7 +52,7 @@ Seeds `260203625` and `260207502`; one effective numerical core; HF `cpu-upgrade
 - [Scaled verifier source](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
 - [Complete scaled result](../../evidence/raw/scaled_direct/result.json)
 - [Raw contamination CSV](../../evidence/raw/scaled_direct/claim_5_upper_raw.csv)
-- [7,000-pair raw CSV](../../evidence/raw/scaled_direct/pair_cloud_raw.csv)
+- [5,258-pair raw CSV](../../evidence/raw/scaled_direct/pair_cloud_raw.csv)
 - [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)
 - [Negative controls](../../evidence/raw/scaled_direct/negative_control.json)
 - [Proper Yatracos source](../../evidence/src/repro/src/run_yatracos_experiment.py)

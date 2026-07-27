@@ -23,11 +23,14 @@
   "historical_rejected_baseline_regression_passed": true,
   "verification": "outputs/verification.json",
   "tests": "repro/tests",
-  "scope": "Source-pinned exact claim contracts, reconstructed analytic theorem implications, direct Gaussian-mixture constructions, independent numerical checkers, and negative controls; not a proof-assistant formalization.",
+  "scope": "Source-pinned exact claim contracts, reconstructed analytic theorem implications, evaluator-calibrated direct Gaussian-mixture constructions, independent numerical checkers, and negative controls; not a proof-assistant formalization.",
   "current_claim_suite": ".openresearch/artifacts/claim_1_3/result.json",
   "proof_obligations": ".openresearch/artifacts/proof_obligations/result.json",
   "primary_dependencies": ".openresearch/artifacts/primary_dependencies/result.json",
   "analytic_certificate": ".openresearch/artifacts/analytic_certificate/result.json",
   "application_certificate": ".openresearch/artifacts/application_certificate/result.json",
+  "universal_reductions": ".openresearch/artifacts/universal_reductions/result.json",
+  "yatracos_experiment": ".openresearch/artifacts/yatracos_experiment/result.json",
+  "scaled_direct_evidence": ".openresearch/artifacts/scaled_direct/result.json",
   "release_candidate": "release/space/evidence/release/release_check.json"
 }

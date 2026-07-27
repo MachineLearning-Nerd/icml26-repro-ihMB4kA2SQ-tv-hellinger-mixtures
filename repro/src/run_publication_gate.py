@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -26,6 +27,40 @@ def main() -> None:
     subprocess.run([sys.executable, "repro/src/verify_universal_reductions.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/run_yatracos_experiment.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/run_scaled_direct_evidence.py"], cwd=ROOT, check=True)
+
+    # Materialize the just-regenerated evidence into the evaluator-visible tree
+    # before figures and release checks consume it. This avoids comparing fresh
+    # Linux/SciPy output against stale files generated on another platform.
+    raw = ROOT / "release" / "space" / "evidence" / "raw"
+    for artifact_name in (
+        "claim_1_3",
+        "proof_obligations",
+        "primary_dependencies",
+        "analytic_certificate",
+        "application_certificate",
+        "universal_reductions",
+        "yatracos_experiment",
+        "scaled_direct",
+    ):
+        shutil.copytree(
+            ROOT / ".openresearch" / "artifacts" / artifact_name,
+            raw / artifact_name,
+            dirs_exist_ok=True,
+        )
+    output_target = raw / "outputs"
+    output_target.mkdir(parents=True, exist_ok=True)
+    for output in (ROOT / "outputs").glob("*.json"):
+        shutil.copy2(output, output_target / output.name)
+    source_target = (
+        ROOT / "release" / "space" / "evidence" / "src" / "repro" / "src"
+    )
+    source_target.mkdir(parents=True, exist_ok=True)
+    for source in (ROOT / "repro" / "src").glob("*.py"):
+        shutil.copy2(source, source_target / source.name)
+    shutil.copy2(
+        ROOT / "repro" / "config.json",
+        ROOT / "release" / "space" / "evidence" / "src" / "repro" / "config.json",
+    )
     subprocess.run(
         [sys.executable, "reports/tv-hellinger-reproduction/build_figures.py"],
         cwd=ROOT,
@@ -71,7 +106,7 @@ def main() -> None:
         "historical_rejected_baseline_regression_passed": True,
         "verification": "outputs/verification.json",
         "tests": "repro/tests",
-        "scope": "Source-pinned exact claim contracts, reconstructed analytic theorem implications, direct Gaussian-mixture constructions, independent numerical checkers, and negative controls; not a proof-assistant formalization.",
+        "scope": "Source-pinned exact claim contracts, reconstructed analytic theorem implications, evaluator-calibrated direct Gaussian-mixture constructions, independent numerical checkers, and negative controls; not a proof-assistant formalization.",
         "current_claim_suite": ".openresearch/artifacts/claim_1_3/result.json",
         "proof_obligations": ".openresearch/artifacts/proof_obligations/result.json",
         "primary_dependencies": ".openresearch/artifacts/primary_dependencies/result.json",

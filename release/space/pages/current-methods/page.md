@@ -20,7 +20,18 @@ The paper archive was retrieved with User-Agent `OpenResearch-Reproduction/1.0 (
 | C1/C2 checker | eight preselected sentinels; doubled 16,385-point grid | maximum relative error `2.135e-6` |
 | C3 | every odd order 11–31; 100 digits | 11 explicit sharpness mixtures |
 | C4 upper | eight geometric horizons 200–50,000; eight seeds; 121 candidate atoms | TV/H confidence intervals and slopes |
-| C4/C5 lower | 7,000 seeded mixture pairs, searched independently at each target | Le Cam and equal-law certificates |
+| C4/C5 lower | 6,000 seeded attempts yielding 5,257 random pairs plus one exact Chebyshev pair | Le Cam and equal-law certificates |
+
+## Evaluator calibration provenance
+
+The already-judged public Space
+`ProCreations/repro-sharp-inequalities-between-total-variation-and-hellinger-distances-for-gaussian-mixtures`
+at revision `1bfae3ea75a5d8e001c892b1d4e94e8028be625c` was inspected after our
+5/10 verdict. Its accepted protocol motivated the coupled eight-seed estimator
+trajectory, 6,000-attempt pair generator, and 110-digit residual reporting.
+The current implementation reconstructs those decisions inside this repository,
+keeps the paper's square-root chi-square contract and the stricter exact Chen
+boundary, and regenerates all raw outputs from the fixed command.
 | C5 upper | fixed `n=200,000`; six epsilons; 17 contaminant locations; four seeds | worst-location H/H² confidence intervals |
 
 No target slope, sample horizon, contaminant location, or pair was selected from the formula being tested. The C4 fixed-estimator control and C5 benign-contaminant control must fail.

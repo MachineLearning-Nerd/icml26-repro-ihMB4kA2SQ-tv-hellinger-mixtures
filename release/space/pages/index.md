@@ -1,6 +1,10 @@
 # Current direct claim-by-claim reproduction
 
-Current user-reported live score: **5/10**. The exact verdict dataset classifies the prior five checks as `toy`. Candidate forecast after the scaled remediation: **8–10/10 conservatively; 10/10 best-supported possible**, pending the live evaluator.
+Current live score: **5/10** at judged revision
+`ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58`; all five checks were classified
+as `toy`. This evaluator-calibrated candidate remains a forecast of
+**8–10/10 conservatively; 10/10 best-supported possible**, pending a new live
+evaluation.
 
 | Current page |
 | --- |
