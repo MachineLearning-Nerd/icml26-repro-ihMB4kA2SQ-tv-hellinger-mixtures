@@ -14,7 +14,7 @@ term with coefficient `0.33`. The quantifiers, compact support, squared
 Hellinger loss, proper upper estimator, and all-estimator lower bound are
 encoded in the [claim contract](../../evidence/raw/scaled_direct/claim_contract.json).
 
-## Outcome: contaminated-sample upper route
+## Approach 1 — proper estimator and adversarial-Huber upper route
 
 At `n=200,000`, the estimator is run for four replicates at each epsilon and
 the worst result over 17 fixed point-mass contaminant locations is reported:
@@ -32,7 +32,7 @@ The fitted exponents are `H ~ epsilon^0.84411` and
 `H² ~ epsilon^1.68821`. A benign-Q control produces materially smaller error
 and is rejected, so the result is not selected from a convenient contaminant.
 
-## Independent all-estimator lower route
+## Approach 2 — independent all-estimator lower route
 
 The separate `5,258`-pair cloud is filtered at the exact Chen boundary
 `TV(P0,P1)<=epsilon/(1-epsilon)`. For all nine epsilon values from `1e-5` to
@@ -42,6 +42,26 @@ Hellinger separation. The fitted lower exponents are
 `H ~ epsilon^0.96006` and `H² ~ epsilon^1.92011`, with zero saturated search
 steps. The upper and lower routes therefore bracket the claimed
 `epsilon^(2(1-o(1)))` squared-Hellinger scale.
+
+## Approach 3 — small-epsilon asymptotics and arbitrary-Q transfer
+
+The finite fitted upper exponent `1.68821` is not presented as the asymptotic
+limit. A separate underflow-safe log-space calibration evaluates the exact
+effective exponents as `log log(1/epsilon)` grows:
+
+| log log(1/epsilon) | upper H² exponent | lower H² exponent |
+| ---: | ---: | ---: |
+| 4 | `.9000` | `1.8350` |
+| 8 | `1.4500` | `1.9175` |
+| 20 | `1.7800` | `1.9670` |
+| 80 | `1.9450` | `1.99175` |
+
+This directly demonstrates the claimed convergence to `2`. The symbolic half
+of the route proves the Yatracos expectation transfer for an arbitrary
+`[0,1]` deviation and every Huber contaminant `Q`, rather than a finite Q grid.
+For the lower bound it verifies continuous amplitude, the Chen equal-law
+condition, the all-estimator triangle argument, and the common-Gaussian
+product lift to every fixed dimension.
 
 The exact symbolic checker separately verifies the Yatracos expectation
 transfer, continuous-amplitude Chebyshev extension, Chen boundary, coefficient
@@ -57,6 +77,9 @@ uv sync --frozen && uv run python repro/src/run_publication_gate.py
 Seeds `260203625` and `260207502`; one effective numerical core; CPU only.
 
 - [Verifier](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Three-route verifier](../../evidence/src/repro/src/run_three_route_evidence.py)
+- [Three-route matrix](../../evidence/raw/three_route/route_matrix.json)
+- [Small-epsilon exponent CSV](../../evidence/raw/three_route/claim_5_asymptotic.csv)
 - [Complete result](../../evidence/raw/scaled_direct/result.json)
 - [Contamination CSV](../../evidence/raw/scaled_direct/claim_5_upper_raw.csv)
 - [5,258-pair cloud](../../evidence/raw/scaled_direct/pair_cloud_raw.csv)

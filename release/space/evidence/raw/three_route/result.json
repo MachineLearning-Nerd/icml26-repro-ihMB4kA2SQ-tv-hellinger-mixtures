@@ -1,0 +1,536 @@
+{
+  "status": "THREE_ROUTE_CLAIM_SUITE_PASS",
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+  "independent_html_sha256": "b2e88ca0abbfd3f504867b0c401e89fa0526bc72e210198ec2ba04c92570b553",
+  "seed": 260207270,
+  "fixed_command": "uv sync --frozen && uv run python repro/src/run_publication_gate.py",
+  "routes": {
+    "C1": [
+      {
+        "approach": "A \u2014 broad direct one-dimensional sweep",
+        "kind": "numerical",
+        "status": "PASS",
+        "evidence": "420 cells, zero exact-bound violations"
+      },
+      {
+        "approach": "B \u2014 direct tensor integration in d=2 and d=3",
+        "kind": "numerical",
+        "status": "PASS",
+        "evidence": "14 cells, zero violations"
+      },
+      {
+        "approach": "C \u2014 source-pinned universal proof-chain certificate",
+        "kind": "symbolic",
+        "status": "PASS",
+        "evidence": "all d>=1, M>0, delta>0 and all supported mixing laws"
+      }
+    ],
+    "C2": [
+      {
+        "approach": "A \u2014 broad direct Hellinger sweep",
+        "kind": "numerical",
+        "status": "PASS",
+        "evidence": "420 cells, zero exact-bound violations"
+      },
+      {
+        "approach": "B \u2014 direct tensor integration in d=2 and d=3",
+        "kind": "numerical",
+        "status": "PASS",
+        "evidence": "14 cells, zero violations"
+      },
+      {
+        "approach": "C \u2014 pointwise Hellinger/chi-square identity plus C1",
+        "kind": "symbolic",
+        "status": "PASS",
+        "evidence": "all positive density pairs; C1 supplies the Gaussian-mixture specialization"
+      }
+    ],
+    "C3": [
+      {
+        "approach": "A \u2014 exact Chebyshev construction, odd n=11,...,31",
+        "kind": "high-precision numerical",
+        "status": "PASS",
+        "evidence": "11 orders and every sharpness inequality passes"
+      },
+      {
+        "approach": "B \u2014 independent quadrature and moment checker",
+        "kind": "independent numerical",
+        "status": "PASS",
+        "evidence": "independent fixed-node Gauss-Hermite with +20 mpmath digits"
+      },
+      {
+        "approach": "C \u2014 exact asymptotic limits and monotone subsequence",
+        "kind": "symbolic",
+        "status": "PASS",
+        "evidence": "existence of an infinite sequence; not inferred from the six numerical orders"
+      }
+    ],
+    "C4": [
+      {
+        "approach": "A \u2014 sample estimator upper-risk scaling",
+        "kind": "statistical experiment",
+        "status": "PASS",
+        "evidence": "TV exponent -0.47376"
+      },
+      {
+        "approach": "B \u2014 independent all-estimator Le Cam lower bound",
+        "kind": "information-theoretic certificate",
+        "status": "PASS",
+        "evidence": "TV exponent -0.49711"
+      },
+      {
+        "approach": "C \u2014 local-entropy variational and inverse calibration",
+        "kind": "numerical plus symbolic",
+        "status": "PASS",
+        "evidence": "21 calibrated d,n cells; delta/2 inverse repair checked"
+      }
+    ],
+    "C5": [
+      {
+        "approach": "A \u2014 proper Yatracos and adversarial-Huber experiment",
+        "kind": "statistical experiment",
+        "status": "PASS",
+        "evidence": "19 candidates, 171 comparison sets"
+      },
+      {
+        "approach": "B \u2014 Chen equal-law all-estimator lower route",
+        "kind": "information-theoretic certificate",
+        "status": "PASS",
+        "evidence": "every sufficiently small epsilon and every fixed dimension via a common Gaussian product factor"
+      },
+      {
+        "approach": "C \u2014 exact small-epsilon exponent and expectation transfer",
+        "kind": "numerical plus symbolic",
+        "status": "PASS",
+        "evidence": "upper H\u00b2 exponent reaches 1.945; arbitrary-Q transfer checked"
+      }
+    ]
+  },
+  "multidimensional_direct": {
+    "dimensions": [
+      2,
+      3
+    ],
+    "cells": 14,
+    "cells_by_dimension": {
+      "2": 7,
+      "3": 7
+    },
+    "tv_range": [
+      3.753964597111329e-06,
+      0.01863925380346919
+    ],
+    "theorem_2_1_violations": 0,
+    "corollary_2_4_violations": 0,
+    "max_theorem_2_1_ratio": 0.0018434498145243772,
+    "max_corollary_2_4_ratio": 0.0006503059515376733,
+    "max_factorization_absolute_error": 5.314693404470531e-16,
+    "independent_checker": {
+      "cells": 6,
+      "max_relative_error": 0.0005738609022344085,
+      "rows": [
+        {
+          "dimension": 2,
+          "amplitude_exponent_base2": 4,
+          "checker_order": 129,
+          "tv_relative_error": 0.0005738609022344085,
+          "hellinger_relative_error": 6.772730345875283e-15,
+          "sqrt_chi_relative_error": 1.8382038339620096e-15
+        },
+        {
+          "dimension": 2,
+          "amplitude_exponent_base2": 10,
+          "checker_order": 129,
+          "tv_relative_error": 0.000314503821470656,
+          "hellinger_relative_error": 2.6521625428090028e-14,
+          "sqrt_chi_relative_error": 4.596327555124966e-15
+        },
+        {
+          "dimension": 2,
+          "amplitude_exponent_base2": 16,
+          "checker_order": 129,
+          "tv_relative_error": 0.0003097472198579744,
+          "hellinger_relative_error": 1.6904400158495728e-12,
+          "sqrt_chi_relative_error": 9.687220376150465e-13
+        },
+        {
+          "dimension": 3,
+          "amplitude_exponent_base2": 4,
+          "checker_order": 65,
+          "tv_relative_error": 0.0005270997360166314,
+          "hellinger_relative_error": 5.29806474081599e-07,
+          "sqrt_chi_relative_error": 2.3545781243005734e-07
+        },
+        {
+          "dimension": 3,
+          "amplitude_exponent_base2": 10,
+          "checker_order": 65,
+          "tv_relative_error": 0.00048270443904859726,
+          "hellinger_relative_error": 2.3981705689166004e-07,
+          "sqrt_chi_relative_error": 2.3529034454697615e-07
+        },
+        {
+          "dimension": 3,
+          "amplitude_exponent_base2": 16,
+          "checker_order": 65,
+          "tv_relative_error": 0.00048292087270994686,
+          "hellinger_relative_error": 2.3536735414602862e-07,
+          "sqrt_chi_relative_error": 2.352994049460408e-07
+        }
+      ]
+    }
+  },
+  "C4_local_entropy_calibration": [
+    {
+      "dimension": 1,
+      "log10_n": 4,
+      "log_epsilon_n": -3.9218840996439317,
+      "log_epsilon_n_squared": -7.843768199287863,
+      "log_variational_objective": -6.250076792370342,
+      "log_lower_rate": -22.193116768387966,
+      "theorem_logarithmic_correction": 1.8293947761489027,
+      "lower_to_upper_log_gap": 15.943039976017625,
+      "optimizer_u_log_1_over_epsilon": 3.9218840996439317
+    },
+    {
+      "dimension": 1,
+      "log10_n": 6,
+      "log_epsilon_n": -6.010962820827464,
+      "log_epsilon_n_squared": -12.021925641654928,
+      "log_variational_objective": -10.07445058109683,
+      "log_lower_rate": -28.778764670103858,
+      "theorem_logarithmic_correction": 1.3938564858850848,
+      "lower_to_upper_log_gap": 18.704314089007028,
+      "optimizer_u_log_1_over_epsilon": 6.010962820827464
+    },
+    {
+      "dimension": 1,
+      "log10_n": 8,
+      "log_epsilon_n": -8.16067672407065,
+      "log_epsilon_n_squared": -16.3213534481413,
+      "log_variational_objective": -14.106433570754731,
+      "log_lower_rate": -35.75776412979144,
+      "theorem_logarithmic_correction": 1.1908577768018127,
+      "lower_to_upper_log_gap": 21.651330559036708,
+      "optimizer_u_log_1_over_epsilon": 8.16067672407065
+    },
+    {
+      "dimension": 1,
+      "log10_n": 12,
+      "log_epsilon_n": -12.550625433066283,
+      "log_epsilon_n_squared": -25.101250866132567,
+      "log_variational_objective": -22.494817931043883,
+      "log_lower_rate": -49.90710862052491,
+      "theorem_logarithmic_correction": 0.9882319365948901,
+      "lower_to_upper_log_gap": 27.412290689481026,
+      "optimizer_u_log_1_over_epsilon": 12.550625433066283
+    },
+    {
+      "dimension": 1,
+      "log10_n": 20,
+      "log_epsilon_n": -21.492010309595894,
+      "log_epsilon_n_squared": -42.98402061919179,
+      "log_variational_objective": -39.870860459050625,
+      "log_lower_rate": -78.0137524266496,
+      "theorem_logarithmic_correction": 0.8149477713543045,
+      "lower_to_upper_log_gap": 38.14289196759898,
+      "optimizer_u_log_1_over_epsilon": 21.492010309595894
+    },
+    {
+      "dimension": 1,
+      "log10_n": 40,
+      "log_epsilon_n": -44.15781728272431,
+      "log_epsilon_n_squared": -88.31563456544862,
+      "log_variational_objective": -84.50547035948898,
+      "log_lower_rate": -146.60562787854693,
+      "theorem_logarithmic_correction": 0.6600189604016374,
+      "lower_to_upper_log_gap": 62.100157519057944,
+      "optimizer_u_log_1_over_epsilon": 44.15781728272431
+    },
+    {
+      "dimension": 1,
+      "log10_n": 80,
+      "log_epsilon_n": -89.85430787486717,
+      "log_epsilon_n_squared": -179.70861574973435,
+      "log_variational_objective": -175.19936064762368,
+      "log_lower_rate": -279.5869187102448,
+      "theorem_logarithmic_correction": 0.5557791569637535,
+      "lower_to_upper_log_gap": 104.38755806262111,
+      "optimizer_u_log_1_over_epsilon": 89.85430787486717
+    },
+    {
+      "dimension": 2,
+      "log10_n": 4,
+      "log_epsilon_n": -3.2299660156822294,
+      "log_epsilon_n_squared": -6.459932031364459,
+      "log_variational_objective": -5.31147912256797,
+      "log_lower_rate": -20.2341077656853,
+      "theorem_logarithmic_correction": 2.13224778023113,
+      "lower_to_upper_log_gap": 14.922628643117331,
+      "optimizer_u_log_1_over_epsilon": 3.2299660156822294
+    },
+    {
+      "dimension": 2,
+      "log10_n": 6,
+      "log_epsilon_n": -5.07975892122059,
+      "log_epsilon_n_squared": -10.15951784244118,
+      "log_variational_objective": -8.680984843525993,
+      "log_lower_rate": -25.78700831101053,
+      "theorem_logarithmic_correction": 1.5382118237231523,
+      "lower_to_upper_log_gap": 17.10602346748454,
+      "optimizer_u_log_1_over_epsilon": 5.07975892122059
+    },
+    {
+      "dimension": 2,
+      "log10_n": 8,
+      "log_epsilon_n": -7.054011378041666,
+      "log_epsilon_n_squared": -14.108022756083331,
+      "log_variational_objective": -12.367087516124464,
+      "log_lower_rate": -32.16193403546569,
+      "theorem_logarithmic_correction": 1.279691108493398,
+      "lower_to_upper_log_gap": 19.794846519341228,
+      "optimizer_u_log_1_over_epsilon": 7.054011378041666
+    },
+    {
+      "dimension": 2,
+      "log10_n": 12,
+      "log_epsilon_n": -11.197121341067888,
+      "log_epsilon_n_squared": -22.394242682135776,
+      "log_variational_objective": -20.258332383934196,
+      "log_lower_rate": -45.5703861267239,
+      "theorem_logarithmic_correction": 1.0349152580665781,
+      "lower_to_upper_log_gap": 25.312053742789708,
+      "optimizer_u_log_1_over_epsilon": 11.197121341067888
+    },
+    {
+      "dimension": 2,
+      "log10_n": 20,
+      "log_epsilon_n": -19.835638304416317,
+      "log_epsilon_n_squared": -39.671276608832635,
+      "log_variational_objective": -37.01636258006178,
+      "log_lower_rate": -72.86921726398192,
+      "theorem_logarithmic_correction": 0.836825620271517,
+      "lower_to_upper_log_gap": 35.85285468392014,
+      "optimizer_u_log_1_over_epsilon": 19.835638304416317
+    },
+    {
+      "dimension": 2,
+      "log10_n": 40,
+      "log_epsilon_n": -42.10871377266817,
+      "log_epsilon_n_squared": -84.21742754533634,
+      "log_variational_objective": -80.84763728020982,
+      "log_lower_rate": -140.50866595176177,
+      "theorem_logarithmic_correction": 0.6684036789905803,
+      "lower_to_upper_log_gap": 59.661028671551946,
+      "optimizer_u_log_1_over_epsilon": 42.10871377266817
+    },
+    {
+      "dimension": 2,
+      "log10_n": 80,
+      "log_epsilon_n": -87.42983363886674,
+      "log_epsilon_n_squared": -174.85966727773348,
+      "log_variational_objective": -170.777286593749,
+      "log_lower_rate": -272.6376024160231,
+      "theorem_logarithmic_correction": 0.5591794646560022,
+      "lower_to_upper_log_gap": 101.86031582227412,
+      "optimizer_u_log_1_over_epsilon": 87.42983363886674
+    },
+    {
+      "dimension": 3,
+      "log10_n": 4,
+      "log_epsilon_n": -2.7443048786371187,
+      "log_epsilon_n_squared": -5.488609757274237,
+      "log_variational_objective": -4.624812012594012,
+      "log_lower_rate": -19.08063193117233,
+      "theorem_logarithmic_correction": 2.476405278382952,
+      "lower_to_upper_log_gap": 14.455819918578317,
+      "optimizer_u_log_1_over_epsilon": 2.7443048786371187
+    },
+    {
+      "dimension": 3,
+      "log10_n": 6,
+      "log_epsilon_n": -4.354401042546128,
+      "log_epsilon_n_squared": -8.708802085092255,
+      "log_variational_objective": -7.552801676666742,
+      "log_lower_rate": -23.507739414536672,
+      "theorem_logarithmic_correction": 1.6993080316726068,
+      "lower_to_upper_log_gap": 15.95493773786993,
+      "optimizer_u_log_1_over_epsilon": 4.354401042546128
+    },
+    {
+      "dimension": 3,
+      "log10_n": 8,
+      "log_epsilon_n": -6.141229368501036,
+      "log_epsilon_n_squared": -12.282458737002072,
+      "log_variational_objective": -10.878664714385136,
+      "log_lower_rate": -29.200213463786103,
+      "theorem_logarithmic_correction": 1.3773915377234438,
+      "lower_to_upper_log_gap": 18.321548749400968,
+      "optimizer_u_log_1_over_epsilon": 6.141229368501036
+    },
+    {
+      "dimension": 3,
+      "log10_n": 12,
+      "log_epsilon_n": -10.013096188047165,
+      "log_epsilon_n_squared": -20.02619237609433,
+      "log_variational_objective": -18.23334214818819,
+      "log_lower_rate": -41.75700294780015,
+      "theorem_logarithmic_correction": 1.0851194357668477,
+      "lower_to_upper_log_gap": 23.523660799611964,
+      "optimizer_u_log_1_over_epsilon": 10.013096188047165
+    },
+    {
+      "dimension": 3,
+      "log10_n": 20,
+      "log_epsilon_n": -18.31749260471828,
+      "log_epsilon_n_squared": -36.63498520943656,
+      "log_variational_objective": -34.31665018828885,
+      "log_lower_rate": -68.13154067866996,
+      "theorem_logarithmic_correction": 0.8597398167126985,
+      "lower_to_upper_log_gap": 33.81489049038112,
+      "optimizer_u_log_1_over_epsilon": 18.31749260471828
+    },
+    {
+      "dimension": 3,
+      "log10_n": 40,
+      "log_epsilon_n": -40.165610832517046,
+      "log_epsilon_n_squared": -80.33122166503409,
+      "log_variational_objective": -77.28276514372645,
+      "log_lower_rate": -134.71179201945608,
+      "theorem_logarithmic_correction": 0.6769543550722859,
+      "lower_to_upper_log_gap": 57.42902687572963,
+      "optimizer_u_log_1_over_epsilon": 40.165610832517046
+    },
+    {
+      "dimension": 3,
+      "log10_n": 80,
+      "log_epsilon_n": -85.09124383197707,
+      "log_epsilon_n_squared": -170.18248766395413,
+      "log_variational_objective": -166.4086786738088,
+      "log_lower_rate": -265.9256539781024,
+      "theorem_logarithmic_correction": 0.5625911786129529,
+      "lower_to_upper_log_gap": 99.5169753042936,
+      "optimizer_u_log_1_over_epsilon": 85.09124383197707
+    }
+  ],
+  "C5_asymptotic_calibration": [
+    {
+      "log_log_1_over_epsilon": 3,
+      "log10_epsilon": -8.723037851804422,
+      "upper_H2_effective_exponent": 0.5333333333333332,
+      "lower_H2_effective_exponent": 1.78,
+      "upper_gap_to_2": 1.4666666666666668,
+      "lower_gap_to_2": 0.21999999999999997
+    },
+    {
+      "log_log_1_over_epsilon": 4,
+      "log10_epsilon": -23.711675281520385,
+      "upper_H2_effective_exponent": 0.8999999999999999,
+      "lower_H2_effective_exponent": 1.835,
+      "upper_gap_to_2": 1.1,
+      "lower_gap_to_2": 0.16500000000000004
+    },
+    {
+      "log_log_1_over_epsilon": 5,
+      "log10_epsilon": -64.45501604007838,
+      "upper_H2_effective_exponent": 1.1199999999999999,
+      "lower_H2_effective_exponent": 1.8679999999999999,
+      "upper_gap_to_2": 0.8800000000000001,
+      "lower_gap_to_2": 0.13200000000000012
+    },
+    {
+      "log_log_1_over_epsilon": 6,
+      "log10_epsilon": -175.20689885478134,
+      "upper_H2_effective_exponent": 1.2666666666666666,
+      "lower_H2_effective_exponent": 1.89,
+      "upper_gap_to_2": 0.7333333333333334,
+      "lower_gap_to_2": 0.1100000000000001
+    },
+    {
+      "log_log_1_over_epsilon": 8,
+      "log10_epsilon": -1294.6136045576477,
+      "upper_H2_effective_exponent": 1.45,
+      "lower_H2_effective_exponent": 1.9175,
+      "upper_gap_to_2": 0.55,
+      "lower_gap_to_2": 0.08250000000000002
+    },
+    {
+      "log_log_1_over_epsilon": 12,
+      "log10_epsilon": -70683.50781658811,
+      "upper_H2_effective_exponent": 1.6333333333333333,
+      "lower_H2_effective_exponent": 1.945,
+      "upper_gap_to_2": 0.3666666666666667,
+      "lower_gap_to_2": 0.05499999999999994
+    },
+    {
+      "log_log_1_over_epsilon": 20,
+      "log10_epsilon": -210704567.17798477,
+      "upper_H2_effective_exponent": 1.78,
+      "lower_H2_effective_exponent": 1.967,
+      "upper_gap_to_2": 0.21999999999999997,
+      "lower_gap_to_2": 0.03299999999999992
+    },
+    {
+      "log_log_1_over_epsilon": 40,
+      "log10_epsilon": -1.0222652250864227e+17,
+      "upper_H2_effective_exponent": 1.89,
+      "lower_H2_effective_exponent": 1.9835,
+      "upper_gap_to_2": 0.1100000000000001,
+      "lower_gap_to_2": 0.01649999999999996
+    },
+    {
+      "log_log_1_over_epsilon": 80,
+      "log10_epsilon": -2.406261727851739e+34,
+      "upper_H2_effective_exponent": 1.945,
+      "lower_H2_effective_exponent": 1.99175,
+      "upper_gap_to_2": 0.05499999999999994,
+      "lower_gap_to_2": 0.00825000000000009
+    }
+  ],
+  "negative_controls": {
+    "C1_linear_bound_rejected": true,
+    "C2_linear_bound_rejected": true,
+    "C3_too_large_coefficient_rejected": true,
+    "C4_same_delta_inverse_rejected": true,
+    "C5_discrete_sequence_only_rejected": true
+  },
+  "gates": {
+    "every_claim_has_exactly_three_routes": true,
+    "every_route_passes": true,
+    "multidimensional_C1_zero_violations": true,
+    "multidimensional_C2_zero_violations": true,
+    "multidimensional_checker_agrees": true,
+    "tensor_factorization_agrees": true,
+    "C3_infinite_sequence_symbolically_checked": true,
+    "C4_logarithmic_correction_isolated": true,
+    "C5_effective_exponents_converge_to_two": true,
+    "negative_controls_fail_as_intended": true
+  },
+  "verdicts": {
+    "C1": "VERIFIED",
+    "C2": "VERIFIED",
+    "C3": "VERIFIED",
+    "C4": "VERIFIED",
+    "C5": "VERIFIED"
+  },
+  "limitations": "The direct integrations remain finite corroboration. Universal and asymptotic scope is carried only by the separately reconstructed, source-pinned symbolic proof chains and their explicit premise ledgers; these are not proof-assistant kernel certificates.",
+  "compute": {
+    "estimated_effective_cores": 1,
+    "runtime_class": "uncertain before formal run",
+    "formal_backend": "Hugging Face",
+    "formal_flavor": "cpu-upgrade",
+    "actual_logical_cpus_visible": 8,
+    "thread_limits": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "runtime_seconds": 0.05464624997694045,
+    "max_rss_reported": 92176384,
+    "max_rss_unit": "bytes"
+  },
+  "git_sha": "ad6bf12a336228d33f55498ad8b535ac42d09d3e"
+}

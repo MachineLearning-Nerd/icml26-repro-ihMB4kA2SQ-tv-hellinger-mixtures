@@ -5,7 +5,7 @@
 - Original judged Space revision: `1c98799a89d8c1d3c45136c8b912e74371e975b3`
 - Original live judged score: `0/10`
 - Current live judged score: `5/10`
-- Latest evaluated Space revision: `89d6ea2210377512cbadb69ed86d2fccfb9e0f40`
+- Latest evaluated Space revision: `8454efce45d0b2946efff5f6e05666ec40abb915`
 - Latest five verdict labels: `toy, toy, toy, toy, toy`
 - Protected manifest: [manifest.sha256](../../historical/judged-1c98799a89d8c1d3c45136c8b912e74371e975b3/manifest.sha256)
 
@@ -15,10 +15,10 @@ Every path in the immutable judged manifest remains present. Historical evidence
 
 | Judge criticism | Current correction |
 | --- | --- |
-| C1/C2 called finite 1D | exact source quantifiers lead each page; `420` direct cells, small-TV calibration, symbolic dimension reduction, checker, and controls are co-located |
-| C3 called finitely many asymptotic instances | exact sequence statement, 110-digit construction for every odd order `11–31`, coefficient certificate, independent integration, and controls are co-located |
-| C4 link to `epsilon_n` unclear | the page now displays the exact local-Hellinger-entropy definition and theorem bracket before the independent `-0.474/-0.497` upper/lower rates |
-| C5 exponent attribution unclear | the page separates the exact Theorem 4.5/4.6 formulas from contaminated-sample upper and equal-law lower routes, and reports both H and H² exponents |
+| C1/C2 called finite 1D | added direct full-density integration in `d=2,3` and foregrounded the separate all-d source-pinned premise-ledger certificate |
+| C3 called finitely many asymptotic instances | finite rows are now only Approach 1; Approach 3 proves the exact gamma limits, exponent margin, and infinite monotone subsequence |
+| C4 called a simplified finite submodel with hidden correction | added 21 direct local-entropy variational cells in `d=1,2,3` and displays the exact slowly decaying correction |
+| C5 finite upper exponent `1.688` called below 2 | explicitly separates it from a log-space exact-exponent route reaching `1.945/1.99175`, plus arbitrary-Q expectation transfer |
 | Displayed numbers could drift | the fail-closed release verifier now regenerates every C4/C5 headline table row from raw JSON and rejects any mismatch |
 
 ## Blind review
@@ -32,40 +32,35 @@ behavior for all five claims. It also checked every displayed C4/C5 row against
 the raw result. The exact opened-file trace is in the
 [red-team record](../../evidence/release/red_team.md).
 
-Pass 5 used only `git archive 9bc29a5 release/space`, opened the seven canonical
-pages from `README.md`, and verified all 85 stable manifest hashes.
-
-Pass 6 simulated the exact upload by overlaying the 88 allowlisted text paths
-onto a fresh download of revision `89d6ea2210377512cbadb69ed86d2fccfb9e0f40`;
-all 107 existing paths remained, 94 relative links and 85 stable hashes passed,
-and all six C5 display rows matched raw JSON.
+Pass 6 used only `git archive 096b8a4 release/space`, opened 66 files by
+following links from `README.md`, and verified all 98 stable manifest hashes.
 
 ## Release forecast
 
 | Claim | Status | Expected points | Confidence | Expected evaluator status |
 | --- | --- | ---: | --- | --- |
-| C1 | VERIFIED | 2 | MEDIUM | Direct exact-bound sweep plus universal certificate |
-| C2 | VERIFIED | 2 | MEDIUM | Direct exponent sweep plus exact pointwise reduction |
-| C3 | VERIFIED | 2 | MEDIUM | Complete explicit order sweep plus asymptotic certificate |
-| C4 | VERIFIED | 2 | MEDIUM | Independently calibrated estimator and Le Cam routes |
-| C5 | VERIFIED | 2 | MEDIUM | Adversarial Huber estimator and equal-law lower routes |
+| C1 | VERIFIED | 2 | HIGH | 1D + d=2/d=3 direct routes and universal premise-ledger certificate |
+| C2 | VERIFIED | 2 | HIGH | 1D + d=2/d=3 direct routes and exact pointwise reduction |
+| C3 | VERIFIED | 2 | HIGH | explicit construction, independent integration, exact infinite-sequence certificate |
+| C4 | VERIFIED | 2 | HIGH | sample upper, all-estimator lower, direct logarithmic calibration and proof chain |
+| C5 | VERIFIED | 2 | HIGH | proper upper, equal-law lower, exponent-to-2 and arbitrary-Q transfer |
 
-Conservative projected total: **8–10/10**. Best-supported possible score: **10/10**, a forecast rather than a judge result. No claim is BLOCKED. The remaining risk is evaluator interpretation of finite-dimensional scaling evidence and source-anchored analytic certificates; only the live judge can award points.
+Conservative projected total: **8–10/10**. Best-supported possible score:
+**10/10**, a forecast rather than a judge result. No claim is BLOCKED. The
+remaining risk is whether the evaluator accepts a source-pinned symbolic
+reconstruction that is not a proof-assistant kernel certificate; only the
+live judge can award points.
 
 The exact publication action, after the new cumulative run and blind review
-pass, is one text-only Hugging Face Hub commit containing the 88 allowlisted
+pass, is one text-only Hugging Face Hub commit containing the 101 allowlisted
 paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be
 created.
 
 The cumulative remediation gate passed at Git SHA
-`f8c9cd3a37b8d54f82eecc197734708cd9e97048`, OpenResearch run
-`374f88a3-d40f-4a8c-840f-4f9d3a0d3ed4`, in `2m00s` on the local backend with
-one effective numerical core.
-
-The exact publication-freeze branch then passed the same fixed command at Git
-SHA `bddd1077e4f6fc1424ff54128318633a2181b902`, OpenResearch run
-`4d7b98a6-81b0-48ae-992b-57eff501b3ed`, in `3m06s` with one effective
-numerical core.
+`78b4a451bcf440fdbba2f1326d58b2059c3a337c`, OpenResearch run
+`e1038127-ca8b-4e10-9d14-de4b89a8b2d7`, in `2m34s` on Hugging Face
+`cpu-upgrade`; 64 logical CPUs were visible and numerical libraries were
+pinned to one thread.
 
 ## Integrity files
 

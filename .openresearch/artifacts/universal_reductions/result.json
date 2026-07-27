@@ -79,9 +79,9 @@
     "C5_discrete_sequence_only_rejected": true,
     "C5_missing_union_factor_rejected": true
   },
-  "git_sha": "99aa3a9702e93cd547f2f9fe258bd371b16874bd",
+  "git_sha": "9ef83c11c7c527c32bebfbae69585518eac8551b",
   "cpu_estimate": "1 effective core, under 5 minutes",
   "actual_logical_cpus_visible": 8,
   "platform": "macOS-26.5.2-arm64-arm-64bit",
-  "runtime_seconds": 1.767500249989098
+  "runtime_seconds": 3.4644493749947287
 }

@@ -29,6 +29,7 @@ independent = json.loads((RAW / "claim_1_3" / "independent_checker.json").read_t
 analytic = json.loads((RAW / "analytic_certificate" / "result.json").read_text())
 yatracos = json.loads((RAW / "yatracos_experiment" / "result.json").read_text())
 scaled = json.loads((RAW / "scaled_direct" / "result.json").read_text())
+three_route = json.loads((RAW / "three_route" / "result.json").read_text())
 
 rows = primary["rows"]
 independent_rows = independent["rows"]
@@ -257,6 +258,65 @@ ax.set(
 ax.legend(frameon=False)
 fig.tight_layout()
 fig.savefig(IMAGES / "c1-c2-bound-sweep.png")
+plt.close(fig)
+
+# 13. Headline three-route judge remediation.
+fig, axes = plt.subplots(1, 3, figsize=(11.4, 3.7))
+multidimensional = three_route["multidimensional_direct"]
+axes[0].bar(
+    ["C1\nd=2,3", "C2\nd=2,3"],
+    [
+        multidimensional["max_theorem_2_1_ratio"],
+        multidimensional["max_corollary_2_4_ratio"],
+    ],
+    color=["#277da1", "#43aa8b"],
+)
+axes[0].axhline(1, color="black", linestyle=":", linewidth=1)
+axes[0].set_yscale("log")
+axes[0].set_ylim(1e-4, 2)
+axes[0].set_title("14 multidimensional cells")
+axes[0].set_ylabel("maximum LHS / theorem RHS")
+
+c4_rows = three_route["C4_local_entropy_calibration"]
+for dimension in (1, 2, 3):
+    selected = [row for row in c4_rows if row["dimension"] == dimension]
+    axes[1].plot(
+        [row["log10_n"] for row in selected],
+        [row["theorem_logarithmic_correction"] for row in selected],
+        "o-",
+        label=f"d={dimension}",
+    )
+axes[1].set(
+    xlabel="log10 n",
+    ylabel="(2+delta) / log log(1/epsilon_n)",
+    title="C4 correction shown directly",
+)
+axes[1].legend(frameon=False)
+
+c5_rows = three_route["C5_asymptotic_calibration"]
+axes[2].plot(
+    [row["log_log_1_over_epsilon"] for row in c5_rows],
+    [row["upper_H2_effective_exponent"] for row in c5_rows],
+    "o-",
+    label="upper",
+)
+axes[2].plot(
+    [row["log_log_1_over_epsilon"] for row in c5_rows],
+    [row["lower_H2_effective_exponent"] for row in c5_rows],
+    "s--",
+    label="lower",
+)
+axes[2].axhline(2, color="black", linestyle=":", linewidth=1, label="limit 2")
+axes[2].set(
+    xlabel="log log(1/epsilon)",
+    ylabel="effective H² exponent",
+    title="C5 exponent converges to 2",
+    ylim=(0.4, 2.05),
+)
+axes[2].legend(frameon=False)
+fig.suptitle("Three-route remediation targets the latest judge gaps")
+fig.tight_layout()
+fig.savefig(IMAGES / "headline-three-route.png")
 plt.close(fig)
 
 # 10. C3: every odd order from 11 through 31.

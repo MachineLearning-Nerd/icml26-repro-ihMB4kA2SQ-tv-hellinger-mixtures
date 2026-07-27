@@ -10,7 +10,7 @@ Lemma 3.2 supplies the explicit odd-order Chebyshev construction with zeros
 
 `theta_j=cos((2j+1)pi/(2n+2))`.
 
-## Outcome: complete explicit order sweep
+## Approach 1 — complete explicit order sweep
 
 The verifier solves the paper’s moment system, checks probability weights, constructs the Gaussian location mixtures, and evaluates every odd order from `11` through `31` at 110-digit working precision.
 
@@ -32,13 +32,25 @@ All `11/11` sharpness cells pass. The high-precision moment residual is at most
 `4.243e-115` (the separately reported float64 projection residual is
 `1.118e-19`), and the minimum probability weight remains positive.
 
-## Independent checker and controls
+## Approach 2 — independent integration and moment checker
+
+An independent fixed-node Gauss–Hermite engine at 20 extra digits recomputes
+the mixture distances, while a separate moment audit checks positivity and
+Chebyshev cancellation. It agrees with the primary construction to maximum
+relative error `1.759e-4`; the high-precision moment residual is
+`4.243e-115`.
+
+## Approach 3 — infinite-sequence certificate
 
 The symbolic route checks the exact gamma limits, the coefficient margin
 
 `log(2)-2/5.53 = 0.3314835 > 0.33`,
 
-and a valid monotone-subsequence selection. An independent fixed-node Gauss–Hermite engine at 20 extra digits agrees with the primary construction to maximum relative error `1.759e-4`.
+and a valid monotone-subsequence selection. Specifically, it proves both
+log-norm limits equal `-1/2`, proves the asymptotic exponent-transfer margin is
+strictly greater than one, and gives a recursive subsequence rule that makes
+`TV_n` strictly decrease to zero. The theorem's infinite-sequence quantifier
+is certified by this route, not extrapolated from orders `11,...,31`.
 
 Controls reject the wrong Chebyshev nodes and the stronger coefficient `0.50`. Each control must fail for the intended reason, and every accepted row must pass, or the verifier exits nonzero.
 
@@ -51,6 +63,8 @@ uv sync --frozen && uv run python repro/src/run_publication_gate.py
 Seed `260203202`; one effective core; no GPU. The full row data are in the [construction CSV](../../evidence/raw/claim_1_3/raw_results.csv).
 
 - [Scaled verifier source](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Three-route verifier](../../evidence/src/repro/src/run_three_route_evidence.py)
+- [Three-route matrix](../../evidence/raw/three_route/route_matrix.json)
 - [Construction verifier](../../evidence/src/repro/src/verify_claims_1_3.py)
 - [Complete scaled result](../../evidence/raw/scaled_direct/result.json)
 - [Independent construction checker](../../evidence/raw/claim_1_3/independent_checker.json)

@@ -8,7 +8,7 @@ Theorem 2.1 quantifies over every pair of mixing laws `pi,eta` supported on `[-M
 
 where `alpha(t)=(2+delta)/log(max(log(1/t),e))`. The square root, unit covariance, location-mixture model, compact support, and quantifiers are all enforced by the [claim contract](../../evidence/raw/scaled_direct/claim_contract.json).
 
-## Outcome: exact expression tested directly
+## Approach 1 — broad direct sweep
 
 `run_scaled_direct_evidence.py` generates `60` deterministic but independently randomized compact-support mixture families. Each family is evaluated at seven amplitude levels, producing `420` direct theorem cells:
 
@@ -27,9 +27,32 @@ A separate deterministic 11-location path uses amplitudes `2^-4` through
 falls from `5.487e-4` to `7.257e-9`. This independently exercises the
 small-TV regime that drives the theorem's logarithmic exponent.
 
-## Independent checker and control
+## Approach 2 — direct d=2 and d=3 mixtures
+
+`run_three_route_evidence.py` forms genuine product mixing laws supported on
+`[-2,2]^d` and directly integrates the full tensor densities—not a
+one-dimensional proxy—at seven independently fixed amplitudes in each of
+`d=2,3`.
+
+| Dimension | cells | TV range (combined) | exact-bound violations |
+| ---: | ---: | ---: | ---: |
+| 2 | 7 | `3.754e-6`–`1.864e-2` | 0 |
+| 3 | 7 | `3.754e-6`–`1.864e-2` | 0 |
+
+Across all 14 cells the maximum normalized theorem ratio is `0.00184345`.
+Higher-order quadrature recomputes six sentinels with maximum relative
+disagreement `5.739e-4`; independent tensor-factorization identities agree to
+`5.315e-16`.
+
+## Approach 3 — universal source-pinned certificate
 
 The independent symbolic verifier reconstructs the exponent identity, norm chain, tail thresholds, max/min inversion, and mixture-denominator Jensen step for symbolic `delta>0`. The numerical checker recomputes eight sentinel cells on a doubled `16,385`-point grid; maximum relative disagreement is `2.135e-6`.
+
+Unlike the finite routes, this certificate records the quantified scope as
+all `d>=1`, `M>0`, `delta>0`, and all supported mixing laws. Its premise ledger
+names the Hermite expansion, Christoffel–Darboux bound, restricted-range and
+Nikolskii inequalities, and Lambert lemma; the finite experiments are not used
+to discharge those universal premises.
 
 The stronger linear control `sqrt(chi²)<=TV` is deliberately false on the same valid mixtures and is rejected. A failed bound, checker tolerance, assumption audit, or control makes the verifier exit nonzero.
 
@@ -40,10 +63,14 @@ uv sync --frozen && uv run python repro/src/run_publication_gate.py
 ```
 
 Seed `260203214`; one effective numerical core; eight logical CPUs visible;
-threads pinned to one. The publication-freeze scaled stage took `31.403s` and
-the cumulative local run `3m06s`. No GPU.
+threads pinned to one. The scaled stage took `15.070s` and the cumulative local
+run `2m00s`. No GPU.
 
 - [Scaled verifier source](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Three-route verifier](../../evidence/src/repro/src/run_three_route_evidence.py)
+- [Three-route matrix](../../evidence/raw/three_route/route_matrix.json)
+- [d=2/d=3 raw cells](../../evidence/raw/three_route/multidimensional_direct.csv)
+- [Three-route checker](../../evidence/raw/three_route/independent_checker.json)
 - [Complete result](../../evidence/raw/scaled_direct/result.json)
 - [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)
 - [Negative controls](../../evidence/raw/scaled_direct/negative_control.json)

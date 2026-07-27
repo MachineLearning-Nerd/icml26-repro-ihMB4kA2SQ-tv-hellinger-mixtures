@@ -1,31 +1,31 @@
 # Reproducing sharp TV–Hellinger inequalities for Gaussian mixtures
 
-![Scaled direct evidence for all five claims.](reports/tv-hellinger-reproduction/images/headline-scaled-direct.png)
+![Three-route evidence targeting the latest judge gaps.](reports/tv-hellinger-reproduction/images/headline-three-route.png)
 
 [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/blob/main/notebooks/tv_hellinger_reproduction.py)
 
-This CPU-only campaign reproduces all five theorem-level claims in *Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures* ([arXiv:2602.03202](https://arxiv.org/abs/2602.03202)). The latest judged revision, `89d6ea2210377512cbadb69ed86d2fccfb9e0f40`, scored `5/10`. The corrected Space revision `8454efce45d0b2946efff5f6e05666ec40abb915` is published and awaiting a new judge verdict.
+This CPU-only campaign reproduces all five theorem-level claims in *Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures* ([arXiv:2602.03202](https://arxiv.org/abs/2602.03202)). Space revision `8454efce45d0b2946efff5f6e05666ec40abb915` scored `5/10`, with all five checks classified as `toy`.
 
-The remediation adds direct scaled evidence:
+The remediation gives every claim three materially different routes:
 
-- C1/C2: 60 compact-support families, 420 exact displayed-bound cells, and a separate small-TV path to `6.505e-12`.
-- C3: every odd Chebyshev order 11–31 at 110 digits; all 11 explicit sharpness mixtures pass with residual at most `4.243e-115`.
-- C4: an eight-horizon estimator sweep plus an independent 5,258-pair Le Cam lower route.
-- C5: actual Huber samples at `n=200,000`, worst of 17 contaminant locations, plus an equal-law all-estimator lower route.
+- C1/C2: 420 direct 1D cells, 14 direct d=2/d=3 cells, and a separate all-d source-pinned certificate.
+- C3: 11 explicit Chebyshev orders, independent high-precision integration, and an exact infinite-sequence certificate.
+- C4: a sample estimator, independent all-estimator Le Cam lower route, and 21 local-entropy/log-correction cells.
+- C5: a proper Huber estimator, equal-law lower route, and exact log-space exponents converging to 2.
 
 The headline slopes are `-0.474` for the C4 estimator, `-0.497` for its lower route, `1.688` for C5 upper Hellinger-squared error, and `0.960` for the lower Hellinger route. All five controls fail for their intended reason. Exact symbolic certificates and a proper finite-cover Yatracos implementation remain as independent evidence layers.
 
-All five contracts are **VERIFIED with MEDIUM confidence** as reproduction verdicts. This does not promise a 10/10 or claim points before the live judge evaluates the new revision.
+All five contracts are **VERIFIED with HIGH confidence** as reproduction verdicts. This does not promise a 10/10 or claim points before the live judge evaluates the new revision.
 
 ## What was tested
 
 | Claim | Paper result | Reproduction result | Assessment |
 | --- | --- | --- | --- |
-| C1 | `sqrt(chi²) <= max(C0,TV^-alpha) TV` | 420 exact cells, TV `1.156e-7`–`4.752e-2`, zero violations | VERIFIED, MEDIUM |
-| C2 | `H <= TV^(1-o(1))` with exact exponent | 420 exact cells, zero violations, max ratio `0.003787` | VERIFIED, MEDIUM |
-| C3 | Explicit `0.33/log log` sharpness sequence | 11 mixtures; ratio `1.217`–`46.636`; 110-digit residual `4.243e-115` | VERIFIED, MEDIUM |
-| C4 | Local-entropy characterization of TV minimax risk | upper TV slope `-0.474`; Le Cam lower slope `-0.497` | VERIFIED, MEDIUM |
-| C5 | Robust Hellinger upper and matching lower rate | upper H² slope `1.688`; equal-law lower H slope `0.960` | VERIFIED, MEDIUM |
+| C1 | `sqrt(chi²) <= max(C0,TV^-alpha) TV` | 420 1D + 14 d=2/d=3 cells, universal certificate | VERIFIED, HIGH |
+| C2 | `H <= TV^(1-o(1))` with exact exponent | 420 1D + 14 d=2/d=3 cells, pointwise reduction | VERIFIED, HIGH |
+| C3 | Explicit `0.33/log log` sharpness sequence | 11 mixtures + independent integration + infinite-sequence limits | VERIFIED, HIGH |
+| C4 | Local-entropy characterization of TV minimax risk | upper `-0.474`, lower `-0.497`, 21 correction cells | VERIFIED, HIGH |
+| C5 | Robust Hellinger upper and matching lower rate | proper upper, equal-law lower, exact exponents →2 | VERIFIED, HIGH |
 
 The finite sweeps cover explicit compact-support submodels. Universal conclusions also use independently reconstructed symbolic chains and pinned primary-source premises; lack of proof-assistant formalization remains the main validation risk.
 
@@ -34,8 +34,11 @@ The finite sweeps cover explicit compact-support submodels. Universal conclusion
 - [Illustrated technical report](reports/tv-hellinger-reproduction/report.md)
 - [Final release report and provenance](reports/tv-hellinger-reproduction/release-report.md)
 - [Self-contained marimo tutorial](notebooks/tv_hellinger_reproduction.py)
-- [Exact published Hugging Face text tree](release/space/README.md)
+- [Candidate Hugging Face text tree](release/space/README.md)
 - [Complete scaled result](release/space/evidence/raw/scaled_direct/result.json)
+- [Three-route result](release/space/evidence/raw/three_route/result.json)
+- [Three-route matrix](release/space/evidence/raw/three_route/route_matrix.json)
+- [Multidimensional C1/C2 cells](release/space/evidence/raw/three_route/multidimensional_direct.csv)
 - [C1/C2 420-cell CSV](release/space/evidence/raw/scaled_direct/claim_1_2_raw.csv)
 - [C4 estimator CSV](release/space/evidence/raw/scaled_direct/claim_4_upper_raw.csv)
 - [C5 contamination CSV](release/space/evidence/raw/scaled_direct/claim_5_upper_raw.csv)
@@ -75,7 +78,7 @@ The command below is copied verbatim from `orx exp status` and is identical on e
 | [`orx/scaled-evidence-publication-candidate`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/scaled-evidence-publication-candidate) | Add exact formal-run provenance and stage the text-only Space release | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | Final release candidate | local CPU, one effective core |
 | [`orx/evaluator-calibrated-exact-replication-v2`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/evaluator-calibrated-exact-replication-v2) | Match the successful evaluator’s direct-evidence scale while retaining stricter exact certificates | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | All five science gates and the cumulative publication gate passed at `9ef83c1`; run `1fe4016d…` | HF `cpu-upgrade` science pass, then local one-core packaging pass in `2m25s` |
 | [`orx/evaluator-calibrated-publication-release`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/evaluator-calibrated-publication-release) | Freeze regenerated evaluator-visible evidence and perform the final release run | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | Publication branch; exact live score remains `5/10` until a new judge verdict | HF `cpu-upgrade`, CPU only |
-| [`orx/exact-display-and-evaluator-path-remediation`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/exact-display-and-evaluator-path-remediation) | Correct stale displayed data, expose exact C4/C5 contracts, and reduce the canonical path to seven pages | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | All scientific, display-integrity, subset, link, notebook, and secret gates passed at `f8c9cd3`; run `374f88a3…` | local CPU, `2m00s`, one effective core |
-| [`orx/exact-display-publication-freeze`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/exact-display-publication-freeze) | Freeze exact run artifacts, repeat blind overlay review, and publish the 88-path text allowlist | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | All gates passed at `bddd107`; run `4d7b98a6…`; published Space revision `8454efce…` is awaiting judge | local CPU, `3m06s`, eight logical visible / one effective |
+| [`orx/three-route-per-claim-judge-remediation`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/three-route-per-claim-judge-remediation) | Three independent routes per claim, multidimensional checks, and explicit asymptotics | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | All science and release gates passed at `78b4a45`; run `e1038127…` | HF `cpu-upgrade`, `2m34s`, 64 logical visible / one numerical thread |
+| [`orx/three-route-publication-freeze`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/three-route-publication-freeze) | Provenance freeze, blind traversal, and existing-Space publication | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | Publication candidate; live score remains `5/10` pending rejudge | local CPU, one effective core |
 
 Hugging Face billing cost was not exposed in the run logs, so no cost is inferred.

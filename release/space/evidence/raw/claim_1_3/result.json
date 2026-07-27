@@ -1,7 +1,7 @@
 {
   "claim_scope": "finite direct corroboration of exact formulas; universal proof certificate pending",
   "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
-  "git_sha": "bddd1077e4f6fc1424ff54128318633a2181b902",
+  "git_sha": "ad6bf12a336228d33f55498ad8b535ac42d09d3e",
   "seed": 260203202,
   "mp_dps": 110,
   "max_high_precision_moment_residual": 4.242807927109529e-115,
@@ -9,8 +9,8 @@
   "cpu_estimate": "1 effective core",
   "actual_logical_cpus_visible": 8,
   "platform": "macOS-26.5.2-arm64-arm-64bit",
-  "runtime_seconds": 35.509545707987854,
-  "max_rss_kib": 81510400,
+  "runtime_seconds": 48.18874558398966,
+  "max_rss_kib": 82722816,
   "sharpness_orders_passing": [
     11,
     13,

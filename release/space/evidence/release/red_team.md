@@ -117,21 +117,33 @@ Checks and conclusions:
 Pass-5 conclusion: **PASS.** No stale display, broken link, hidden current
 verifier, or protected-history regression was found.
 
-## Pass 6 — exact upload overlay
+## Pass 6 — three-route publication freeze
 
-Publication Git SHA: `bddd1077e4f6fc1424ff54128318633a2181b902`;
-formal run: `4d7b98a6-81b0-48ae-992b-57eff501b3ed` (`3m06s`, local CPU,
-one numerical thread). The reviewer downloaded existing Space revision
-`89d6ea2210377512cbadb69ed86d2fccfb9e0f40` into a fresh directory, overlaid
-only the 88 allowlisted text paths, and began at the resulting `README.md`.
+Candidate Git SHA: `096b8a477779252871d3835bd3a19f7f26c5f11f`.
+Fresh directory: `/tmp/three-route-blind.ALIMCE`, created only from
+`git archive 096b8a4 release/space`. The automated blind crawler began at
+`README.md` and followed only relative links it discovered there and on
+subsequent Markdown pages.
 
-The simulated post-upload tree contained all `107` existing paths. The reviewer
-opened `pages/index.md`, overview, C1–C5, and methods; followed `94` relative
-links; verified all `85` stable manifest hashes; and reconstructed all six C5
-headline rows from the raw JSON. The seven current navigation entries were
-unchanged, the protected history remained reachable, and the secret scan
-remained `PASS`.
+It opened 66 reachable files. These included the seven canonical pages, all
+five exact claim contracts, `run_three_route_evidence.py`, the three-route
+matrix, d=2/d=3 raw cells, C4 and C5 calibration CSVs, independent checkers,
+negative controls, source audits, limitations, the universal/application
+certificates, and immutable historical evidence. No required file was unseen
+and no discovered relative link was missing.
 
-Pass-6 conclusion: **PASS.** The exact no-delete text overlay expected from the
-Hub upload has no missing path, broken canonical link, stale C5 value, manifest
-mismatch, or secret-like content.
+From those files alone the reviewer located:
+
+- exactly three materially different routes for each claim;
+- zero C1/C2 violations in 14 direct multidimensional cells;
+- C3's exact infinite-sequence limit and subsequence certificate;
+- 21 C4 local-entropy cells exposing the logarithmic correction;
+- C5 effective H² exponents `1.945` and `1.99175` approaching two;
+- the fixed command, pinned environment, formal HF CPU record, controls,
+  limitations, and fail-closed source.
+
+All 98 stable candidate-manifest hashes verified inside the fresh directory.
+
+Pass-6 conclusion: **PASS.** Every item required to evaluate the current
+three-route claim suite was discoverable from the canonical entrypoint without
+repository or OpenResearch knowledge.
