@@ -27,11 +27,12 @@ No target slope, sample horizon, contaminant location, or pair was selected from
 
 ## Compute record
 
-Before the scaled run, runtime was uncertain, so it was routed to Hugging Face `cpu-upgrade`. The job exposed 64 logical CPUs; `OMP`, OpenBLAS, MKL, vecLib, and NumExpr were all pinned to one numerical thread. The scaled stage used `7.999s` and approximately `111 MiB` maximum RSS. A deterministic local artifact regeneration, performed only after that runtime was known, exposed eight logical CPUs, remained one-threaded, and used `6.507s`. No GPU was used. HF billing cost was not exposed, so none is invented.
-
-The successful formal run used
-`ghcr.io/astral-sh/uv:python3.12-bookworm-slim`. Failed environment-only runs
-remain recorded in the experiment tree and are not scientific evidence.
+The first uncertain scaled run used Hugging Face `cpu-upgrade`; numerical
+libraries were pinned to one thread. Once runtime was bounded, the current
+formal remediation used the authorized local backend: one effective core,
+eight logical CPUs visible, `15.070s` for the scaled stage, `2m00s` total, and
+`114,786,304` bytes maximum RSS. No GPU was used. The HF billing cost was not
+exposed, so none is invented.
 
 ## Fail-closed suite
 

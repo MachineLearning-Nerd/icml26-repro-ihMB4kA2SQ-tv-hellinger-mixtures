@@ -39,7 +39,9 @@ The stronger linear control `sqrt(chi²)<=TV` is deliberately false on the same 
 uv sync --frozen && uv run python repro/src/run_publication_gate.py
 ```
 
-Seed `260203214`; estimated one effective core; HF `cpu-upgrade`; 64 logical CPUs visible, numerical threads pinned to one; scaled stage `7.999s` remotely and `6.507s` locally. No GPU.
+Seed `260203214`; one effective numerical core; eight logical CPUs visible;
+threads pinned to one. The scaled stage took `15.070s` and the cumulative local
+run `2m00s`. No GPU.
 
 - [Scaled verifier source](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
 - [Complete result](../../evidence/raw/scaled_direct/result.json)

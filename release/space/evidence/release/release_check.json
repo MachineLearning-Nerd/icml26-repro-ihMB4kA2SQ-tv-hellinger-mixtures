@@ -579,8 +579,8 @@
   "secret_scan": "PASS",
   "red_team_passes": 5,
   "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
-  "estimator_evidence_git_sha": "9ef83c11c7c527c32bebfbae69585518eac8551b",
-  "scaled_evidence_git_sha": "9ef83c11c7c527c32bebfbae69585518eac8551b",
+  "estimator_evidence_git_sha": "f8c9cd3a37b8d54f82eecc197734708cd9e97048",
+  "scaled_evidence_git_sha": "f8c9cd3a37b8d54f82eecc197734708cd9e97048",
   "new_live_verdict_profile": {
     "evaluated_revision": "89d6ea2210377512cbadb69ed86d2fccfb9e0f40",
     "claims": [

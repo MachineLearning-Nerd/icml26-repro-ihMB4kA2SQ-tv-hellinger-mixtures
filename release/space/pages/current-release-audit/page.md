@@ -52,6 +52,11 @@ pass, is one text-only Hugging Face Hub commit containing the 88 allowlisted
 paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be
 created.
 
+The cumulative remediation gate passed at Git SHA
+`f8c9cd3a37b8d54f82eecc197734708cd9e97048`, OpenResearch run
+`374f88a3-d40f-4a8c-840f-4f9d3a0d3ed4`, in `2m00s` on the local backend with
+one effective numerical core.
+
 ## Integrity files
 
 - [Candidate SHA-256 manifest](../../evidence/release/candidate_manifest.sha256)
