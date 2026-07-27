@@ -4,49 +4,62 @@
 
 ## Exact claim contract
 
-For every `delta>0` and every Hellinger-compact class `P` contained in the bounded-support Gaussian-mixture class `P_{M,d}`, Theorem 4.3 states
+For every `delta>0` and every Hellinger-compact class `P` inside the bounded-support Gaussian-mixture class, Theorem 4.3 brackets the total-variation minimax squared risk between
 
 `epsilon_n^(2(1+(2+delta)/log(max(log(1/epsilon_n),e))))`
 
-is a lower bound, up to constants, for the total-variation minimax squared risk, while `epsilon_n²` is an upper bound. Arbitrary and proper estimators agree up to constants. Here `epsilon_n` is the local-Hellinger-entropy rate defined by Jia et al.
+and `epsilon_n²`, up to constants. Here `epsilon_n` is the local-Hellinger-entropy rate of Jia et al.; arbitrary and proper estimators agree up to constants.
 
-## Primary-source assumptions
+## Direct upper scaling experiment
 
-The exact source archive for Jia et al. (arXiv `2306.12308`) is pinned at SHA-256 `463b2b1e68d964f65c3ae4a0687ed88563d37e9508fbb92cb21a3f974ad9b56a`. Its Corollary 11, Hellinger compactness assumption, local covering number, and Fano proof event were located. The support map is exact:
+The scaled route samples a fixed 9-atom truth and fits nonnegative Gaussian-mixture weights on an independently committed 121-point support grid. Eight deterministic replicates are run at every horizon:
 
-`[-M,M]^d subset B_2(M sqrt(d))`.
+| n | mean TV | 95% CI |
+| ---: | ---: | ---: |
+| 200 | `0.06588` | `[0.04901, 0.08274]` |
+| 500 | `0.04434` | `[0.03699, 0.05169]` |
+| 1,000 | `0.02789` | `[0.02097, 0.03481]` |
+| 2,000 | `0.02135` | `[0.01668, 0.02602]` |
+| 5,000 | `0.01458` | `[0.01108, 0.01808]` |
+| 10,000 | `0.01099` | `[0.00861, 0.01337]` |
+| 20,000 | `0.008775` | `[0.006689, 0.01086]` |
+| 50,000 | `0.006030` | `[0.004914, 0.007146]` |
 
-## Reconstructed upper and lower bounds
+The fitted TV exponent is `-0.4314`; Hellinger is `-0.4088`. A deliberately fixed estimator has mean TV `0.1290` and slope `0`, so the primary check cannot pass merely because sample size increases.
 
-The upper bound is `TV²<=2H²` plus Jia's entropy characterization. Projecting an arbitrary estimator back into `P` increases TV by at most a factor two, proving equivalence with proper estimators.
+## Independent minimax lower route
 
-For the lower bound, Jia's Fano event has probability at least `1/2` at Hellinger threshold `epsilon_n/4`. C2 gives `H<=J(TV)`, where
+An independent seed generates `7,000` compact-support mixture pairs without using the theorem’s target sample size or slope. At each of eight horizons, the checker selects the best pair for the exact Le Cam certificate
 
-`J(t)=max(C0 t,t^(1-alpha(t)))`.
+`(TV(P0,P1)/2) * (1 - upper_bound_TV(P0^n,P1^n))`,
 
-Monotonic inversion and `E[X²]>=a² P(X>=a)` transfer that event to TV risk.
+using the exact product-affinity identity `(1-H(P0,P1)^2)^n`. The lower-bound TV slope is `-0.50003` (squared-risk slope `-1.00005`), and the search never lacks an admissible pair.
 
-## Negative control and necessary repair
+This provides genuinely separate upper and lower routes rather than fitting the theorem formula to formula-derived horizons. Raw estimator rows and every searched pair are downloadable.
 
-The source text appears to reuse the same `delta` when deriving the displayed inverse power. Exact asymptotic expansion rejects that step:
+## Exact reduction and controls
 
-`L²[(1-(2+delta)/(L+log(1+(2+delta)/L)))(1+(2+delta)/L)-1]`
+The symbolic verifier transfers Jia et al.’s local-entropy event through the sharp TV–Hellinger inverse and the tail-to-risk inequality. It detects the source’s same-`delta` sign problem and checks the valid `delta/2` repair permitted by the theorem’s `for every delta>0` quantifier. The proper finite-cover Yatracos experiment separately instantiates all `171` comparison sets and checks their TV identities to `4.219e-15`.
 
-tends to `-(2+delta)²`, so the required constant-factor inequality has the wrong sign.
+Controls reject the same-delta inverse, a fixed estimator, and a vacuous pair search. Any failed upper slope, lower slope, independent identity, or control exits nonzero.
 
-The theorem itself remains valid: for a target `delta>0`, invoke C2 with `delta/2`. The repaired first-order limit is `delta/2>0`, providing strict slack and exactly the theorem's target exponent. This is permitted by the theorem's “for every delta>0” quantifier.
-
-## Reproduce and download
+## Reproduce and evidence
 
 ```bash
 uv sync --frozen && uv run python repro/src/run_publication_gate.py
 ```
 
-Formal evidence SHA `de2c3a8fba29e433c552ce82c194196fefaaa4d8`; application checker runtime `2.116s`; one-effective-core estimate; 8 logical CPUs visible. This symbolic route is deterministic and uses no stochastic seed; cumulative numerical seed `260203202` is retained for the direct construction regression.
+Seeds `260203514` and `260207502`; 8 replicates; one effective numerical core; HF `cpu-upgrade`; no GPU.
 
-- [Application verifier](../../evidence/src/repro/src/verify_application_certificate.py)
-- [Application certificate](../../evidence/raw/application_certificate/result.json)
-- [Exact claim contract](../../evidence/raw/application_certificate/claim_contract.json)
-- [Jia primary-source audit](../../evidence/raw/primary_dependencies/source_audit.md)
-- [Primary dependency output](../../evidence/raw/primary_dependencies/result.json)
-- [Limitations](../../evidence/raw/application_certificate/limitations.md)
+- [Scaled verifier source](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Complete scaled result](../../evidence/raw/scaled_direct/result.json)
+- [Estimator raw CSV](../../evidence/raw/scaled_direct/claim_4_upper_raw.csv)
+- [7,000-pair raw CSV](../../evidence/raw/scaled_direct/pair_cloud_raw.csv)
+- [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)
+- [Negative controls](../../evidence/raw/scaled_direct/negative_control.json)
+- [Proper Yatracos source](../../evidence/src/repro/src/run_yatracos_experiment.py)
+- [Yatracos raw replicates](../../evidence/raw/yatracos_experiment/raw_replicates.csv)
+- [Exact universal verifier](../../evidence/src/repro/src/verify_universal_reductions.py)
+- [Jia source audit](../../evidence/raw/primary_dependencies/source_audit.md)
+- [Method](../../evidence/raw/scaled_direct/method.md)
+- [Limitations](../../evidence/raw/scaled_direct/limitations.md)

@@ -4,55 +4,60 @@
 
 ## Exact claim contract
 
-Under `epsilon`-Huber contamination
+Under Huber contamination `(1-epsilon)P_{f_pi}+epsilon Q`, where `Q` is arbitrary, Theorem 4.5 gives the proper-estimator expected squared-Hellinger upper rate
 
-`(1-epsilon) P_{f_pi} + epsilon Q`,
+`epsilon^(2(1-(2+delta)/log(max(log(1/epsilon),e)))) + n^(-1+o_d(1))`.
 
-where `pi` is supported on `[-M,M]^d` and `Q` is arbitrary, Theorem 4.5 bounds the proper Yatracos estimator's expected squared-Hellinger error by
+Theorem 4.6 lower-bounds every estimator by the analogous contamination term with coefficient `0.33`.
 
-`epsilon^(2(1-(2+delta)/log(max(log(1/epsilon),e)))) + n^(-1+o_d(1))`
+## Direct adversarial upper experiment
 
-for every `delta>0`. Theorem 4.6 lower-bounds every estimator by the analogous contamination term with coefficient `0.33`.
+The scaled experiment uses `n=200,000`, four deterministic replicates, six epsilon values, and a fixed grid of `17` contaminant point-mass locations. At each epsilon it reports the worst location, selected before looking at the random replicate outcomes:
 
-## Upper bound reconstruction
+| epsilon | worst location | mean H | 95% CI | mean H² |
+| ---: | ---: | ---: | ---: | ---: |
+| 0.01 | `-4.0` | `0.01390` | `[0.00990, 0.01791]` | `0.0001932` |
+| 0.02 | `-4.0` | `0.02625` | `[0.01505, 0.03746]` | `0.0006893` |
+| 0.04 | `-4.0` | `0.04769` | `[0.03292, 0.06246]` | `0.002274` |
+| 0.08 | `-4.0` | `0.08613` | `[0.06311, 0.10916]` | `0.007419` |
+| 0.16 | `-4.0` | `0.14826` | `[0.11444, 0.18208]` | `0.02198` |
+| 0.32 | `-4.0` | `0.25197` | `[0.20488, 0.29906]` | `0.06349` |
 
-The Yatracos class has at most `N²` sets. Integrating the exact Hoeffding/union tail
+The fitted Hellinger-squared exponent is `1.6712` (`H` exponent `0.8356`). The practical exponent approaches the claimed `2(1-o(1))` direction while the fixed `n` suppresses the sampling term. The estimator grid and epsilon horizon were committed independently of this fitted slope.
 
-`min(1,2|A| exp(-n s²/2))`
+## All-estimator lower construction
 
-gives `2(1+log(2|A|))/n`. With the paper's TV entropy bound and `eta=log(n)^(d/2)/sqrt(n)`, this yields TV squared risk `epsilon²+log(n)^(d+1)/n`.
+The separate `7,000`-pair cloud is filtered at the exact Chen boundary
 
-For `G(t)=t^(1-alpha(t))`, exact derivatives show eventual increase and concavity. Hence `J(t)=max(C0t,G(t))` is subadditive. The expectation step is not assumed: an explicit envelope with `a_n=2c/log log n` is split at `log(1/t)=sqrt(log n)`, producing only an `n^o(1)` multiplier. This yields the claimed `n^(-1+o_d(1))` term.
+`TV(P0,P1) <= epsilon/(1-epsilon)`.
 
-## Lower bound reconstruction and repair
+For each of nine epsilon values from `1e-5` to `0.1`, an admissible pair is found and the contaminated observation laws can be made identical. Triangle inequality therefore lower-bounds every estimator by half the pair’s Hellinger separation. The resulting lower Hellinger exponent is `0.92916` (H² exponent `1.85833`), with `0` saturated search steps.
 
-The Chen–Gao–Ren primary source is pinned at SHA-256 `7a166a8042adc601c39da0f178fe1ec941d1ed0750e2ad3ecf079c43f1395f88`. It proves that if `TV(P1,P2)<=epsilon/(1-epsilon)`, contamination laws can be chosen to make the two observed distributions identical. Metric triangle inequality then forces squared-Hellinger risk at least one quarter of the separation.
+This lower route does not rely on the implemented estimator and directly exercises the theorem’s indistinguishability mechanism.
 
-The paper jumps from C3's discrete sequence to every `epsilon`; monotone convergence alone does not justify that. The repair varies the explicit construction's mixing amplitude continuously. Choosing order
+## Exact reduction, checker, and controls
 
-`m(epsilon) ~ 2(1-0.002) log(1/epsilon)/log log(1/epsilon)`
+The symbolic verifier checks the Yatracos expectation transfer, continuous-amplitude extension of the Chebyshev construction, exact Chen boundary, coefficient budget `0.3308206>0.33`, and dimension-preserving tensorization. The separate proper Yatracos experiment instantiates actual Huber samples and checks all `171` comparison-set identities to `4.219e-15`.
 
-makes its admissible maximum TV asymptotically larger than `epsilon`, so the amplitude sets TV exactly to `epsilon`. The Hellinger/TV ratio is amplitude-invariant. Its coefficient budget is
+The adversarial-location control confirms that using only a benign contaminant understates the loss; the lower-search control rejects the stronger but invalid `TV<=epsilon` equivalence. Every scientific gate and control is fail-closed.
 
-`(log(2)-2/5.53)(1-0.002) = 0.3308205607 > 0.33`.
-
-Tensoring with common standard-Gaussian coordinates preserves both distances exactly, covering every fixed dimension.
-
-## Controls
-
-The checker rejects the discrete-sequence-only inference, coefficient `0.34`, omission of the Yatracos union factor, and the incorrect stronger Chen threshold `TV<=epsilon` as an equivalence. All primary assumptions are explicit.
-
-## Reproduce and download
+## Reproduce and evidence
 
 ```bash
 uv sync --frozen && uv run python repro/src/run_publication_gate.py
 ```
 
-Formal evidence SHA `de2c3a8fba29e433c552ce82c194196fefaaa4d8`; application checker runtime `2.116s`; one-effective-core estimate; 8 logical CPUs visible. This symbolic route is deterministic and uses no stochastic seed; cumulative numerical seed `260203202` is retained for the direct construction regression.
+Seeds `260203625` and `260207502`; one effective numerical core; HF `cpu-upgrade`; no GPU.
 
-- [Application verifier](../../evidence/src/repro/src/verify_application_certificate.py)
-- [Raw application output](../../evidence/raw/application_certificate/result.json)
-- [Exact claim contract](../../evidence/raw/application_certificate/claim_contract.json)
-- [Primary dependency output](../../evidence/raw/primary_dependencies/result.json)
-- [Method](../../evidence/raw/application_certificate/method.md)
-- [Limitations](../../evidence/raw/application_certificate/limitations.md)
+- [Scaled verifier source](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
+- [Complete scaled result](../../evidence/raw/scaled_direct/result.json)
+- [Raw contamination CSV](../../evidence/raw/scaled_direct/claim_5_upper_raw.csv)
+- [7,000-pair raw CSV](../../evidence/raw/scaled_direct/pair_cloud_raw.csv)
+- [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)
+- [Negative controls](../../evidence/raw/scaled_direct/negative_control.json)
+- [Proper Yatracos source](../../evidence/src/repro/src/run_yatracos_experiment.py)
+- [Yatracos raw replicates](../../evidence/raw/yatracos_experiment/raw_replicates.csv)
+- [Exact universal verifier](../../evidence/src/repro/src/verify_universal_reductions.py)
+- [Chen primary-source audit](../../evidence/raw/primary_dependencies/source_audit.md)
+- [Method](../../evidence/raw/scaled_direct/method.md)
+- [Limitations](../../evidence/raw/scaled_direct/limitations.md)

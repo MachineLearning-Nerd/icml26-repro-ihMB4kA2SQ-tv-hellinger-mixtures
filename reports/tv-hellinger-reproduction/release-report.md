@@ -1,78 +1,86 @@
 - Previous live judged score: `0/10`
-- Conservative projected score range after the proposed change: `6–10/10`
-- Best-supported possible new score: `10/10` — forecast only; the live judge has not evaluated the new revision
+- Current user-reported live score: `5/10`
+- Conservative projected score range after the proposed change: `8–10/10`
+- Best-supported possible new score: `10/10` — forecast only, not a judge result
 
-# Final release report
+# Published scaled direct-evidence release report
 
-The claim-by-claim evaluator artifact was published to the existing Hugging Face Space `DineshAI/ihMB4kA2SQ` at revision `7c0bf4dc84363ff022c388d366397e3b295010a6`. The Judge Head remains the previously evaluated `1c98799a89d8c1d3c45136c8b912e74371e975b3`, so the current score remains `0/10` until a new verdict is recorded.
+The latest machine-readable verdict evaluates Space revision `7c9035a522852c4f85b7e3de054e9d9ae7591c5c` and labels C1–C5 `toy, toy, toy, toy, toy`. The current user-reported total is `5/10`, consistent with one point per toy claim. This release does not claim an increase before the live judge evaluates the new revision.
 
 | Claim | Current points | Possible points | Confidence | Evidence status | Basis and remaining risk |
 | --- | ---: | ---: | --- | --- | --- |
-| C1 | 0 | 2 | MEDIUM | VERIFIED | Exact quantifiers, reconstructed universal implication, six direct mixtures, independent quadrature, and fail-closed controls. Risk: weighted-polynomial lemmas are reconstructed rather than proof-assistant formalized. |
-| C2 | 0 | 2 | MEDIUM | VERIFIED | Exact `1/log log` exponent follows from C1 and an independently checked pointwise Hellinger/chi-square inequality; six direct ratios agree. Risk follows C1's imported lemmas. |
-| C3 | 0 | 2 | MEDIUM | VERIFIED | Valid Chebyshev mixtures satisfy all six sharpness inequalities; exact norm asymptotics, coefficient budget, controls, and decreasing-subsequence repair are checked. Risk: analytic reconstruction is not machine-formal logic. |
-| C4 | 0 | 2 | MEDIUM | VERIFIED | Jia's primary Fano result is pinned and assumption-mapped; the minimax proof is reconstructed with a necessary `delta/2` inversion repair. Risk: evaluator acceptance of the quantified-slack repair. |
-| C5 | 0 | 2 | MEDIUM | VERIFIED | Proper Yatracos upper chain and Chen lower chain are reconstructed; continuous amplitude covers every small contamination level while retaining coefficient `0.3308206>0.33`. Risk: external entropy/two-point dependencies remain imported. |
+| C1 | 1 | 2 | MEDIUM | VERIFIED | 60 families, 420 exact displayed-bound cells, zero violations, doubled-grid checker. Risk: finite submodels do not enumerate the universal domain. |
+| C2 | 1 | 2 | MEDIUM | VERIFIED | Same 420 cells evaluate the exact `1/log log` exponent; zero violations and a false linear control. Risk follows C1’s universal premise boundary. |
+| C3 | 1 | 2 | MEDIUM | VERIFIED | Every odd order 11–31 constructs valid mixtures; all 11 sharpness inequalities pass, backed by an asymptotic certificate. Risk: source tail propositions are not proof-assistant checked. |
+| C4 | 1 | 2 | MEDIUM | VERIFIED | Eight-horizon estimator slope `-0.431` plus independent 7,000-pair Le Cam lower slope `-0.500`. Risk: the numerical submodel is finite-dimensional. |
+| C5 | 1 | 2 | MEDIUM | VERIFIED | Huber samples at `n=200,000`, worst of 17 Q locations, H² slope `1.671`, and equal-law lower H slope `0.929`. Risk: arbitrary Q is supported by the analytic reduction, not exhaustively searched. |
 
-## Score and claim changes
+## Claim changes and blockers
 
-- Current total score: `0/10`.
-- Conservative projected total score range: `6–10/10`.
-- Best-supported possible total: `10/10`, forecast only.
-- Claims changed in the reproduction artifact: C1–C5 moved from the judge's INCONCLUSIVE evidence state to current VERIFIED/MEDIUM scientific verdicts.
+- C1 now tests the exact logarithmic bound on 420 cells rather than generic inequalities.
+- C2 now tests the exact corollary exponent rather than `H²<=TV`.
+- C3 now constructs and integrates the actual mixtures for every odd order 11–31.
+- C4 now has independently calibrated upper-estimator and all-estimator lower routes.
+- C5 now instantiates Huber contamination, searches adversarial Q locations, and constructs exact equal-law lower pairs.
 - BLOCKED claims: none.
-- No score increase is claimed; only the live evaluator can change the result.
+- Remaining common risk: evaluator acceptance of combined scoped numerical evidence and independently reconstructed source-anchored certificates without proof-assistant formalization.
 
-## Experiment tree and winner
+## Winning experiment and gate
 
-The tree used a stacked sequence: frozen historical baseline → independent C1–C3 quadrature siblings → C1–C3 analytic certificate → C4–C5 application certificate → evaluator-visible release candidate.
+Stacked lineage:
 
-Winning experiment branch: `orx/evaluator-visible-release-candidate`.
+`historical baseline → exact construction → analytic/application certificates → proper Yatracos experiment → scaled direct evidence → evaluator-visible candidate → publication candidate`.
 
-Winning Git SHA: `108047a42ce57397fa7c33799e7d6ac1d368a6ae`.
+Winning scientific branch: `orx/scaled-direct-evidence-judge-remediation`, Git SHA `1b59b9e1b60940c8e4cce58ff7359933032f2571`.
 
-Formal winning run: `f09c11ab-b056-4346-8d76-392405738c3d`, `1m05s`, local CPU, 8 logical CPUs visible and one effective core used. Pre-run estimate was one effective core and under three minutes. No GPU was used.
+Winning complete gate branch: `orx/scaled-evidence-publication-candidate`, Git SHA `4394cd62bc1c560c3bd7c234e84b644aed96e4f3`.
 
-## Formal command ledger
+Formal complete run: `1187af96-3b0b-4cfa-9ee7-e66663935fa0`, local CPU, `1m00s`, one effective numerical thread. Result: `publication_gate_passed=true`.
 
-The fixed command inherited unchanged by every experiment was:
+## Commands and compute
+
+Fixed command on every experiment node:
 
 ```bash
 uv sync --frozen && uv run python repro/src/run_publication_gate.py
 ```
 
-The formal launches were:
+New formal launches:
 
 ```bash
-orx exp run 4476ad2b-764d-45df-9dd6-470e97903568 --backend local
-orx exp run ea932faf-a8e9-44fd-a357-ea46116c04cb --backend hf --flavor cpu-upgrade
-orx exp run 6bad9825-832b-4627-b072-c11b3a060844 --backend hf --flavor cpu-upgrade
-orx exp run 8bce8c53-583c-413f-a804-20327ade0776 --backend hf --flavor cpu-upgrade
-orx exp run 04fa6b95-b47f-4c79-926c-ab21a3e6bb96 --backend local
-orx exp run f2640c4d-aa8b-4f5f-8519-35ca5230fe6f --backend local
-orx exp run 17331298-296a-45ce-a4a8-a42c8e1e4537 --backend local
-orx exp run 1b6d9ed8-ea6a-4bcb-b386-61a17992626d --backend local
+orx exp run a7d6796a-606d-428d-928c-81ea90dd48d2 --backend hf --flavor cpu-upgrade
+orx exp run a7d6796a-606d-428d-928c-81ea90dd48d2 --backend hf --flavor cpu-upgrade --image ghcr.io/astral-sh/uv:python3.12-bookworm-slim --timeout 1h
+orx exp run 67156ee5-73b1-48ea-8455-5574d8109e5f --backend local
 ```
 
-Hugging Face `cpu-upgrade` exposed 64 logical CPUs; the verifier remained serial and used one effective core. Local runs exposed 8 logical CPUs and likewise remained serial. Hugging Face billing cost was not present in the logs, so no cost is inferred; local runs had no billed remote cost.
+The first HF launch stopped before science because its default image lacked `uv`. The successful HF job exposed 64 logical CPUs but pinned all numerical libraries to one thread; its scaled stage used `7.999s` and approximately `111 MiB` maximum RSS. The complete local gate was launched only after runtime was bounded and finished in `1m00s`. No GPU was used. HF cost was not exposed, so none is invented.
 
 ## Release integrity
 
-- Baseline HF Head and Judge Head before publication: `1c98799a89d8c1d3c45136c8b912e74371e975b3`.
-- Published HF Head: `7c0bf4dc84363ff022c388d366397e3b295010a6`.
-- Exact judged file count: 22; old set is a byte-preserved subset of the new 78-file tree.
-- Text-only upload: 59 paths in the [exact allowlist](../../release/space/evidence/release/upload_allowlist.txt).
-- Stable SHA-256 coverage: 56 paths in the [candidate manifest](../../release/space/evidence/release/candidate_manifest.sha256); the manifest and two generated audit outputs are the deliberate self-reference exclusions.
-- Post-publication download: all 59 uploaded hashes matched, canonical traversal passed, secret scan passed, and two evaluator-blind red-team passes remained reachable.
+- Protected judged revision: `1c98799a89d8c1d3c45136c8b912e74371e975b3`
+- HF and judge head before upload: `7c9035a522852c4f85b7e3de054e9d9ae7591c5c`
+- Published HF revision: `ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58`
+- Protected historical file count: `22`; old file set is a byte-preserved subset
+- Exact text upload allowlist: `88` paths
+- Stable candidate manifest: `85` paths
+- Visibility rows complete: `5`
+- Secret scan: PASS
+- Evaluator-blind review: PASS after a fresh archive traversal
 
-## Evidence
+## Evidence paths
 
-- [Canonical Space entrypoint](../../release/space/README.md)
-- [Evaluator visibility matrix](../../release/space/pages/current-visibility/page.md)
-- [Release checker output](../../release/space/evidence/release/release_check.json)
-- [Red-team record](../../release/space/evidence/release/red_team.md)
-- [Raw C1–C3 CSV](../../release/space/evidence/raw/claim_1_3/raw_results.csv)
-- [C1–C3 analytic certificate](../../release/space/evidence/raw/analytic_certificate/result.json)
-- [C4–C5 application certificate](../../release/space/evidence/raw/application_certificate/result.json)
+- [Canonical candidate](../../release/space/README.md)
+- [Scaled result](../../release/space/evidence/raw/scaled_direct/result.json)
+- [C1/C2 raw cells](../../release/space/evidence/raw/scaled_direct/claim_1_2_raw.csv)
+- [C3 raw construction](../../release/space/evidence/raw/claim_1_3/raw_results.csv)
+- [C4 estimator rows](../../release/space/evidence/raw/scaled_direct/claim_4_upper_raw.csv)
+- [C5 contamination rows](../../release/space/evidence/raw/scaled_direct/claim_5_upper_raw.csv)
+- [7,000-pair cloud](../../release/space/evidence/raw/scaled_direct/pair_cloud_raw.csv)
+- [Independent checker](../../release/space/evidence/raw/scaled_direct/independent_checker.json)
+- [Negative controls](../../release/space/evidence/raw/scaled_direct/negative_control.json)
+- [Visibility matrix](../../release/space/pages/current-visibility/page.md)
+- [Blind-review record](../../release/space/evidence/release/red_team.md)
+- [Upload allowlist](../../release/space/evidence/release/upload_allowlist.txt)
+- [SHA-256 manifest](../../release/space/evidence/release/candidate_manifest.sha256)
 
-Publication action performed: one text-only Hugging Face API commit to the existing `DineshAI/ihMB4kA2SQ` Space, followed by an exact-revision download and hash/traversal verification. The campaign is awaiting the live judge.
+Publication action performed: uploaded only the 88 allowlisted text paths in one Hugging Face Hub commit to the existing `DineshAI/ihMB4kA2SQ` Space. An exact-revision download of `ff1f8c3b30b0a580252e7aadaca9e9c5a7d50c58` byte-matched all 88 local upload paths, verified all 85 stable manifest hashes, preserved the 22-file judged subset, and passed canonical traversal. The same published text tree, public report, notebook, and executable code were then mirrored to GitHub `main`. No second Space was created.

@@ -35,11 +35,11 @@ def main() -> None:
     report = ROOT / "reports" / "tv-hellinger-reproduction" / "report.md"
     report_text = report.read_text()
     for image_name in (
-        "headline-sharpness.png",
-        "quadrature-agreement.png",
-        "norm-asymptotics.png",
-        "c4-inverse-repair.png",
-        "c5-coefficient-budget.png",
+        "headline-scaled-direct.png",
+        "c1-c2-bound-sweep.png",
+        "c3-sharpness-sweep.png",
+        "c4-rate-bracket.png",
+        "c5-robust-rate.png",
     ):
         image = report.parent / "images" / image_name
         require(image.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"), f"invalid figure: {image_name}")
@@ -73,6 +73,7 @@ def main() -> None:
         children[-1]["title"] == "Historical rejected baseline",
         "historical navigation label",
     )
+    require(children[-1]["children"] == [], "historical verifier remains in navigation")
 
     claim_pages = {
         f"C{index}": SPACE / f"pages/current-claim-c{index}/page.md"
@@ -82,7 +83,7 @@ def main() -> None:
         "**Verdict: VERIFIED. Confidence: MEDIUM.**",
         "## Exact claim contract",
         "uv sync --frozen && uv run python repro/src/run_publication_gate.py",
-        "de2c3a8fba29e433c552ce82c194196fefaaa4d8",
+        "run_scaled_direct_evidence.py",
         "../../evidence/",
     )
     for claim, page in claim_pages.items():
@@ -95,11 +96,118 @@ def main() -> None:
             and "limitations" in text.lower(),
             f"{claim} checker/control/limitations not visible",
         )
+    for claim in ("C1", "C2", "C3"):
+        require(
+            "verify_universal_reductions.py" in claim_pages[claim].read_text(),
+            f"{claim} exact universal verifier hidden",
+        )
+    for claim in ("C4", "C5"):
+        text = claim_pages[claim].read_text()
+        require("run_scaled_direct_evidence.py" in text, f"{claim} scaled verifier hidden")
+        require("scaled_direct" in text, f"{claim} scaled raw evidence hidden")
+
+    universal_raw = json.loads(
+        (SPACE / "evidence/raw/universal_reductions/result.json").read_text()
+    )
+    universal_fresh = json.loads(
+        (ROOT / ".openresearch/artifacts/universal_reductions/result.json").read_text()
+    )
+    require(universal_raw["status"] == "EXACT_UNIVERSAL_REDUCTIONS_PASS", "universal status")
+    require(
+        universal_raw["checks"] == universal_fresh["checks"]
+        and universal_raw["negative_controls"] == universal_fresh["negative_controls"],
+        "mirrored universal certificate differs from regenerated evidence",
+    )
+
+    yatracos_raw = json.loads(
+        (SPACE / "evidence/raw/yatracos_experiment/result.json").read_text()
+    )
+    yatracos_fresh = json.loads(
+        (ROOT / ".openresearch/artifacts/yatracos_experiment/result.json").read_text()
+    )
+    require(yatracos_raw["status"] == "PROPER_YATRACOS_EXPERIMENT_PASS", "Yatracos status")
+    deterministic_yatracos_fields = (
+        "candidate_count",
+        "yatracos_set_count",
+        "truth_count",
+        "sample_sizes",
+        "contamination_levels",
+        "replicates",
+        "aggregate_rows",
+        "clean_minimax_rows",
+        "huber_equal_law_rows",
+        "huber_rate_rows",
+        "finite_grid_observed_log_slope",
+        "independent_checker",
+        "negative_controls",
+    )
+    require(
+        all(yatracos_raw[key] == yatracos_fresh[key] for key in deterministic_yatracos_fields),
+        "mirrored Yatracos evidence differs from regenerated evidence",
+    )
+    require(yatracos_raw["candidate_count"] == 19, "wrong candidate count")
+    require(yatracos_raw["yatracos_set_count"] == 171, "wrong Yatracos set count")
+    displayed_set_error = f"{yatracos_raw['independent_checker']['max_absolute_error']:.3e}"
+    require(
+        displayed_set_error in (SPACE / "pages/current-overview/page.md").read_text()
+        and displayed_set_error in claim_pages["C4"].read_text()
+        and displayed_set_error in claim_pages["C5"].read_text(),
+        "displayed Yatracos checker error differs from raw evidence",
+    )
+    require(
+        all(not row["nonvacuous_paper_term"] for row in yatracos_raw["huber_rate_rows"]),
+        "practical C5 exponent unexpectedly treated as nonvacuous",
+    )
+
+    scaled_raw = json.loads(
+        (SPACE / "evidence/raw/scaled_direct/result.json").read_text()
+    )
+    scaled_fresh = json.loads(
+        (ROOT / ".openresearch/artifacts/scaled_direct/result.json").read_text()
+    )
+    require(scaled_raw["status"] == "SCALED_DIRECT_EVIDENCE_PASS", "scaled status")
+    deterministic_scaled_fields = (
+        "seed",
+        "source_sha256",
+        "claim_1_2",
+        "claim_1_2_independent_checker",
+        "claim_3",
+        "claim_4",
+        "claim_5",
+        "pair_cloud",
+        "negative_controls",
+        "gates",
+    )
+    require(
+        all(scaled_raw[key] == scaled_fresh[key] for key in deterministic_scaled_fields),
+        "mirrored scaled evidence differs from regenerated evidence",
+    )
+    require(scaled_raw["claim_1_2"]["cells"] == 420, "scaled C1/C2 cell count")
+    require(scaled_raw["claim_1_2"]["theorem_2_1_violations"] == 0, "C1 violations")
+    require(scaled_raw["claim_1_2"]["corollary_2_4_violations"] == 0, "C2 violations")
+    require(scaled_raw["claim_3"]["order_count"] == 11, "scaled C3 order count")
+    require(scaled_raw["pair_cloud"]["valid_pairs"] == 7000, "scaled pair cloud")
+    require(all(scaled_raw["gates"].values()), "scaled scientific gate failed")
+    require(all(scaled_raw["negative_controls"].values()), "scaled control failed")
+    overview = (SPACE / "pages/current-overview/page.md").read_text()
+    for token in (
+        "420",
+        "1.156e-7",
+        "-0.431",
+        "-0.500",
+        "1.671",
+        "0.929",
+        "7,000",
+    ):
+        require(token in overview, f"scaled headline number hidden: {token}")
 
     visibility = (SPACE / "pages/current-visibility/page.md").read_text()
     for claim in claim_pages:
         require(f"| {claim} |" in visibility, f"visibility row missing: {claim}")
-    require(visibility.count("| Yes | Yes |") == 5, "visibility matrix incomplete")
+    require(
+        visibility.count("Located; VERIFIED/MEDIUM") == 5,
+        "visibility matrix incomplete",
+    )
 
     # Validate every relative Markdown link reachable from the canonical pages.
     link_pattern = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -208,8 +316,15 @@ def main() -> None:
         "upload_allowlist_count": len(allowlist),
         "manifest_covered_count": len(manifest_paths),
         "secret_scan": "PASS",
-        "red_team_passes": 2,
-        "evidence_git_sha": "de2c3a8fba29e433c552ce82c194196fefaaa4d8",
+        "red_team_passes": 3,
+        "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
+        "estimator_evidence_git_sha": yatracos_raw["git_sha"],
+        "scaled_evidence_git_sha": scaled_raw["git_sha"],
+        "new_live_verdict_profile": {
+            "evaluated_revision": "7c9035a522852c4f85b7e3de054e9d9ae7591c5c",
+            "claims": ["toy", "toy", "toy", "toy", "toy"],
+            "numeric_total_present": False,
+        },
     }
     (RELEASE / "release_check.json").write_text(json.dumps(result, indent=2) + "\n")
     print("=== EVALUATOR-VISIBLE RELEASE CHECK ===")

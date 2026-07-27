@@ -39,6 +39,27 @@ class CertificateTests(unittest.TestCase):
         self.assertTrue(all(result["negative_controls"].values()))
         self.assertGreater(result["claims"]["C1"]["max_chi"], 0)
 
+    def test_universal_reduction_certificate(self) -> None:
+        subprocess.run(
+            [sys.executable, "repro/src/verify_universal_reductions.py"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        result = json.loads(
+            (
+                ROOT
+                / ".openresearch/artifacts/universal_reductions/result.json"
+            ).read_text()
+        )
+        self.assertEqual(result["status"], "EXACT_UNIVERSAL_REDUCTIONS_PASS")
+        self.assertEqual(
+            set(result["checks"]),
+            {"C1", "C2", "C3", "C4", "C5_upper", "C5_lower"},
+        )
+        self.assertTrue(all(result["negative_controls"].values()))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -434,7 +434,9 @@ def main() -> None:
 
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     with (ARTIFACTS / "raw_results.csv").open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(
+            handle, fieldnames=list(rows[0]), lineterminator="\n"
+        )
         writer.writeheader()
         writer.writerows(rows)
     checker = {
