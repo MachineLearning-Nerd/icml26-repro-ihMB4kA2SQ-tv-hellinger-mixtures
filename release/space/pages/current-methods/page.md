@@ -58,6 +58,7 @@ Every scientific gate and every intended negative-control rejection is asserted.
 - [Three-route result](../../evidence/raw/three_route/result.json)
 - [Route matrix](../../evidence/raw/three_route/route_matrix.json)
 - [Three-route method](../../evidence/raw/three_route/method.md)
+- [Three-route source audit](../../evidence/raw/three_route/source_audit.md)
 - [Three-route limitations](../../evidence/raw/three_route/limitations.md)
 - [Scaled result](../../evidence/raw/scaled_direct/result.json)
 - [Claim contract](../../evidence/raw/scaled_direct/claim_contract.json)

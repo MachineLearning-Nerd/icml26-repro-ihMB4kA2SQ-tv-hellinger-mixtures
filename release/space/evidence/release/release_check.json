@@ -499,6 +499,10 @@
     },
     {
       "from": "pages/current-methods/page.md",
+      "to": "evidence/raw/three_route/source_audit.md"
+    },
+    {
+      "from": "pages/current-methods/page.md",
       "to": "evidence/raw/three_route/limitations.md"
     },
     {
@@ -686,8 +690,8 @@
       "to": "pages/conclusion/page.md"
     }
   ],
-  "upload_allowlist_count": 100,
-  "manifest_covered_count": 97,
+  "upload_allowlist_count": 101,
+  "manifest_covered_count": 98,
   "secret_scan": "PASS",
   "red_team_passes": 5,
   "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
