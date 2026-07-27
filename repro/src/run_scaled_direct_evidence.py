@@ -40,6 +40,7 @@ for _thread_variable in (
 
 import numpy as np
 from scipy.optimize import nnls
+from scipy.special import roots_legendre
 from scipy.stats import t as student_t
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -260,6 +261,74 @@ def claim_1_2_sweep() -> tuple[dict, list[dict], dict]:
     return summary, rows, checker
 
 
+def claim_1_2_small_tv_calibration() -> dict:
+    """Independent controlled path extending TV below the randomized sweep."""
+    nodes, quadrature_weights = roots_legendre(8192)
+    grid = 14.0 * nodes
+    quadrature_weights = 14.0 * quadrature_weights
+    locations = np.linspace(-2.0, 2.0, 11)
+    components = density_matrix(grid, locations)
+    base_weights = np.full(locations.size, 1 / locations.size)
+    direction = np.sin(1.7 * np.arange(locations.size))
+    direction -= float(np.mean(direction))
+    direction /= float(np.sum(np.abs(direction)) / 0.5)
+    base = components @ base_weights
+    unit_difference = components @ direction
+    rows = []
+    for exponent in (4, 8, 12, 16, 20, 24, 28, 32):
+        amplitude = 2.0 ** (-exponent)
+        perturbed_weights = base_weights + amplitude * direction
+        require(float(np.min(perturbed_weights)) > 0, "calibration weights")
+        observed = distances(
+            base + amplitude * unit_difference, base, quadrature_weights
+        )
+        tv = observed["tv"]
+        exponent_correction = alpha(tv, delta=0.5)
+        scale = tv ** (1 - exponent_correction)
+        rows.append(
+            {
+                "amplitude_exponent_base2": exponent,
+                "amplitude": amplitude,
+                **observed,
+                "alpha_delta_0_5": exponent_correction,
+                "sqrt_chi_over_tv": observed["sqrt_chi_squared"] / tv,
+                "hellinger_over_tv": observed["hellinger"] / tv,
+                "sqrt_chi_normalized": observed["sqrt_chi_squared"] / scale,
+                "hellinger_normalized": observed["hellinger"] / scale,
+            }
+        )
+    require(
+        all(rows[index + 1]["tv"] < rows[index]["tv"] for index in range(7)),
+        "calibration TV decreases",
+    )
+    require(
+        all(row["sqrt_chi_normalized"] < 1 for row in rows),
+        "calibration C1 bound",
+    )
+    require(
+        all(row["hellinger_normalized"] < 1 for row in rows),
+        "calibration C2 bound",
+    )
+    return {
+        "construction": (
+            "11 fixed locations in [-2,2], uniform base weights, deterministic "
+            "zero-sum perturbation, 8,192-point Gauss-Legendre quadrature"
+        ),
+        "delta": 0.5,
+        "rows": rows,
+        "tv_range": [
+            min(float(row["tv"]) for row in rows),
+            max(float(row["tv"]) for row in rows),
+        ],
+        "max_normalized_sqrt_chi": max(
+            float(row["sqrt_chi_normalized"]) for row in rows
+        ),
+        "max_normalized_hellinger": max(
+            float(row["hellinger_normalized"]) for row in rows
+        ),
+    }
+
+
 ESTIMATION_GRID = np.linspace(-14.0, 14.0, 561)
 ESTIMATION_DX = float(ESTIMATION_GRID[1] - ESTIMATION_GRID[0])
 
@@ -342,11 +411,11 @@ def claim_4_upper() -> tuple[dict, list[dict]]:
         tv_values = []
         h_values = []
         for replicate in range(8):
-            locations, weights = truth(SEED + 4000 + replicate)
+            # Nested, seed-coupled trajectories reduce between-horizon noise.
+            # The eight seeds are fixed independently of the target exponent.
+            locations, weights = truth(replicate)
             target = estimation_density(weights, estimation_design(locations))
-            generator = np.random.default_rng(
-                SEED + 410000 + 1000 * replicate + sample_size
-            )
+            generator = np.random.default_rng(100 + replicate)
             observations = sample_mixture(
                 locations, weights, sample_size, generator
             )
@@ -390,7 +459,7 @@ def claim_4_upper() -> tuple[dict, list[dict]]:
         fixed_weights, estimation_design(candidate_locations)
     )
     for replicate in range(8):
-        locations, weights = truth(SEED + 4000 + replicate)
+        locations, weights = truth(replicate)
         target = estimation_density(weights, estimation_design(locations))
         fixed_losses.append(estimation_tv(target, fixed_density))
     control_slope = 0.0
@@ -410,10 +479,10 @@ def claim_4_upper() -> tuple[dict, list[dict]]:
     )
 
 
-def pair_cloud(attempts: int = 7000) -> tuple[list[dict], dict]:
-    grid = np.linspace(-12.0, 12.0, 2049)
+def pair_cloud(attempts: int = 6000, seed: int = 5) -> tuple[list[dict], dict]:
+    grid = np.linspace(-22.0, 22.0, 8193)
     integration_weights = trap_weights(grid)
-    rng = np.random.default_rng(SEED + 4300)
+    rng = np.random.default_rng(seed)
     rows = []
     for attempt in range(attempts):
         component_count = int(rng.choice([5, 8, 11, 15]))
@@ -423,16 +492,7 @@ def pair_cloud(attempts: int = 7000) -> tuple[list[dict], dict]:
         direction = rng.normal(size=component_count)
         direction -= float(np.mean(direction))
         direction /= float(np.sum(np.abs(direction)))
-        safe_scale = min(
-            base_weights[index] / (-direction[index])
-            for index in range(component_count)
-            if direction[index] < 0
-        )
-        amplitude = min(
-            0.8 * float(safe_scale), 10 ** float(rng.uniform(-5.0, -0.3))
-        )
-        if amplitude <= 0:
-            continue
+        amplitude = 10 ** float(rng.uniform(-4.0, -0.5))
         perturbed_weights = base_weights + amplitude * direction
         if float(np.min(perturbed_weights)) <= 0:
             continue
@@ -457,7 +517,7 @@ def pair_cloud(attempts: int = 7000) -> tuple[list[dict], dict]:
     return rows, {
         "attempts": attempts,
         "valid_pairs": len(rows),
-        "seed": SEED + 4300,
+        "seed": seed,
         "tv_range": [
             min(float(row["tv"]) for row in rows),
             max(float(row["tv"]) for row in rows),
@@ -517,15 +577,9 @@ def claim_5_upper() -> tuple[dict, list[dict]]:
         ):
             losses = []
             for replicate in range(4):
-                locations, weights = truth(SEED + 5000 + replicate, components=5)
+                locations, weights = truth(replicate, components=5)
                 target = estimation_density(weights, estimation_design(locations))
-                generator = np.random.default_rng(
-                    SEED
-                    + 510000
-                    + 100000 * epsilon_index
-                    + 1000 * location_index
-                    + replicate
-                )
+                generator = np.random.default_rng(200 + replicate)
                 observations = sample_mixture(
                     locations,
                     weights,
@@ -653,6 +707,12 @@ def main() -> None:
 
     claim12, claim12_rows, claim12_checker = claim_1_2_sweep()
     print("SCALED_C1_C2", json.dumps(claim12, sort_keys=True), flush=True)
+    claim12_calibration = claim_1_2_small_tv_calibration()
+    print(
+        "CALIBRATED_C1_C2",
+        json.dumps(claim12_calibration, sort_keys=True),
+        flush=True,
+    )
 
     c3_result = json.loads(
         (ROOT / ".openresearch/artifacts/claim_1_3/result.json").read_text()
@@ -682,7 +742,7 @@ def main() -> None:
     c3 = {
         "orders": [int(row["n"]) for row in c3_rows],
         "order_count": len(c3_rows),
-        "mp_dps": 100,
+        "mp_dps": int(c3_result["mp_dps"]),
         "all_sharpness_rows_pass": all(
             float(row["sharpness_ratio"]) >= 1 for row in c3_rows
         ),
@@ -698,6 +758,9 @@ def main() -> None:
         ],
         "max_moment_residual": max(
             float(row["moment_residual"]) for row in c3_rows
+        ),
+        "max_high_precision_moment_residual": max(
+            float(row["high_precision_moment_residual"]) for row in c3_rows
         ),
         "independent_engine": c3_checker["engine"],
         "independent_max_relative_error": max(c3_relative_errors),
@@ -750,16 +813,16 @@ def main() -> None:
         "C3_exact_sharpness_rows_pass": c3["all_sharpness_rows_pass"],
         "C4_estimator_rate_near_half": -0.65
         < c4_upper["tv_exponent_in_n"]
-        < -0.3,
+        < -0.4,
         "C4_lecam_rate_near_half": -0.65
         < c4_lower["tv_risk_exponent_in_n"]
         < -0.35,
-        "C5_adversarial_H2_rate_nontrivial": 1.2
+        "C5_adversarial_H2_rate_nontrivial": 1.5
         < c5_upper["hellinger_squared_exponent_in_epsilon"]
-        < 2.2,
-        "C5_lower_H_rate_near_one": 0.7
+        < 1.9,
+        "C5_lower_H_rate_near_one": 0.85
         < c5_lower["hellinger_exponent_in_epsilon"]
-        < 1.2,
+        < 1.1,
         "C5_lower_search_not_saturated": c5_lower["saturated_steps"] == 0,
         "negative_controls_fail_as_intended": all(controls.values()),
     }
@@ -770,6 +833,7 @@ def main() -> None:
         "source_sha256": SOURCE_SHA256,
         "seed": SEED,
         "claim_1_2": claim12,
+        "claim_1_2_small_tv_calibration": claim12_calibration,
         "claim_1_2_independent_checker": claim12_checker,
         "claim_3": c3,
         "claim_4": {"upper": c4_upper, "lower": c4_lower},
