@@ -149,10 +149,19 @@ def main() -> None:
     require(yatracos_raw["yatracos_set_count"] == 171, "wrong Yatracos set count")
     displayed_set_error = f"{yatracos_raw['independent_checker']['max_absolute_error']:.3e}"
     require(
-        displayed_set_error in (SPACE / "pages/current-overview/page.md").read_text()
-        and displayed_set_error in claim_pages["C4"].read_text()
-        and displayed_set_error in claim_pages["C5"].read_text(),
-        "displayed Yatracos checker error differs from raw evidence",
+        yatracos_raw["independent_checker"]["max_absolute_error"] < 5e-15,
+        "Yatracos checker exceeds cross-platform tolerance",
+    )
+    require(
+        all(
+            "5e-15" in page.read_text()
+            for page in (
+                SPACE / "pages/current-overview/page.md",
+                claim_pages["C4"],
+                claim_pages["C5"],
+            )
+        ),
+        "cross-platform Yatracos tolerance hidden",
     )
     require(
         all(not row["nonvacuous_paper_term"] for row in yatracos_raw["huber_rate_rows"]),

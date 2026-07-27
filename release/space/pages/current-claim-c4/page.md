@@ -42,7 +42,7 @@ This provides genuinely separate upper and lower routes rather than fitting the 
 
 ## Exact reduction and controls
 
-The symbolic verifier transfers Jia et al.’s local-entropy event through the sharp TV–Hellinger inverse and the tail-to-risk inequality. It detects the source’s same-`delta` sign problem and checks the valid `delta/2` repair permitted by the theorem’s `for every delta>0` quantifier. The proper finite-cover Yatracos experiment separately instantiates all `171` comparison sets and checks their TV identities to `6.106e-16`.
+The symbolic verifier transfers Jia et al.’s local-entropy event through the sharp TV–Hellinger inverse and the tail-to-risk inequality. It detects the source’s same-`delta` sign problem and checks the valid `delta/2` repair permitted by the theorem’s `for every delta>0` quantifier. The proper finite-cover Yatracos experiment separately instantiates all `171` comparison sets and checks their TV identities to `<5e-15` across both formal and local platforms.
 
 Controls reject the same-delta inverse, a fixed estimator, and a vacuous pair search. Any failed upper slope, lower slope, independent identity, or control exits nonzero.
 

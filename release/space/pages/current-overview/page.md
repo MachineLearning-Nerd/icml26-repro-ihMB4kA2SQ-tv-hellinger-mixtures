@@ -16,7 +16,7 @@ The previous candidate emphasized symbolic reductions and a small six-order cons
 
 C1 and C2 evaluate the actual displayed logarithmic exponent, not the generic inequalities `H²<=TV` or `H<=sqrt(chi²)`. C3 constructs the Gaussian mixtures and checks the claimed sharpness inequality, not merely the Chebyshev zeros. C4 estimates a mixture from samples over an independently chosen horizon sweep and pairs it with an all-estimator Le Cam route. C5 instantiates Huber contamination, searches adversarial locations, and separately constructs indistinguishable contaminated laws.
 
-The independent C1/C2 doubled-grid checker has maximum relative disagreement `2.14e-6`. C3’s independent high-precision integration differs by at most `1.759e-4`; its 110-digit moment solve has residual below `4.243e-115`. The supplemental proper-Yatracos checker verifies all 171 comparison-set identities to `6.106e-16`. All five negative controls are rejected.
+The independent C1/C2 doubled-grid checker has maximum relative disagreement `2.14e-6`. C3’s independent high-precision integration differs by at most `1.759e-4`; its 110-digit moment solve has residual below `4.243e-115`. The supplemental proper-Yatracos checker verifies all 171 comparison-set identities to `<5e-15` across HF Linux and local macOS. All five negative controls are rejected.
 
 ## Exact certificates and scope
 

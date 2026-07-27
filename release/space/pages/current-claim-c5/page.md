@@ -37,7 +37,7 @@ This lower route does not rely on the implemented estimator and directly exercis
 
 ## Exact reduction, checker, and controls
 
-The symbolic verifier checks the Yatracos expectation transfer, continuous-amplitude extension of the Chebyshev construction, exact Chen boundary, coefficient budget `0.3308206>0.33`, and dimension-preserving tensorization. The separate proper Yatracos experiment instantiates actual Huber samples and checks all `171` comparison-set identities to `6.106e-16`.
+The symbolic verifier checks the Yatracos expectation transfer, continuous-amplitude extension of the Chebyshev construction, exact Chen boundary, coefficient budget `0.3308206>0.33`, and dimension-preserving tensorization. The separate proper Yatracos experiment instantiates actual Huber samples and checks all `171` comparison-set identities to `<5e-15` across both formal and local platforms.
 
 The adversarial-location control confirms that using only a benign contaminant understates the loss; the lower-search control rejects the stronger but invalid `TV<=epsilon` equivalence. Every scientific gate and control is fail-closed.
 
