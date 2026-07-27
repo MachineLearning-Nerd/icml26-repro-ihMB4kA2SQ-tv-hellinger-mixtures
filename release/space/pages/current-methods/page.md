@@ -31,6 +31,8 @@ Before the scaled run, runtime was uncertain, so it was routed to Hugging Face `
 
 The first HF attempt used the default image and stopped before science because `uv` was absent. The successful run used `ghcr.io/astral-sh/uv:python3.12-bookworm-slim`. Both attempts remain recorded in the experiment tree.
 
+The first complete evaluator-visible candidate passed the unchanged cumulative command at Git SHA `dcca416ce369663eb30bd325a1bdde9b8a008d56`, OpenResearch run `1d34dc3b-f424-4898-a653-25594cb9f51d`, in `1m00s` on the local backend after runtime was bounded. It regenerated the same deterministic scientific fields and passed all release checks.
+
 ## Fail-closed suite
 
 The cumulative entrypoint reruns:
