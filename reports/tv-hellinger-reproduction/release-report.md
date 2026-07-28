@@ -34,13 +34,14 @@ Stacked lineage:
 `historical baseline → exact construction → analytic/application certificates → proper Yatracos experiment → scaled direct evidence → three-route remediation → publication freeze`.
 
 Winning scientific branch: `orx/three-route-per-claim-judge-remediation`, Git
-SHA `78b4a451bcf440fdbba2f1326d58b2059c3a337c`.
+SHA `27ce436f0ac02900dfc9471e284a885b5dad2594`, superseded by
+`orx/kernel-checked-theorem-evidence-remediation`.
 
-Publication branch: `orx/three-route-publication-freeze`, created directly
+Publication branch: `orx/kernel-proof-publication-freeze`, created directly
 from the passing scientific commit.
 
 Complete pre-freeze gate run:
-`e1038127-ca8b-4e10-9d14-de4b89a8b2d7`, Hugging Face `cpu-upgrade`, `2m34s`,
+`fbc513d9-ff4b-42e6-adbe-dde5dca54cb8`, Hugging Face `cpu-upgrade`, `1m40s`,
 64 logical CPUs visible and one numerical thread. Result:
 `publication_gate_passed=true`.
 
@@ -55,22 +56,20 @@ uv sync --frozen && uv run python repro/src/run_publication_gate.py
 New formal launch:
 
 ```bash
-orx exp run d02b4429-55ca-40c5-9360-1057bf2d5b70 --backend hf --flavor cpu-upgrade --image ghcr.io/astral-sh/uv:python3.12-bookworm-slim --timeout 1h
+orx exp run 948e5d0d-9ed1-4c78-a5fd-b397b57c0a0f --backend hf --flavor cpu-upgrade --image ghcr.io/astral-sh/uv:python3.12-bookworm-slim --timeout 1h
 ```
 
 The successful HF science job exposed 64 logical CPUs but pinned all numerical
-libraries to one thread; its scaled and three-route stages used `15.595s` and
-`0.232s`. Complete runtime was `2m34s`. No GPU was used. HF cost was not
-exposed, so none is invented. The preceding environment-only launch failed
-before science because its default image lacked `uv`.
+libraries to one thread. The proof generator used `0.797s`; complete runtime
+was `1m40s`. No GPU was used. HF cost was not exposed, so none is invented.
 
 ## Release integrity
 
 - Protected judged revision: `1c98799a89d8c1d3c45136c8b912e74371e975b3`
-- Current HF and judge head before upload: `8454efce45d0b2946efff5f6e05666ec40abb915`
+- Current HF and judge head before upload: `6e08ad1e3b8345baf56246f4c50ed663d2365aa6`
 - Protected historical file count: `22`; old file set is a byte-preserved subset
-- Exact text upload allowlist: `101` paths
-- Stable candidate manifest: `98` paths
+- Exact text upload allowlist: `109` paths
+- Stable candidate manifest: `106` paths
 - Visibility rows complete: `5`
 - Secret scan: PASS
 - Evaluator-blind review: PASS after a fresh archive traversal
@@ -98,7 +97,7 @@ before science because its default image lacked `uv`.
 - [Upload allowlist](../../release/space/evidence/release/upload_allowlist.txt)
 - [SHA-256 manifest](../../release/space/evidence/release/candidate_manifest.sha256)
 
-Exact publication action: upload only the 101 allowlisted text paths in one
+Exact publication action: upload only the 109 allowlisted text paths in one
 Hugging Face Hub commit to the existing `DineshAI/ihMB4kA2SQ` Space, verify
 the returned revision by exact-revision download and hash traversal, then
 mirror the published text paths and public report to GitHub `main`. No second

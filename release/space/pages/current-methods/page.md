@@ -36,6 +36,13 @@ for the scaled stage and `0.232s` for the three-route stage, and finished the
 complete gate in `2m34s`. No GPU was used. The HF billing cost was not exposed,
 so none is invented.
 
+The kernel-remediation rerun used the same HF `cpu-upgrade` CPU allocation and
+fixed command. It exposed 64 logical CPUs, remained pinned to one effective
+numerical thread, completed in `1m40s`, generated the proof certificate in
+`0.797s`, replayed all five claims independently, and rejected all five
+mutations. Run `fbc513d9-ff4b-42e6-adbe-dde5dca54cb8`, Git
+`27ce436f0ac02900dfc9471e284a885b5dad2594`.
+
 ## Fail-closed suite
 
 The cumulative entrypoint reruns:

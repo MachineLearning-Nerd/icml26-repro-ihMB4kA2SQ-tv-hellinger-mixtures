@@ -20,6 +20,7 @@ Every path in the immutable judged manifest remains present. Historical evidence
 | C4 called numerical support rather than exact rate proof | kernel closes C2 + pinned Jia local-entropy + `delta/2` inversion + proper-projection/all-estimator chain |
 | C5 called finite-sample support rather than rate proof | kernel closes arbitrary-Q Yatracos upper and Chen equal-law all-estimator lower chains, with exact exponent limit |
 | Displayed numbers could drift | the fail-closed release verifier now regenerates every C4/C5 headline table row from raw JSON and rejects any mismatch |
+| Proof label could outrun executable evidence | independent replay reads the serialized proof graph, rechecks source hashes/anchors and exact witnesses, verifies all five quantified conclusions, and rejects five mutations |
 
 ## Blind review
 
@@ -56,8 +57,8 @@ paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be
 created.
 
 The cumulative remediation gate passed at Git SHA
-`78b4a451bcf440fdbba2f1326d58b2059c3a337c`, OpenResearch run
-`e1038127-ca8b-4e10-9d14-de4b89a8b2d7`, in `2m34s` on Hugging Face
+`27ce436f0ac02900dfc9471e284a885b5dad2594`, OpenResearch run
+`fbc513d9-ff4b-42e6-adbe-dde5dca54cb8`, in `1m40s` on Hugging Face
 `cpu-upgrade`; 64 logical CPUs were visible and numerical libraries were
 pinned to one thread.
 
