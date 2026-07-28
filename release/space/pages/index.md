@@ -1,10 +1,11 @@
 # Current direct claim-by-claim reproduction
 
 Current live score: **5/10** at judged revision
-`8454efce45d0b2946efff5f6e05666ec40abb915`; all five checks were classified
-as `toy`. This evaluator-calibrated candidate remains a forecast of
-**8–10/10 conservatively; 10/10 best-supported possible**, pending a new live
-evaluation.
+`6e08ad1e3b8345baf56246f4c50ed663d2365aa6`. The judge requested proof-level
+support for the universal and asymptotic quantifiers. This candidate adds an
+independently replayed, fail-closed proof-kernel certificate for every claim.
+The conservative forecast remains **8–10/10**, with **10/10** the
+best-supported possible score rather than a judge result.
 
 | Current page |
 | --- |
@@ -20,5 +21,7 @@ evaluation.
 | [Historical rejected baseline](#/historical-rejected-baseline) |
 
 The obvious current verifier is `evidence/src/repro/src/run_publication_gate.py`.
-Its three-route remediation stage is `run_three_route_evidence.py`; it
-supersedes the historical verifier and reruns every previously accepted check.
+Its proof generator is `verify_kernel_certificate.py`, its independent replay
+is `check_kernel_certificate.py`, and its three-route numerical stage is
+`run_three_route_evidence.py`. It supersedes the historical verifier and
+reruns every previously accepted check.

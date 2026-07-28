@@ -12,7 +12,7 @@
     "icml2026-repro",
     "paper-ihMB4kA2SQ"
   ],
-  "updated_at": "2026-07-26T00:00:00+00:00",
+  "updated_at": "2026-07-28T00:00:00+00:00",
   "root": {
     "slug": "index",
     "title": "Current claim-by-claim reproduction",
@@ -63,5 +63,5 @@
     ]
   },
   "agent_view_tokens": 4400,
-  "revision": "20260727-exact-display-remediation"
+  "revision": "20260728-kernel-proof-remediation"
 }

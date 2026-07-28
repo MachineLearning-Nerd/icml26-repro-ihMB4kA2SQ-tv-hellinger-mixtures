@@ -40,7 +40,7 @@ Chebyshev cancellation. It agrees with the primary construction to maximum
 relative error `1.759e-4`; the high-precision moment residual is
 `4.243e-115`.
 
-## Approach 3 — infinite-sequence certificate
+## Approach 3 — infinite-sequence certificate and proof-kernel replay
 
 The symbolic route checks the exact gamma limits, the coefficient margin
 
@@ -53,6 +53,11 @@ strictly greater than one, and gives a recursive subsequence rule that makes
 is certified by this route, not extrapolated from orders `11,...,31`.
 
 Controls reject the wrong Chebyshev nodes and the stronger coefficient `0.50`. Each control must fail for the intended reason, and every accepted row must pass, or the verifier exits nonzero.
+
+The proof kernel pins Lemma 3.2 and Theorem 3.1, recomputes the gamma limit and
+the exact margin `0.3314835>0.33`, records the monotone-subsequence dependency,
+and carries the existential infinite-sequence quantifier to the conclusion.
+The independent checker rejects the coefficient `0.34` mutation.
 
 ## Reproduce and evidence
 
@@ -71,6 +76,10 @@ Seed `260203202`; one effective core; no GPU. The full row data are in the [cons
 - [Negative controls](../../evidence/raw/claim_1_3/negative_control.json)
 - [Exact universal verifier](../../evidence/src/repro/src/verify_universal_reductions.py)
 - [Universal certificate](../../evidence/raw/universal_reductions/result.json)
+- [Proof-kernel generator](../../evidence/src/repro/src/verify_kernel_certificate.py)
+- [Independent proof replay](../../evidence/src/repro/src/check_kernel_certificate.py)
+- [Kernel certificate](../../evidence/raw/kernel_certificate/proof_certificate.json)
+- [Kernel replay output](../../evidence/raw/kernel_certificate/independent_checker.json)
 - [Source audit](../../evidence/raw/claim_1_3/source_audit.md)
 - [Method](../../evidence/raw/claim_1_3/method.md)
 - [Limitations](../../evidence/raw/claim_1_3/limitations.md)

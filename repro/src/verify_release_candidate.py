@@ -117,6 +117,12 @@ def main() -> None:
             "verify_universal_reductions.py" in claim_pages[claim].read_text(),
             f"{claim} exact universal verifier hidden",
         )
+    for claim, page in claim_pages.items():
+        require(
+            "verify_kernel_certificate.py" in page.read_text()
+            and "check_kernel_certificate.py" in page.read_text(),
+            f"{claim} proof-kernel generator or independent replay hidden",
+        )
     for claim in ("C4", "C5"):
         text = claim_pages[claim].read_text()
         require("run_scaled_direct_evidence.py" in text, f"{claim} scaled verifier hidden")
@@ -133,6 +139,40 @@ def main() -> None:
         universal_raw["checks"] == universal_fresh["checks"]
         and universal_raw["negative_controls"] == universal_fresh["negative_controls"],
         "mirrored universal certificate differs from regenerated evidence",
+    )
+
+    kernel_raw = json.loads(
+        (SPACE / "evidence/raw/kernel_certificate/proof_certificate.json").read_text()
+    )
+    kernel_fresh = json.loads(
+        (
+            ROOT
+            / ".openresearch/artifacts/kernel_certificate/proof_certificate.json"
+        ).read_text()
+    )
+    kernel_checker = json.loads(
+        (
+            SPACE
+            / "evidence/raw/kernel_certificate/independent_checker.json"
+        ).read_text()
+    )
+    require(
+        kernel_raw["status"] == "KERNEL_CHECKED_PROOF_CHAIN_PASS",
+        "proof-kernel status",
+    )
+    require(
+        kernel_checker["status"] == "INDEPENDENT_KERNEL_REPLAY_PASS",
+        "independent proof-kernel replay",
+    )
+    require(
+        kernel_raw["checks"] == kernel_fresh["checks"]
+        and kernel_raw["proof_graph"] == kernel_fresh["proof_graph"]
+        and kernel_raw["negative_controls"] == kernel_fresh["negative_controls"],
+        "mirrored proof-kernel certificate differs from regenerated evidence",
+    )
+    require(
+        all(value == "VERIFIED" for value in kernel_raw["verdicts"].values()),
+        "proof-kernel claim verdict",
     )
 
     yatracos_raw = json.loads(
@@ -474,8 +514,9 @@ def main() -> None:
         "estimator_evidence_git_sha": yatracos_raw["git_sha"],
         "scaled_evidence_git_sha": scaled_raw["git_sha"],
         "three_route_evidence_git_sha": three_route_raw["git_sha"],
+        "kernel_evidence_git_sha": kernel_raw["git_sha"],
         "new_live_verdict_profile": {
-            "evaluated_revision": "8454efce45d0b2946efff5f6e05666ec40abb915",
+            "evaluated_revision": "6e08ad1e3b8345baf56246f4c50ed663d2365aa6",
             "claims": ["toy", "toy", "toy", "toy", "toy"],
             "numeric_total_present": True,
             "numeric_total": 5,

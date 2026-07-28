@@ -60,6 +60,29 @@ class CertificateTests(unittest.TestCase):
         )
         self.assertTrue(all(result["negative_controls"].values()))
 
+    def test_independent_proof_kernel_replay(self) -> None:
+        subprocess.run(
+            [sys.executable, "repro/src/verify_kernel_certificate.py"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        subprocess.run(
+            [sys.executable, "repro/src/check_kernel_certificate.py"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        directory = ROOT / ".openresearch/artifacts/kernel_certificate"
+        certificate = json.loads((directory / "proof_certificate.json").read_text())
+        independent = json.loads((directory / "independent_checker.json").read_text())
+        self.assertEqual(certificate["status"], "KERNEL_CHECKED_PROOF_CHAIN_PASS")
+        self.assertEqual(independent["status"], "INDEPENDENT_KERNEL_REPLAY_PASS")
+        self.assertEqual(set(certificate["verdicts"]), {"C1", "C2", "C3", "C4", "C5"})
+        self.assertTrue(all(certificate["negative_controls"].values()))
+
 
 if __name__ == "__main__":
     unittest.main()

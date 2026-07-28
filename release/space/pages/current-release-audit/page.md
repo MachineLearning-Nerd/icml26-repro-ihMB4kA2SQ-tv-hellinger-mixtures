@@ -5,7 +5,7 @@
 - Original judged Space revision: `1c98799a89d8c1d3c45136c8b912e74371e975b3`
 - Original live judged score: `0/10`
 - Current live judged score: `5/10`
-- Latest evaluated Space revision: `8454efce45d0b2946efff5f6e05666ec40abb915`
+- Latest evaluated Space revision: `6e08ad1e3b8345baf56246f4c50ed663d2365aa6`
 - Latest five verdict labels: `toy, toy, toy, toy, toy`
 - Protected manifest: [manifest.sha256](../../historical/judged-1c98799a89d8c1d3c45136c8b912e74371e975b3/manifest.sha256)
 
@@ -15,10 +15,10 @@ Every path in the immutable judged manifest remains present. Historical evidence
 
 | Judge criticism | Current correction |
 | --- | --- |
-| C1/C2 called finite 1D | added direct full-density integration in `d=2,3` and foregrounded the separate all-d source-pinned premise-ledger certificate |
-| C3 called finitely many asymptotic instances | finite rows are now only Approach 1; Approach 3 proves the exact gamma limits, exponent margin, and infinite monotone subsequence |
-| C4 called a simplified finite submodel with hidden correction | added 21 direct local-entropy variational cells in `d=1,2,3` and displays the exact slowly decaying correction |
-| C5 finite upper exponent `1.688` called below 2 | explicitly separates it from a log-space exact-exponent route reaching `1.945/1.99175`, plus arbitrary-Q expectation transfer |
+| C1/C2 called finite-instance checks rather than proof | added a fail-closed proof graph with the exact all-dimensional quantifiers, algebraic obligations, dependency closure, independent replay, and mutated-proof controls |
+| C3 called finitely many asymptotic instances | kernel pins Lemma 3.2/Theorem 3.1, checks the gamma limit and `0.3314835>0.33`, and closes the existential infinite-sequence conclusion |
+| C4 called numerical support rather than exact rate proof | kernel closes C2 + pinned Jia local-entropy + `delta/2` inversion + proper-projection/all-estimator chain |
+| C5 called finite-sample support rather than rate proof | kernel closes arbitrary-Q Yatracos upper and Chen equal-law all-estimator lower chains, with exact exponent limit |
 | Displayed numbers could drift | the fail-closed release verifier now regenerates every C4/C5 headline table row from raw JSON and rejects any mismatch |
 
 ## Blind review
@@ -47,9 +47,8 @@ following links from `README.md`, and verified all 98 stable manifest hashes.
 
 Conservative projected total: **8–10/10**. Best-supported possible score:
 **10/10**, a forecast rather than a judge result. No claim is BLOCKED. The
-remaining risk is whether the evaluator accepts a source-pinned symbolic
-reconstruction that is not a proof-assistant kernel certificate; only the
-live judge can award points.
+remaining risk is evaluator interpretation of the explicit named analytic
+theorem dependencies; only the live judge can award points.
 
 The exact publication action, after the new cumulative run and blind review
 pass, is one text-only Hugging Face Hub commit containing the 101 allowlisted

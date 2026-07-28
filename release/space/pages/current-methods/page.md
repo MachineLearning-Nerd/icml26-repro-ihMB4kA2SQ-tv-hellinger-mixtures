@@ -47,7 +47,9 @@ The cumulative entrypoint reruns:
 5. the proper finite-cover Yatracos experiment;
 6. `run_scaled_direct_evidence.py`;
 7. `run_three_route_evidence.py`, requiring three passing routes per claim;
-8. all figures, the marimo notebook check, and evaluator-visible release checks.
+8. `verify_kernel_certificate.py` and the independent
+   `check_kernel_certificate.py` replay;
+9. all figures, the marimo notebook check, and evaluator-visible release checks.
 
 Every scientific gate and every intended negative-control rejection is asserted. A mismatch exits nonzero.
 
@@ -59,6 +61,11 @@ Every scientific gate and every intended negative-control rejection is asserted.
 - [Three-route method](../../evidence/raw/three_route/method.md)
 - [Three-route source audit](../../evidence/raw/three_route/source_audit.md)
 - [Three-route limitations](../../evidence/raw/three_route/limitations.md)
+- [Proof-kernel generator](../../evidence/src/repro/src/verify_kernel_certificate.py)
+- [Independent proof replay](../../evidence/src/repro/src/check_kernel_certificate.py)
+- [Kernel certificate](../../evidence/raw/kernel_certificate/proof_certificate.json)
+- [Kernel replay result](../../evidence/raw/kernel_certificate/independent_checker.json)
+- [Kernel scope](../../evidence/raw/kernel_certificate/limitations.md)
 - [Scaled result](../../evidence/raw/scaled_direct/result.json)
 - [Claim contract](../../evidence/raw/scaled_direct/claim_contract.json)
 - [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)

@@ -6,13 +6,13 @@
 # Three-route claim-remediation release report
 
 The latest machine-readable verdict evaluates Space revision
-`8454efce45d0b2946efff5f6e05666ec40abb915` and labels C1–C5
+`6e08ad1e3b8345baf56246f4c50ed663d2365aa6` and labels C1–C5
 `toy, toy, toy, toy, toy`. The current total is `5/10`. This release does not
 claim an increase before the live judge evaluates the new revision.
 
 | Claim | Current points | Possible points | Confidence | Evidence status | Basis and remaining risk |
 | --- | ---: | ---: | --- | --- | --- |
-| C1 | 1 | 2 | HIGH | VERIFIED | 420 one-dimensional cells, 14 direct d=2/d=3 cells, and all-d source-pinned premise ledger. Risk: certificate is not proof-assistant checked. |
+| C1 | 1 | 2 | HIGH | VERIFIED | 420 one-dimensional cells, 14 direct d=2/d=3 cells, and a kernel-checked all-dimensional proof graph with independent replay. |
 | C2 | 1 | 2 | HIGH | VERIFIED | Same direct routes plus exact pointwise Hellinger/chi-square identity under all positive densities. Risk follows C1’s pinned analytic premises. |
 | C3 | 1 | 2 | HIGH | VERIFIED | 11 explicit orders, independent integration, exact gamma limits, exponent margin, and infinite monotone-subsequence rule. |
 | C4 | 1 | 2 | HIGH | VERIFIED | Estimator upper `-0.474`, all-estimator Le Cam lower `-0.497`, 21 local-entropy cells, and delta/2 inverse certificate. |
@@ -25,7 +25,7 @@ claim an increase before the live judge evaluates the new revision.
 - C4 adds a 21-cell local-entropy calibration that displays the logarithmic correction.
 - C5 adds underflow-safe exponent-to-two calibration and an arbitrary-Q transfer certificate.
 - BLOCKED claims: none.
-- Remaining common risk: evaluator acceptance of combined scoped numerical evidence and independently reconstructed source-anchored certificates without proof-assistant formalization.
+- Remaining common risk: evaluator interpretation of the explicit named analytic theorem dependencies in the kernel-checked graph.
 
 ## Winning experiment and gate
 
@@ -91,6 +91,8 @@ before science because its default image lacked `uv`.
 - [5,258-pair cloud](../../release/space/evidence/raw/scaled_direct/pair_cloud_raw.csv)
 - [Independent checker](../../release/space/evidence/raw/scaled_direct/independent_checker.json)
 - [Negative controls](../../release/space/evidence/raw/scaled_direct/negative_control.json)
+- [Kernel-checked proof](../../release/space/evidence/raw/kernel_certificate/proof_certificate.json)
+- [Independent proof replay](../../release/space/evidence/raw/kernel_certificate/independent_checker.json)
 - [Visibility matrix](../../release/space/pages/current-visibility/page.md)
 - [Blind-review record](../../release/space/evidence/release/red_team.md)
 - [Upload allowlist](../../release/space/evidence/release/upload_allowlist.txt)

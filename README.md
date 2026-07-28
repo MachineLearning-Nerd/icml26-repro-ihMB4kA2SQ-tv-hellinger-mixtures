@@ -4,7 +4,7 @@
 
 [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/blob/main/notebooks/tv_hellinger_reproduction.py)
 
-This CPU-only campaign reproduces all five theorem-level claims in *Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures* ([arXiv:2602.03202](https://arxiv.org/abs/2602.03202)). Space revision `8454efce45d0b2946efff5f6e05666ec40abb915` scored `5/10`, with all five checks classified as `toy`.
+This CPU-only campaign reproduces all five theorem-level claims in *Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures* ([arXiv:2602.03202](https://arxiv.org/abs/2602.03202)). Space revision `6e08ad1e3b8345baf56246f4c50ed663d2365aa6` scored `5/10`; the judge requested proof-level support for the universal and asymptotic quantifiers.
 
 The remediation gives every claim three materially different routes:
 
@@ -12,6 +12,11 @@ The remediation gives every claim three materially different routes:
 - C3: 11 explicit Chebyshev orders, independent high-precision integration, and an exact infinite-sequence certificate.
 - C4: a sample estimator, independent all-estimator Le Cam lower route, and 21 local-entropy/log-correction cells.
 - C5: a proper Huber estimator, equal-law lower route, and exact log-space exponents converging to 2.
+
+A shared fail-closed proof kernel now pins every theorem anchor, recomputes the
+exact identities and limits, closes the dependency and quantifier graph for
+C1–C5, and rejects one mutated proof object per claim. A separate checker
+independently replays the saved certificate.
 
 The headline slopes are `-0.474` for the C4 estimator, `-0.497` for its lower route, `1.688` for C5 upper Hellinger-squared error, and `0.960` for the lower Hellinger route. All five controls fail for their intended reason. Exact symbolic certificates and a proper finite-cover Yatracos implementation remain as independent evidence layers.
 
@@ -27,7 +32,9 @@ All five contracts are **VERIFIED with HIGH confidence** as reproduction verdict
 | C4 | Local-entropy characterization of TV minimax risk | upper `-0.474`, lower `-0.497`, 21 correction cells | VERIFIED, HIGH |
 | C5 | Robust Hellinger upper and matching lower rate | proper upper, equal-law lower, exact exponents →2 | VERIFIED, HIGH |
 
-The finite sweeps cover explicit compact-support submodels. Universal conclusions also use independently reconstructed symbolic chains and pinned primary-source premises; lack of proof-assistant formalization remains the main validation risk.
+The finite sweeps cover explicit compact-support submodels. Universal
+conclusions additionally use the independently replayed proof graph and pinned,
+explicitly enumerated primary-source theorem dependencies.
 
 ## Read and explore
 
@@ -45,6 +52,8 @@ The finite sweeps cover explicit compact-support submodels. Universal conclusion
 - [5,258-pair cloud](release/space/evidence/raw/scaled_direct/pair_cloud_raw.csv)
 - [Raw C1–C3 evidence](release/space/evidence/raw/claim_1_3/raw_results.csv)
 - [Exact universal-reduction output](release/space/evidence/raw/universal_reductions/result.json)
+- [Kernel-checked proof certificate](release/space/evidence/raw/kernel_certificate/proof_certificate.json)
+- [Independent proof replay](release/space/evidence/raw/kernel_certificate/independent_checker.json)
 
 Run the formal suite:
 

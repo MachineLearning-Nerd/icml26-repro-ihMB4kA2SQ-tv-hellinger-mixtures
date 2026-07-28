@@ -38,7 +38,7 @@ using product affinity `(1-H(P0,P1)^2)^n`. The lower TV exponent is `-0.49711`
 (squared-risk exponent `-0.99423`). Thus upper and all-estimator lower routes
 bracket the same near-`n^-1/2` TV scale.
 
-## Approach 3 — local-entropy and logarithmic-correction route
+## Approach 3 — local-entropy correction and proof-kernel replay
 
 The new calibration independently minimizes
 
@@ -67,6 +67,11 @@ quantifier at `delta/2`.
 The separate finite Yatracos checker verifies all `171` comparison-set
 identities to `<5e-15`.
 
+The proof kernel closes the dependency chain from the pinned Jia
+local-entropy theorem through the C2 metric conversion, exact `delta/2`
+inversion, proper-projection triangle rule, and all-estimator lower conclusion.
+The independent replay rejects the invalid same-`delta` inversion.
+
 ## Reproduce
 
 ```bash
@@ -85,5 +90,9 @@ Seeds `260203514` and `260207502`; one effective numerical core; CPU only.
 - [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)
 - [Negative controls](../../evidence/raw/scaled_direct/negative_control.json)
 - [Exact reduction](../../evidence/src/repro/src/verify_universal_reductions.py)
+- [Proof-kernel generator](../../evidence/src/repro/src/verify_kernel_certificate.py)
+- [Independent proof replay](../../evidence/src/repro/src/check_kernel_certificate.py)
+- [Kernel certificate](../../evidence/raw/kernel_certificate/proof_certificate.json)
+- [Kernel replay output](../../evidence/raw/kernel_certificate/independent_checker.json)
 - [Jia source audit](../../evidence/raw/primary_dependencies/source_audit.md)
 - [Scope and deviations](../../evidence/raw/scaled_direct/limitations.md)

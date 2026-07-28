@@ -44,6 +44,12 @@ evidence/raw/universal_reductions/claim_contract.json
 evidence/raw/universal_reductions/limitations.md
 evidence/raw/universal_reductions/method.md
 evidence/raw/universal_reductions/result.json
+evidence/raw/kernel_certificate/EVAL.md
+evidence/raw/kernel_certificate/claim_contract.json
+evidence/raw/kernel_certificate/independent_checker.json
+evidence/raw/kernel_certificate/limitations.md
+evidence/raw/kernel_certificate/method.md
+evidence/raw/kernel_certificate/proof_certificate.json
 evidence/raw/yatracos_experiment/EVAL.md
 evidence/raw/yatracos_experiment/aggregate_results.csv
 evidence/raw/yatracos_experiment/claim_contract.json
@@ -87,6 +93,8 @@ evidence/src/repro/src/run_three_route_evidence.py
 evidence/src/repro/src/run_yatracos_experiment.py
 evidence/src/repro/src/verify_tv_hellinger.py
 evidence/src/repro/src/verify_universal_reductions.py
+evidence/src/repro/src/verify_kernel_certificate.py
+evidence/src/repro/src/check_kernel_certificate.py
 evidence/src/repro/src/verify_claims_1_3.py
 evidence/src/repro/src/verify_proof_obligations.py
 evidence/src/repro/src/verify_primary_dependencies.py

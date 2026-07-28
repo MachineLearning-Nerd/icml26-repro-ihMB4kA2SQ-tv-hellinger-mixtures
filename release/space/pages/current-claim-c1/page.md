@@ -44,7 +44,7 @@ Higher-order quadrature recomputes six sentinels with maximum relative
 disagreement `5.739e-4`; independent tensor-factorization identities agree to
 `5.315e-16`.
 
-## Approach 3 — universal source-pinned certificate
+## Approach 3 — universal source-pinned certificate and proof-kernel replay
 
 The independent symbolic verifier reconstructs the exponent identity, norm chain, tail thresholds, max/min inversion, and mixture-denominator Jensen step for symbolic `delta>0`. The numerical checker recomputes eight sentinel cells on a doubled `16,385`-point grid; maximum relative disagreement is `2.135e-6`.
 
@@ -55,6 +55,11 @@ Nikolskii inequalities, and Lambert lemma; the finite experiments are not used
 to discharge those universal premises.
 
 The stronger linear control `sqrt(chi²)<=TV` is deliberately false on the same valid mixtures and is rejected. A failed bound, checker tolerance, assumption audit, or control makes the verifier exit nonzero.
+
+The fail-closed proof kernel separately checks the exact source anchors,
+mixture-denominator Jensen identity, exponent substitution, theorem dependency
+closure, and the full `d,M,delta,pi,eta` quantifier. The independent replay
+recomputes the certificate and rejects the mutated exponent control.
 
 ## Reproduce and evidence
 
@@ -76,6 +81,10 @@ run `2m00s`. No GPU.
 - [Negative controls](../../evidence/raw/scaled_direct/negative_control.json)
 - [Exact universal verifier](../../evidence/src/repro/src/verify_universal_reductions.py)
 - [Universal certificate](../../evidence/raw/universal_reductions/result.json)
+- [Proof-kernel generator](../../evidence/src/repro/src/verify_kernel_certificate.py)
+- [Independent proof replay](../../evidence/src/repro/src/check_kernel_certificate.py)
+- [Kernel certificate](../../evidence/raw/kernel_certificate/proof_certificate.json)
+- [Kernel replay output](../../evidence/raw/kernel_certificate/independent_checker.json)
 - [Source audit](../../evidence/raw/scaled_direct/source_audit.md)
 - [Method](../../evidence/raw/scaled_direct/method.md)
 - [Limitations](../../evidence/raw/scaled_direct/limitations.md)
