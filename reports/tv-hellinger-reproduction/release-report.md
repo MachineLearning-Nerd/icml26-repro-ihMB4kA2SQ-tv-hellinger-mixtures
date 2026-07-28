@@ -72,8 +72,8 @@ none is invented.
 - Protected judged revision: `1c98799a89d8c1d3c45136c8b912e74371e975b3`
 - Current HF and judge head before upload: `013c7ab5979d4382ffefc3957d32a8a060e82445`
 - Protected latest judged file count: `128`; old file set is a byte-preserved subset
-- Exact text upload allowlist: `246` paths
-- Stable candidate manifest: `243` paths
+- Exact text upload allowlist: `247` paths
+- Stable candidate manifest: `244` paths
 - Visibility rows complete: `5`
 - Secret scan: PASS
 - Evaluator-blind review: PASS after a fresh archive traversal
@@ -103,7 +103,7 @@ none is invented.
 - [Upload allowlist](../../release/space/evidence/release/upload_allowlist.txt)
 - [SHA-256 manifest](../../release/space/evidence/release/candidate_manifest.sha256)
 
-Exact publication action: upload only the 246 allowlisted text paths in one
+Exact publication action: upload only the 247 allowlisted text paths in one
 Hugging Face Hub commit to the existing `DineshAI/ihMB4kA2SQ` Space, verify
 the returned revision by exact-revision download and hash traversal, then
 mirror the published text paths and public report to GitHub `main`. No second

@@ -51,6 +51,12 @@ dependencies, rejected all five proof mutations, and verified all 242 stable
 manifest hashes. The exact opened-file trace is
 [blind_pass_8_opened.txt](../../evidence/release/blind_pass_8_opened.txt).
 
+Pass 9 repeated the review after fixed-command regeneration using only
+`git archive added82 release/space`. It opened 82 reachable files, found zero
+missing links and zero unresolved dependencies, verified the publication gate
+and all five mutation controls, and matched all 243 stable hashes. The exact
+trace is [blind_pass_9_opened.txt](../../evidence/release/blind_pass_9_opened.txt).
+
 ## Release forecast
 
 | Claim | Status | Expected points | Confidence | Expected evaluator status |
@@ -67,7 +73,7 @@ remaining risk is that a machine-checked proof transcript is not a
 foundational proof-assistant artifact; only the live judge can award points.
 
 The exact publication action, after the new cumulative run and blind review
-pass, is one text-only Hugging Face Hub commit containing the 246 allowlisted
+pass, is one text-only Hugging Face Hub commit containing the 247 allowlisted
 paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be
 created.
 

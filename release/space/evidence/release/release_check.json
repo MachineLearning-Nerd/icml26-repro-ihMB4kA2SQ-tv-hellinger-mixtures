@@ -1058,6 +1058,10 @@
     },
     {
       "from": "pages/current-release-audit/page.md",
+      "to": "evidence/release/blind_pass_9_opened.txt"
+    },
+    {
+      "from": "pages/current-release-audit/page.md",
       "to": "evidence/release/candidate_manifest.sha256"
     },
     {
@@ -1113,10 +1117,10 @@
       "to": "pages/conclusion/page.md"
     }
   ],
-  "upload_allowlist_count": 246,
-  "manifest_covered_count": 243,
+  "upload_allowlist_count": 247,
+  "manifest_covered_count": 244,
   "secret_scan": "PASS",
-  "red_team_passes": 8,
+  "red_team_passes": 9,
   "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
   "estimator_evidence_git_sha": "8fa61b422d4782295ed433b4312d21d4a9d5d5f4",
   "scaled_evidence_git_sha": "8fa61b422d4782295ed433b4312d21d4a9d5d5f4",

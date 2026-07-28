@@ -206,3 +206,21 @@ Checks and conclusions:
 Pass-8 conclusion: **PASS.** The current proof replay, exact scope, raw
 transcript, independent checker, controls, and limitations are evaluator
 visible without repository or OpenResearch knowledge.
+
+## Pass 9 — post-regeneration release candidate
+
+Candidate Git SHA:
+`added82d7fca7ca41dfb4df8b908deda9e91d208`. A new fresh archive was
+reviewed after the fixed command regenerated every raw output and manifest.
+The crawler again started only at `README.md` and followed discoverable
+relative links.
+
+It opened `82` files, found zero broken or escaping links, verified
+`SOURCE_COMPLETE_PROOF_REPLAY_PASS`,
+`INDEPENDENT_SOURCE_COMPLETE_REPLAY_PASS`, `publication_gate_passed=true`,
+zero unresolved dependencies, five rejected mutations, and all `243`
+candidate-manifest hashes. The exact trace is
+[blind_pass_9_opened.txt](blind_pass_9_opened.txt).
+
+Pass-9 conclusion: **PASS.** Regeneration introduced no visibility,
+integrity, confidence-label, or protected-history regression.
