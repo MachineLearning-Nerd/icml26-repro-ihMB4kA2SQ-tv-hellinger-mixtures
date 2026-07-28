@@ -135,9 +135,9 @@
     "C5_wrong_sharp_constant_0_34_rejected": true,
     "C5_omit_yatracos_union_factor_rejected": true
   },
-  "git_sha": "ad6bf12a336228d33f55498ad8b535ac42d09d3e",
+  "git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5",
   "cpu_estimate": "1 effective core",
   "actual_logical_cpus_visible": 8,
   "platform": "macOS-26.5.2-arm64-arm-64bit",
-  "runtime_seconds": 0.5873124579957221
+  "runtime_seconds": 0.2928621250030119
 }

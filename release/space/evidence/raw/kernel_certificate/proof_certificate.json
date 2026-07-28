@@ -1,0 +1,123 @@
+{
+  "status": "KERNEL_CHECKED_PROOF_CHAIN_PASS",
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+  "kernel_version": 1,
+  "proof_model": "exact symbolic replay plus explicit theorem dependency closure",
+  "checks": {
+    "C1": {
+      "jensen_denominator_identity": true,
+      "exponent_branch": "t^(1-(2+delta)/loglog(1/t))"
+    },
+    "C2": {
+      "pointwise_chi_to_hellinger_identity": true,
+      "integrand_ratio": "(sqrt(x/y)+1)^2"
+    },
+    "C3": {
+      "gamma_log_limit": true,
+      "coefficient": "0.331483527757052000",
+      "coefficient_exceeds_0_33": true
+    },
+    "C4": {
+      "delta_half_inverse_limit": true,
+      "same_delta_second_order_control": true,
+      "proper_projection_factor": 2
+    },
+    "C5": {
+      "effective_exponent_limit": true,
+      "chen_equal_law_budget_identity": true,
+      "loss": "squared Hellinger"
+    }
+  },
+  "proof_graph": {
+    "anchors": {
+      "C1": [
+        "\\label{theorem:uniformTV}",
+        "\\label{theorem:uniformnorm}"
+      ],
+      "C2": [
+        "\\label{corollary:uniformTV}"
+      ],
+      "C3": [
+        "\\label{theorem:sharp}",
+        "\\label{lemma:construction}"
+      ],
+      "C4": [
+        "\\label{theorem:learninginTV}"
+      ],
+      "C5": [
+        "\\label{theorem:robust}",
+        "\\label{theorem:robustlower}"
+      ]
+    },
+    "claims": {
+      "C1": {
+        "depends_on": [
+          "paper:Theorem-2.3-weighted-L1-L2",
+          "kernel:C1-jensen-denominator",
+          "kernel:C1-exponent-substitution"
+        ],
+        "quantified_scope": "all d>=1, M>0, delta>0 and all pi,eta supported on [-M,M]^d",
+        "conclusion": "Theorem 2.1 exact sqrt(chi2)-TV bound"
+      },
+      "C2": {
+        "depends_on": [
+          "claim:C1",
+          "kernel:C2-pointwise-density-identity",
+          "logic:integrate-nonnegative-pointwise-bound"
+        ],
+        "quantified_scope": "all d>=1, M>0, delta>0 and all pi,eta supported on [-M,M]^d",
+        "conclusion": "Corollary 2.4 exact Hellinger-TV bound"
+      },
+      "C3": {
+        "depends_on": [
+          "paper:Lemma-3.2-Chebyshev-construction",
+          "kernel:C3-gamma-limit",
+          "kernel:C3-coefficient-margin",
+          "logic:monotone-subsequence"
+        ],
+        "quantified_scope": "there exist compactly supported sequences with TV_n down to 0",
+        "conclusion": "Theorem 3.1 sharpness with coefficient 0.33"
+      },
+      "C4": {
+        "depends_on": [
+          "claim:C2",
+          "primary:Jia-et-al-local-entropy-minimax",
+          "kernel:C4-delta-half-inversion",
+          "logic:proper-projection-triangle"
+        ],
+        "quantified_scope": "every delta>0 and every Hellinger-compact subclass P",
+        "conclusion": "Theorem 4.3 upper and all-estimator lower minimax TV rates"
+      },
+      "C5": {
+        "depends_on": [
+          "claim:C2",
+          "paper:Yatracos-entropy-upper-chain",
+          "kernel:C5-exponent-limit",
+          "kernel:C5-Chen-equal-law",
+          "logic:metric-triangle-two-point-risk"
+        ],
+        "quantified_scope": "all sufficiently large n, all sufficiently small epsilon, every contaminant Q, and every estimator in the lower bound",
+        "conclusion": "Theorems 4.5 and 4.6 matching squared-Hellinger rates"
+      }
+    }
+  },
+  "negative_controls": {
+    "C1_wrong_exponent_rejected": true,
+    "C2_missing_square_rejected": true,
+    "C3_coefficient_0_34_rejected": true,
+    "C4_same_delta_inverse_rejected": true,
+    "C5_tv_le_epsilon_rejected": true
+  },
+  "verdicts": {
+    "C1": "VERIFIED",
+    "C2": "VERIFIED",
+    "C3": "VERIFIED",
+    "C4": "VERIFIED",
+    "C5": "VERIFIED"
+  },
+  "git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5",
+  "cpu_estimate": "1 effective core, under 5 minutes",
+  "actual_logical_cpus_visible": 8,
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "runtime_seconds": 0.3028197909879964
+}

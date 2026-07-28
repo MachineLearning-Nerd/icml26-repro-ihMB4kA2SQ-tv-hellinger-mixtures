@@ -1,0 +1,27 @@
+{
+  "C1": {
+    "quantified_scope": "all d>=1, M>0, delta>0 and all pi,eta supported on [-M,M]^d",
+    "conclusion": "Theorem 2.1 exact sqrt(chi2)-TV bound",
+    "verdict": "VERIFIED"
+  },
+  "C2": {
+    "quantified_scope": "all d>=1, M>0, delta>0 and all pi,eta supported on [-M,M]^d",
+    "conclusion": "Corollary 2.4 exact Hellinger-TV bound",
+    "verdict": "VERIFIED"
+  },
+  "C3": {
+    "quantified_scope": "there exist compactly supported sequences with TV_n down to 0",
+    "conclusion": "Theorem 3.1 sharpness with coefficient 0.33",
+    "verdict": "VERIFIED"
+  },
+  "C4": {
+    "quantified_scope": "every delta>0 and every Hellinger-compact subclass P",
+    "conclusion": "Theorem 4.3 upper and all-estimator lower minimax TV rates",
+    "verdict": "VERIFIED"
+  },
+  "C5": {
+    "quantified_scope": "all sufficiently large n, all sufficiently small epsilon, every contaminant Q, and every estimator in the lower bound",
+    "conclusion": "Theorems 4.5 and 4.6 matching squared-Hellinger rates",
+    "verdict": "VERIFIED"
+  }
+}
