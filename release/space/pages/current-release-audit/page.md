@@ -36,6 +36,11 @@ the raw result. The exact opened-file trace is in the
 Pass 6 used only `git archive 096b8a4 release/space`, opened 66 files by
 following links from `README.md`, and verified all 98 stable manifest hashes.
 
+Pass 7 used only `git archive bf2880f release/space`, opened 69 reachable
+files, found the proof generator, independent replay, and all five quantified
+claim conclusions, found zero missing links, rejected all five proof mutations,
+and verified all 106 stable manifest hashes.
+
 ## Release forecast
 
 | Claim | Status | Expected points | Confidence | Expected evaluator status |

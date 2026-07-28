@@ -829,7 +829,7 @@
   "upload_allowlist_count": 109,
   "manifest_covered_count": 106,
   "secret_scan": "PASS",
-  "red_team_passes": 6,
+  "red_team_passes": 7,
   "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
   "estimator_evidence_git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5",
   "scaled_evidence_git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5",

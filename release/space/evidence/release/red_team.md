@@ -147,3 +147,31 @@ All 98 stable candidate-manifest hashes verified inside the fresh directory.
 Pass-6 conclusion: **PASS.** Every item required to evaluate the current
 three-route claim suite was discoverable from the canonical entrypoint without
 repository or OpenResearch knowledge.
+
+## Pass 7 — kernel-proof remediation
+
+Candidate Git SHA:
+`bf2880f5d3903b9f9d4e7dcd34ce9cb9af4b373c`. A fresh directory was created
+only from `git archive bf2880f release/space`. The blind crawler began at
+`README.md` and followed only relative links discovered in reachable Markdown.
+
+It opened 69 files with zero missing relative links. From those files alone it
+located all five canonical claim pages, `verify_kernel_certificate.py`,
+`check_kernel_certificate.py`, the serialized proof graph, independent replay,
+the three-route numerical evidence, controls, methods, source hashes, and
+release files.
+
+Checks and conclusions:
+
+- proof status is `KERNEL_CHECKED_PROOF_CHAIN_PASS`;
+- independent status is `INDEPENDENT_KERNEL_REPLAY_PASS`;
+- the proof graph contains exactly C1–C5 and all five conclusions are
+  `VERIFIED`;
+- five materially different invalid mutations are rejected, one per claim;
+- every claim page exposes the fixed command, proof generator, independent
+  replay, exact quantified conclusion, direct data, and a control;
+- all 106 stable candidate-manifest hashes verify inside the fresh archive.
+
+Pass-7 conclusion: **PASS.** The proof-level remediation is directly
+discoverable from the canonical entrypoint and no conclusion depends on an
+unpublished repository path or OpenResearch log.
