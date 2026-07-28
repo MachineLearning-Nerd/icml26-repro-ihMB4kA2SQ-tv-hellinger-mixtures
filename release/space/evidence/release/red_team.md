@@ -175,3 +175,34 @@ Checks and conclusions:
 Pass-7 conclusion: **PASS.** The proof-level remediation is directly
 discoverable from the canonical entrypoint and no conclusion depends on an
 unpublished repository path or OpenResearch log.
+
+## Pass 8 — source-complete proof replay
+
+Candidate Git SHA:
+`8fa61b422d4782295ed433b4312d21d4a9d5d5f4`. A fresh directory was created
+only from `git archive 8fa61b4 release/space`. The blind crawler began at
+`README.md`, followed only relative links discovered in reachable Markdown,
+and opened every linked text target it evaluated.
+
+It opened `81` files with zero missing or escaping links. From those files
+alone it located the current formal-proof page, source-complete generator,
+independent checker, proof transcript, machine-readable proof object, five
+claim pages, direct data, controls, source audits, limitations, both protected
+judged-revision manifests, and release files. The exact opened-file trace is
+[blind_pass_8_opened.txt](blind_pass_8_opened.txt).
+
+Checks and conclusions:
+
+- proof status is `SOURCE_COMPLETE_PROOF_REPLAY_PASS`;
+- independent status is `INDEPENDENT_SOURCE_COMPLETE_REPLAY_PASS`;
+- all five claim verdicts are `VERIFIED`;
+- the global and per-claim unresolved-dependency sets are empty;
+- all five deliberately invalid proof mutations are rejected;
+- the canonical pages explicitly disclose that this is not a Lean/Coq
+  formalization;
+- all `242` stable candidate-manifest hashes verify inside the fresh archive;
+- no conclusion was inaccessible from the canonical entrypoint.
+
+Pass-8 conclusion: **PASS.** The current proof replay, exact scope, raw
+transcript, independent checker, controls, and limitations are evaluator
+visible without repository or OpenResearch knowledge.

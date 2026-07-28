@@ -12,18 +12,18 @@
     "C5": "VERIFIED"
   },
   "claim_confidence": {
-    "C1": "HIGH",
-    "C2": "HIGH",
-    "C3": "HIGH",
-    "C4": "HIGH",
-    "C5": "HIGH"
+    "C1": "MEDIUM",
+    "C2": "MEDIUM",
+    "C3": "MEDIUM",
+    "C4": "MEDIUM",
+    "C5": "MEDIUM"
   },
   "verified_claims": 5,
   "falsified_claims": 0,
   "historical_rejected_baseline_regression_passed": true,
   "verification": "outputs/verification.json",
   "tests": "repro/tests",
-  "scope": "Source-pinned exact claim contracts, a fail-closed proof-kernel replay of the theorem dependency chains, evaluator-calibrated direct Gaussian-mixture constructions, independent numerical checkers, and negative controls.",
+  "scope": "Source-pinned exact claim contracts, a source-complete proof-transcript replay with no opaque internal theorem nodes, explicit primary-source imports, evaluator-calibrated direct Gaussian-mixture constructions, independent checkers, and negative controls.",
   "current_claim_suite": ".openresearch/artifacts/claim_1_3/result.json",
   "proof_obligations": ".openresearch/artifacts/proof_obligations/result.json",
   "primary_dependencies": ".openresearch/artifacts/primary_dependencies/result.json",
@@ -31,6 +31,7 @@
   "application_certificate": ".openresearch/artifacts/application_certificate/result.json",
   "universal_reductions": ".openresearch/artifacts/universal_reductions/result.json",
   "kernel_certificate": ".openresearch/artifacts/kernel_certificate/proof_certificate.json",
+  "source_complete_proof_replay": ".openresearch/artifacts/source_complete_proof_replay/proof_replay.json",
   "yatracos_experiment": ".openresearch/artifacts/yatracos_experiment/result.json",
   "scaled_direct_evidence": ".openresearch/artifacts/scaled_direct/result.json",
   "three_route_evidence": ".openresearch/artifacts/three_route/result.json",

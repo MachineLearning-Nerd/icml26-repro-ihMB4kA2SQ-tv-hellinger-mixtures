@@ -1152,11 +1152,11 @@
     "formula_derived_horizon_not_used": true
   },
   "limitations": "Complete only for the committed finite cover and contaminant grid; does not empirically prove the paper's infinite-class minimax theorem.",
-  "git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5",
+  "git_sha": "8fa61b422d4782295ed433b4312d21d4a9d5d5f4",
   "cpu_estimate": "uncertain runtime; route to Hugging Face cpu-upgrade",
   "actual_logical_cpus_visible": 8,
   "platform": "macOS-26.5.2-arm64-arm-64bit",
-  "max_rss_reported": 129810432,
+  "max_rss_reported": 137248768,
   "max_rss_unit": "bytes",
-  "runtime_seconds": 1.7401602500176523
+  "runtime_seconds": 1.7622882089926861
 }

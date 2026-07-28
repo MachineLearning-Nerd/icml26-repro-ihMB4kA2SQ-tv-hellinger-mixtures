@@ -689,10 +689,10 @@
       "NUMEXPR_NUM_THREADS": "1"
     },
     "platform": "macOS-26.5.2-arm64-arm-64bit",
-    "runtime_seconds": 9.163959124998655,
-    "max_rss_reported": 118390784,
+    "runtime_seconds": 9.388296165998327,
+    "max_rss_reported": 115671040,
     "max_rss_unit": "bytes"
   },
-  "git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5",
+  "git_sha": "8fa61b422d4782295ed433b4312d21d4a9d5d5f4",
   "limitations": "Finite computational reproduction over explicit compactly supported submodels. It directly tests the displayed inequalities, explicit sharpness construction, and upper/lower rate behavior; it is not a proof-assistant formalization of all universal quantifiers."
 }

@@ -44,6 +44,13 @@ files, found the proof generator, independent replay, and all five quantified
 claim conclusions, found zero missing links, rejected all five proof mutations,
 and verified all 106 stable manifest hashes.
 
+Pass 8 used only `git archive 8fa61b4 release/space`, opened 81 reachable
+files, found the source-complete replay and independent checker from the
+canonical entrypoint, found zero missing links and zero unresolved
+dependencies, rejected all five proof mutations, and verified all 242 stable
+manifest hashes. The exact opened-file trace is
+[blind_pass_8_opened.txt](../../evidence/release/blind_pass_8_opened.txt).
+
 ## Release forecast
 
 | Claim | Status | Expected points | Confidence | Expected evaluator status |
@@ -60,7 +67,7 @@ remaining risk is that a machine-checked proof transcript is not a
 foundational proof-assistant artifact; only the live judge can award points.
 
 The exact publication action, after the new cumulative run and blind review
-pass, is one text-only Hugging Face Hub commit containing the 245 allowlisted
+pass, is one text-only Hugging Face Hub commit containing the 246 allowlisted
 paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be
 created.
 

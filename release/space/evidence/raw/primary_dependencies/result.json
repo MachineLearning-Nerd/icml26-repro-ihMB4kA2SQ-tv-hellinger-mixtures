@@ -79,9 +79,9 @@
     "wrong_tv_le_epsilon_boundary_rejected": true,
     "missing_compactness_rejected": true
   },
-  "git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5",
+  "git_sha": "8fa61b422d4782295ed433b4312d21d4a9d5d5f4",
   "cpu_estimate": "1 effective core",
   "actual_logical_cpus_visible": 8,
   "platform": "macOS-26.5.2-arm64-arm-64bit",
-  "runtime_seconds": 0.016562750010052696
+  "runtime_seconds": 0.015956916991854087
 }

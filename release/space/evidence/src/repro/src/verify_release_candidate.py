@@ -610,7 +610,7 @@ def main() -> None:
         "upload_allowlist_count": len(allowlist),
         "manifest_covered_count": len(manifest_paths),
         "secret_scan": "PASS",
-        "red_team_passes": 7,
+        "red_team_passes": 8,
         "universal_evidence_git_sha": "be9b1613eb321a1eb7c2f467883e4d27e8540cb2",
         "estimator_evidence_git_sha": yatracos_raw["git_sha"],
         "scaled_evidence_git_sha": scaled_raw["git_sha"],

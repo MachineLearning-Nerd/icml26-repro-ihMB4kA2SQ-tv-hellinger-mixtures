@@ -528,9 +528,9 @@
       "NUMEXPR_NUM_THREADS": "1"
     },
     "platform": "macOS-26.5.2-arm64-arm-64bit",
-    "runtime_seconds": 0.02989458301453851,
-    "max_rss_reported": 91930624,
+    "runtime_seconds": 0.029246499994769692,
+    "max_rss_reported": 92143616,
     "max_rss_unit": "bytes"
   },
-  "git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5"
+  "git_sha": "8fa61b422d4782295ed433b4312d21d4a9d5d5f4"
 }
