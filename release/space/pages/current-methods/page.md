@@ -43,6 +43,15 @@ numerical thread, completed in `1m40s`, generated the proof certificate in
 mutations. Run `fbc513d9-ff4b-42e6-adbe-dde5dca54cb8`, Git
 `27ce436f0ac02900dfc9471e284a885b5dad2594`.
 
+The source-complete replay rerun used HF `cpu-upgrade` with the official
+Astral `uv` Python 3.12 CPU image. It exposed 64 logical CPUs, remained pinned
+to one effective numerical thread, and completed the full gate in `1m52s`.
+The proof generator took `3.660s`; the independent checker reported zero
+unresolved dependencies and five rejected mutations. Run
+`cd74ae47-2006-4c1d-86a6-ffbd0bb2cb12`, Git
+`e0f51b4522fb6be068cb43ecc3121901f9627570`. No GPU was used, and HF billing
+cost was not exposed.
+
 ## Fail-closed suite
 
 The cumulative entrypoint reruns:

@@ -21,17 +21,20 @@ machine-checked evidence, not a Lean/Coq formalization.
 
 The headline slopes are `-0.474` for the C4 estimator, `-0.497` for its lower route, `1.688` for C5 upper Hellinger-squared error, and `0.960` for the lower Hellinger route. All five controls fail for their intended reason. Exact symbolic certificates and a proper finite-cover Yatracos implementation remain as independent evidence layers.
 
-All five contracts are **VERIFIED with HIGH confidence** as reproduction verdicts. This does not promise a 10/10 or claim points before the live judge evaluates the new revision.
+All five contracts are **VERIFIED with MEDIUM confidence** as reproduction
+verdicts: the evidence is substantial and source-complete, but it is not a
+foundational proof-assistant artifact. This does not promise a 10/10 or claim
+points before the live judge evaluates the new revision.
 
 ## What was tested
 
 | Claim | Paper result | Reproduction result | Assessment |
 | --- | --- | --- | --- |
-| C1 | `sqrt(chi²) <= max(C0,TV^-alpha) TV` | 420 1D + 14 d=2/d=3 cells, universal certificate | VERIFIED, HIGH |
-| C2 | `H <= TV^(1-o(1))` with exact exponent | 420 1D + 14 d=2/d=3 cells, pointwise reduction | VERIFIED, HIGH |
-| C3 | Explicit `0.33/log log` sharpness sequence | 11 mixtures + independent integration + infinite-sequence limits | VERIFIED, HIGH |
-| C4 | Local-entropy characterization of TV minimax risk | upper `-0.474`, lower `-0.497`, 21 correction cells | VERIFIED, HIGH |
-| C5 | Robust Hellinger upper and matching lower rate | proper upper, equal-law lower, exact exponents →2 | VERIFIED, HIGH |
+| C1 | `sqrt(chi²) <= max(C0,TV^-alpha) TV` | 420 1D + 14 d=2/d=3 cells, source-complete replay | VERIFIED, MEDIUM |
+| C2 | `H <= TV^(1-o(1))` with exact exponent | 420 1D + 14 d=2/d=3 cells, expanded pointwise reduction | VERIFIED, MEDIUM |
+| C3 | Explicit `0.33/log log` sharpness sequence | 11 mixtures + independent integration + infinite-sequence replay | VERIFIED, MEDIUM |
+| C4 | Local-entropy characterization of TV minimax risk | upper `-0.474`, lower `-0.497`, 21 correction cells, proof replay | VERIFIED, MEDIUM |
+| C5 | Robust Hellinger upper and matching lower rate | proper upper, equal-law lower, exponent→2, proof replay | VERIFIED, MEDIUM |
 
 The finite sweeps cover explicit compact-support submodels. Universal
 conclusions additionally use the independently replayed proof graph and pinned,
@@ -93,5 +96,6 @@ The command below is copied verbatim from `orx exp status` and is identical on e
 | [`orx/three-route-per-claim-judge-remediation`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/three-route-per-claim-judge-remediation) | Three independent routes per claim, multidimensional checks, and explicit asymptotics | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | All science and release gates passed at `78b4a45`; run `e1038127…` | HF `cpu-upgrade`, `2m34s`, 64 logical visible / one numerical thread |
 | [`orx/three-route-publication-freeze`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/three-route-publication-freeze) | Provenance freeze, blind traversal, and existing-Space publication | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | Publication candidate; live score remains `5/10` pending rejudge | local CPU, one effective core |
 | [`orx/kernel-checked-theorem-evidence-remediation`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/kernel-checked-theorem-evidence-remediation) | Add exact proof graph, independent replay, and five mutated-proof controls | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | All science/release gates passed; run `fbc513d9…` at `27ce436` | HF `cpu-upgrade`, `1m40s`, 64 logical visible / one numerical thread |
+| [`orx/source-complete-theorem-proof-replay`](https://github.com/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/tree/orx/source-complete-theorem-proof-replay) | Expand internal proof nodes, pin external theorems, require zero unresolved dependencies | `uv sync --frozen && uv run python repro/src/run_publication_gate.py` | All gates passed; run `cd74ae47…` at `e0f51b4` | HF `cpu-upgrade`, `1m52s`, 64 logical visible / one numerical thread |
 
 Hugging Face billing cost was not exposed in the run logs, so no cost is inferred.

@@ -101,10 +101,10 @@
     "evidence/raw/yatracos_experiment/negative_control.json": "evidence/raw/yatracos_experiment/negative_control.json",
     "evidence/raw/yatracos_experiment/raw_replicates.csv": "evidence/raw/yatracos_experiment/raw_replicates.csv",
     "evidence/raw/yatracos_experiment/result.json": "evidence/raw/yatracos_experiment/result.json",
-    "evidence/release/candidate_manifest.sha256": "evidence/release/candidate_manifest.sha256",
+    "evidence/release/candidate_manifest.sha256": "historical/judged-013c7ab5979d4382ffefc3957d32a8a060e82445/evidence/release/candidate_manifest.sha256",
     "evidence/release/red_team.md": "evidence/release/red_team.md",
-    "evidence/release/release_check.json": "evidence/release/release_check.json",
-    "evidence/release/secret_scan.json": "evidence/release/secret_scan.json",
+    "evidence/release/release_check.json": "historical/judged-013c7ab5979d4382ffefc3957d32a8a060e82445/evidence/release/release_check.json",
+    "evidence/release/secret_scan.json": "historical/judged-013c7ab5979d4382ffefc3957d32a8a060e82445/evidence/release/secret_scan.json",
     "evidence/release/upload_allowlist.txt": "historical/judged-013c7ab5979d4382ffefc3957d32a8a060e82445/evidence/release/upload_allowlist.txt",
     "evidence/src/.python-version": "evidence/src/.python-version",
     "evidence/src/pyproject.toml": "evidence/src/pyproject.toml",
@@ -168,11 +168,11 @@
     "C5": "VERIFIED"
   },
   "claim_confidence": {
-    "C1": "HIGH",
-    "C2": "HIGH",
-    "C3": "HIGH",
-    "C4": "HIGH",
-    "C5": "HIGH"
+    "C1": "MEDIUM",
+    "C2": "MEDIUM",
+    "C3": "MEDIUM",
+    "C4": "MEDIUM",
+    "C5": "MEDIUM"
   },
   "visibility_rows_complete": 5,
   "relative_links_checked": [
@@ -1118,7 +1118,7 @@
   "scaled_evidence_git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5",
   "three_route_evidence_git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5",
   "kernel_evidence_git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5",
-  "source_complete_evidence_git_sha": "c49ea8ad87adf8b628d9f4eefe017d80ebd7ac8d",
+  "source_complete_evidence_git_sha": "e0f51b4522fb6be068cb43ecc3121901f9627570",
   "new_live_verdict_profile": {
     "evaluated_revision": "013c7ab5979d4382ffefc3957d32a8a060e82445",
     "claims": [

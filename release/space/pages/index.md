@@ -5,7 +5,7 @@ Current live score: **5/10** at judged revision
 dependency-ledger kernel insufficient because its hardest theorem nodes were
 not expanded. This candidate adds an independently checked, source-complete
 proof-transcript replay with zero opaque internal nodes.
-The conservative forecast remains **8–10/10**, with **10/10** the
+The conservative forecast is **7–10/10**, with **10/10** the
 best-supported possible score rather than a judge result.
 
 | Current page |

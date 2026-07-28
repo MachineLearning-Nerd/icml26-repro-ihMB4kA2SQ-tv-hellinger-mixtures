@@ -1,47 +1,50 @@
 - Previous live judged score: `0/10`
-- Conservative projected score range after the proposed change: `8–10/10`
+- Conservative projected score range after the proposed change: `7–10/10`
 - Best-supported possible new score: `10/10` — forecast only, not a judge result
 - Current live judged score: `5/10`
 
-# Three-route claim-remediation release report
+# Source-complete theorem-remediation release report
 
 The latest machine-readable verdict evaluates Space revision
-`6e08ad1e3b8345baf56246f4c50ed663d2365aa6` and labels C1–C5
+`013c7ab5979d4382ffefc3957d32a8a060e82445` and labels C1–C5
 `toy, toy, toy, toy, toy`. The current total is `5/10`. This release does not
 claim an increase before the live judge evaluates the new revision.
 
 | Claim | Current points | Possible points | Confidence | Evidence status | Basis and remaining risk |
 | --- | ---: | ---: | --- | --- | --- |
-| C1 | 1 | 2 | HIGH | VERIFIED | 420 one-dimensional cells, 14 direct d=2/d=3 cells, and a kernel-checked all-dimensional proof graph with independent replay. |
-| C2 | 1 | 2 | HIGH | VERIFIED | Same direct routes plus exact pointwise Hellinger/chi-square identity under all positive densities. Risk follows C1’s pinned analytic premises. |
-| C3 | 1 | 2 | HIGH | VERIFIED | 11 explicit orders, independent integration, exact gamma limits, exponent margin, and infinite monotone-subsequence rule. |
-| C4 | 1 | 2 | HIGH | VERIFIED | Estimator upper `-0.474`, all-estimator Le Cam lower `-0.497`, 21 local-entropy cells, and delta/2 inverse certificate. |
-| C5 | 1 | 2 | HIGH | VERIFIED | Proper upper, equal-law all-estimator lower, arbitrary-Q expectation transfer, and exact H² exponents converging to 2. |
+| C1 | 1 | 2 | MEDIUM | VERIFIED | 420 one-dimensional cells, 14 direct d=2/d=3 cells, and expanded all-dimensional proof transcript. Risk: not foundationally formalized. |
+| C2 | 1 | 2 | MEDIUM | VERIFIED | Same direct routes plus exact pointwise identity and expanded C1 route. Risk follows the proof-transcript validation model. |
+| C3 | 1 | 2 | MEDIUM | VERIFIED | 11 explicit orders, independent integration, exact gamma limits, strict exponent margin, and expanded monotone-subsequence route. |
+| C4 | 1 | 2 | MEDIUM | VERIFIED | Estimator upper `-0.474`, all-estimator lower `-0.497`, 21 entropy cells, and source-pinned proof replay. |
+| C5 | 1 | 2 | MEDIUM | VERIFIED | Proper upper, equal-law lower, arbitrary-Q transfer, exponent→2, and source-pinned proof replay. |
 
 ## Claim changes and blockers
 
-- C1/C2 add direct full-density integrations in d=2 and d=3 and foreground the universal certificate.
-- C3 separates finite construction evidence from the exact infinite-sequence route.
-- C4 adds a 21-cell local-entropy calibration that displays the logarithmic correction.
-- C5 adds underflow-safe exponent-to-two calibration and an arbitrary-Q transfer certificate.
+- C1/C2 now expand the paper’s internal analytic nodes instead of importing
+  the weighted theorem as an opaque dependency.
+- C3 now expands the Chebyshev-to-mixture and monotone-subsequence route.
+- C4 now exposes the source-pinned Jia import and every internal inverse,
+  projection, and tail-to-risk step.
+- C5 now exposes the source-pinned Ma/Chen imports and expands the Yatracos,
+  continuous-amplitude, and all-estimator steps.
 - BLOCKED claims: none.
-- Remaining common risk: evaluator interpretation of the explicit named analytic theorem dependencies in the kernel-checked graph.
+- Remaining common risk: the replay is machine-checked but is not a Lean/Coq
+  foundational formalization.
 
 ## Winning experiment and gate
 
 Stacked lineage:
 
-`historical baseline → exact construction → analytic/application certificates → proper Yatracos experiment → scaled direct evidence → three-route remediation → publication freeze`.
+`historical baseline → exact construction → analytic/application certificates → proper Yatracos experiment → scaled direct evidence → three-route remediation → dependency-ledger kernel → source-complete replay → publication freeze`.
 
-Winning scientific branch: `orx/three-route-per-claim-judge-remediation`, Git
-SHA `27ce436f0ac02900dfc9471e284a885b5dad2594`, superseded by
-`orx/kernel-checked-theorem-evidence-remediation`.
+Winning scientific branch: `orx/source-complete-theorem-proof-replay`, Git
+SHA `e0f51b4522fb6be068cb43ecc3121901f9627570`.
 
-Publication branch: `orx/kernel-proof-publication-freeze`, created directly
+Publication branch: `orx/source-complete-publication-freeze`, created directly
 from the passing scientific commit.
 
 Complete pre-freeze gate run:
-`fbc513d9-ff4b-42e6-adbe-dde5dca54cb8`, Hugging Face `cpu-upgrade`, `1m40s`,
+`cd74ae47-2006-4c1d-86a6-ffbd0bb2cb12`, Hugging Face `cpu-upgrade`, `1m52s`,
 64 logical CPUs visible and one numerical thread. Result:
 `publication_gate_passed=true`.
 
@@ -56,20 +59,21 @@ uv sync --frozen && uv run python repro/src/run_publication_gate.py
 New formal launch:
 
 ```bash
-orx exp run 948e5d0d-9ed1-4c78-a5fd-b397b57c0a0f --backend hf --flavor cpu-upgrade --image ghcr.io/astral-sh/uv:python3.12-bookworm-slim --timeout 1h
+orx exp run f916e18f-0809-4c57-a5c1-a12bfb56230f --backend hf --flavor cpu-upgrade --timeout 1h --image ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 ```
 
 The successful HF science job exposed 64 logical CPUs but pinned all numerical
-libraries to one thread. The proof generator used `0.797s`; complete runtime
-was `1m40s`. No GPU was used. HF cost was not exposed, so none is invented.
+libraries to one thread. The source-complete proof generator used `3.660s`;
+complete runtime was `1m52s`. No GPU was used. HF cost was not exposed, so
+none is invented.
 
 ## Release integrity
 
 - Protected judged revision: `1c98799a89d8c1d3c45136c8b912e74371e975b3`
-- Current HF and judge head before upload: `6e08ad1e3b8345baf56246f4c50ed663d2365aa6`
-- Protected historical file count: `22`; old file set is a byte-preserved subset
-- Exact text upload allowlist: `109` paths
-- Stable candidate manifest: `106` paths
+- Current HF and judge head before upload: `013c7ab5979d4382ffefc3957d32a8a060e82445`
+- Protected latest judged file count: `128`; old file set is a byte-preserved subset
+- Exact text upload allowlist: `245` paths
+- Stable candidate manifest: `242` paths
 - Visibility rows complete: `5`
 - Secret scan: PASS
 - Evaluator-blind review: PASS after a fresh archive traversal
@@ -92,12 +96,14 @@ was `1m40s`. No GPU was used. HF cost was not exposed, so none is invented.
 - [Negative controls](../../release/space/evidence/raw/scaled_direct/negative_control.json)
 - [Kernel-checked proof](../../release/space/evidence/raw/kernel_certificate/proof_certificate.json)
 - [Independent proof replay](../../release/space/evidence/raw/kernel_certificate/independent_checker.json)
+- [Source-complete proof transcript](../../release/space/evidence/raw/source_complete_proof_replay/proof_transcript.md)
+- [Independent source-complete checker](../../release/space/evidence/raw/source_complete_proof_replay/independent_checker.json)
 - [Visibility matrix](../../release/space/pages/current-visibility/page.md)
 - [Blind-review record](../../release/space/evidence/release/red_team.md)
 - [Upload allowlist](../../release/space/evidence/release/upload_allowlist.txt)
 - [SHA-256 manifest](../../release/space/evidence/release/candidate_manifest.sha256)
 
-Exact publication action: upload only the 109 allowlisted text paths in one
+Exact publication action: upload only the 245 allowlisted text paths in one
 Hugging Face Hub commit to the existing `DineshAI/ihMB4kA2SQ` Space, verify
 the returned revision by exact-revision download and hash traversal, then
 mirror the published text paths and public report to GitHub `main`. No second

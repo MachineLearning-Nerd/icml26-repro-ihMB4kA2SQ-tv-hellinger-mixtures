@@ -200,9 +200,9 @@
     "C4": "VERIFIED",
     "C5": "VERIFIED"
   },
-  "git_sha": "c49ea8ad87adf8b628d9f4eefe017d80ebd7ac8d",
+  "git_sha": "e0f51b4522fb6be068cb43ecc3121901f9627570",
   "cpu_estimate": "1 effective core, under 5 minutes",
   "actual_logical_cpus_visible": 8,
   "platform": "macOS-26.5.2-arm64-arm-64bit",
-  "runtime_seconds": 1.65032054198673
+  "runtime_seconds": 1.4854495829786174
 }

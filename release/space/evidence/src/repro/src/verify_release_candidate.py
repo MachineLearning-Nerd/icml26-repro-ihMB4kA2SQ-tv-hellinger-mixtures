@@ -604,7 +604,7 @@ def main() -> None:
         "latest_judged_preserved_paths": latest_preserved,
         "canonical_entrypoint": "README.md",
         "claim_verdicts": {claim: "VERIFIED" for claim in claim_pages},
-        "claim_confidence": {claim: "HIGH" for claim in claim_pages},
+        "claim_confidence": {claim: "MEDIUM" for claim in claim_pages},
         "visibility_rows_complete": 5,
         "relative_links_checked": checked_links,
         "upload_allowlist_count": len(allowlist),

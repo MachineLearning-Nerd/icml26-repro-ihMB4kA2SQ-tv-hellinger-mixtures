@@ -48,25 +48,25 @@ and verified all 106 stable manifest hashes.
 
 | Claim | Status | Expected points | Confidence | Expected evaluator status |
 | --- | --- | ---: | --- | --- |
-| C1 | VERIFIED | 2 | HIGH | 1D + d=2/d=3 direct routes and universal premise-ledger certificate |
-| C2 | VERIFIED | 2 | HIGH | 1D + d=2/d=3 direct routes and exact pointwise reduction |
-| C3 | VERIFIED | 2 | HIGH | explicit construction, independent integration, exact infinite-sequence certificate |
-| C4 | VERIFIED | 2 | HIGH | sample upper, all-estimator lower, direct logarithmic calibration and proof chain |
-| C5 | VERIFIED | 2 | HIGH | proper upper, equal-law lower, exponent-to-2 and arbitrary-Q transfer |
+| C1 | VERIFIED | 2 | MEDIUM | direct routes plus source-complete transcript; proof-assistant risk remains |
+| C2 | VERIFIED | 2 | MEDIUM | direct routes plus exact pointwise reduction and expanded C1 transcript |
+| C3 | VERIFIED | 2 | MEDIUM | explicit construction, independent integration, and expanded infinite-sequence route |
+| C4 | VERIFIED | 2 | MEDIUM | sample upper, all-estimator lower, calibration, and source-pinned proof chain |
+| C5 | VERIFIED | 2 | MEDIUM | proper upper, equal-law lower, exponent-to-2 route, and source-pinned transfer |
 
-Conservative projected total: **8–10/10**. Best-supported possible score:
+Conservative projected total: **7–10/10**. Best-supported possible score:
 **10/10**, a forecast rather than a judge result. No claim is BLOCKED. The
 remaining risk is that a machine-checked proof transcript is not a
 foundational proof-assistant artifact; only the live judge can award points.
 
 The exact publication action, after the new cumulative run and blind review
-pass, is one text-only Hugging Face Hub commit containing the 101 allowlisted
+pass, is one text-only Hugging Face Hub commit containing the 245 allowlisted
 paths to the existing `DineshAI/ihMB4kA2SQ` Space; no second Space will be
 created.
 
 The cumulative remediation gate passed at Git SHA
-`27ce436f0ac02900dfc9471e284a885b5dad2594`, OpenResearch run
-`fbc513d9-ff4b-42e6-adbe-dde5dca54cb8`, in `1m40s` on Hugging Face
+`e0f51b4522fb6be068cb43ecc3121901f9627570`, OpenResearch run
+`cd74ae47-2006-4c1d-86a6-ffbd0bb2cb12`, in `1m52s` on Hugging Face
 `cpu-upgrade`; 64 logical CPUs were visible and numerical libraries were
 pinned to one thread.
 
