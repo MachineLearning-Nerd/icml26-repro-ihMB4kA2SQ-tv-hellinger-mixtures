@@ -2,11 +2,11 @@
 
 Every claim has three materially different routes: direct evidence, an
 independent checker or lower-bound route, and a source-pinned
-symbolic/asymptotic certificate. The remediation adds a fourth shared layer:
-a small proof kernel that closes each theorem dependency graph, recomputes the
-exact identities and limits, and rejects one mutated proof object per claim.
-An independent replay checker reads the saved certificate from scratch. The
-fixed command regenerates every raw file and exits nonzero on any failed gate.
+symbolic/asymptotic certificate. The new remediation replaces the insufficient
+dependency-ledger kernel with a source-complete proof-transcript replay. It
+expands every internal paper dependency, pins every external primary theorem,
+requires zero unresolved dependencies, and rejects one mutation per claim.
+An independent checker reads the saved proof object from scratch.
 
 | Claim | Route 1 | Route 2 | Route 3 |
 | --- | --- | --- | --- |
@@ -40,18 +40,19 @@ is not the asymptotic limit.
 
 Universal quantifiers are handled by the
 [source-pinned reduction certificate](../../evidence/raw/universal_reductions/result.json)
-and the [kernel-checked proof graph](../../evidence/raw/kernel_certificate/proof_certificate.json),
-whose premises and quantified conclusions are explicit. The
-[independent replay](../../evidence/raw/kernel_certificate/independent_checker.json)
-verified all five claims and rejected all five proof mutations.
+and the [source-complete proof replay](../../evidence/raw/source_complete_proof_replay/proof_replay.json).
+The replay has zero unresolved internal dependencies; its
+[independent checker](../../evidence/raw/source_complete_proof_replay/independent_checker.json)
+verified all five claim routes and rejected all five proof mutations.
 
 ## Evidence
 
 - [Executable scaled verifier](../../evidence/src/repro/src/run_scaled_direct_evidence.py)
 - [Executable three-route verifier](../../evidence/src/repro/src/run_three_route_evidence.py)
-- [Proof-kernel generator](../../evidence/src/repro/src/verify_kernel_certificate.py)
-- [Independent proof replay](../../evidence/src/repro/src/check_kernel_certificate.py)
-- [Kernel-checked certificate](../../evidence/raw/kernel_certificate/proof_certificate.json)
+- [Current proof-replay page](../current-formal-proof-replay/page.md)
+- [Source-complete proof generator](../../evidence/src/repro/src/verify_source_complete_proof_replay.py)
+- [Independent source-complete checker](../../evidence/src/repro/src/check_source_complete_proof_replay.py)
+- [Readable proof transcript](../../evidence/raw/source_complete_proof_replay/proof_transcript.md)
 - [Three-route result](../../evidence/raw/three_route/result.json)
 - [Three-route matrix](../../evidence/raw/three_route/route_matrix.json)
 - [d=2/d=3 cells](../../evidence/raw/three_route/multidimensional_direct.csv)

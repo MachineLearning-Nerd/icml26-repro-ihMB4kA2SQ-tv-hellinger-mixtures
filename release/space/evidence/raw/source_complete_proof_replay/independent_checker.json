@@ -1,0 +1,7 @@
+{
+  "status": "INDEPENDENT_SOURCE_COMPLETE_REPLAY_PASS",
+  "claims_replayed": 5,
+  "unresolved_dependencies": 0,
+  "mutations_rejected": 5,
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d"
+}

@@ -47,10 +47,11 @@ with the C1 universal certificate gives the corollary for all dimensions and
 all compactly supported Gaussian mixing laws. It is not inferred from the
 finite 1D or tensor cells.
 
-The proof kernel records the dependency on C1, checks the pointwise density
-identity exactly, carries the all-dimensional quantifier to the conclusion,
-and rejects the missing-square mutation. Its saved proof object is replayed by
-a separate checker.
+The current source-complete proof replay expands the full C1 route, then
+checks the pointwise density identity exactly and carries the all-dimensional
+quantifier to the conclusion. It reports **zero unresolved** internal
+dependencies. `check_source_complete_proof_replay.py` independently rebuilds
+the identity and rejects the missing-square mutation.
 
 ## Reproduce and evidence
 
@@ -74,6 +75,10 @@ Seed `260203214`; one effective numerical core; HF `cpu-upgrade` for the uncerta
 - [Independent proof replay](../../evidence/src/repro/src/check_kernel_certificate.py)
 - [Kernel certificate](../../evidence/raw/kernel_certificate/proof_certificate.json)
 - [Kernel replay output](../../evidence/raw/kernel_certificate/independent_checker.json)
+- [Source-complete generator](../../evidence/src/repro/src/verify_source_complete_proof_replay.py)
+- [Independent source-complete checker](../../evidence/src/repro/src/check_source_complete_proof_replay.py)
+- [Current proof transcript](../../evidence/raw/source_complete_proof_replay/proof_transcript.md)
+- [Current proof object](../../evidence/raw/source_complete_proof_replay/proof_replay.json)
 - [Claim contract](../../evidence/raw/scaled_direct/claim_contract.json)
 - [Source audit](../../evidence/raw/scaled_direct/source_audit.md)
 - [Method](../../evidence/raw/scaled_direct/method.md)

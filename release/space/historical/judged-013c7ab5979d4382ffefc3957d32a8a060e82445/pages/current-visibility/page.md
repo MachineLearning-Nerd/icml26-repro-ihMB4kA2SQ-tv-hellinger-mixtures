@@ -1,0 +1,15 @@
+# Evaluator visibility matrix
+
+Traversal begins at `README.md`; this table was checked using only links reachable from that entrypoint.
+
+| Claim | Canonical page | Code visible | Data inline | Raw link | Checker | Control | Exact claim tested | Reviewer verdict |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| C1 | [C1](#/current-claim-c1) | [proof kernel](../../evidence/src/repro/src/verify_kernel_certificate.py) | Yes | [d=2/d=3 cells](../../evidence/raw/three_route/multidimensional_direct.csv) | [independent replay](../../evidence/raw/kernel_certificate/independent_checker.json) | [mutated exponent](../../evidence/raw/kernel_certificate/proof_certificate.json) | Yes: displayed bound and full `d,M,delta,pi,eta` quantifier | Located; current verifier |
+| C2 | [C2](#/current-claim-c2) | [proof kernel](../../evidence/src/repro/src/verify_kernel_certificate.py) | Yes | [d=2/d=3 cells](../../evidence/raw/three_route/multidimensional_direct.csv) | [independent replay](../../evidence/raw/kernel_certificate/independent_checker.json) | [missing square](../../evidence/raw/kernel_certificate/proof_certificate.json) | Yes: exact `1/log log` exponent and all-dimensional reduction | Located; current verifier |
+| C3 | [C3](#/current-claim-c3) | [proof kernel](../../evidence/src/repro/src/verify_kernel_certificate.py) | Yes | [11 orders](../../evidence/raw/claim_1_3/raw_results.csv) | [independent replay](../../evidence/raw/kernel_certificate/independent_checker.json) | [coefficient 0.34](../../evidence/raw/kernel_certificate/proof_certificate.json) | Yes: explicit mixtures and existential infinite sequence | Located; current verifier |
+| C4 | [C4](#/current-claim-c4) | [proof kernel](../../evidence/src/repro/src/verify_kernel_certificate.py) | Yes | [21 correction cells](../../evidence/raw/three_route/claim_4_local_entropy.csv) | [independent replay](../../evidence/raw/kernel_certificate/independent_checker.json) | [same-delta inversion](../../evidence/raw/kernel_certificate/proof_certificate.json) | Yes: local-entropy bracket, correction, and all-estimator lower | Located; current verifier |
+| C5 | [C5](#/current-claim-c5) | [proof kernel](../../evidence/src/repro/src/verify_kernel_certificate.py) | Yes | [asymptotic cells](../../evidence/raw/three_route/claim_5_asymptotic.csv) | [independent replay](../../evidence/raw/kernel_certificate/independent_checker.json) | [weakened Chen boundary](../../evidence/raw/kernel_certificate/proof_certificate.json) | Yes: arbitrary Q, proper upper, and all-estimator lower | Located; current verifier |
+
+Every row also exposes the fixed command, pinned environment, exact assumptions and quantifiers, deterministic seeds, CPU/runtime record, source audit, limitations, and a verifier that exits nonzero when evidence fails.
+
+The current verifier supersedes the protected historical verifier. Historical files remain reachable from [Historical rejected baseline](#/historical-rejected-baseline), with no historical children in current navigation.

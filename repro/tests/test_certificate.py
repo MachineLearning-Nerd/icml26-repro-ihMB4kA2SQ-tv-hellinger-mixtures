@@ -83,6 +83,39 @@ class CertificateTests(unittest.TestCase):
         self.assertEqual(set(certificate["verdicts"]), {"C1", "C2", "C3", "C4", "C5"})
         self.assertTrue(all(certificate["negative_controls"].values()))
 
+    def test_source_complete_proof_replay(self) -> None:
+        subprocess.run(
+            [sys.executable, "repro/src/verify_source_complete_proof_replay.py"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        subprocess.run(
+            [sys.executable, "repro/src/check_source_complete_proof_replay.py"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        directory = (
+            ROOT / ".openresearch/artifacts/source_complete_proof_replay"
+        )
+        certificate = json.loads((directory / "proof_replay.json").read_text())
+        independent = json.loads((directory / "independent_checker.json").read_text())
+        self.assertEqual(
+            certificate["status"], "SOURCE_COMPLETE_PROOF_REPLAY_PASS"
+        )
+        self.assertEqual(
+            independent["status"], "INDEPENDENT_SOURCE_COMPLETE_REPLAY_PASS"
+        )
+        self.assertEqual(certificate["unresolved_dependencies"], [])
+        self.assertTrue(
+            all(not node["unresolved"] for node in certificate["proof_graph"].values())
+        )
+        self.assertEqual(set(certificate["verdicts"]), {"C1", "C2", "C3", "C4", "C5"})
+        self.assertTrue(all(certificate["negative_controls"].values()))
+
 
 if __name__ == "__main__":
     unittest.main()

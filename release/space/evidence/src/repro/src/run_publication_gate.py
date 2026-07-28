@@ -27,6 +27,16 @@ def main() -> None:
     subprocess.run([sys.executable, "repro/src/verify_universal_reductions.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/verify_kernel_certificate.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/check_kernel_certificate.py"], cwd=ROOT, check=True)
+    subprocess.run(
+        [sys.executable, "repro/src/verify_source_complete_proof_replay.py"],
+        cwd=ROOT,
+        check=True,
+    )
+    subprocess.run(
+        [sys.executable, "repro/src/check_source_complete_proof_replay.py"],
+        cwd=ROOT,
+        check=True,
+    )
     subprocess.run([sys.executable, "repro/src/run_yatracos_experiment.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/run_scaled_direct_evidence.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "repro/src/run_three_route_evidence.py"], cwd=ROOT, check=True)
@@ -43,6 +53,7 @@ def main() -> None:
         "application_certificate",
         "universal_reductions",
         "kernel_certificate",
+        "source_complete_proof_replay",
         "yatracos_experiment",
         "scaled_direct",
         "three_route",
@@ -111,7 +122,7 @@ def main() -> None:
         "historical_rejected_baseline_regression_passed": True,
         "verification": "outputs/verification.json",
         "tests": "repro/tests",
-        "scope": "Source-pinned exact claim contracts, a fail-closed proof-kernel replay of the theorem dependency chains, evaluator-calibrated direct Gaussian-mixture constructions, independent numerical checkers, and negative controls.",
+        "scope": "Source-pinned exact claim contracts, a source-complete proof-transcript replay with no opaque internal theorem nodes, explicit primary-source imports, evaluator-calibrated direct Gaussian-mixture constructions, independent checkers, and negative controls.",
         "current_claim_suite": ".openresearch/artifacts/claim_1_3/result.json",
         "proof_obligations": ".openresearch/artifacts/proof_obligations/result.json",
         "primary_dependencies": ".openresearch/artifacts/primary_dependencies/result.json",
@@ -119,6 +130,7 @@ def main() -> None:
         "application_certificate": ".openresearch/artifacts/application_certificate/result.json",
         "universal_reductions": ".openresearch/artifacts/universal_reductions/result.json",
         "kernel_certificate": ".openresearch/artifacts/kernel_certificate/proof_certificate.json",
+        "source_complete_proof_replay": ".openresearch/artifacts/source_complete_proof_replay/proof_replay.json",
         "yatracos_experiment": ".openresearch/artifacts/yatracos_experiment/result.json",
         "scaled_direct_evidence": ".openresearch/artifacts/scaled_direct/result.json",
         "three_route_evidence": ".openresearch/artifacts/three_route/result.json",

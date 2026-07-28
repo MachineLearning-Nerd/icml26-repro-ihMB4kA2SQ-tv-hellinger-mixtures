@@ -1,0 +1,17 @@
+{
+  "primary_engine": "adaptive_gauss_kronrod",
+  "gauss_hermite_order": 768,
+  "independent_order": 1536,
+  "odd_orders": [11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31],
+  "delta": 0.2,
+  "mp_dps": 110,
+  "seed": 260203202,
+  "yatracos": {
+    "sample_sizes": [100, 200, 400, 800, 1600],
+    "contamination_levels": [0.0, 0.02, 0.05, 0.1, 0.2],
+    "replicates": 40,
+    "integration_grid_size": 4001,
+    "integration_extent": 9.0,
+    "first_hit_h2_target": 0.02
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "C4": {
+    "exact_paper_claim": "infinite-class TV minimax characterization",
+    "experiment_scope": "complete 19-member Gaussian-mixture cover; proper Yatracos upper risk and exhaustive Le Cam pair lower bound",
+    "verdict_role": "faithful finite-domain corroboration, not the universal proof"
+  },
+  "C5": {
+    "exact_paper_claim": "proper Yatracos Hellinger upper rate and all-estimator Huber lower rate",
+    "experiment_scope": "actual estimator under Huber point-mass contaminants plus exhaustive finite-domain equal-law lower bound",
+    "verdict_role": "estimator-level corroboration; universal quantifiers are handled by the separate exact reduction certificate"
+  }
+}

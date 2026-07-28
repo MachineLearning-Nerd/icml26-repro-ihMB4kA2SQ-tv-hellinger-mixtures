@@ -1,0 +1,6 @@
+{
+  "status": "INDEPENDENT_KERNEL_REPLAY_PASS",
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+  "claims_replayed": 5,
+  "mutations_rejected": 5
+}

@@ -1,0 +1,52 @@
+{
+  "source_sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+  "anchors": {
+    "C1": "\\label{theorem:uniformTV}",
+    "C2": "\\label{corollary:uniformTV}",
+    "C3": "\\label{theorem:sharp}",
+    "C4": "\\label{theorem:learninginTV}",
+    "C5_upper": "\\label{theorem:robust}",
+    "C5_lower": "\\label{theorem:robustlower}"
+  },
+  "obligations": {
+    "C1": {
+      "checked": [
+        "source anchor",
+        "finite-mixture Jensen identity",
+        "translation/support bookkeeping in source audit"
+      ],
+      "external_dependency": "Theorem 2.3 L1(phi_d)-L2(phi_d) inequality and its weighted-polynomial lemmas"
+    },
+    "C2": {
+      "checked": [
+        "source anchor",
+        "pointwise H^2 <= chi^2 implication"
+      ],
+      "external_dependency": "C1"
+    },
+    "C3": {
+      "checked": [
+        "source anchor",
+        "exact Hermite identity at n=11,15,19",
+        "two independent numerical construction routes"
+      ],
+      "external_dependency": "uniform tail bounds and eventual relabeling argument in Lemma 3.2/Theorem 3.1"
+    },
+    "C4": {
+      "checked": [
+        "source anchor",
+        "proper-projection factor two",
+        "rate exponent grid"
+      ],
+      "external_dependency": "Jia et al. Corollary 11/Fano local-entropy characterization"
+    },
+    "C5": {
+      "checked": [
+        "both source anchors",
+        "contamination indistinguishability condition",
+        "upper/lower exponent grid"
+      ],
+      "external_dependency": "Yatracos entropy bound and the expectation/Jensen tail argument"
+    }
+  }
+}

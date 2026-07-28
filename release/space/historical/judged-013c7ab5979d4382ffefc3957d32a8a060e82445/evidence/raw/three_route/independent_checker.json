@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "multidimensional": {
+    "cells": 6,
+    "max_relative_error": 0.0005738609022344085,
+    "rows": [
+      {
+        "dimension": 2,
+        "amplitude_exponent_base2": 4,
+        "checker_order": 129,
+        "tv_relative_error": 0.0005738609022344085,
+        "hellinger_relative_error": 6.772730345875283e-15,
+        "sqrt_chi_relative_error": 1.8382038339620096e-15
+      },
+      {
+        "dimension": 2,
+        "amplitude_exponent_base2": 10,
+        "checker_order": 129,
+        "tv_relative_error": 0.000314503821470656,
+        "hellinger_relative_error": 2.6521625428090028e-14,
+        "sqrt_chi_relative_error": 4.596327555124966e-15
+      },
+      {
+        "dimension": 2,
+        "amplitude_exponent_base2": 16,
+        "checker_order": 129,
+        "tv_relative_error": 0.0003097472198579744,
+        "hellinger_relative_error": 1.6904400158495728e-12,
+        "sqrt_chi_relative_error": 9.687220376150465e-13
+      },
+      {
+        "dimension": 3,
+        "amplitude_exponent_base2": 4,
+        "checker_order": 65,
+        "tv_relative_error": 0.0005270997360166314,
+        "hellinger_relative_error": 5.29806474081599e-07,
+        "sqrt_chi_relative_error": 2.3545781243005734e-07
+      },
+      {
+        "dimension": 3,
+        "amplitude_exponent_base2": 10,
+        "checker_order": 65,
+        "tv_relative_error": 0.00048270443904859726,
+        "hellinger_relative_error": 2.3981705689166004e-07,
+        "sqrt_chi_relative_error": 2.3529034454697615e-07
+      },
+      {
+        "dimension": 3,
+        "amplitude_exponent_base2": 16,
+        "checker_order": 65,
+        "tv_relative_error": 0.00048292087270994686,
+        "hellinger_relative_error": 2.3536735414602862e-07,
+        "sqrt_chi_relative_error": 2.352994049460408e-07
+      }
+    ]
+  },
+  "tensor_factorization_max_absolute_error": 5.314693404470531e-16,
+  "C3_engine": "independent fixed-node Gauss-Hermite with +20 mpmath digits",
+  "C4_application_certificate": "DERIVATION_RECONSTRUCTED",
+  "C5_application_certificate": "DERIVATION_RECONSTRUCTED"
+}

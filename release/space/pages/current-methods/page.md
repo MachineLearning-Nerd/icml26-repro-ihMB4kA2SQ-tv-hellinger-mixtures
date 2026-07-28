@@ -56,7 +56,10 @@ The cumulative entrypoint reruns:
 7. `run_three_route_evidence.py`, requiring three passing routes per claim;
 8. `verify_kernel_certificate.py` and the independent
    `check_kernel_certificate.py` replay;
-9. all figures, the marimo notebook check, and evaluator-visible release checks.
+9. `verify_source_complete_proof_replay.py` and the independent
+   `check_source_complete_proof_replay.py`, requiring zero unresolved internal
+   dependencies;
+10. all figures, the marimo notebook check, and evaluator-visible release checks.
 
 Every scientific gate and every intended negative-control rejection is asserted. A mismatch exits nonzero.
 
@@ -73,6 +76,11 @@ Every scientific gate and every intended negative-control rejection is asserted.
 - [Kernel certificate](../../evidence/raw/kernel_certificate/proof_certificate.json)
 - [Kernel replay result](../../evidence/raw/kernel_certificate/independent_checker.json)
 - [Kernel scope](../../evidence/raw/kernel_certificate/limitations.md)
+- [Current source-complete proof replay](../current-formal-proof-replay/page.md)
+- [Source-complete generator](../../evidence/src/repro/src/verify_source_complete_proof_replay.py)
+- [Independent source-complete checker](../../evidence/src/repro/src/check_source_complete_proof_replay.py)
+- [Source-complete proof transcript](../../evidence/raw/source_complete_proof_replay/proof_transcript.md)
+- [Source-complete limitations](../../evidence/raw/source_complete_proof_replay/limitations.md)
 - [Scaled result](../../evidence/raw/scaled_direct/result.json)
 - [Claim contract](../../evidence/raw/scaled_direct/claim_contract.json)
 - [Independent checker](../../evidence/raw/scaled_direct/independent_checker.json)

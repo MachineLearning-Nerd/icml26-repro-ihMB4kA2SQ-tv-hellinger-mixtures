@@ -67,10 +67,13 @@ quantifier at `delta/2`.
 The separate finite Yatracos checker verifies all `171` comparison-set
 identities to `<5e-15`.
 
-The proof kernel closes the dependency chain from the pinned Jia
-local-entropy theorem through the C2 metric conversion, exact `delta/2`
-inversion, proper-projection triangle rule, and all-estimator lower conclusion.
-The independent replay rejects the invalid same-`delta` inversion.
+The current source-complete replay expands every internal node from the
+source-pinned Jia local-entropy import through proper projection, C2 metric
+conversion at `delta/2`, inverse mapping, and the Fano tail-to-risk step. It
+reports **zero unresolved** internal dependencies and names the Jia theorem as
+an explicit external primary-source import. The separate
+`check_source_complete_proof_replay.py` checker rejects the invalid
+same-`delta` inversion.
 
 ## Reproduce
 
@@ -94,5 +97,9 @@ Seeds `260203514` and `260207502`; one effective numerical core; CPU only.
 - [Independent proof replay](../../evidence/src/repro/src/check_kernel_certificate.py)
 - [Kernel certificate](../../evidence/raw/kernel_certificate/proof_certificate.json)
 - [Kernel replay output](../../evidence/raw/kernel_certificate/independent_checker.json)
+- [Source-complete generator](../../evidence/src/repro/src/verify_source_complete_proof_replay.py)
+- [Independent source-complete checker](../../evidence/src/repro/src/check_source_complete_proof_replay.py)
+- [Current proof transcript](../../evidence/raw/source_complete_proof_replay/proof_transcript.md)
+- [Current proof object](../../evidence/raw/source_complete_proof_replay/proof_replay.json)
 - [Jia source audit](../../evidence/raw/primary_dependencies/source_audit.md)
 - [Scope and deviations](../../evidence/raw/scaled_direct/limitations.md)

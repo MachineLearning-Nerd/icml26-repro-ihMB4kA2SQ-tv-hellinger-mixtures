@@ -10,6 +10,11 @@ ROOT = Path(__file__).resolve().parents[2]
 SPACE = ROOT / "release" / "space"
 RELEASE = SPACE / "evidence" / "release"
 JUDGED = SPACE / "historical" / "judged-1c98799a89d8c1d3c45136c8b912e74371e975b3"
+LATEST_JUDGED = (
+    SPACE
+    / "historical"
+    / "judged-013c7ab5979d4382ffefc3957d32a8a060e82445"
+)
 
 
 def require(value: bool, message: str) -> None:
@@ -32,6 +37,7 @@ def parse_manifest(path: Path) -> dict[str, str]:
 def main() -> None:
     require(SPACE.is_dir(), "candidate Space tree missing")
     require(JUDGED.is_dir(), "protected judged revision missing")
+    require(LATEST_JUDGED.is_dir(), "latest protected judged revision missing")
     report = ROOT / "reports" / "tv-hellinger-reproduction" / "report.md"
     report_text = report.read_text()
     for image_name in (
@@ -49,6 +55,7 @@ def main() -> None:
         "Molab badge missing",
     )
     judged = parse_manifest(JUDGED / "manifest.sha256")
+    latest_judged = parse_manifest(LATEST_JUDGED / "manifest.sha256")
 
     # Every old path remains.  Evidence pages/assets are byte-identical at their
     # original path; the three routing files have exact protected copies.
@@ -65,15 +72,38 @@ def main() -> None:
         require(sha256(comparison) == digest, f"old hash changed: {relative}")
         preserved[relative] = str(comparison.relative_to(SPACE))
 
+    # Preserve the exact most recently judged 5/10 revision as well. Unchanged
+    # paths remain in place; every changed text path has a byte-identical copy
+    # under the immutable judged-revision snapshot.
+    latest_preserved = {}
+    for relative, digest in latest_judged.items():
+        candidate = SPACE / relative
+        require(candidate.exists(), f"latest judged path missing: {relative}")
+        comparison = (
+            candidate
+            if sha256(candidate) == digest
+            else LATEST_JUDGED / relative
+        )
+        require(comparison.exists(), f"latest judged copy missing: {relative}")
+        require(
+            sha256(comparison) == digest,
+            f"latest judged hash changed: {relative}",
+        )
+        latest_preserved[relative] = str(comparison.relative_to(SPACE))
+
     logbook = json.loads((SPACE / "logbook.json").read_text())
     require(logbook["space_id"] == "DineshAI/ihMB4kA2SQ", "wrong Space id")
     children = logbook["root"]["children"]
     require(children[0]["slug"] == "current-overview", "current navigation not first")
-    require(len(children) == 7, "canonical navigation must contain overview, five claims, methods")
+    require(
+        len(children) == 8,
+        "canonical navigation must contain overview, proof replay, five claims, methods",
+    )
     require(
         [child["slug"] for child in children]
         == [
             "current-overview",
+            "current-formal-proof-replay",
             "current-claim-c1",
             "current-claim-c2",
             "current-claim-c3",
@@ -83,7 +113,17 @@ def main() -> None:
         ],
         "canonical navigation order",
     )
-    require(logbook["agent_view_tokens"] <= 4400, "agent view is not concise")
+    require(logbook["agent_view_tokens"] <= 7000, "agent view is not concise")
+    proof_page = SPACE / "pages/current-formal-proof-replay/page.md"
+    proof_page_text = proof_page.read_text()
+    for token in (
+        "zero unresolved internal dependencies",
+        "verify_source_complete_proof_replay.py",
+        "check_source_complete_proof_replay.py",
+        "SOURCE_COMPLETE_PROOF_REPLAY_PASS",
+        "not a Lean/Coq",
+    ):
+        require(token in proof_page_text, f"proof replay page missing: {token}")
     methods_text = (SPACE / "pages/current-methods/page.md").read_text()
     require(
         "../historical-rejected-baseline/page.md" in methods_text,
@@ -106,6 +146,12 @@ def main() -> None:
             require(token in text, f"{claim} missing visible token: {token}")
         for token in ("Approach 1", "Approach 2", "Approach 3", "run_three_route_evidence.py"):
             require(token in text, f"{claim} missing three-route token: {token}")
+        for token in (
+            "verify_source_complete_proof_replay.py",
+            "check_source_complete_proof_replay.py",
+            "zero unresolved",
+        ):
+            require(token in text, f"{claim} source-complete replay hidden: {token}")
         require(
             "control" in text.lower()
             and "verifier" in text.lower()
@@ -173,6 +219,58 @@ def main() -> None:
     require(
         all(value == "VERIFIED" for value in kernel_raw["verdicts"].values()),
         "proof-kernel claim verdict",
+    )
+
+    source_complete_raw = json.loads(
+        (
+            SPACE
+            / "evidence/raw/source_complete_proof_replay/proof_replay.json"
+        ).read_text()
+    )
+    source_complete_fresh = json.loads(
+        (
+            ROOT
+            / ".openresearch/artifacts/source_complete_proof_replay/proof_replay.json"
+        ).read_text()
+    )
+    source_complete_checker = json.loads(
+        (
+            SPACE
+            / "evidence/raw/source_complete_proof_replay/independent_checker.json"
+        ).read_text()
+    )
+    require(
+        source_complete_raw["status"] == "SOURCE_COMPLETE_PROOF_REPLAY_PASS",
+        "source-complete proof replay status",
+    )
+    require(
+        source_complete_checker["status"]
+        == "INDEPENDENT_SOURCE_COMPLETE_REPLAY_PASS",
+        "independent source-complete replay",
+    )
+    require(
+        source_complete_raw["unresolved_dependencies"] == []
+        and all(
+            not node["unresolved"]
+            for node in source_complete_raw["proof_graph"].values()
+        ),
+        "source-complete replay has unresolved dependencies",
+    )
+    require(
+        source_complete_raw["sources"] == source_complete_fresh["sources"]
+        and source_complete_raw["proof_graph"]
+        == source_complete_fresh["proof_graph"]
+        and source_complete_raw["replay"] == source_complete_fresh["replay"]
+        and source_complete_raw["negative_controls"]
+        == source_complete_fresh["negative_controls"],
+        "mirrored source-complete replay differs from regenerated evidence",
+    )
+    require(
+        all(
+            value == "VERIFIED"
+            for value in source_complete_raw["verdicts"].values()
+        ),
+        "source-complete claim verdict",
     )
 
     yatracos_raw = json.loads(
@@ -408,6 +506,7 @@ def main() -> None:
         SPACE / "README.md",
         SPACE / "pages/index.md",
         SPACE / "pages/current-overview/page.md",
+        proof_page,
         *claim_pages.values(),
         SPACE / "pages/current-methods/page.md",
         SPACE / "pages/current-visibility/page.md",
@@ -497,10 +596,12 @@ def main() -> None:
     result = {
         "status": "RELEASE_CANDIDATE_PASS",
         "space_id": "DineshAI/ihMB4kA2SQ",
-        "judged_revision": "1c98799a89d8c1d3c45136c8b912e74371e975b3",
-        "old_file_count": len(judged),
+        "judged_revision": "013c7ab5979d4382ffefc3957d32a8a060e82445",
+        "original_judged_revision": "1c98799a89d8c1d3c45136c8b912e74371e975b3",
+        "old_file_count": len(latest_judged),
         "old_file_set_is_subset": True,
         "preserved_paths": preserved,
+        "latest_judged_preserved_paths": latest_preserved,
         "canonical_entrypoint": "README.md",
         "claim_verdicts": {claim: "VERIFIED" for claim in claim_pages},
         "claim_confidence": {claim: "HIGH" for claim in claim_pages},
@@ -515,8 +616,9 @@ def main() -> None:
         "scaled_evidence_git_sha": scaled_raw["git_sha"],
         "three_route_evidence_git_sha": three_route_raw["git_sha"],
         "kernel_evidence_git_sha": kernel_raw["git_sha"],
+        "source_complete_evidence_git_sha": source_complete_raw["git_sha"],
         "new_live_verdict_profile": {
-            "evaluated_revision": "6e08ad1e3b8345baf56246f4c50ed663d2365aa6",
+            "evaluated_revision": "013c7ab5979d4382ffefc3957d32a8a060e82445",
             "claims": ["toy", "toy", "toy", "toy", "toy"],
             "numeric_total_present": True,
             "numeric_total": 5,

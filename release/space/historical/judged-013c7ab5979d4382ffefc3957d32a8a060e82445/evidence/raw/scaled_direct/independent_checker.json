@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "claim_1_2": {
+    "status": "PASS",
+    "engine": "16,385-point trapezoidal integration",
+    "cells": 8,
+    "rows": [
+      {
+        "family": 0,
+        "relative_amplitude": 1.0,
+        "tv_relative_error": 1.4298241186362946e-07,
+        "hellinger_relative_error": 0.0,
+        "sqrt_chi_relative_error": 1.2538851993311295e-16
+      },
+      {
+        "family": 1,
+        "relative_amplitude": 0.3,
+        "tv_relative_error": 1.2364254324206256e-07,
+        "hellinger_relative_error": 1.6425216353050301e-16,
+        "sqrt_chi_relative_error": 1.1631752459957902e-16
+      },
+      {
+        "family": 2,
+        "relative_amplitude": 0.1,
+        "tv_relative_error": 3.889031312641801e-07,
+        "hellinger_relative_error": 1.841471778453881e-16,
+        "sqrt_chi_relative_error": 2.6004615616976097e-16
+      },
+      {
+        "family": 3,
+        "relative_amplitude": 0.03,
+        "tv_relative_error": 2.78107098934294e-07,
+        "hellinger_relative_error": 3.1066375404086035e-15,
+        "sqrt_chi_relative_error": 0.0
+      },
+      {
+        "family": 4,
+        "relative_amplitude": 0.01,
+        "tv_relative_error": 5.203376729964117e-07,
+        "hellinger_relative_error": 1.0183647979073277e-15,
+        "sqrt_chi_relative_error": 9.257913323009569e-15
+      },
+      {
+        "family": 5,
+        "relative_amplitude": 0.003,
+        "tv_relative_error": 2.135005633850049e-06,
+        "hellinger_relative_error": 6.395744954617231e-14,
+        "sqrt_chi_relative_error": 2.048487979376174e-14
+      },
+      {
+        "family": 6,
+        "relative_amplitude": 0.001,
+        "tv_relative_error": 5.672570883336898e-07,
+        "hellinger_relative_error": 1.4888752293962656e-14,
+        "sqrt_chi_relative_error": 1.4942892574064598e-14
+      },
+      {
+        "family": 7,
+        "relative_amplitude": 1.0,
+        "tv_relative_error": 7.894225739891011e-07,
+        "hellinger_relative_error": 0.0,
+        "sqrt_chi_relative_error": 1.7782466538061942e-16
+      }
+    ],
+    "max_relative_error": 2.135005633850049e-06
+  },
+  "claim_3": {
+    "engine": "independent fixed-node Gauss-Hermite with +20 mpmath digits",
+    "max_relative_error": 0.0001758914337290375
+  },
+  "claim_4": {
+    "upper_exponent": -0.4737621578241169,
+    "lower_exponent": -0.49711489570666173
+  },
+  "claim_5": {
+    "upper_H_exponent": 0.8441067331261956,
+    "lower_H_exponent": 0.9600569562256783
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "C1": {
+    "contract": "sqrt(chi2)<=max(C0,TV^-alpha(TV))*TV",
+    "alpha": "(2+delta)/log(max(log(1/TV),e))",
+    "delta": 0.2,
+    "tested_constant": 1.0,
+    "scope": "420 direct one-dimensional compact-support cells"
+  },
+  "C2": {
+    "contract": "H<=max(C0,TV^-alpha(TV))*TV",
+    "delta": 0.2,
+    "tested_constant": 1.0,
+    "scope": "same preregistered 420 cells"
+  },
+  "C3": {
+    "contract": "H_n>=TV_n^(1-0.33/log(log(1/TV_n)))",
+    "scope": "every odd n=11,...,31 in the exact construction"
+  },
+  "C4": {
+    "contract": "TV minimax risk is bracketed by the Hellinger local-entropy rate up to the 1-o(1) exponent",
+    "scope": "sample estimator and seeded Le Cam search on a compact nine-atom submodel"
+  },
+  "C5": {
+    "contract": "adversarial-Huber H^2 upper and equal-law lower risks have epsilon^(2(1-o(1))) scaling",
+    "scope": "sample estimator over 17 Q locations and >5000-pair lower search"
+  }
+}

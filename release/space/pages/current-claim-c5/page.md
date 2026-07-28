@@ -68,10 +68,14 @@ transfer, continuous-amplitude Chebyshev extension, Chen boundary, coefficient
 budget `0.3308206>0.33`, and dimension-preserving tensorization. All `171`
 finite Yatracos comparison-set identities agree to `<5e-15`.
 
-The proof kernel carries the arbitrary-`Q`, proper-upper, all-estimator-lower,
-and sufficiently-small-`epsilon` quantifiers through the dependency graph. It
-recomputes the exponent limit and exact Chen equal-law budget, while the
-independent replay rejects the weaker invalid `TV<=epsilon` mutation.
+The current source-complete replay expands every internal Yatracos,
+empirical-tail, entropy-transfer, continuous-amplitude, and two-point-risk
+node. It reports **zero unresolved** internal dependencies and exposes the
+Ma–Wu–Yang and Chen–Gao–Ren theorems as hashed external imports. It carries
+the arbitrary-`Q`, proper-upper, all-estimator-lower, and
+sufficiently-small-`epsilon` quantifiers. The separate
+`check_source_complete_proof_replay.py` checker rejects the weaker invalid
+`TV<=epsilon` mutation.
 
 ## Reproduce
 
@@ -95,5 +99,9 @@ Seeds `260203625` and `260207502`; one effective numerical core; CPU only.
 - [Independent proof replay](../../evidence/src/repro/src/check_kernel_certificate.py)
 - [Kernel certificate](../../evidence/raw/kernel_certificate/proof_certificate.json)
 - [Kernel replay output](../../evidence/raw/kernel_certificate/independent_checker.json)
+- [Source-complete generator](../../evidence/src/repro/src/verify_source_complete_proof_replay.py)
+- [Independent source-complete checker](../../evidence/src/repro/src/check_source_complete_proof_replay.py)
+- [Current proof transcript](../../evidence/raw/source_complete_proof_replay/proof_transcript.md)
+- [Current proof object](../../evidence/raw/source_complete_proof_replay/proof_replay.json)
 - [Chen source audit](../../evidence/raw/primary_dependencies/source_audit.md)
 - [Scope and deviations](../../evidence/raw/scaled_direct/limitations.md)

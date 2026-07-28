@@ -12,7 +12,7 @@
     "icml2026-repro",
     "paper-ihMB4kA2SQ"
   ],
-  "updated_at": "2026-07-28T00:00:00+00:00",
+  "updated_at": "2026-07-28T06:00:00+00:00",
   "root": {
     "slug": "index",
     "title": "Current claim-by-claim reproduction",
@@ -22,6 +22,12 @@
         "slug": "current-overview",
         "title": "Current overview — five claim contracts",
         "file": "pages/current-overview/page.md",
+        "children": []
+      },
+      {
+        "slug": "current-formal-proof-replay",
+        "title": "Current formal proof replay — zero opaque internal nodes",
+        "file": "pages/current-formal-proof-replay/page.md",
         "children": []
       },
       {
@@ -62,6 +68,6 @@
       }
     ]
   },
-  "agent_view_tokens": 4400,
-  "revision": "20260728-kernel-proof-remediation"
+  "agent_view_tokens": 6800,
+  "revision": "20260728-source-complete-proof-replay"
 }

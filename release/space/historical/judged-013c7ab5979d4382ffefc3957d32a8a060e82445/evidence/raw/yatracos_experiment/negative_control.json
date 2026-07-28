@@ -1,0 +1,9 @@
+{
+  "controls": {
+    "empty_yatracos_class_is_worse": true,
+    "wrong_set_orientation_rejected": true,
+    "formula_derived_horizon_not_used": true
+  },
+  "empty_class_mean_h2": 0.11374972351187326,
+  "yatracos_worst_mean_h2_at_max_n": 0.00595832147263133
+}

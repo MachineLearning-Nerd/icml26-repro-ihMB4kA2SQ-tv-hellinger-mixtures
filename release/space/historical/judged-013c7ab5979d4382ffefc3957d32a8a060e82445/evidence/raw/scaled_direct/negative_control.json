@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "controls": {
+    "C1_linear_sqrt_chi_control_rejected": true,
+    "C2_linear_hellinger_control_rejected": true,
+    "C3_wrong_exponent_control_rejected": true,
+    "C4_fixed_estimator_control_rejected": true,
+    "C5_nonadversarial_control_rejected": true
+  }
+}

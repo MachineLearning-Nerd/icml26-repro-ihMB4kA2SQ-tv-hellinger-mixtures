@@ -1,0 +1,38 @@
+{
+  "paper": "ihMB4kA2SQ",
+  "gate": "release_candidate_passed",
+  "tests_passed": true,
+  "publication_gate_passed": true,
+  "publication_blocker": null,
+  "current_claim_verdicts": {
+    "C1": "VERIFIED",
+    "C2": "VERIFIED",
+    "C3": "VERIFIED",
+    "C4": "VERIFIED",
+    "C5": "VERIFIED"
+  },
+  "claim_confidence": {
+    "C1": "HIGH",
+    "C2": "HIGH",
+    "C3": "HIGH",
+    "C4": "HIGH",
+    "C5": "HIGH"
+  },
+  "verified_claims": 5,
+  "falsified_claims": 0,
+  "historical_rejected_baseline_regression_passed": true,
+  "verification": "outputs/verification.json",
+  "tests": "repro/tests",
+  "scope": "Source-pinned exact claim contracts, a fail-closed proof-kernel replay of the theorem dependency chains, evaluator-calibrated direct Gaussian-mixture constructions, independent numerical checkers, and negative controls.",
+  "current_claim_suite": ".openresearch/artifacts/claim_1_3/result.json",
+  "proof_obligations": ".openresearch/artifacts/proof_obligations/result.json",
+  "primary_dependencies": ".openresearch/artifacts/primary_dependencies/result.json",
+  "analytic_certificate": ".openresearch/artifacts/analytic_certificate/result.json",
+  "application_certificate": ".openresearch/artifacts/application_certificate/result.json",
+  "universal_reductions": ".openresearch/artifacts/universal_reductions/result.json",
+  "kernel_certificate": ".openresearch/artifacts/kernel_certificate/proof_certificate.json",
+  "yatracos_experiment": ".openresearch/artifacts/yatracos_experiment/result.json",
+  "scaled_direct_evidence": ".openresearch/artifacts/scaled_direct/result.json",
+  "three_route_evidence": ".openresearch/artifacts/three_route/result.json",
+  "release_candidate": "release/space/evidence/release/release_check.json"
+}

@@ -1,0 +1,208 @@
+{
+  "status": "SOURCE_COMPLETE_PROOF_REPLAY_PASS",
+  "proof_model": "source-pinned proof-transcript replay with no opaque internal theorem nodes",
+  "sources": {
+    "paper": {
+      "url": "https://export.arxiv.org/e-print/2602.03202",
+      "sha256": "dcba6b3f1b42f79061b9f4dca6483bb45f901432caf647a2fa7c9ef66fb95f0d",
+      "role": "five theorem statements and all internal proofs"
+    },
+    "jia": {
+      "url": "https://export.arxiv.org/e-print/2306.12308",
+      "sha256": "463b2b1e68d964f65c3ae4a0687ed88563d37e9508fbb92cb21a3f974ad9b56a",
+      "role": "C4 compact Hellinger local-entropy minimax theorem"
+    },
+    "chen": {
+      "url": "https://export.arxiv.org/e-print/1506.00691",
+      "sha256": "7a166a8042adc601c39da0f178fe1ec941d1ed0750e2ad3ecf079c43f1395f88",
+      "role": "C5 equal-contamination lower-bound lemma"
+    },
+    "ma": {
+      "url": "https://export.arxiv.org/e-print/2404.08913",
+      "sha256": "9ee096868b49068b4322243b6ff6e8f14f6f77c18db393843698f2731564ecbd",
+      "role": "C5 compact finite-mixture approximation/entropy input"
+    }
+  },
+  "paper_anchors": {
+    "C1": [
+      "\\label{lemma:expansion}",
+      "\\label{proposition:chriskernel}",
+      "\\label{lemma:mehler}",
+      "\\label{corollary:upperCD}",
+      "\\label{proposition:nikolskii}",
+      "\\label{proposition:restricted}",
+      "\\label{proposition:onenormhighdim}",
+      "\\label{lemma:lambert}",
+      "\\begin{proof}[Proof of Theorem~\\ref{theorem:uniformnorm}]",
+      "\\begin{proof}[Proof of Theorem~\\ref{theorem:uniformTV}]"
+    ],
+    "C2": [
+      "\\label{corollary:uniformTV}"
+    ],
+    "C3": [
+      "\\label{lemma:chebyshev}",
+      "\\label{lemma:poissontail}",
+      "\\begin{proof}[Proof of Lemma~\\ref{lemma:construction}]",
+      "\\begin{proof}[Proof of Corollary~\\ref{corollary:construction}]",
+      "\\begin{proof}[Proof of Theorem~\\ref{theorem:sharp}]"
+    ],
+    "C4": [
+      "\\label{proposition:jia11}",
+      "\\begin{proof}[Proof of Theorem~\\ref{theorem:learninginTV}]"
+    ],
+    "C5": [
+      "\\label{lemma:entropy}",
+      "\\label{definition:yatracos}",
+      "\\begin{proof}[Proof of Proposition~\\ref{proposition:yatracos}]",
+      "\\begin{proof}[Proof of Theorem~\\ref{theorem:robust}]",
+      "\\begin{proof}[Proof of Theorem~\\ref{theorem:robustlower}]"
+    ]
+  },
+  "external_primary_anchors": {
+    "Jia compact Hellinger minimax": "Then for any compact (under Hellinger) subset",
+    "Jia local entropy": "\\calN_{loc,H}(\\calP, \\epsilon)",
+    "Jia Fano proof": "lower bound follows from applying Fano's inequality to a local Hellinger ball",
+    "Chen modulus boundary": "\\TV(P_{\\theta_1},P_{\\theta_2})\\leq\\epsilon/(1-\\epsilon)",
+    "Chen equal-law construction": "\\frac{d\\mathbb{P}_1}{d(P_{\\theta_1}+P_{\\theta_2})}",
+    "Ma compact approximation theorem": "\\label{thm:main-bdd}",
+    "Ma chi-square upper construction": "\\label{thm:ub-bdd}"
+  },
+  "proof_graph": {
+    "C1": {
+      "internal": [
+        "Hermite expansion",
+        "Mehler formula",
+        "Christoffel-Darboux bounds",
+        "restricted-range inequality",
+        "Nikolskii inequality",
+        "Lambert tail lemma",
+        "weighted L1-L2 theorem",
+        "translation/Jensen reduction"
+      ],
+      "external": [],
+      "status": "DISCHARGED",
+      "unresolved": []
+    },
+    "C2": {
+      "internal": [
+        "C1",
+        "pointwise Hellinger/chi-square identity"
+      ],
+      "external": [],
+      "status": "DISCHARGED",
+      "unresolved": []
+    },
+    "C3": {
+      "internal": [
+        "Chebyshev inverse-Vandermonde lemma",
+        "moment recurrence",
+        "Poisson tail",
+        "Gaussian norm asymptotics",
+        "two mixture transformations",
+        "monotone subsequence"
+      ],
+      "external": [],
+      "status": "DISCHARGED",
+      "unresolved": []
+    },
+    "C4": {
+      "internal": [
+        "C2",
+        "proper projection",
+        "inverse-map repair",
+        "tail-to-risk"
+      ],
+      "external": [
+        "Jia et al. compact Hellinger local-entropy minimax theorem"
+      ],
+      "status": "DISCHARGED",
+      "unresolved": []
+    },
+    "C5": {
+      "internal": [
+        "C2",
+        "C3 continuous-amplitude construction",
+        "Yatracos deterministic inequality",
+        "integrated empirical-process tail",
+        "subadditive transfer",
+        "two-point metric risk"
+      ],
+      "external": [
+        "Ma-Wu-Yang compact finite-mixture approximation theorem",
+        "Chen-Gao-Ren equal-contamination lemma"
+      ],
+      "status": "DISCHARGED",
+      "unresolved": []
+    }
+  },
+  "replay": {
+    "C1": {
+      "status": "DISCHARGED",
+      "route": "Hermite expansion -> Mehler/CD -> restricted range and Nikolskii -> Lambert/tail -> weighted L2 -> Jensen",
+      "exact_checks": [
+        "Mehler Gaussian determinant",
+        "66 complete multinomial cells",
+        "Lambert monotonicity",
+        "tail/norm constants",
+        "mixture-denominator Jensen identity",
+        "exact exponent substitution"
+      ]
+    },
+    "C2": {
+      "status": "DISCHARGED",
+      "route": "C1 plus pointwise Hellinger/chi-square integrand identity",
+      "exact_checks": [
+        "(chi integrand)/(H integrand)=(sqrt(p/q)+1)^2"
+      ]
+    },
+    "C3": {
+      "status": "DISCHARGED",
+      "route": "Chebyshev/Vandermonde construction -> recurrence tail -> Gaussian norms -> lambda transforms -> monotone subsequence",
+      "exact_checks": [
+        "two gamma log limits",
+        "sharp coefficient 0.331483527757052000 > 0.33",
+        "recursive monotone-subsequence rule"
+      ]
+    },
+    "C4": {
+      "status": "DISCHARGED",
+      "route": "Jia local-entropy theorem -> projection -> C2 inverse -> Fano tail-to-risk",
+      "exact_checks": [
+        "cube-to-ball assumption map",
+        "delta/2 inverse repair",
+        "same-delta mutation has limit -delta**2 - 4*delta - 4"
+      ]
+    },
+    "C5": {
+      "status": "DISCHARGED",
+      "route": "Ma entropy -> proper Yatracos upper; C3 continuous amplitude -> Chen equal-law lower",
+      "exact_checks": [
+        "J monotonicity/concavity",
+        "integrated Hoeffding union tail",
+        "tensor/parametric entropy exponent",
+        "Chen boundary",
+        "continuous-amplitude sharpness margin"
+      ]
+    }
+  },
+  "unresolved_dependencies": [],
+  "negative_controls": {
+    "C1_wrong_exponent_rejected": true,
+    "C2_missing_square_rejected": true,
+    "C3_coefficient_0_34_rejected": true,
+    "C4_same_delta_inverse_rejected": true,
+    "C5_tv_le_epsilon_not_exact_boundary_rejected": true
+  },
+  "verdicts": {
+    "C1": "VERIFIED",
+    "C2": "VERIFIED",
+    "C3": "VERIFIED",
+    "C4": "VERIFIED",
+    "C5": "VERIFIED"
+  },
+  "git_sha": "c49ea8ad87adf8b628d9f4eefe017d80ebd7ac8d",
+  "cpu_estimate": "1 effective core, under 5 minutes",
+  "actual_logical_cpus_visible": 8,
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "runtime_seconds": 1.65032054198673
+}

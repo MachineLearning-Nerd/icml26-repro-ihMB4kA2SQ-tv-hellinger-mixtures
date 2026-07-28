@@ -4,7 +4,7 @@
 
 [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/MachineLearning-Nerd/icml26-repro-ihMB4kA2SQ-tv-hellinger-mixtures/blob/main/notebooks/tv_hellinger_reproduction.py)
 
-This CPU-only campaign reproduces all five theorem-level claims in *Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures* ([arXiv:2602.03202](https://arxiv.org/abs/2602.03202)). Space revision `6e08ad1e3b8345baf56246f4c50ed663d2365aa6` scored `5/10`; the judge requested proof-level support for the universal and asymptotic quantifiers.
+This CPU-only campaign reproduces all five theorem-level claims in *Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures* ([arXiv:2602.03202](https://arxiv.org/abs/2602.03202)). Space revision `013c7ab5979d4382ffefc3957d32a8a060e82445` scored `5/10`; the judge found that the previous dependency-ledger kernel still left the substantive proof content unverifiable.
 
 The remediation gives every claim three materially different routes:
 
@@ -13,10 +13,11 @@ The remediation gives every claim three materially different routes:
 - C4: a sample estimator, independent all-estimator Le Cam lower route, and 21 local-entropy/log-correction cells.
 - C5: a proper Huber estimator, equal-law lower route, and exact log-space exponents converging to 2.
 
-A shared fail-closed proof kernel now pins every theorem anchor, recomputes the
-exact identities and limits, closes the dependency and quantifier graph for
-C1–C5, and rejects one mutated proof object per claim. A separate checker
-independently replays the saved certificate.
+A source-complete proof-transcript replay now expands every internal paper
+dependency, pins every imported primary theorem and assumption map, requires
+zero unresolved internal nodes, and rejects one mutated proof object per
+claim. A separate checker independently replays the saved proof. This is
+machine-checked evidence, not a Lean/Coq formalization.
 
 The headline slopes are `-0.474` for the C4 estimator, `-0.497` for its lower route, `1.688` for C5 upper Hellinger-squared error, and `0.960` for the lower Hellinger route. All five controls fail for their intended reason. Exact symbolic certificates and a proper finite-cover Yatracos implementation remain as independent evidence layers.
 
@@ -54,6 +55,8 @@ explicitly enumerated primary-source theorem dependencies.
 - [Exact universal-reduction output](release/space/evidence/raw/universal_reductions/result.json)
 - [Kernel-checked proof certificate](release/space/evidence/raw/kernel_certificate/proof_certificate.json)
 - [Independent proof replay](release/space/evidence/raw/kernel_certificate/independent_checker.json)
+- [Current source-complete proof transcript](release/space/evidence/raw/source_complete_proof_replay/proof_transcript.md)
+- [Independent source-complete replay](release/space/evidence/raw/source_complete_proof_replay/independent_checker.json)
 
 Run the formal suite:
 

@@ -1,0 +1,102 @@
+{
+  "C1": [
+    {
+      "approach": "A \u2014 broad direct one-dimensional sweep",
+      "kind": "numerical",
+      "status": "PASS",
+      "evidence": "420 cells, zero exact-bound violations"
+    },
+    {
+      "approach": "B \u2014 direct tensor integration in d=2 and d=3",
+      "kind": "numerical",
+      "status": "PASS",
+      "evidence": "14 cells, zero violations"
+    },
+    {
+      "approach": "C \u2014 source-pinned universal proof-chain certificate",
+      "kind": "symbolic",
+      "status": "PASS",
+      "evidence": "all d>=1, M>0, delta>0 and all supported mixing laws"
+    }
+  ],
+  "C2": [
+    {
+      "approach": "A \u2014 broad direct Hellinger sweep",
+      "kind": "numerical",
+      "status": "PASS",
+      "evidence": "420 cells, zero exact-bound violations"
+    },
+    {
+      "approach": "B \u2014 direct tensor integration in d=2 and d=3",
+      "kind": "numerical",
+      "status": "PASS",
+      "evidence": "14 cells, zero violations"
+    },
+    {
+      "approach": "C \u2014 pointwise Hellinger/chi-square identity plus C1",
+      "kind": "symbolic",
+      "status": "PASS",
+      "evidence": "all positive density pairs; C1 supplies the Gaussian-mixture specialization"
+    }
+  ],
+  "C3": [
+    {
+      "approach": "A \u2014 exact Chebyshev construction, odd n=11,...,31",
+      "kind": "high-precision numerical",
+      "status": "PASS",
+      "evidence": "11 orders and every sharpness inequality passes"
+    },
+    {
+      "approach": "B \u2014 independent quadrature and moment checker",
+      "kind": "independent numerical",
+      "status": "PASS",
+      "evidence": "independent fixed-node Gauss-Hermite with +20 mpmath digits"
+    },
+    {
+      "approach": "C \u2014 exact asymptotic limits and monotone subsequence",
+      "kind": "symbolic",
+      "status": "PASS",
+      "evidence": "existence of an infinite sequence; not inferred from the six numerical orders"
+    }
+  ],
+  "C4": [
+    {
+      "approach": "A \u2014 sample estimator upper-risk scaling",
+      "kind": "statistical experiment",
+      "status": "PASS",
+      "evidence": "TV exponent -0.47376"
+    },
+    {
+      "approach": "B \u2014 independent all-estimator Le Cam lower bound",
+      "kind": "information-theoretic certificate",
+      "status": "PASS",
+      "evidence": "TV exponent -0.49711"
+    },
+    {
+      "approach": "C \u2014 local-entropy variational and inverse calibration",
+      "kind": "numerical plus symbolic",
+      "status": "PASS",
+      "evidence": "21 calibrated d,n cells; delta/2 inverse repair checked"
+    }
+  ],
+  "C5": [
+    {
+      "approach": "A \u2014 proper Yatracos and adversarial-Huber experiment",
+      "kind": "statistical experiment",
+      "status": "PASS",
+      "evidence": "19 candidates, 171 comparison sets"
+    },
+    {
+      "approach": "B \u2014 Chen equal-law all-estimator lower route",
+      "kind": "information-theoretic certificate",
+      "status": "PASS",
+      "evidence": "every sufficiently small epsilon and every fixed dimension via a common Gaussian product factor"
+    },
+    {
+      "approach": "C \u2014 exact small-epsilon exponent and expectation transfer",
+      "kind": "numerical plus symbolic",
+      "status": "PASS",
+      "evidence": "upper H\u00b2 exponent reaches 1.945; arbitrary-Q transfer checked"
+    }
+  ]
+}

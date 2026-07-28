@@ -1,0 +1,87 @@
+{
+  "status": "PRIMARY_DEPENDENCIES_VERIFIED",
+  "retrieved_utc": "2026-07-25T05:35:00Z",
+  "user_agent": "OpenResearch-Reproduction/1.0 (contact: research-audit)",
+  "sources": {
+    "jia_2023": {
+      "path": "source/arxiv-2306.12308.tar",
+      "sha256": "463b2b1e68d964f65c3ae4a0687ed88563d37e9508fbb92cb21a3f974ad9b56a",
+      "url": "https://export.arxiv.org/e-print/2306.12308"
+    },
+    "chen_gao_ren_2018": {
+      "path": "source/arxiv-1506.00691.tar",
+      "sha256": "7a166a8042adc601c39da0f178fe1ec941d1ed0750e2ad3ecf079c43f1395f88",
+      "url": "https://export.arxiv.org/e-print/1506.00691"
+    }
+  },
+  "claim_4": {
+    "jia_corollary_11_exact_statement_found": true,
+    "assumption_map": "cube [-M,M]^d -> B_2(M sqrt(d)); candidate P is Hellinger-compact exactly as Jia requires",
+    "fano_proof_anchor_found": true,
+    "dependency_status": "RESOLVED"
+  },
+  "claim_5_lower": {
+    "chen_modulus_condition_found": true,
+    "equal_contamination_construction_found": true,
+    "two_point_metric_loss_checked": true,
+    "dependency_status": "RESOLVED"
+  },
+  "cube_rows": [
+    {
+      "dimension": 1,
+      "M": 1.0,
+      "corner_norm": 1.0,
+      "jia_ball_radius": 1.0
+    },
+    {
+      "dimension": 2,
+      "M": 1.0,
+      "corner_norm": 1.4142135623730951,
+      "jia_ball_radius": 1.4142135623730951
+    },
+    {
+      "dimension": 5,
+      "M": 1.0,
+      "corner_norm": 2.23606797749979,
+      "jia_ball_radius": 2.23606797749979
+    },
+    {
+      "dimension": 20,
+      "M": 1.0,
+      "corner_norm": 4.47213595499958,
+      "jia_ball_radius": 4.47213595499958
+    }
+  ],
+  "contamination_rows": [
+    {
+      "epsilon": 0.01,
+      "tv_boundary": 0.010101010101010102,
+      "common_mass": 1.0
+    },
+    {
+      "epsilon": 0.05,
+      "tv_boundary": 0.052631578947368425,
+      "common_mass": 0.9999999999999999
+    },
+    {
+      "epsilon": 0.2,
+      "tv_boundary": 0.25,
+      "common_mass": 1.0
+    },
+    {
+      "epsilon": 0.4,
+      "tv_boundary": 0.6666666666666667,
+      "common_mass": 1.0
+    }
+  ],
+  "negative_controls": {
+    "wrong_cube_radius_M_rejected_at_d2": true,
+    "wrong_tv_le_epsilon_boundary_rejected": true,
+    "missing_compactness_rejected": true
+  },
+  "git_sha": "a04cd9bae6c918dab734f178a84c44454cbd75a5",
+  "cpu_estimate": "1 effective core",
+  "actual_logical_cpus_visible": 8,
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "runtime_seconds": 0.016562750010052696
+}

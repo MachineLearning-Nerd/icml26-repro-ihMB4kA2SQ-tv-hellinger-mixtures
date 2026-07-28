@@ -1,0 +1,27 @@
+{
+  "C1": {
+    "verdict": "VERIFIED",
+    "proof_route": "Hermite expansion -> Mehler/CD -> restricted range and Nikolskii -> Lambert/tail -> weighted L2 -> Jensen",
+    "unresolved_dependencies": []
+  },
+  "C2": {
+    "verdict": "VERIFIED",
+    "proof_route": "C1 plus pointwise Hellinger/chi-square integrand identity",
+    "unresolved_dependencies": []
+  },
+  "C3": {
+    "verdict": "VERIFIED",
+    "proof_route": "Chebyshev/Vandermonde construction -> recurrence tail -> Gaussian norms -> lambda transforms -> monotone subsequence",
+    "unresolved_dependencies": []
+  },
+  "C4": {
+    "verdict": "VERIFIED",
+    "proof_route": "Jia local-entropy theorem -> projection -> C2 inverse -> Fano tail-to-risk",
+    "unresolved_dependencies": []
+  },
+  "C5": {
+    "verdict": "VERIFIED",
+    "proof_route": "Ma entropy -> proper Yatracos upper; C3 continuous amplitude -> Chen equal-law lower",
+    "unresolved_dependencies": []
+  }
+}

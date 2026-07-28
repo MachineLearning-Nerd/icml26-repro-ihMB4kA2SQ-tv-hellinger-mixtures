@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "title": "Repro - Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures",
+  "emoji": "🎯",
+  "space_id": "DineshAI/ihMB4kA2SQ",
+  "paper": {
+    "arxiv_id": "2602.03202",
+    "openreview_id": "ihMB4kA2SQ",
+    "title": "Sharp Inequalities between Total Variation and Hellinger Distances for Gaussian Mixtures"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-ihMB4kA2SQ"
+  ],
+  "updated_at": "2026-07-28T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Current claim-by-claim reproduction",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "current-overview",
+        "title": "Current overview — five claim contracts",
+        "file": "pages/current-overview/page.md",
+        "children": []
+      },
+      {
+        "slug": "current-claim-c1",
+        "title": "Current C1 — chi-square/TV theorem",
+        "file": "pages/current-claim-c1/page.md",
+        "children": []
+      },
+      {
+        "slug": "current-claim-c2",
+        "title": "Current C2 — Hellinger/TV corollary",
+        "file": "pages/current-claim-c2/page.md",
+        "children": []
+      },
+      {
+        "slug": "current-claim-c3",
+        "title": "Current C3 — sharp Chebyshev construction",
+        "file": "pages/current-claim-c3/page.md",
+        "children": []
+      },
+      {
+        "slug": "current-claim-c4",
+        "title": "Current C4 — minimax TV characterization",
+        "file": "pages/current-claim-c4/page.md",
+        "children": []
+      },
+      {
+        "slug": "current-claim-c5",
+        "title": "Current C5 — robust Hellinger rates",
+        "file": "pages/current-claim-c5/page.md",
+        "children": []
+      },
+      {
+        "slug": "current-methods",
+        "title": "Current methods and reproducibility",
+        "file": "pages/current-methods/page.md",
+        "children": []
+      }
+    ]
+  },
+  "agent_view_tokens": 4400,
+  "revision": "20260728-kernel-proof-remediation"
+}

@@ -18,9 +18,10 @@ tags:
 This bundle evaluates the five headline claims of *Sharp Inequalities between
 Total Variation and Hellinger Distances for Gaussian Mixtures*. Each claim has
 three materially different executable routes, including a direct route and a
-source-pinned universal or asymptotic certificate. A shared fail-closed proof
-kernel additionally checks the exact theorem dependency graph and quantifier
-closure for C1–C5; a separate program independently replays the saved proof.
+source-pinned universal or asymptotic certificate. The current theorem layer
+expands every internal paper dependency, pins every external theorem to a
+primary source hash, and requires zero unresolved internal nodes; a separate
+program independently replays the saved proof transcript.
 
 | Claim | Three-route outcome |
 | --- | --- |
@@ -34,22 +35,24 @@ The C1/C2 doubled-grid checker agrees to `2.14e-6`, the C3 independent
 high-precision checker agrees to `1.759e-4`, and all intended negative controls
 are rejected.
 
-The proof-kernel replay verifies all five conclusions and rejects five mutated
-proof objects: the wrong C1 exponent, a missing C2 square, coefficient `0.34`
-in C3, the invalid same-`delta` inversion in C4, and the weakened C5
-contamination boundary.
+The source-complete replay reports `SOURCE_COMPLETE_PROOF_REPLAY_PASS`,
+verifies all five conclusions, and rejects five mutated proof objects: the
+wrong C1 exponent, a missing C2 square, coefficient `0.34` in C3, the invalid
+same-`delta` inversion in C4, and the weakened C5 contamination boundary. It
+is a machine-checked proof transcript, not a Lean/Coq formalization.
 
 ## Start here
 
 - [Claim-by-claim overview](pages/current-overview/page.md)
+- [Current formal proof replay](pages/current-formal-proof-replay/page.md)
 - [C1 — chi-square/TV theorem](pages/current-claim-c1/page.md)
 - [C2 — Hellinger/TV corollary](pages/current-claim-c2/page.md)
 - [C3 — sharp Chebyshev construction](pages/current-claim-c3/page.md)
 - [C4 — minimax TV characterization](pages/current-claim-c4/page.md)
 - [C5 — robust Hellinger upper/lower rates](pages/current-claim-c5/page.md)
 - [Exact methods, command, environment, and compute](pages/current-methods/page.md)
-- [Kernel-checked proof certificate](evidence/raw/kernel_certificate/proof_certificate.json)
-- [Independent kernel replay](evidence/raw/kernel_certificate/independent_checker.json)
+- [Source-complete proof transcript](evidence/raw/source_complete_proof_replay/proof_transcript.md)
+- [Independent source-complete replay](evidence/raw/source_complete_proof_replay/independent_checker.json)
 
 ## Reproduce
 
@@ -68,8 +71,8 @@ result](evidence/raw/scaled_direct/result.json),
 [raw CSVs](evidence/raw/scaled_direct/claim_1_2_raw.csv), [independent
 checker](evidence/raw/scaled_direct/independent_checker.json), and [negative
 controls](evidence/raw/scaled_direct/negative_control.json). The
-[proof-kernel generator](evidence/src/repro/src/verify_kernel_certificate.py),
-[independent replay source](evidence/src/repro/src/check_kernel_certificate.py),
+[source-complete proof generator](evidence/src/repro/src/verify_source_complete_proof_replay.py),
+[independent replay source](evidence/src/repro/src/check_source_complete_proof_replay.py),
 [visibility matrix](pages/current-visibility/page.md) and [release
 audit](pages/current-release-audit/page.md) remain directly reachable.
 

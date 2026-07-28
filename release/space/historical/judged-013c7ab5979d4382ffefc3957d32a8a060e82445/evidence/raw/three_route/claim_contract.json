@@ -1,0 +1,23 @@
+{
+  "C1": {
+    "statement": "For every d,M,delta and supported pi,eta, sqrt(chi2)<=max(C0,t^-alpha(t))*t.",
+    "quantifiers": "d>=1, M>0, delta>0, all pi,eta on [-M,M]^d",
+    "alpha": "(2+delta)/log(max(log(1/t),e))"
+  },
+  "C2": {
+    "statement": "Under the same quantifiers, H<=max(C0,t^-alpha(t))*t.",
+    "quantifiers": "d>=1, M>0, delta>0, all pi,eta on [-M,M]^d"
+  },
+  "C3": {
+    "statement": "There exist infinite one-dimensional sequences with TV_n down to zero and H_n>=TV_n^(1-0.33/loglog(1/TV_n)).",
+    "quantifiers": "existential infinite sequence; eventual n"
+  },
+  "C4": {
+    "statement": "For every Hellinger-compact subclass, minimax squared-TV risk is bracketed by the local-Hellinger critical radius and its logarithmically corrected lower power.",
+    "quantifiers": "every Hellinger-compact subclass and every delta>0"
+  },
+  "C5": {
+    "statement": "Under arbitrary Huber Q, proper-estimator H2 risk has epsilon^(2(1-o(1))) upper scaling and every estimator has the matching lower scaling.",
+    "quantifiers": "every fixed d, every P and Q for upper; inf over all estimators and sufficiently small epsilon for lower"
+  }
+}

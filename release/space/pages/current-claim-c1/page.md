@@ -56,10 +56,13 @@ to discharge those universal premises.
 
 The stronger linear control `sqrt(chi²)<=TV` is deliberately false on the same valid mixtures and is rejected. A failed bound, checker tolerance, assumption audit, or control makes the verifier exit nonzero.
 
-The fail-closed proof kernel separately checks the exact source anchors,
-mixture-denominator Jensen identity, exponent substitution, theorem dependency
-closure, and the full `d,M,delta,pi,eta` quantifier. The independent replay
-recomputes the certificate and rejects the mutated exponent control.
+The current source-complete replay expands the Hermite, Mehler,
+Christoffel–Darboux, restricted-range, Nikolskii, Lambert, weighted-L1/L2, and
+translation/Jensen nodes rather than naming the weighted theorem as an opaque
+dependency. It reports **zero unresolved** internal dependencies and carries
+the full `d,M,delta,pi,eta` quantifier. The separate
+`check_source_complete_proof_replay.py` checker reconstructs the decisive
+witness and rejects the mutated exponent.
 
 ## Reproduce and evidence
 
@@ -85,6 +88,10 @@ run `2m00s`. No GPU.
 - [Independent proof replay](../../evidence/src/repro/src/check_kernel_certificate.py)
 - [Kernel certificate](../../evidence/raw/kernel_certificate/proof_certificate.json)
 - [Kernel replay output](../../evidence/raw/kernel_certificate/independent_checker.json)
+- [Source-complete generator](../../evidence/src/repro/src/verify_source_complete_proof_replay.py)
+- [Independent source-complete checker](../../evidence/src/repro/src/check_source_complete_proof_replay.py)
+- [Current proof transcript](../../evidence/raw/source_complete_proof_replay/proof_transcript.md)
+- [Current proof object](../../evidence/raw/source_complete_proof_replay/proof_replay.json)
 - [Source audit](../../evidence/raw/scaled_direct/source_audit.md)
 - [Method](../../evidence/raw/scaled_direct/method.md)
 - [Limitations](../../evidence/raw/scaled_direct/limitations.md)

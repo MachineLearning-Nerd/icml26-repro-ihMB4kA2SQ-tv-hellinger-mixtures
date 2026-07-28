@@ -54,10 +54,12 @@ is certified by this route, not extrapolated from orders `11,...,31`.
 
 Controls reject the wrong Chebyshev nodes and the stronger coefficient `0.50`. Each control must fail for the intended reason, and every accepted row must pass, or the verifier exits nonzero.
 
-The proof kernel pins Lemma 3.2 and Theorem 3.1, recomputes the gamma limit and
-the exact margin `0.3314835>0.33`, records the monotone-subsequence dependency,
-and carries the existential infinite-sequence quantifier to the conclusion.
-The independent checker rejects the coefficient `0.34` mutation.
+The current source-complete replay expands the Chebyshev inverse-Vandermonde,
+moment-recurrence, Poisson-tail, Gaussian-norm, two mixture-transformation, and
+monotone-subsequence nodes. It reports **zero unresolved** internal
+dependencies and carries the existential infinite-sequence quantifier to the
+conclusion. `check_source_complete_proof_replay.py` independently checks the
+strict `0.3314835>0.33` margin and rejects coefficient `0.34`.
 
 ## Reproduce and evidence
 
@@ -80,6 +82,10 @@ Seed `260203202`; one effective core; no GPU. The full row data are in the [cons
 - [Independent proof replay](../../evidence/src/repro/src/check_kernel_certificate.py)
 - [Kernel certificate](../../evidence/raw/kernel_certificate/proof_certificate.json)
 - [Kernel replay output](../../evidence/raw/kernel_certificate/independent_checker.json)
+- [Source-complete generator](../../evidence/src/repro/src/verify_source_complete_proof_replay.py)
+- [Independent source-complete checker](../../evidence/src/repro/src/check_source_complete_proof_replay.py)
+- [Current proof transcript](../../evidence/raw/source_complete_proof_replay/proof_transcript.md)
+- [Current proof object](../../evidence/raw/source_complete_proof_replay/proof_replay.json)
 - [Source audit](../../evidence/raw/claim_1_3/source_audit.md)
 - [Method](../../evidence/raw/claim_1_3/method.md)
 - [Limitations](../../evidence/raw/claim_1_3/limitations.md)
